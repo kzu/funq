@@ -1,0 +1,46 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	<!-- 
+		Allows customization of the ContainerModel.Build binaries 
+		by setting the ContainerModelBinPath property 
+		-->
+
+	<PropertyGroup>
+		<ContainerModelBinPath Condition="'$(ContainerModelBinPath)' == ''">			
+			$(MSBuildExtensionsPath)\Microsoft\Practices\ContainerModel
+		</ContainerModelBinPath>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<LoadTimeSensitiveTargets>
+			$(LoadTimeSensitiveTargets);
+			ConventionsCompilation;
+		</LoadTimeSensitiveTargets>
+		<LoadTimeSensitiveProperties>
+			$(LoadTimeSensitiveProperties);
+			ConventionsCompilationDependsOn;
+		</LoadTimeSensitiveProperties>
+
+		<CoreCompileDependsOn>
+			ConventionsCompilation;
+			$(CoreCompileDependsOn)
+		</CoreCompileDependsOn>
+	</PropertyGroup>
+
+	<Target Name="ConventionsCompilationDependsOn">
+		<!--<CreateProperty Value=""-->
+	</Target>
+
+	<UsingTask TaskName="Microsoft.Practices.Mobile.ContainerModel.Build.RegistrationGenerator" AssemblyFile="$(ContainerModelBinPath)\Microsoft.Practices.Mobile.ContainerModel.Build.dll" />
+
+	<Target Name="ConventionsCompilation"
+			  DependsOnTargets="$(ConventionsCompilationDependsOn)">
+		<Warning Text="Property named 'ContainerModelBinPath' must be defined with the location of the Microsoft.Practices.Mobile.ContainerModel.Build.dll assembly"
+					Condition="'$(ContainerModelBinPath)' == ''" />
+		<!--<CreateItem Include="@(Reference)" Condition="'%(Reference.Include)' == 'ContainerModel.Build, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL'">
+			<Output PropertyName="_Reference"/>
+		</CreateItem>-->
+		<!--<Message Text="Reference: @(Reference)-%(Reference.Include)" Condition="'%(Reference.Include)' == 'ContainerModel.Build, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL'" Importance="high"/>-->
+		<RegistrationGenerator SourceFiles="@(Reference)" Condition="'%(Compile.Generator)' == 'Funq'" />
+	</Target>
+
+</Project>

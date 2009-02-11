@@ -1,0 +1,35 @@
+  <PropertyGroup>
+        <!-- Add Markup compilation to the CoreCompileDependsOn so that the IDE inproc compilers (particularly VB)
+             can "see" the generated source files. -->
+
+      <CoreCompileDependsOn Condition="'$(BuildingInsideVisualStudio)' == 'true' ">
+          DesignTimeMarkupCompilation;
+          $(CoreCompileDependsOn)
+      </CoreCompileDependsOn>
+      
+  </PropertyGroup>
+
+
+  <Target Name="DesignTimeMarkupCompilation">
+
+        <!-- Only if we are not actually performing a compile i.e. we are in design mode -->
+        <CallTarget Condition="'$(BuildingProject)' != 'true'"
+                Targets="MarkupCompilePass1" />
+  </Target>
+
+
+  <!--
+    ===========================================================================================
+                                        Extensibility Points
+
+         Redefine these targets in your project in order to run tasks just after
+         MarkupCompilePass1, MarkupCompilePass2 or the entire WinFXCompile.
+
+    ===========================================================================================
+  -->
+
+  <Target Name="AfterCompileWinFX"/>
+  <Target Name="AfterMarkupCompilePass1" />
+  <Target Name="AfterMarkupCompilePass2" />        
+
+C:\Windows\Microsoft.NET\Framework\v3.5\Microsoft.WinFx.targets
