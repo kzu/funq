@@ -1,0 +1,125 @@
+﻿<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0F0175C7-9CCD-4C05-94DE-308E83A8B317}</ProjectGuid>
+    <ProjectTypeGuids>{A1591282-1198-4647-A2B1-27E5FF5F6F3B};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Funq</RootNamespace>
+    <AssemblyName>Funq.Silverlight</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <SilverlightApplication>false</SilverlightApplication>
+    <ValidateXaml>true</ValidateXaml>
+    <ThrowErrorsInValidation>false</ThrowErrorsInValidation>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>..\..\Funq.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="mscorlib" />
+    <Reference Include="system" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\Core\Source\Action.cs">
+      <Link>Action.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Core\Source\Container.cs">
+      <Link>Container.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Core\Source\Func.cs">
+      <Link>Func.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Core\Source\IFluentInterface.cs">
+      <Link>IFluentInterface.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Core\Source\IFunqlet.cs">
+      <Link>IFunqlet.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Core\Source\Owner.cs">
+      <Link>Owner.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Core\Source\ResolutionException.cs">
+      <Link>ResolutionException.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Core\Source\ReuseScope.cs">
+      <Link>ReuseScope.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Core\Source\ServiceEntry.cs">
+      <Link>ServiceEntry.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Core\Source\ServiceEntry.Generic.cs">
+      <Link>ServiceEntry.Generic.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Core\Source\ServiceKey.cs">
+      <Link>ServiceKey.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Core\Source\Syntax.cs">
+      <Link>Syntax.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Core\Source\Properties\AssemblyInfo.cs">
+      <Link>Properties\AssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Core\Source\Properties\Resources.Designer.cs">
+      <Link>Properties\Resources.Designer.cs</Link>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="..\..\Core\Source\Properties\Resources.resx">
+      <Link>Properties\Resources.resx</Link>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\Core\Source\Container.xdoc">
+      <Link>Container.xdoc</Link>
+    </None>
+    <None Include="..\..\Funq.snk">
+      <Link>Funq.snk</Link>
+    </None>
+  </ItemGroup>
+  <PropertyGroup>
+    <SilverlightBuildResources>..\..\Lib\Silverlight SDK\</SilverlightBuildResources>
+    <TargetFrameworkDirectory>$(SilverlightBuildResources)Reference Assemblies\</TargetFrameworkDirectory>
+    <TargetFrameworkSDKDirectory>$(SilverlightBuildResources)Libraries\Client\</TargetFrameworkSDKDirectory>
+    <SilverlightRuntimeVersion>2.0.31005.0</SilverlightRuntimeVersion>
+  </PropertyGroup>
+  <Import Project="$(SilverlightBuildResources)MSBuild\Microsoft.Silverlight.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{A1591282-1198-4647-A2B1-27E5FF5F6F3B}">
+        <SilverlightProjectProperties />
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

@@ -7,7 +7,7 @@ namespace Funq
 	/// Fluent API for customizing the registration of a service.
 	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
-	public interface IRegistration : IFluentInterface, INamed, IReusedOwned
+	public interface IRegistration : IFluentInterface, IReusedOwned
 	{
 	}
 
@@ -39,18 +39,6 @@ namespace Funq
 	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	public interface IReusedOwned : IFluentInterface, IReused, IOwned { }
-
-	/// <summary>
-	/// Fluent API that allows naming a registration.
-	/// </summary>
-	[EditorBrowsable(EditorBrowsableState.Never)]
-	public interface INamed : IFluentInterface
-	{
-		/// <summary>
-		/// Specifies a name for the registration.
-		/// </summary>
-		IReusedOwned Named(string name);
-	}
 
 	/// <summary>
 	/// Fluent API that allows specifying the reuse instances.

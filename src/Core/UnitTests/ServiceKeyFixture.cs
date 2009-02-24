@@ -9,7 +9,7 @@ namespace Funq.Tests
 		[TestMethod]
 		public void KeyNotEqualsNull()
 		{
-			var key1 = new ServiceKey(typeof(ICloneable), typeof(Func<ICloneable>), null);
+			var key1 = new ServiceKey(typeof(IDisposable), typeof(Func<IDisposable>), null);
 
 			Assert.AreNotEqual(key1, null);
 			Assert.IsFalse(key1.Equals(null));
@@ -18,7 +18,7 @@ namespace Funq.Tests
 		[TestMethod]
 		public void KeyNotEqualsOtherType()
 		{
-			var key1 = new ServiceKey(typeof(ICloneable), typeof(Func<ICloneable>), null);
+			var key1 = new ServiceKey(typeof(IDisposable), typeof(Func<IDisposable>), null);
 
 			Assert.AreNotEqual(key1, new object());
 			Assert.IsFalse(key1.Equals(new object()));
@@ -27,7 +27,7 @@ namespace Funq.Tests
 		[TestMethod]
 		public void KeyEqualsSameReference()
 		{
-			var key1 = new ServiceKey(typeof(ICloneable), typeof(Func<ICloneable>), null);
+			var key1 = new ServiceKey(typeof(IDisposable), typeof(Func<IDisposable>), null);
 			var key2 = key1;
 
 			Assert.AreSame(key1, key2);
@@ -38,8 +38,8 @@ namespace Funq.Tests
 		[TestMethod]
 		public void KeysAreEqualByType()
 		{
-			var key1 = new ServiceKey(typeof(ICloneable), typeof(Func<ICloneable>), null);
-			var key2 = new ServiceKey(typeof(ICloneable), typeof(Func<ICloneable>), null);
+			var key1 = new ServiceKey(typeof(IDisposable), typeof(Func<IDisposable>), null);
+			var key2 = new ServiceKey(typeof(IDisposable), typeof(Func<IDisposable>), null);
 
 			Assert.AreEqual(key1, key2);
 			Assert.AreEqual(key1.GetHashCode(), key2.GetHashCode());
@@ -50,8 +50,8 @@ namespace Funq.Tests
 		[TestMethod]
 		public void KeysAreEqualByTypeAndName()
 		{
-			var key1 = new ServiceKey(typeof(ICloneable), typeof(Func<ICloneable>), "foo");
-			var key2 = new ServiceKey(typeof(ICloneable), typeof(Func<ICloneable>), "foo");
+			var key1 = new ServiceKey(typeof(IDisposable), typeof(Func<IDisposable>), "foo");
+			var key2 = new ServiceKey(typeof(IDisposable), typeof(Func<IDisposable>), "foo");
 
 			Assert.AreEqual(key1, key2);
 			Assert.AreEqual(key1.GetHashCode(), key2.GetHashCode());
@@ -62,8 +62,8 @@ namespace Funq.Tests
 		[TestMethod]
 		public void KeysNotEqualByName()
 		{
-			var key1 = new ServiceKey(typeof(ICloneable), typeof(Func<ICloneable>), "foo");
-			var key2 = new ServiceKey(typeof(ICloneable), typeof(Func<ICloneable>), "bar");
+			var key1 = new ServiceKey(typeof(IDisposable), typeof(Func<IDisposable>), "foo");
+			var key2 = new ServiceKey(typeof(IDisposable), typeof(Func<IDisposable>), "bar");
 
 			Assert.AreNotEqual(key1, key2);
 			Assert.AreNotEqual(key1.GetHashCode(), key2.GetHashCode());

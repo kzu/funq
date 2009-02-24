@@ -2,8 +2,10 @@
 
 namespace Funq
 {
-	internal sealed class ServiceEntry
+	internal class ServiceEntry : IRegistration
 	{
+		protected ServiceEntry() {}
+
 		/// <summary>
 		/// The Func delegate that creates instances of the service.
 		/// </summary>
@@ -19,7 +21,7 @@ namespace Funq
 		/// <summary>
 		/// Scope setting for the service.
 		/// </summary>
-		public ReuseScope Reuse { get; set; }
+		public ReuseScope Scope { get; set; }
 		/// <summary>
 		/// Service instance if <see cref="ReuseScope.Hierarchy"/> or 
 		/// <see cref="ReuseScope.Container"/> scoped.
@@ -40,9 +42,37 @@ namespace Funq
 			{
 				Factory = Factory, 
 				Owner = Owner, 
-				Reuse = Reuse, 
+				Scope = Scope, 
 				Container = newContainer,
+				Initializer = Initializer,
 			};
+		}
+
+		/// <summary>
+		/// Specifies the owner for instances, which determines how 
+		/// they will be disposed.
+		/// </summary>
+		public void OwnedBy(Owner owner)
+		{
+			this.Owner = owner;
+		}
+
+		/// <summary>
+		/// Specifies the scope for instances, which determines 
+		/// visibility of instances across containers and hierarchies.
+		/// </summary>
+		public IOwned ReusedWithin(ReuseScope scope)
+		{
+			this.Scope = scope;
+			return this;
+		}
+
+		/// <summary>
+		/// Sets the initializer delegate. See <see cref="IInitializable{TService}.InitializedBy"/>.
+		/// </summary>
+		protected void SetInitializer(object initializer)
+		{
+			this.Initializer = initializer;
 		}
 	}
 }

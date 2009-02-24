@@ -5,8 +5,7 @@ namespace Funq
 {
 	/// <summary>
 	/// Main container class for components, supporting container hierarchies and 
-	/// lifetime management of <see cref="IDisposable"/> instances. To configure 
-	/// a container, use a <see cref="ContainerBuilder"/>.
+	/// lifetime management of <see cref="IDisposable"/> instances.
 	/// </summary>
 	public sealed class Container : IDisposable
 	{
@@ -30,15 +29,6 @@ namespace Funq
 		}
 
 		/// <summary>
-		/// Actual registration implementation invoked by the <see cref="ContainerBuilder"/> 
-		/// to provide factories to the container.
-		/// </summary>
-		internal void Register(ServiceKey key, ServiceEntry entry)
-		{
-			services[key] = entry;
-		}
-
-		/// <summary>
 		/// Disposes the container and all instances owned by it (see 
 		/// <see cref="Owner.Container"/>), as well as all child containers 
 		/// created through <see cref="CreateChildContainer"/>.
@@ -58,108 +48,144 @@ namespace Funq
 			}
 		}
 
+		#region Register
+
+		/// <include file='Container.xdoc' path='docs/doc[@for="Container.Register{TService}(name,factory)"]/*'/>
+		public IRegistration<TService> Register<TService>(string name, Func<Container, TService> factory)
+		{
+			return RegisterImpl<TService, Func<Container, TService>>(name, factory);
+		}
+
+		/// <include file='Container.xdoc' path='docs/doc[@for="Container.Register{TService,TArg}(name,factory)"]/*'/>
+		public IRegistration<TService> Register<TService, TArg>(string name, Func<Container, TArg, TService> factory)
+		{
+			return RegisterImpl<TService, Func<Container, TArg, TService>>(name, factory);
+		}
+
+		/// <include file='Container.xdoc' path='docs/doc[@for="Container.Register{TService,TArg1,TArg2}(name,factory)"]/*'/>
+		public IRegistration<TService> Register<TService, TArg1, TArg2>(string name, Func<Container, TArg1, TArg2, TService> factory)
+		{
+			return RegisterImpl<TService, Func<Container, TArg1, TArg2, TService>>(name, factory);
+		}
+
+		/// <include file='Container.xdoc' path='docs/doc[@for="Container.Register{TService,TArg1,TArg2,TArg3}(name,factory)"]/*'/>
+		public IRegistration<TService> Register<TService, TArg1, TArg2, TArg3>(string name, Func<Container, TArg1, TArg2, TArg3, TService> factory)
+		{
+			return RegisterImpl<TService, Func<Container, TArg1, TArg2, TArg3, TService>>(name, factory);
+		}
+
+		/// <include file='Container.xdoc' path='docs/doc[@for="Container.Register{TService,TArg1,TArg2,TArg3,TArg4}(name,factory)"]/*'/>
+		public IRegistration<TService> Register<TService, TArg1, TArg2, TArg3, TArg4>(string name, Func<Container, TArg1, TArg2, TArg3, TArg4, TService> factory)
+		{
+			return RegisterImpl<TService, Func<Container, TArg1, TArg2, TArg3, TArg4, TService>>(name, factory);
+		}
+
+		/// <include file='Container.xdoc' path='docs/doc[@for="Container.Register{TService,TArg1,TArg2,TArg3,TArg4,TArg5}(name,factory)"]/*'/>
+		public IRegistration<TService> Register<TService, TArg1, TArg2, TArg3, TArg4, TArg5>(string name, Func<Container, TArg1, TArg2, TArg3, TArg4, TArg5, TService> factory)
+		{
+			return RegisterImpl<TService, Func<Container, TArg1, TArg2, TArg3, TArg4, TArg5, TService>>(name, factory);
+		}
+
+		/// <include file='Container.xdoc' path='docs/doc[@for="Container.Register{TService,TArg1,TArg2,TArg3,TArg4,TArg5,TArg6}(name,factory)"]/*'/>
+		public IRegistration<TService> Register<TService, TArg1, TArg2, TArg3, TArg4, TArg5, TArg6>(string name, Func<Container, TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TService> factory)
+		{
+			return RegisterImpl<TService, Func<Container, TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TService>>(name, factory);
+		}
+
+		/// <include file='Container.xdoc' path='docs/doc[@for="Container.Register{TService}(factory)"]/*'/>
+		public IRegistration<TService> Register<TService>(Func<Container, TService> factory)
+		{
+			return Register(null, factory);
+		}
+
+		/// <include file='Container.xdoc' path='docs/doc[@for="Container.Register{TService,TArg}(factory)"]/*'/>
+		public IRegistration<TService> Register<TService, TArg>(Func<Container, TArg, TService> factory)
+		{
+			return Register(null, factory);
+		}
+
+		/// <include file='Container.xdoc' path='docs/doc[@for="Container.Register{TService,TArg1,TArg2}(factory)"]/*'/>
+		public IRegistration<TService> Register<TService, TArg1, TArg2>(Func<Container, TArg1, TArg2, TService> factory)
+		{
+			return Register(null, factory);
+		}
+
+		/// <include file='Container.xdoc' path='docs/doc[@for="Container.Register{TService,TArg1,TArg2,TArg3}(factory)"]/*'/>
+		public IRegistration<TService> Register<TService, TArg1, TArg2, TArg3>(Func<Container, TArg1, TArg2, TArg3, TService> factory)
+		{
+			return Register(null, factory);
+		}
+
+		/// <include file='Container.xdoc' path='docs/doc[@for="Container.Register{TService,TArg1,TArg2,TArg3,TArg4}(factory)"]/*'/>
+		public IRegistration<TService> Register<TService, TArg1, TArg2, TArg3, TArg4>(Func<Container, TArg1, TArg2, TArg3, TArg4, TService> factory)
+		{
+			return Register(null, factory);
+		}
+
+		/// <include file='Container.xdoc' path='docs/doc[@for="Container.Register{TService,TArg1,TArg2,TArg3,TArg4,TArg5}(factory)"]/*'/>
+		public IRegistration<TService> Register<TService, TArg1, TArg2, TArg3, TArg4, TArg5>(Func<Container, TArg1, TArg2, TArg3, TArg4, TArg5, TService> factory)
+		{
+			return Register(null, factory);
+		}
+
+		/// <include file='Container.xdoc' path='docs/doc[@for="Container.Register{TService,TArg1,TArg2,TArg3,TArg4,TArg5,TArg6}(factory)"]/*'/>
+		public IRegistration<TService> Register<TService, TArg1, TArg2, TArg3, TArg4, TArg5, TArg6>(Func<Container, TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TService> factory)
+		{
+			return Register(null, factory);
+		}
+
+		private ServiceEntry<TService> RegisterImpl<TService, TFunc>(string name, TFunc factory)
+		{
+			// TODO: add default reuse and owner.
+			var entry = new ServiceEntry<TService>(factory) { Container = this };
+			var key = new ServiceKey(typeof(TService), typeof(TFunc), name); 
+
+			services[key] = entry;
+
+			return entry;
+		}
+
+		#endregion
+
 		#region Resolve
 
-		/// <summary>
-		/// Resolves the given service by type, without passing any arguments for 
-		/// its construction.
-		/// </summary>
-		/// <typeparam name="TService">Type of the service to retrieve.</typeparam>
-		/// <returns>The resolved service instance.</returns>
-		/// <exception cref="ResolutionException">The given service could not be resolved.</exception>
+		/// <include file='Container.xdoc' path='docs/doc[@for="Container.Resolve{TService}"]/*'/>
 		public TService Resolve<TService>()
 		{
 			return ResolveNamed<TService>(null);
 		}
 
-		/// <summary>
-		/// Resolves the given service by type, passing the given arguments 
-		/// for its initialization.
-		/// </summary>
-		/// <typeparam name="TService">Type of the service to retrieve.</typeparam>
-		/// <typeparam name="TArg">First argument to pass to the factory delegate that may create the instace.</typeparam>
-		/// <returns>The resolved service instance.</returns>
-		/// <exception cref="ResolutionException">The given service could not be resolved.</exception>
+		/// <include file='Container.xdoc' path='docs/doc[@for="Container.Resolve{TService,TArg}"]/*'/>
 		public TService Resolve<TService, TArg>(TArg arg)
 		{
 			return ResolveNamed<TService, TArg>(null, arg);
 		}
 
-		/// <summary>
-		/// Resolves the given service by type, passing the given arguments 
-		/// for its initialization.
-		/// </summary>
-		/// <typeparam name="TService">Type of the service to retrieve.</typeparam>
-		/// <typeparam name="TArg1">First argument to pass to the factory delegate that may create the instace.</typeparam>
-		/// <typeparam name="TArg2">Second argument to pass to the factory delegate that may create the instace.</typeparam>
-		/// <returns>The resolved service instance.</returns>
-		/// <exception cref="ResolutionException">The given service could not be resolved.</exception>
+		/// <include file='Container.xdoc' path='docs/doc[@for="Container.Resolve{TService,TArg1,TArg2}"]/*'/>
 		public TService Resolve<TService, TArg1, TArg2>(TArg1 arg1, TArg2 arg2)
 		{
 			return ResolveNamed<TService, TArg1, TArg2>(null, arg1, arg2);
 		}
 
-		/// <summary>
-		/// Resolves the given service by type, passing the given arguments 
-		/// for its initialization.
-		/// </summary>
-		/// <typeparam name="TService">Type of the service to retrieve.</typeparam>
-		/// <typeparam name="TArg1">First argument to pass to the factory delegate that may create the instace.</typeparam>
-		/// <typeparam name="TArg2">Second argument to pass to the factory delegate that may create the instace.</typeparam>
-		/// <typeparam name="TArg3">Third argument to pass to the factory delegate that may create the instace.</typeparam>
-		/// <returns>The resolved service instance.</returns>
-		/// <exception cref="ResolutionException">The given service could not be resolved.</exception>
+		/// <include file='Container.xdoc' path='docs/doc[@for="Container.Resolve{TService,TArg1,TArg2,TArg3}"]/*'/>
 		public TService Resolve<TService, TArg1, TArg2, TArg3>(TArg1 arg1, TArg2 arg2, TArg3 arg3)
 		{
 			return ResolveNamed<TService, TArg1, TArg2, TArg3>(null, arg1, arg2, arg3);
 		}
 
-		/// <summary>
-		/// Resolves the given service by type, passing the given arguments 
-		/// for its initialization.
-		/// </summary>
-		/// <typeparam name="TService">Type of the service to retrieve.</typeparam>
-		/// <typeparam name="TArg1">First argument to pass to the factory delegate that may create the instace.</typeparam>
-		/// <typeparam name="TArg2">Second argument to pass to the factory delegate that may create the instace.</typeparam>
-		/// <typeparam name="TArg3">Third argument to pass to the factory delegate that may create the instace.</typeparam>
-		/// <typeparam name="TArg4">Fourth argument to pass to the factory delegate that may create the instace.</typeparam>
-		/// <returns>The resolved service instance.</returns>
-		/// <exception cref="ResolutionException">The given service could not be resolved.</exception>
+		/// <include file='Container.xdoc' path='docs/doc[@for="Container.Resolve{TService,TArg1,TArg2,TArg3,TArg4}"]/*'/>
 		public TService Resolve<TService, TArg1, TArg2, TArg3, TArg4>(TArg1 arg1, TArg2 arg2, TArg3 arg3, TArg4 arg4)
 		{
 			return ResolveNamed<TService, TArg1, TArg2, TArg3, TArg4>(null, arg1, arg2, arg3, arg4);
 		}
 
-		/// <summary>
-		/// Resolves the given service by type, passing the given arguments 
-		/// for its initialization.
-		/// </summary>
-		/// <typeparam name="TService">Type of the service to retrieve.</typeparam>
-		/// <typeparam name="TArg1">First argument to pass to the factory delegate that may create the instace.</typeparam>
-		/// <typeparam name="TArg2">Second argument to pass to the factory delegate that may create the instace.</typeparam>
-		/// <typeparam name="TArg3">Third argument to pass to the factory delegate that may create the instace.</typeparam>
-		/// <typeparam name="TArg4">Fourth argument to pass to the factory delegate that may create the instace.</typeparam>
-		/// <typeparam name="TArg5">Fifth argument to pass to the factory delegate that may create the instace.</typeparam>
-		/// <returns>The resolved service instance.</returns>
-		/// <exception cref="ResolutionException">The given service could not be resolved.</exception>
+		/// <include file='Container.xdoc' path='docs/doc[@for="Container.Resolve{TService,TArg1,TArg2,TArg3,TArg4,TArg5}"]/*'/>
 		public TService Resolve<TService, TArg1, TArg2, TArg3, TArg4, TArg5>(TArg1 arg1, TArg2 arg2, TArg3 arg3, TArg4 arg4, TArg5 arg5)
 		{
 			return ResolveNamed<TService, TArg1, TArg2, TArg3, TArg4, TArg5>(null, arg1, arg2, arg3, arg4, arg5);
 		}
 
-		/// <summary>
-		/// Resolves the given service by type, passing the given arguments 
-		/// for its initialization.
-		/// </summary>
-		/// <typeparam name="TService">Type of the service to retrieve.</typeparam>
-		/// <typeparam name="TArg1">First argument to pass to the factory delegate that may create the instace.</typeparam>
-		/// <typeparam name="TArg2">Second argument to pass to the factory delegate that may create the instace.</typeparam>
-		/// <typeparam name="TArg3">Third argument to pass to the factory delegate that may create the instace.</typeparam>
-		/// <typeparam name="TArg4">Fourth argument to pass to the factory delegate that may create the instace.</typeparam>
-		/// <typeparam name="TArg5">Fifth argument to pass to the factory delegate that may create the instace.</typeparam>
-		/// <typeparam name="TArg6">Sixth argument to pass to the factory delegate that may create the instace.</typeparam>
-		/// <returns>The resolved service instance.</returns>
-		/// <exception cref="ResolutionException">The given service could not be resolved.</exception>
+		/// <include file='Container.xdoc' path='docs/doc[@for="Container.Resolve{TService,TArg1,TArg2,TArg3,TArg4,TArg5,TArg6}"]/*'/>
 		public TService Resolve<TService, TArg1, TArg2, TArg3, TArg4, TArg5, TArg6>(TArg1 arg1, TArg2 arg2, TArg3 arg3, TArg4 arg4, TArg5 arg5, TArg6 arg6)
 		{
 			return ResolveNamed<TService, TArg1, TArg2, TArg3, TArg4, TArg5, TArg6>(null, arg1, arg2, arg3, arg4, arg5, arg6);
@@ -169,111 +195,49 @@ namespace Funq
 
 		#region ResolveNamed
 
-		/// <summary>
-		/// Resolves the given service by type and name, without passing arguments for its initialization.
-		/// </summary>
-		/// <typeparam name="TService">Type of the service to retrieve.</typeparam>
-		/// <returns>The resolved service instance.</returns>
-		/// <exception cref="ResolutionException">The given service could not be resolved.</exception>
+		/// <include file='Container.xdoc' path='docs/doc[@for="Container.ResolveNamed{TService}"]/*'/>
 		public TService ResolveNamed<TService>(string name)
 		{
 			return ResolveCore<TService, Func<Container, TService>>(
 				name, f => f(this));
 		}
 
-		/// <summary>
-		/// Resolves the given service by type and name, passing the given arguments 
-		/// for its initialization.
-		/// </summary>
-		/// <typeparam name="TService">Type of the service to retrieve.</typeparam>
-		/// <typeparam name="TArg">First argument to pass to the factory delegate that may create the instace.</typeparam>
-		/// <returns>The resolved service instance.</returns>
-		/// <exception cref="ResolutionException">The given service could not be resolved.</exception>
+		/// <include file='Container.xdoc' path='docs/doc[@for="Container.ResolveNamed{TService,TArg}"]/*'/>
 		public TService ResolveNamed<TService, TArg>(string name, TArg arg)
 		{
 			return ResolveCore<TService, Func<Container, TArg, TService>>(
 				name, f => f(this, arg));
 		}
 
-		/// <summary>
-		/// Resolves the given service by type and name, passing the given arguments 
-		/// for its initialization.
-		/// </summary>
-		/// <typeparam name="TService">Type of the service to retrieve.</typeparam>
-		/// <typeparam name="TArg1">First argument to pass to the factory delegate that may create the instace.</typeparam>
-		/// <typeparam name="TArg2">Second argument to pass to the factory delegate that may create the instace.</typeparam>
-		/// <returns>The resolved service instance.</returns>
-		/// <exception cref="ResolutionException">The given service could not be resolved.</exception>
+		/// <include file='Container.xdoc' path='docs/doc[@for="Container.ResolveNamed{TService,TArg1,TArg2}"]/*'/>
 		public TService ResolveNamed<TService, TArg1, TArg2>(string name, TArg1 arg1, TArg2 arg2)
 		{
 			return ResolveCore<TService, Func<Container, TArg1, TArg2, TService>>(
 				name, f => f(this, arg1, arg2));
 		}
 
-		/// <summary>
-		/// Resolves the given service by type and name, passing the given arguments 
-		/// for its initialization.
-		/// </summary>
-		/// <typeparam name="TService">Type of the service to retrieve.</typeparam>
-		/// <typeparam name="TArg1">First argument to pass to the factory delegate that may create the instace.</typeparam>
-		/// <typeparam name="TArg2">Second argument to pass to the factory delegate that may create the instace.</typeparam>
-		/// <typeparam name="TArg3">Third argument to pass to the factory delegate that may create the instace.</typeparam>
-		/// <returns>The resolved service instance.</returns>
-		/// <exception cref="ResolutionException">The given service could not be resolved.</exception>
+		/// <include file='Container.xdoc' path='docs/doc[@for="Container.ResolveNamed{TService,TArg1,TArg2,TArg3}"]/*'/>
 		public TService ResolveNamed<TService, TArg1, TArg2, TArg3>(string name, TArg1 arg1, TArg2 arg2, TArg3 arg3)
 		{
 			return ResolveCore<TService, Func<Container, TArg1, TArg2, TArg3, TService>>(
 				name, f => f(this, arg1, arg2, arg3));
 		}
 
-		/// <summary>
-		/// Resolves the given service by type and name, passing the given arguments 
-		/// for its initialization.
-		/// </summary>
-		/// <typeparam name="TService">Type of the service to retrieve.</typeparam>
-		/// <typeparam name="TArg1">First argument to pass to the factory delegate that may create the instace.</typeparam>
-		/// <typeparam name="TArg2">Second argument to pass to the factory delegate that may create the instace.</typeparam>
-		/// <typeparam name="TArg3">Third argument to pass to the factory delegate that may create the instace.</typeparam>
-		/// <typeparam name="TArg4">Fourth argument to pass to the factory delegate that may create the instace.</typeparam>
-		/// <returns>The resolved service instance.</returns>
-		/// <exception cref="ResolutionException">The given service could not be resolved.</exception>
+		/// <include file='Container.xdoc' path='docs/doc[@for="Container.ResolveNamed{TService,TArg1,TArg2,TArg3,TArg4}"]/*'/>
 		public TService ResolveNamed<TService, TArg1, TArg2, TArg3, TArg4>(string name, TArg1 arg1, TArg2 arg2, TArg3 arg3, TArg4 arg4)
 		{
 			return ResolveCore<TService, Func<Container, TArg1, TArg2, TArg3, TArg4, TService>>(
 				name, f => f(this, arg1, arg2, arg3, arg4));
 		}
 
-		/// <summary>
-		/// Resolves the given service by type and name, passing the given arguments 
-		/// for its initialization.
-		/// </summary>
-		/// <typeparam name="TService">Type of the service to retrieve.</typeparam>
-		/// <typeparam name="TArg1">First argument to pass to the factory delegate that may create the instace.</typeparam>
-		/// <typeparam name="TArg2">Second argument to pass to the factory delegate that may create the instace.</typeparam>
-		/// <typeparam name="TArg3">Third argument to pass to the factory delegate that may create the instace.</typeparam>
-		/// <typeparam name="TArg4">Fourth argument to pass to the factory delegate that may create the instace.</typeparam>
-		/// <typeparam name="TArg5">Fifth argument to pass to the factory delegate that may create the instace.</typeparam>
-		/// <returns>The resolved service instance.</returns>
-		/// <exception cref="ResolutionException">The given service could not be resolved.</exception>
+		/// <include file='Container.xdoc' path='docs/doc[@for="Container.ResolveNamed{TService,TArg1,TArg2,TArg3,TArg4,TArg5}"]/*'/>
 		public TService ResolveNamed<TService, TArg1, TArg2, TArg3, TArg4, TArg5>(string name, TArg1 arg1, TArg2 arg2, TArg3 arg3, TArg4 arg4, TArg5 arg5)
 		{
 			return ResolveCore<TService, Func<Container, TArg1, TArg2, TArg3, TArg4, TArg5, TService>>(
 				name, f => f(this, arg1, arg2, arg3, arg4, arg5));
 		}
 
-		/// <summary>
-		/// Resolves the given service by type and name, passing the given arguments 
-		/// for its initialization.
-		/// </summary>
-		/// <typeparam name="TService">Type of the service to retrieve.</typeparam>
-		/// <typeparam name="TArg1">First argument to pass to the factory delegate that may create the instace.</typeparam>
-		/// <typeparam name="TArg2">Second argument to pass to the factory delegate that may create the instace.</typeparam>
-		/// <typeparam name="TArg3">Third argument to pass to the factory delegate that may create the instace.</typeparam>
-		/// <typeparam name="TArg4">Fourth argument to pass to the factory delegate that may create the instace.</typeparam>
-		/// <typeparam name="TArg5">Fifth argument to pass to the factory delegate that may create the instace.</typeparam>
-		/// <typeparam name="TArg6">Sixth argument to pass to the factory delegate that may create the instace.</typeparam>
-		/// <returns>The resolved service instance.</returns>
-		/// <exception cref="ResolutionException">The given service could not be resolved.</exception>
+		/// <include file='Container.xdoc' path='docs/doc[@for="Container.ResolveNamed{TService,TArg1,TArg2,TArg3,TArg4,TArg5,TArg6}"]/*'/>
 		public TService ResolveNamed<TService, TArg1, TArg2, TArg3, TArg4, TArg5, TArg6>(string name, TArg1 arg1, TArg2 arg2, TArg3 arg3, TArg4 arg4, TArg5 arg5, TArg6 arg6)
 		{
 			return ResolveCore<TService, Func<Container, TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TService>>(
@@ -284,98 +248,43 @@ namespace Funq
 
 		#region TryResolve
 
-		/// <summary>
-		/// Attempts to resolve the given service by type, without passing arguments for its initialization.
-		/// </summary>
-		/// <typeparam name="TService">Type of the service to retrieve.</typeparam>
-		/// <returns>The resolved service instance or <see langword="null"/> if it cannot be resolved.</returns>
+		/// <include file='Container.xdoc' path='docs/doc[@for="Container.TryResolve{TService}"]/*'/>
 		public TService TryResolve<TService>()
 		{
 			return TryResolveNamed<TService>(null);
 		}
 
-		/// <summary>
-		/// Attempts to resolve the given service by type, passing the 
-		/// given arguments arguments for its initialization.
-		/// </summary>
-		/// <typeparam name="TService">Type of the service to retrieve.</typeparam>
-		/// <typeparam name="TArg">First argument to pass to the factory delegate that may create the instace.</typeparam>
-		/// <returns>The resolved service instance or <see langword="null"/> if it cannot be resolved.</returns>
+		/// <include file='Container.xdoc' path='docs/doc[@for="Container.TryResolve{TService,TArg}"]/*'/>
 		public TService TryResolve<TService, TArg>(TArg arg)
 		{
 			return TryResolveNamed<TService, TArg>(null, arg);
 		}
 
-		/// <summary>
-		/// Attempts to resolve the given service by type, passing the 
-		/// given arguments arguments for its initialization.
-		/// </summary>
-		/// <typeparam name="TService">Type of the service to retrieve.</typeparam>
-		/// <typeparam name="TArg1">First argument to pass to the factory delegate that may create the instace.</typeparam>
-		/// <typeparam name="TArg2">Second argument to pass to the factory delegate that may create the instace.</typeparam>
-		/// <returns>The resolved service instance or <see langword="null"/> if it cannot be resolved.</returns>
+		/// <include file='Container.xdoc' path='docs/doc[@for="Container.TryResolve{TService,TArg1,TArg2}"]/*'/>
 		public TService TryResolve<TService, TArg1, TArg2>(TArg1 arg1, TArg2 arg2)
 		{
 			return TryResolveNamed<TService, TArg1, TArg2>(null, arg1, arg2);
 		}
 
-		/// <summary>
-		/// Attempts to resolve the given service by type, passing the 
-		/// given arguments arguments for its initialization.
-		/// </summary>
-		/// <typeparam name="TService">Type of the service to retrieve.</typeparam>
-		/// <typeparam name="TArg1">First argument to pass to the factory delegate that may create the instace.</typeparam>
-		/// <typeparam name="TArg2">Second argument to pass to the factory delegate that may create the instace.</typeparam>
-		/// <typeparam name="TArg3">Third argument to pass to the factory delegate that may create the instace.</typeparam>
-		/// <returns>The resolved service instance or <see langword="null"/> if it cannot be resolved.</returns>
+		/// <include file='Container.xdoc' path='docs/doc[@for="Container.TryResolve{TService,TArg1,TArg2,TArg3}"]/*'/>
 		public TService TryResolve<TService, TArg1, TArg2, TArg3>(TArg1 arg1, TArg2 arg2, TArg3 arg3)
 		{
 			return TryResolveNamed<TService, TArg1, TArg2, TArg3>(null, arg1, arg2, arg3);
 		}
 
-		/// <summary>
-		/// Attempts to resolve the given service by type, passing the 
-		/// given arguments arguments for its initialization.
-		/// </summary>
-		/// <typeparam name="TService">Type of the service to retrieve.</typeparam>
-		/// <typeparam name="TArg1">First argument to pass to the factory delegate that may create the instace.</typeparam>
-		/// <typeparam name="TArg2">Second argument to pass to the factory delegate that may create the instace.</typeparam>
-		/// <typeparam name="TArg3">Third argument to pass to the factory delegate that may create the instace.</typeparam>
-		/// <typeparam name="TArg4">Fourth argument to pass to the factory delegate that may create the instace.</typeparam>
-		/// <returns>The resolved service instance or <see langword="null"/> if it cannot be resolved.</returns>
+		/// <include file='Container.xdoc' path='docs/doc[@for="Container.TryResolve{TService,TArg1,TArg2,TArg3,TArg4}"]/*'/>
 		public TService TryResolve<TService, TArg1, TArg2, TArg3, TArg4>(TArg1 arg1, TArg2 arg2, TArg3 arg3, TArg4 arg4)
 		{
 			return TryResolveNamed<TService, TArg1, TArg2, TArg3, TArg4>(null, arg1, arg2, arg3, arg4);
 		}
 
-		/// <summary>
-		/// Attempts to resolve the given service by type, passing the 
-		/// given arguments arguments for its initialization.
-		/// </summary>
-		/// <typeparam name="TService">Type of the service to retrieve.</typeparam>
-		/// <typeparam name="TArg1">First argument to pass to the factory delegate that may create the instace.</typeparam>
-		/// <typeparam name="TArg2">Second argument to pass to the factory delegate that may create the instace.</typeparam>
-		/// <typeparam name="TArg3">Third argument to pass to the factory delegate that may create the instace.</typeparam>
-		/// <typeparam name="TArg4">Fourth argument to pass to the factory delegate that may create the instace.</typeparam>
-		/// <typeparam name="TArg5">Fifth argument to pass to the factory delegate that may create the instace.</typeparam>
-		/// <returns>The resolved service instance or <see langword="null"/> if it cannot be resolved.</returns>
+		/// <include file='Container.xdoc' path='docs/doc[@for="Container.TryResolve{TService,TArg1,TArg2,TArg3,TArg4,TArg5}"]/*'/>
 		public TService TryResolve<TService, TArg1, TArg2, TArg3, TArg4, TArg5>(TArg1 arg1, TArg2 arg2, TArg3 arg3, TArg4 arg4, TArg5 arg5)
 		{
 			return TryResolveNamed<TService, TArg1, TArg2, TArg3, TArg4, TArg5>(null, arg1, arg2, arg3, arg4, arg5);
 		}
 
-		/// <summary>
-		/// Attempts to resolve the given service by type, passing the 
-		/// given arguments arguments for its initialization.
-		/// </summary>
-		/// <typeparam name="TService">Type of the service to retrieve.</typeparam>
-		/// <typeparam name="TArg1">First argument to pass to the factory delegate that may create the instace.</typeparam>
-		/// <typeparam name="TArg2">Second argument to pass to the factory delegate that may create the instace.</typeparam>
-		/// <typeparam name="TArg3">Third argument to pass to the factory delegate that may create the instace.</typeparam>
-		/// <typeparam name="TArg4">Fourth argument to pass to the factory delegate that may create the instace.</typeparam>
-		/// <typeparam name="TArg5">Fifth argument to pass to the factory delegate that may create the instace.</typeparam>
-		/// <typeparam name="TArg6">Sixth argument to pass to the factory delegate that may create the instace.</typeparam>
-		/// <returns>The resolved service instance or <see langword="null"/> if it cannot be resolved.</returns>
+		/// <include file='Container.xdoc' path='docs/doc[@for="Container.TryResolve{TService,TArg1,TArg2,TArg3,TArg4,TArg5,TArg6}"]/*'/>
 		public TService TryResolve<TService, TArg1, TArg2, TArg3, TArg4, TArg5, TArg6>(TArg1 arg1, TArg2 arg2, TArg3 arg3, TArg4 arg4, TArg5 arg5, TArg6 arg6)
 		{
 			return TryResolveNamed<TService, TArg1, TArg2, TArg3, TArg4, TArg5, TArg6>(null, arg1, arg2, arg3, arg4, arg5, arg6);
@@ -385,105 +294,49 @@ namespace Funq
 
 		#region TryResolveNamed
 
-		/// <summary>
-		/// Attempts to resolve the given service by type and name, without passing 
-		/// arguments arguments for its initialization.
-		/// </summary>
-		/// <typeparam name="TService">Type of the service to retrieve.</typeparam>
-		/// <returns>The resolved service instance or <see langword="null"/> if it cannot be resolved.</returns>
+		/// <include file='Container.xdoc' path='docs/doc[@for="Container.TryResolveNamed{TService}"]/*'/>
 		public TService TryResolveNamed<TService>(string name)
 		{
 			return TryResolveCore<TService, Func<Container, TService>>(
 				name, f => f(this));
 		}
 
-		/// <summary>
-		/// Attempts to resolve the given service by type and name, passing the 
-		/// given arguments arguments for its initialization.
-		/// </summary>
-		/// <typeparam name="TService">Type of the service to retrieve.</typeparam>
-		/// <typeparam name="TArg">First argument to pass to the factory delegate that may create the instace.</typeparam>
-		/// <returns>The resolved service instance or <see langword="null"/> if it cannot be resolved.</returns>
+		/// <include file='Container.xdoc' path='docs/doc[@for="Container.TryResolveNamed{TService,TArg}"]/*'/>
 		public TService TryResolveNamed<TService, TArg>(string name, TArg arg)
 		{
 			return TryResolveCore<TService, Func<Container, TArg, TService>>(
 				name, f => f(this, arg));
 		}
 
-		/// <summary>
-		/// Attempts to resolve the given service by type and name, passing the 
-		/// given arguments arguments for its initialization.
-		/// </summary>
-		/// <typeparam name="TService">Type of the service to retrieve.</typeparam>
-		/// <typeparam name="TArg1">First argument to pass to the factory delegate that may create the instace.</typeparam>
-		/// <typeparam name="TArg2">Second argument to pass to the factory delegate that may create the instace.</typeparam>
-		/// <returns>The resolved service instance or <see langword="null"/> if it cannot be resolved.</returns>
+		/// <include file='Container.xdoc' path='docs/doc[@for="Container.TryResolveNamed{TService,TArg1,TArg2}"]/*'/>
 		public TService TryResolveNamed<TService, TArg1, TArg2>(string name, TArg1 arg1, TArg2 arg2)
 		{
 			return TryResolveCore<TService, Func<Container, TArg1, TArg2, TService>>(
 				name, f => f(this, arg1, arg2));
 		}
 
-		/// <summary>
-		/// Attempts to resolve the given service by type and name, passing the 
-		/// given arguments arguments for its initialization.
-		/// </summary>
-		/// <typeparam name="TService">Type of the service to retrieve.</typeparam>
-		/// <typeparam name="TArg1">First argument to pass to the factory delegate that may create the instace.</typeparam>
-		/// <typeparam name="TArg2">Second argument to pass to the factory delegate that may create the instace.</typeparam>
-		/// <typeparam name="TArg3">Third argument to pass to the factory delegate that may create the instace.</typeparam>
-		/// <returns>The resolved service instance or <see langword="null"/> if it cannot be resolved.</returns>
+		/// <include file='Container.xdoc' path='docs/doc[@for="Container.TryResolveNamed{TService,TArg1,TArg2,TArg3}"]/*'/>
 		public TService TryResolveNamed<TService, TArg1, TArg2, TArg3>(string name, TArg1 arg1, TArg2 arg2, TArg3 arg3)
 		{
 			return TryResolveCore<TService, Func<Container, TArg1, TArg2, TArg3, TService>>(
 				name, f => f(this, arg1, arg2, arg3));
 		}
 
-		/// <summary>
-		/// Attempts to resolve the given service by type and name, passing the 
-		/// given arguments arguments for its initialization.
-		/// </summary>
-		/// <typeparam name="TService">Type of the service to retrieve.</typeparam>
-		/// <typeparam name="TArg1">First argument to pass to the factory delegate that may create the instace.</typeparam>
-		/// <typeparam name="TArg2">Second argument to pass to the factory delegate that may create the instace.</typeparam>
-		/// <typeparam name="TArg3">Third argument to pass to the factory delegate that may create the instace.</typeparam>
-		/// <typeparam name="TArg4">Fourth argument to pass to the factory delegate that may create the instace.</typeparam>
-		/// <returns>The resolved service instance or <see langword="null"/> if it cannot be resolved.</returns>
+		/// <include file='Container.xdoc' path='docs/doc[@for="Container.TryResolveNamed{TService,TArg1,TArg2,TArg3,TArg4}"]/*'/>
 		public TService TryResolveNamed<TService, TArg1, TArg2, TArg3, TArg4>(string name, TArg1 arg1, TArg2 arg2, TArg3 arg3, TArg4 arg4)
 		{
 			return TryResolveCore<TService, Func<Container, TArg1, TArg2, TArg3, TArg4, TService>>(
 				name, f => f(this, arg1, arg2, arg3, arg4));
 		}
 
-		/// <summary>
-		/// Attempts to resolve the given service by type and name, passing the 
-		/// given arguments arguments for its initialization.
-		/// </summary>
-		/// <typeparam name="TService">Type of the service to retrieve.</typeparam>
-		/// <typeparam name="TArg1">First argument to pass to the factory delegate that may create the instace.</typeparam>
-		/// <typeparam name="TArg2">Second argument to pass to the factory delegate that may create the instace.</typeparam>
-		/// <typeparam name="TArg3">Third argument to pass to the factory delegate that may create the instace.</typeparam>
-		/// <typeparam name="TArg4">Fourth argument to pass to the factory delegate that may create the instace.</typeparam>
-		/// <typeparam name="TArg5">Fifth argument to pass to the factory delegate that may create the instace.</typeparam>
-		/// <returns>The resolved service instance or <see langword="null"/> if it cannot be resolved.</returns>
+		/// <include file='Container.xdoc' path='docs/doc[@for="Container.TryResolveNamed{TService,TArg1,TArg2,TArg3,TArg4,TArg5}"]/*'/>
 		public TService TryResolveNamed<TService, TArg1, TArg2, TArg3, TArg4, TArg5>(string name, TArg1 arg1, TArg2 arg2, TArg3 arg3, TArg4 arg4, TArg5 arg5)
 		{
 			return TryResolveCore<TService, Func<Container, TArg1, TArg2, TArg3, TArg4, TArg5, TService>>(
 				name, f => f(this, arg1, arg2, arg3, arg4, arg5));
 		}
 
-		/// <summary>
-		/// Attempts to resolve the given service by type and name, passing the 
-		/// given arguments arguments for its initialization.
-		/// </summary>
-		/// <typeparam name="TService">Type of the service to retrieve.</typeparam>
-		/// <typeparam name="TArg1">First argument to pass to the factory delegate that may create the instace.</typeparam>
-		/// <typeparam name="TArg2">Second argument to pass to the factory delegate that may create the instace.</typeparam>
-		/// <typeparam name="TArg3">Third argument to pass to the factory delegate that may create the instace.</typeparam>
-		/// <typeparam name="TArg4">Fourth argument to pass to the factory delegate that may create the instace.</typeparam>
-		/// <typeparam name="TArg5">Fifth argument to pass to the factory delegate that may create the instace.</typeparam>
-		/// <typeparam name="TArg6">Sixth argument to pass to the factory delegate that may create the instace.</typeparam>
-		/// <returns>The resolved service instance or <see langword="null"/> if it cannot be resolved.</returns>
+		/// <include file='Container.xdoc' path='docs/doc[@for="Container.TryResolveNamed{TService,TArg1,TArg2,TArg3,TArg4,TArg5,TArg6}"]/*'/>
 		public TService TryResolveNamed<TService, TArg1, TArg2, TArg3, TArg4, TArg5, TArg6>(string name, TArg1 arg1, TArg2 arg2, TArg3 arg3, TArg4 arg4, TArg5 arg5, TArg6 arg6)
 		{
 			return TryResolveCore<TService, Func<Container, TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TService>>(
@@ -509,7 +362,7 @@ namespace Funq
 
 			if (entry != null)
 			{
-				switch (entry.Reuse)
+				switch (entry.Scope)
 				{
 					case ReuseScope.Hierarchy:
 						if (entry.Instance == null)
@@ -531,7 +384,7 @@ namespace Funq
 							// the entry and register locally on this container
 							// for further resolutions.
 							containerEntry = entry.CloneFor(this);
-							this.Register(key, containerEntry);
+							services[key] = containerEntry;
 						}
 						else
 						{

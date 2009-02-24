@@ -23,6 +23,8 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\Funq.xml</DocumentationFile>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -31,17 +33,20 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\Funq.xml</DocumentationFile>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Action.cs" />
     <Compile Include="Container.cs" />
-    <Compile Include="ContainerBuilder.cs" />
     <Compile Include="Func.cs" />
     <Compile Include="IFluentInterface.cs" />
     <Compile Include="IFunqlet.cs" />
@@ -52,11 +57,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Registration.cs" />
-    <Compile Include="Registration.Generic.cs" />
     <Compile Include="ResolutionException.cs" />
     <Compile Include="ReuseScope.cs" />
     <Compile Include="ServiceEntry.cs" />
+    <Compile Include="ServiceEntry.Generic.cs" />
     <Compile Include="ServiceKey.cs" />
     <Compile Include="Syntax.cs" />
   </ItemGroup>
@@ -70,6 +74,7 @@
     <None Include="..\..\Funq.snk">
       <Link>Funq.snk</Link>
     </None>
+    <None Include="Container.xdoc" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

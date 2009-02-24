@@ -11,10 +11,8 @@ namespace Funq.Tests
 		[TestMethod]
 		public void ShouldRegister()
 		{
-			var builder = new ContainerBuilder();
-			builder.Register<IFoo>(c => new Foo());
-
-			var container = builder.Build();
+			var container = new Container();
+			container.Register<IFoo>(c => new Foo());
 
 			var foo = container.Resolve<IFoo>();
 		}
@@ -53,10 +51,8 @@ namespace Funq.Tests
 		[TestMethod]
 		public void RegistersDelegateForType()
 		{
-			var builder = new ContainerBuilder();
-			builder.Register<IFoo>(c => new Foo());
-
-			var container = builder.Build();
+			var container = new Container();
+			container.Register<IFoo>(c => new Foo());
 
 			var foo = container.Resolve<IFoo>();
 
@@ -68,11 +64,9 @@ namespace Funq.Tests
 		[TestMethod]
 		public void RegistersNamedInstances()
 		{
-			var builder = new ContainerBuilder();
-			builder.Register<IFoo>(c => new Foo()).Named("foo");
-			builder.Register<IFoo>(c => new Foo2()).Named("foo2");
-
-			var container = builder.Build();
+			var container = new Container();
+			container.Register<IFoo>("foo", c => new Foo());
+			container.Register<IFoo>("foo2", c => new Foo2());
 
 			var foo = container.ResolveNamed<IFoo>("foo");
 			var foo2 = container.ResolveNamed<IFoo>("foo2");
@@ -87,10 +81,8 @@ namespace Funq.Tests
 		[TestMethod]
 		public void RegistersWithCtorArguments()
 		{
-			var builder = new ContainerBuilder();
-			builder.Register<IFoo, string>((c, s) => new Foo(s));
-
-			var container = builder.Build();
+			var container = new Container();
+			container.Register<IFoo, string>((c, s) => new Foo(s));
 
 			var foo = container.Resolve<IFoo, string>("value");
 
@@ -100,13 +92,11 @@ namespace Funq.Tests
 		[TestMethod]
 		public void RegistersWithCtorOverloads()
 		{
-			var builder = new ContainerBuilder();
-			builder.Register<IFoo>(c => new Foo());
-			builder.Register<IFoo, string>((c, s) => new Foo(s));
-			builder.Register<IFoo, string, int>((c, s, i) => new Foo(s, i));
-			var container = builder.Build();
-
-
+			var container = new Container();
+			container.Register<IFoo>(c => new Foo());
+			container.Register<IFoo, string>((c, s) => new Foo(s));
+			container.Register<IFoo, string, int>((c, s, i) => new Foo(s, i));
+			
 			var foo = container.Resolve<IFoo, string>("value");
 			var foo2 = container.Resolve<IFoo, string, int>("foo", 25);
 
@@ -118,25 +108,23 @@ namespace Funq.Tests
 		[TestMethod]
 		public void RegistersAllOverloads()
 		{
-			var builder = new ContainerBuilder();
+			var container = new Container();
 
-			builder.Register<Bar>(c => new Bar()).Named("bar");
-			builder.Register<Bar, string>((c, s) => new Bar(s)).Named("bar");
-			builder.Register<Bar, string, string>((c, s1, s2) => new Bar(s1, s2)).Named("bar");
-			builder.Register<Bar, string, string, string>((c, s1, s2, s3) => new Bar(s1, s2, s3)).Named("bar");
-			builder.Register<Bar, string, string, string, string>((c, s1, s2, s3, s4) => new Bar(s1, s2, s3, s4)).Named("bar");
-			builder.Register<Bar, string, string, string, string, string>((c, s1, s2, s3, s4, s5) => new Bar(s1, s2, s3, s4, s5)).Named("bar");
-			builder.Register<Bar, string, string, string, string, string, string>((c, s1, s2, s3, s4, s5, s6) => new Bar(s1, s2, s3, s4, s5, s6)).Named("bar");
+			container.Register<Bar>("bar", c => new Bar());
+			container.Register<Bar, string>("bar", (c, s) => new Bar(s));
+			container.Register<Bar, string, string>("bar", (c, s1, s2) => new Bar(s1, s2));
+			container.Register<Bar, string, string, string>("bar", (c, s1, s2, s3) => new Bar(s1, s2, s3));
+			container.Register<Bar, string, string, string, string>("bar", (c, s1, s2, s3, s4) => new Bar(s1, s2, s3, s4));
+			container.Register<Bar, string, string, string, string, string>("bar", (c, s1, s2, s3, s4, s5) => new Bar(s1, s2, s3, s4, s5));
+			container.Register<Bar, string, string, string, string, string, string>("bar", (c, s1, s2, s3, s4, s5, s6) => new Bar(s1, s2, s3, s4, s5, s6));
 
-			builder.Register<Bar>(c => new Bar());
-			builder.Register<Bar, string>((c, s) => new Bar(s));
-			builder.Register<Bar, string, string>((c, s1, s2) => new Bar(s1, s2));
-			builder.Register<Bar, string, string, string>((c, s1, s2, s3) => new Bar(s1, s2, s3));
-			builder.Register<Bar, string, string, string, string>((c, s1, s2, s3, s4) => new Bar(s1, s2, s3, s4));
-			builder.Register<Bar, string, string, string, string, string>((c, s1, s2, s3, s4, s5) => new Bar(s1, s2, s3, s4, s5));
-			builder.Register<Bar, string, string, string, string, string, string>((c, s1, s2, s3, s4, s5, s6) => new Bar(s1, s2, s3, s4, s5, s6));
-
-			var container = builder.Build();
+			container.Register<Bar>(c => new Bar());
+			container.Register<Bar, string>((c, s) => new Bar(s));
+			container.Register<Bar, string, string>((c, s1, s2) => new Bar(s1, s2));
+			container.Register<Bar, string, string, string>((c, s1, s2, s3) => new Bar(s1, s2, s3));
+			container.Register<Bar, string, string, string, string>((c, s1, s2, s3, s4) => new Bar(s1, s2, s3, s4));
+			container.Register<Bar, string, string, string, string, string>((c, s1, s2, s3, s4, s5) => new Bar(s1, s2, s3, s4, s5));
+			container.Register<Bar, string, string, string, string, string, string>((c, s1, s2, s3, s4, s5, s6) => new Bar(s1, s2, s3, s4, s5, s6));
 
 			Assert.IsNotNull(container.Resolve<Bar>());
 
@@ -213,12 +201,10 @@ namespace Funq.Tests
 		[TestMethod]
 		public void RegisterOrderForNamedDoesNotMatter()
 		{
-			var builder = new ContainerBuilder();
-			builder.Register<IFoo>(c => new Foo());
-			builder.Register<IFoo>(c => new Foo("foo")).Named("foo");
-			var container = builder.Build();
-
-
+			var container = new Container();
+			container.Register<IFoo>(c => new Foo());
+			container.Register<IFoo>("foo", c => new Foo("foo"));
+			
 			var foo = container.Resolve<IFoo>();
 			var foo2 = container.ResolveNamed<IFoo>("foo");
 
@@ -259,17 +245,15 @@ namespace Funq.Tests
 		[TestMethod]
 		public void TryResolveReturnsRegisteredInstance()
 		{
-			var builder = new ContainerBuilder();
+			var container = new Container();
 
-			builder.Register<Bar>(c => new Bar()).Named("bar");
-			builder.Register<Bar, string>((c, s) => new Bar(s)).Named("bar");
-			builder.Register<Bar, string, string>((c, s1, s2) => new Bar(s1, s2)).Named("bar");
-			builder.Register<Bar, string, string, string>((c, s1, s2, s3) => new Bar(s1, s2, s3)).Named("bar");
-			builder.Register<Bar, string, string, string, string>((c, s1, s2, s3, s4) => new Bar(s1, s2, s3, s4)).Named("bar");
-			builder.Register<Bar, string, string, string, string, string>((c, s1, s2, s3, s4, s5) => new Bar(s1, s2, s3, s4, s5)).Named("bar");
-			builder.Register<Bar, string, string, string, string, string, string>((c, s1, s2, s3, s4, s5, s6) => new Bar(s1, s2, s3, s4, s5, s6)).Named("bar");
-
-			var container = builder.Build();
+			container.Register<Bar>("bar", c => new Bar());
+			container.Register<Bar, string>("bar", (c, s) => new Bar(s));
+			container.Register<Bar, string, string>("bar", (c, s1, s2) => new Bar(s1, s2));
+			container.Register<Bar, string, string, string>("bar", (c, s1, s2, s3) => new Bar(s1, s2, s3));
+			container.Register<Bar, string, string, string, string>("bar", (c, s1, s2, s3, s4) => new Bar(s1, s2, s3, s4));
+			container.Register<Bar, string, string, string, string, string>("bar", (c, s1, s2, s3, s4, s5) => new Bar(s1, s2, s3, s4, s5));
+			container.Register<Bar, string, string, string, string, string, string>("bar", (c, s1, s2, s3, s4, s5, s6) => new Bar(s1, s2, s3, s4, s5, s6));
 
 			Assert.IsNotNull(container.TryResolveNamed<Bar>("bar"));
 			Assert.IsNotNull(container.TryResolveNamed<Bar, string>("bar", "a1"));
@@ -283,34 +267,33 @@ namespace Funq.Tests
 		[TestMethod]
 		public void TryResolveReturnsRegisteredInstanceOnParent()
 		{
-			var builder = new ContainerBuilder();
+			var container = new Container();
 
-			builder.Register<Bar>(c => new Bar()).Named("bar");
-			builder.Register<Bar, string>((c, s) => new Bar(s)).Named("bar");
-			builder.Register<Bar, string, string>((c, s1, s2) => new Bar(s1, s2)).Named("bar");
-			builder.Register<Bar, string, string, string>((c, s1, s2, s3) => new Bar(s1, s2, s3)).Named("bar");
-			builder.Register<Bar, string, string, string, string>((c, s1, s2, s3, s4) => new Bar(s1, s2, s3, s4)).Named("bar");
-			builder.Register<Bar, string, string, string, string, string>((c, s1, s2, s3, s4, s5) => new Bar(s1, s2, s3, s4, s5)).Named("bar");
-			builder.Register<Bar, string, string, string, string, string, string>((c, s1, s2, s3, s4, s5, s6) => new Bar(s1, s2, s3, s4, s5, s6)).Named("bar");
+			container.Register<Bar>("bar", c => new Bar());
+			container.Register<Bar, string>("bar", (c, s) => new Bar(s));
+			container.Register<Bar, string, string>("bar", (c, s1, s2) => new Bar(s1, s2));
+			container.Register<Bar, string, string, string>("bar", (c, s1, s2, s3) => new Bar(s1, s2, s3));
+			container.Register<Bar, string, string, string, string>("bar", (c, s1, s2, s3, s4) => new Bar(s1, s2, s3, s4));
+			container.Register<Bar, string, string, string, string, string>("bar", (c, s1, s2, s3, s4, s5) => new Bar(s1, s2, s3, s4, s5));
+			container.Register<Bar, string, string, string, string, string, string>("bar", (c, s1, s2, s3, s4, s5, s6) => new Bar(s1, s2, s3, s4, s5, s6));
 
-			var container = builder.Build().CreateChildContainer();
+			var child = container.CreateChildContainer();
 
-			Assert.IsNotNull(container.TryResolveNamed<Bar>("bar"));
-			Assert.IsNotNull(container.TryResolveNamed<Bar, string>("bar", "a1"));
-			Assert.IsNotNull(container.TryResolveNamed<Bar, string, string>("bar", "a1", "a2"));
-			Assert.IsNotNull(container.TryResolveNamed<Bar, string, string, string>("bar", "a1", "a2", "a3"));
-			Assert.IsNotNull(container.TryResolveNamed<Bar, string, string, string, string>("bar", "a1", "a2", "a3", "a4"));
-			Assert.IsNotNull(container.TryResolveNamed<Bar, string, string, string, string, string>("bar", "a1", "a2", "a3", "a4", "a5"));
-			Assert.IsNotNull(container.TryResolveNamed<Bar, string, string, string, string, string, string>("bar", "a1", "a2", "a3", "a4", "a5", "a6"));
+			Assert.IsNotNull(child.TryResolveNamed<Bar>("bar"));
+			Assert.IsNotNull(child.TryResolveNamed<Bar, string>("bar", "a1"));
+			Assert.IsNotNull(child.TryResolveNamed<Bar, string, string>("bar", "a1", "a2"));
+			Assert.IsNotNull(child.TryResolveNamed<Bar, string, string, string>("bar", "a1", "a2", "a3"));
+			Assert.IsNotNull(child.TryResolveNamed<Bar, string, string, string, string>("bar", "a1", "a2", "a3", "a4"));
+			Assert.IsNotNull(child.TryResolveNamed<Bar, string, string, string, string, string>("bar", "a1", "a2", "a3", "a4", "a5"));
+			Assert.IsNotNull(child.TryResolveNamed<Bar, string, string, string, string, string, string>("bar", "a1", "a2", "a3", "a4", "a5", "a6"));
 		}
 
 		[TestMethod]
 		public void LatestRegistrationOverridesPrevious()
 		{
-			var builder = new ContainerBuilder();
-			builder.Register<IFoo>(c => new Foo());
-			builder.Register<IFoo>(c => new Foo("foo"));
-			var container = builder.Build();
+			var container = new Container();
+			container.Register<IFoo>(c => new Foo());
+			container.Register<IFoo>(c => new Foo("foo"));
 
 			var foo = container.Resolve<IFoo>();
 
@@ -320,11 +303,9 @@ namespace Funq.Tests
 		[TestMethod]
 		public void DisposesContainerOwnedInstances()
 		{
-			var builder = new ContainerBuilder();
-			builder.Register<IFoo>(c => new Disposable()).OwnedBy(Owner.Container);
-			builder.Register<IBase>(c => new Disposable()).OwnedBy(Owner.External);
-
-			var container = builder.Build();
+			var container = new Container();
+			container.Register<IFoo>(c => new Disposable()).OwnedBy(Owner.Container);
+			container.Register<IBase>(c => new Disposable()).OwnedBy(Owner.External);
 
 			var containerOwned = container.Resolve<IFoo>() as Disposable;
 			var externallyOwned = container.Resolve<IBase>() as Disposable;
@@ -338,9 +319,9 @@ namespace Funq.Tests
 		[TestMethod]
 		public void ChildContainerCanReuseRegistrationsOnParent()
 		{
-			var builder = new ContainerBuilder();
-			builder.Register<IFoo>(c => new Foo());
-			var container = builder.Build();
+			var container = new Container();
+			container.Register<IFoo>(c => new Foo());
+			
 			var child = container.CreateChildContainer();
 
 			var foo = child.Resolve<IFoo>();
@@ -351,10 +332,9 @@ namespace Funq.Tests
 		[TestMethod]
 		public void NoReuseCreatesNewInstancesAlways()
 		{
-			var builder = new ContainerBuilder();
-			builder.Register<IFoo>(c => new Foo()).ReusedWithin(ReuseScope.None);
-			var container = builder.Build();
-
+			var container = new Container();
+			container.Register<IFoo>(c => new Foo()).ReusedWithin(ReuseScope.None);
+			
 			var foo1 = container.Resolve<IFoo>();
 			var foo2 = container.Resolve<IFoo>();
 
@@ -366,10 +346,9 @@ namespace Funq.Tests
 		[TestMethod]
 		public void ThrowsIfUnknownReuseScope()
 		{
-			var builder = new ContainerBuilder();
-			builder.Register<IFoo>(c => new Foo()).ReusedWithin((ReuseScope)5);
-			var container = builder.Build();
-
+			var container = new Container();
+			container.Register<IFoo>(c => new Foo()).ReusedWithin((ReuseScope)5);
+			
 			try
 			{
 				var foo1 = container.Resolve<IFoo>();
@@ -383,9 +362,9 @@ namespace Funq.Tests
 		[TestMethod]
 		public void ContainerScopedInstanceIsReused()
 		{
-			var builder = new ContainerBuilder();
-			builder.Register<IFoo>(c => new Foo()).ReusedWithin(ReuseScope.Container);
-			var container = builder.Build();
+			var container = new Container();
+			container.Register<IFoo>(c => new Foo()).ReusedWithin(ReuseScope.Container);
+			
 
 			var foo1 = container.Resolve<IFoo>();
 			var foo2 = container.Resolve<IFoo>();
@@ -398,9 +377,8 @@ namespace Funq.Tests
 		[TestMethod]
 		public void HierarchyScopedInstanceIsReusedOnSameContainer()
 		{
-			var builder = new ContainerBuilder();
-			builder.Register<IFoo>(c => new Foo()).ReusedWithin(ReuseScope.Hierarchy);
-			var container = builder.Build();
+			var container = new Container();
+			container.Register<IFoo>(c => new Foo()).ReusedWithin(ReuseScope.Hierarchy);
 
 			var foo1 = container.Resolve<IFoo>();
 			var foo2 = container.Resolve<IFoo>();
@@ -413,9 +391,8 @@ namespace Funq.Tests
 		[TestMethod]
 		public void HierarchyScopedInstanceIsReusedFromParentContainer()
 		{
-			var builder = new ContainerBuilder();
-			builder.Register<IFoo>(c => new Foo()).ReusedWithin(ReuseScope.Hierarchy);
-			var parent = builder.Build();
+			var parent = new Container();
+			parent.Register<IFoo>(c => new Foo()).ReusedWithin(ReuseScope.Hierarchy);
 			var child = parent.CreateChildContainer();
 
 			var foo1 = parent.Resolve<IFoo>();
@@ -429,9 +406,8 @@ namespace Funq.Tests
 		[TestMethod]
 		public void HierarchyScopedInstanceIsCreatedOnRegistrationContainer()
 		{
-			var builder = new ContainerBuilder();
-			builder.Register<IFoo>(c => new Disposable()).ReusedWithin(ReuseScope.Hierarchy);
-			var parent = builder.Build();
+			var parent = new Container();
+			parent.Register<IFoo>(c => new Disposable()).ReusedWithin(ReuseScope.Hierarchy);
 			var child = parent.CreateChildContainer();
 
 			var childFoo = child.Resolve<IFoo>() as Disposable;
@@ -448,9 +424,8 @@ namespace Funq.Tests
 		[TestMethod]
 		public void ContainerScopedInstanceIsNotReusedFromParentContainer()
 		{
-			var builder = new ContainerBuilder();
-			builder.Register<IFoo>(c => new Foo()).ReusedWithin(ReuseScope.Container);
-			var parent = builder.Build();
+			var parent = new Container();
+			parent.Register<IFoo>(c => new Foo()).ReusedWithin(ReuseScope.Container);
 			var child = parent.CreateChildContainer();
 
 			var foo1 = parent.Resolve<IFoo>();
@@ -464,10 +439,9 @@ namespace Funq.Tests
 		[TestMethod]
 		public void DisposingParentContainerDisposesChildContainerAndInstances()
 		{
-			var builder = new ContainerBuilder();
-			builder.Register<IFoo>(c => new Disposable()).ReusedWithin(ReuseScope.Hierarchy);
-			builder.Register<IBase>(c => new Disposable()).ReusedWithin(ReuseScope.Container);
-			var parent = builder.Build();
+			var parent = new Container();
+			parent.Register<IFoo>(c => new Disposable()).ReusedWithin(ReuseScope.Hierarchy);
+			parent.Register<IBase>(c => new Disposable()).ReusedWithin(ReuseScope.Container);
 			var child = parent.CreateChildContainer();
 
 			var parentFoo = parent.Resolve<IFoo>() as Disposable;
@@ -482,12 +456,10 @@ namespace Funq.Tests
 		[TestMethod]
 		public void ContainerOwnedNonReuseInstacesAreDisposed()
 		{
-			var builder = new ContainerBuilder();
-			builder.Register<IFoo>(c => new Disposable())
+			var container = new Container();
+			container.Register<IFoo>(c => new Disposable())
 				.ReusedWithin(ReuseScope.None)
 				.OwnedBy(Owner.Container);
-
-			var container = builder.Build();
 
 			var foo = container.Resolve<IFoo>() as Disposable;
 
@@ -499,12 +471,10 @@ namespace Funq.Tests
 		[TestMethod]
 		public void ContainerOwnedNonReuseInstacesAreNotKeptAlive()
 		{
-			var builder = new ContainerBuilder();
-			builder.Register<IFoo>(c => new Disposable())
+			var container = new Container();
+			container.Register<IFoo>(c => new Disposable())
 				.ReusedWithin(ReuseScope.None)
 				.OwnedBy(Owner.Container);
-
-			var container = builder.Build();
 
 			var foo = container.Resolve<IFoo>() as Disposable;
 			var wr = new WeakReference(foo);
@@ -519,12 +489,10 @@ namespace Funq.Tests
 		[TestMethod]
 		public void ContainerOwnedAndContainerReusedInstacesAreDisposed()
 		{
-			var builder = new ContainerBuilder();
-			builder.Register<IFoo>(c => new Disposable())
+			var container = new Container();
+			container.Register<IFoo>(c => new Disposable())
 				.ReusedWithin(ReuseScope.Container)
 				.OwnedBy(Owner.Container);
-
-			var container = builder.Build();
 
 			var foo = container.Resolve<IFoo>() as Disposable;
 
@@ -536,12 +504,10 @@ namespace Funq.Tests
 		[TestMethod]
 		public void ContainerOwnedAndHierarchyReusedInstacesAreDisposed()
 		{
-			var builder = new ContainerBuilder();
-			builder.Register<IFoo>(c => new Disposable())
+			var container = new Container();
+			container.Register<IFoo>(c => new Disposable())
 				.ReusedWithin(ReuseScope.Hierarchy)
 				.OwnedBy(Owner.Container);
-
-			var container = builder.Build();
 
 			var foo = container.Resolve<IFoo>() as Disposable;
 
@@ -553,12 +519,11 @@ namespace Funq.Tests
 		[TestMethod]
 		public void ChildContainerInstanceWithParentRegistrationIsDisposed()
 		{
-			var builder = new ContainerBuilder();
-			builder.Register<IFoo>(c => new Disposable())
+			var parent = new Container();
+			parent.Register<IFoo>(c => new Disposable())
 				.ReusedWithin(ReuseScope.Hierarchy)
 				.OwnedBy(Owner.Container);
 
-			var parent = builder.Build();
 			var child = parent.CreateChildContainer();
 
 			var foo = child.Resolve<IFoo>() as Disposable;
@@ -571,12 +536,11 @@ namespace Funq.Tests
 		[TestMethod]
 		public void DisposingParentContainerDisposesChildContainerInstances()
 		{
-			var builder = new ContainerBuilder();
-			builder.Register<IFoo>(c => new Disposable())
+			var parent = new Container();
+			parent.Register<IFoo>(c => new Disposable())
 				.ReusedWithin(ReuseScope.None)
 				.OwnedBy(Owner.Container);
 
-			var parent = builder.Build();
 			var child = parent.CreateChildContainer();
 
 			var foo = child.Resolve<IFoo>() as Disposable;
@@ -589,12 +553,10 @@ namespace Funq.Tests
 		[TestMethod]
 		public void DisposingContainerDoesNotDisposeExternalOwnedInstances()
 		{
-			var builder = new ContainerBuilder();
-			builder.Register<IFoo>(c => new Disposable())
+			var container = new Container();
+			container.Register<IFoo>(c => new Disposable())
 				.ReusedWithin(ReuseScope.Hierarchy)
 				.OwnedBy(Owner.External);
-
-			var container = builder.Build();
 
 			var foo = container.Resolve<IFoo>() as Disposable;
 
@@ -606,13 +568,11 @@ namespace Funq.Tests
 		[TestMethod]
 		public void InitializerCalledWhenInstanceCreated()
 		{
-			var builder = new ContainerBuilder();
-			builder
+			var container = new Container();
+			container
 				.Register<IInitializable>(c => new Initializable())
 				.InitializedBy((c, i) => i.Initialize());
 
-			var container = builder.Build();
-			
 			var i1 = container.Resolve<IInitializable>() as Initializable;
 			var i2 = container.Resolve<IInitializable>() as Initializable;
 
