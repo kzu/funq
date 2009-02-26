@@ -35,10 +35,5 @@ namespace Funq
 		/// Initializes the exception with an arbitrary message.
 		/// </summary>
 		public ResolutionException(string message) : base(message) { }
-
-		/// <summary>
-		/// Initializes the exception with an arbitrary message and the inner exception.
-		/// </summary>
-		public ResolutionException(string message, Exception inner) : base(message, inner) { }
 	}
 }

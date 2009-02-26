@@ -11,11 +11,6 @@ namespace Funq
 			Name = serviceName;
 		}
 
-		public ServiceKey Clone()
-		{
-			return new ServiceKey(ServiceType, FactoryType, Name);
-		}
-
 		public Type ServiceType { get; private set; }
 		public Type FactoryType { get; private set; }
 		public string Name { get; private set; }
