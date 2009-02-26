@@ -566,18 +566,173 @@ namespace Funq.Tests
 		}
 
 		[TestMethod]
-		public void InitializerCalledWhenInstanceCreated()
+		public void InitializerCalledWhenInstanceCreatedContainerReuse()
 		{
 			var container = new Container();
 			container
 				.Register<IInitializable>(c => new Initializable())
-				.InitializedBy((c, i) => i.Initialize());
+				.InitializedBy((c, i) => i.Initialize())
+				.ReusedWithin(ReuseScope.Container);
 
 			var i1 = container.Resolve<IInitializable>() as Initializable;
 			var i2 = container.Resolve<IInitializable>() as Initializable;
 
 			Assert.AreSame(i1, i2);
 			Assert.AreEqual(1, i1.InitializeCalls);
+		}
+
+		[TestMethod]
+		public void InitializerCalledWhenInstanceCreatedHierarchyReuse()
+		{
+			var container = new Container();
+			container
+				.Register<IInitializable>(c => new Initializable())
+				.InitializedBy((c, i) => i.Initialize())
+				.ReusedWithin(ReuseScope.Hierarchy);
+
+			var i1 = container.Resolve<IInitializable>() as Initializable;
+			var i2 = container.Resolve<IInitializable>() as Initializable;
+
+			Assert.AreSame(i1, i2);
+			Assert.AreEqual(1, i1.InitializeCalls);
+		}
+
+		[TestMethod]
+		public void InitializerCalledWhenInstanceCreatedNoReuse()
+		{
+			var container = new Container();
+			container
+				.Register<IInitializable>(c => new Initializable())
+				.InitializedBy((c, i) => i.Initialize())
+				.ReusedWithin(ReuseScope.None);
+
+			var i1 = container.Resolve<IInitializable>() as Initializable;
+			var i2 = container.Resolve<IInitializable>() as Initializable;
+
+			Assert.AreNotSame(i1, i2);
+			Assert.AreEqual(1, i1.InitializeCalls);
+			Assert.AreEqual(1, i2.InitializeCalls);
+		}
+
+		[TestMethod]
+		public void InitializerCalledOnChildContainerWhenInstanceCreated()
+		{
+			var container = new Container();
+			container
+				.Register<IInitializable>(c => new Initializable())
+				.InitializedBy((c, i) => i.Initialize())
+				.ReusedWithin(ReuseScope.Container);
+
+			var child = container.CreateChildContainer();
+
+			var i1 = child.Resolve<IInitializable>() as Initializable;
+			var i2 = child.Resolve<IInitializable>() as Initializable;
+
+			Assert.AreSame(i1, i2);
+			Assert.AreEqual(1, i1.InitializeCalls);
+		}
+
+		[TestMethod]
+		public void InitializerCanRetrieveResolvedDependency()
+		{
+			var container = new Container();
+			container.Register(c => new Presenter(c.Resolve<View>()));
+			container.Register(c => new View())
+				.InitializedBy((c, v) => v.Presenter = c.Resolve<Presenter>());
+
+			var view = container.Resolve<View>();
+			var presenter = container.Resolve<Presenter>();
+
+			Assert.AreSame(view.Presenter, presenter);
+		}
+
+		[TestMethod]
+		public void ThrowsIfRegisterContainerService()
+		{
+			try
+			{
+				var container = new Container();
+				container.Register<Container>(c => new Container());
+				Assert.Fail("Should have thrown when registering a Container service.");
+			}
+			catch (ArgumentException ex)
+			{
+				Assert.AreEqual(Properties.Resources.Registration_CantRegisterContainer, ex.Message);
+			}
+		}
+
+		[TestMethod]
+		public void ShouldGetContainerServiceAlways()
+		{
+			var container = new Container();
+
+			var service = container.Resolve<Container>();
+
+			Assert.IsNotNull(service);
+		}
+
+		[TestMethod]
+		public void ShouldGetSameContainerServiceAsCurrentContainer()
+		{
+			var container = new Container();
+
+			var service = container.Resolve<Container>();
+
+			Assert.AreSame(container, service);
+
+			var child = container.CreateChildContainer();
+
+			service = child.Resolve<Container>();
+
+			Assert.AreSame(child, service);
+
+			var grandChild = child.CreateChildContainer();
+
+			service = grandChild.Resolve<Container>();
+
+			Assert.AreSame(grandChild, service);
+		}
+
+		[TestMethod]
+		public void DefaultReuseCanBeSpecified()
+		{
+			var container = new Container { DefaultReuse = ReuseScope.None };
+
+			container.Register<IFoo>(c => new Foo());
+
+			var f1 = container.Resolve<IFoo>();
+			var f2 = container.Resolve<IFoo>();
+
+			Assert.AreNotSame(f1, f2);
+		}
+
+		[TestMethod]
+		public void DefaultOwnerCanBeSpecified()
+		{
+			var container = new Container { DefaultOwner = Owner.External };
+
+			container.Register(c => new Disposable());
+
+			var d = container.Resolve<Disposable>();
+
+			container.Dispose();
+
+			Assert.IsFalse(d.IsDisposed);
+		}
+
+		public class Presenter
+		{
+			public Presenter(View view)
+			{
+				this.View = view;
+			}
+
+			public View View { get; set; }
+		}
+
+		public class View
+		{
+			public Presenter Presenter { get; set; }
 		}
 
 		public class Disposable : IFoo, IDisposable

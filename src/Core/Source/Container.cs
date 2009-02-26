@@ -3,10 +3,7 @@ using System.Collections.Generic;
 
 namespace Funq
 {
-	/// <summary>
-	/// Main container class for components, supporting container hierarchies and 
-	/// lifetime management of <see cref="IDisposable"/> instances.
-	/// </summary>
+	/// <include file='Container.xdoc' path='docs/doc[@for="Container"]/*'/>
 	public sealed class Container : IDisposable
 	{
 		Dictionary<ServiceKey, ServiceEntry> services = new Dictionary<ServiceKey, ServiceEntry>();
@@ -17,10 +14,26 @@ namespace Funq
 		Stack<Container> childContainers = new Stack<Container>();
 		Container parentContainer;
 
-		/// <summary>
-		/// Creates a child container of the current one, which exposes its 
-		/// current service registration to the new child container.
-		/// </summary>
+		/// <include file='Container.xdoc' path='docs/doc[@for="Container.ctor"]/*'/>
+		public Container()
+		{
+			services[new ServiceKey(typeof(Container), typeof(Func<Container, Container>), null)] = 
+				new ServiceEntry<Container>((Func<Container, Container>)(c => c))
+				{
+					Container = this, 
+					Instance = this, 
+					Owner = Owner.External, 
+					Reuse = ReuseScope.Container, 
+				};
+		}
+
+		/// <include file='Container.xdoc' path='docs/doc[@for="Container.DefaultOwner"]/*'/>
+		public Owner DefaultOwner { get; set; }
+
+		/// <include file='Container.xdoc' path='docs/doc[@for="Container.DefaultReuse"]/*'/>
+		public ReuseScope DefaultReuse { get; set; }
+
+		/// <include file='Container.xdoc' path='docs/doc[@for="Container.CreateChildContainer"]/*'/>
 		public Container CreateChildContainer()
 		{
 			var child = new Container { parentContainer = this };
@@ -28,11 +41,7 @@ namespace Funq
 			return child;
 		}
 
-		/// <summary>
-		/// Disposes the container and all instances owned by it (see 
-		/// <see cref="Owner.Container"/>), as well as all child containers 
-		/// created through <see cref="CreateChildContainer"/>.
-		/// </summary>
+		/// <include file='Container.xdoc' path='docs/doc[@for="Container.Dispose"]/*'/>
 		public void Dispose()
 		{
 			while (disposables.Count > 0)
@@ -132,17 +141,6 @@ namespace Funq
 		public IRegistration<TService> Register<TService, TArg1, TArg2, TArg3, TArg4, TArg5, TArg6>(Func<Container, TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TService> factory)
 		{
 			return Register(null, factory);
-		}
-
-		private ServiceEntry<TService> RegisterImpl<TService, TFunc>(string name, TFunc factory)
-		{
-			// TODO: add default reuse and owner.
-			var entry = new ServiceEntry<TService>(factory) { Container = this };
-			var key = new ServiceKey(typeof(TService), typeof(TFunc), name); 
-
-			services[key] = entry;
-
-			return entry;
 		}
 
 		#endregion
@@ -355,25 +353,41 @@ namespace Funq
 			return ResolveImpl<TService, TFunc>(name, invoker, false);
 		}
 
+		private ServiceEntry<TService> RegisterImpl<TService, TFunc>(string name, TFunc factory)
+		{
+			if (typeof(TService) == typeof(Container))
+				throw new ArgumentException(Properties.Resources.Registration_CantRegisterContainer);
+
+			var entry = new ServiceEntry<TService>(factory) { Container = this, Reuse = DefaultReuse, Owner = DefaultOwner };
+			var key = new ServiceKey(typeof(TService), typeof(TFunc), name);
+
+			services[key] = entry;
+
+			return entry;
+		}
+
 		private TService ResolveImpl<TService, TFunc>(string name, Func<TFunc, TService> invoker, bool throwIfMissing)
 		{
 			var key = new ServiceKey(typeof(TService), typeof(TFunc), name);
-			var entry = GetEntry(key);
+			var entry = GetEntry<TService>(key);
 
 			if (entry != null)
 			{
-				switch (entry.Scope)
+				TService instance = default(TService);
+				switch (entry.Reuse)
 				{
 					case ReuseScope.Hierarchy:
 						if (entry.Instance == null)
 						{
-							entry.Instance = entry.Container.CreateInstance<TService, TFunc>(entry, invoker);
+							entry.Instance = instance = entry.Container.CreateInstance<TService, TFunc>(entry, invoker);
+							InitializeInstance<TService>(entry, instance);
+							return instance;
 						}
 
 						return (TService)entry.Instance;
 
 					case ReuseScope.Container:
-						ServiceEntry containerEntry;
+						ServiceEntry<TService> containerEntry;
 						if (entry.Container != this)
 						{
 							// If the container for the registration entry is 
@@ -389,15 +403,19 @@ namespace Funq
 						}
 
 						if (containerEntry.Instance == null)
-							containerEntry.Instance = CreateInstance<TService, TFunc>(containerEntry, invoker);
+						{
+							containerEntry.Instance = instance = CreateInstance<TService, TFunc>(containerEntry, invoker);
+							InitializeInstance<TService>(containerEntry, instance);
+						}
 
 						return (TService)containerEntry.Instance;
 
 					case ReuseScope.None:
 						// Always creates a new instance.
-						return CreateInstance<TService, TFunc>(entry, invoker);
-					// We don't keep the instance with a strong reference on the 
-					// ServiceEntry as it's not container or singleton-managed.
+						// We don't keep the instance with a strong reference on the 
+						// ServiceEntry as it's not container or singleton-managed.
+						return InitializeInstance(entry, 
+							CreateInstance<TService, TFunc>(entry, invoker));
 
 					default:
 						throw new ResolutionException(Properties.Resources.ResolutionException_UnknownScope);
@@ -418,21 +436,26 @@ namespace Funq
 			if (entry.Owner == Owner.Container && instance is IDisposable)
 				disposables.Push(new WeakReference(instance));
 
+			return instance;
+		}
+
+		private TService InitializeInstance<TService>(ServiceEntry<TService> entry, TService instance)
+		{
 			// Call initializer if necessary
 			if (entry.Initializer != null)
-				((Action<Container, TService>)entry.Initializer).Invoke(this, instance);
+				entry.Initializer(this, instance);
 
 			return instance;
 		}
 
-		private ServiceEntry GetEntry(ServiceKey key)
+		private ServiceEntry<TService> GetEntry<TService>(ServiceKey key)
 		{
 			ServiceEntry entry = null;
 			// Go up the hierarchy always for registrations.
 			if (!services.TryGetValue(key, out entry) && parentContainer != null)
-				return parentContainer.GetEntry(key);
+				return parentContainer.GetEntry<TService>(key);
 			else
-				return entry;
+				return (ServiceEntry<TService>)entry;
 		}
 
 		private static TService ThrowMissing<TService>(string name)

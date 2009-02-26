@@ -9,7 +9,8 @@ namespace Funq
 	public enum Owner
 	{
 		/// <summary>
-		/// Container should dispose provided instances when it is disposed.
+		/// Container should dispose provided instances when it is disposed. This is the 
+		/// default.
 		/// </summary>
 		Container,
 		/// <summary>
