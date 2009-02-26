@@ -645,6 +645,33 @@ namespace Funq.Tests
 		}
 
 		[TestMethod]
+		public void InitializerCalledOnEntryContainer()
+		{
+			var container = new Container();
+			// Notice the purposedful error: we register the view 
+			// on the parent container, but the presenter in 
+			// the child. Since the reuse is hierarchy, the view 
+			// will be created on the parent, and thus the 
+			// initializer should NOT be able to resolve 
+			// the presenter, which lives in the child container.
+			container.Register(c => new View())
+				.InitializedBy((c, v) => v.Presenter = c.Resolve<Presenter>())
+				.ReusedWithin(ReuseScope.Hierarchy);
+
+			var child = container.CreateChildContainer();
+			child.Register(c => new Presenter(c.Resolve<View>()));
+			
+			try
+			{
+				var view = child.Resolve<View>();
+				Assert.Fail("Should have thrown as presenter is registered on child and initializer runs on parent");
+			}
+			catch (ResolutionException)
+			{
+			}
+		}
+
+		[TestMethod]
 		public void ThrowsIfRegisterContainerService()
 		{
 			try
@@ -716,6 +743,33 @@ namespace Funq.Tests
 			container.Dispose();
 
 			Assert.IsFalse(d.IsDisposed);
+		}
+
+		[TestMethod]
+		[Ignore]
+		public void LazyResolverFuncProvidedForRegisteredServices()
+		{
+			var container = new Container();
+			container.Register<IFoo>(c => new Foo()).ReusedWithin(ReuseScope.Container);
+
+			var func = container.Resolve<Func<IFoo>>();
+
+			Assert.IsNotNull(func);
+		}
+
+		[TestMethod]
+		[Ignore]
+		public void LazyResolverFuncHonorsReuseScope()
+		{
+			var container = new Container();
+			container.Register<IFoo>(c => new Foo()).ReusedWithin(ReuseScope.Container);
+
+			var func = container.Resolve<Func<IFoo>>();
+
+			var f1 = func();
+			var f2 = func();
+
+			Assert.AreSame(f1, f2);
 		}
 
 		public class Presenter
