@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Reflection;
 using System.Resources;
-using System.Runtime.InteropServices;
 using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 
 [assembly: AssemblyTitle("Funq")]
 [assembly: AssemblyDescription("The fastest .NET and Silverlight dependency injection library available, based on lambda factories.")]

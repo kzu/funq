@@ -1,5 +1,4 @@
-﻿using System;
-
+﻿
 namespace Funq
 {
 	internal class ServiceEntry : IRegistration
