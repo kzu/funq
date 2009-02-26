@@ -367,10 +367,7 @@ namespace Funq
 					case ReuseScope.Hierarchy:
 						if (entry.Instance == null)
 						{
-							if (entry.Container != this)
-								return entry.Container.ResolveImpl<TService, TFunc>(name, invoker, throwIfMissing);
-							else 
-								entry.Instance = CreateInstance<TService, TFunc>(entry, invoker);
+							entry.Instance = entry.Container.CreateInstance<TService, TFunc>(entry, invoker);
 						}
 
 						return (TService)entry.Instance;
