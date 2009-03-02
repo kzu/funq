@@ -162,6 +162,126 @@ namespace Funq
 				throw new ResolutionException(typeof(TService), name);
 		}
 
+		private void ThrowIfNotRegistered<TService>(Type factoryType, string name)
+		{
+			if (GetEntry<TService>(new ServiceKey(typeof(TService), factoryType, name)) == null)
+			{
+				if (name == null)
+					throw new ResolutionException(typeof(TService));
+				else
+					throw new ResolutionException(typeof(TService), name);
+			}
+		}
+
+		#region LazyResolve
+
+		/// <include file='Container.xdoc' path='docs/doc[@for="Container.LazyResolve{TService}"]/*'/>
+		[DebuggerStepThrough]
+		public Func<TService> LazyResolve<TService>()
+		{
+			return LazyResolve<TService>(null);
+		}
+
+		/// <include file='Container.xdoc' path='docs/doc[@for="Container.LazyResolve{TService,TArgs}"]/*'/>
+		[DebuggerStepThrough]
+		public Func<TArg, TService> LazyResolve<TService, TArg>()
+		{
+			return LazyResolve<TService, TArg>(null);
+		}
+
+		/// <include file='Container.xdoc' path='docs/doc[@for="Container.LazyResolve{TService,TArgs}"]/*'/>
+		[DebuggerStepThrough]
+		public Func<TArg1, TArg2, TService> LazyResolve<TService, TArg1, TArg2>()
+		{
+			return LazyResolve<TService, TArg1, TArg2>(null);
+		}
+
+		/// <include file='Container.xdoc' path='docs/doc[@for="Container.LazyResolve{TService,TArgs}"]/*'/>
+		[DebuggerStepThrough]
+		public Func<TArg1, TArg2, TArg3, TService> LazyResolve<TService, TArg1, TArg2, TArg3>()
+		{
+			return LazyResolve<TService, TArg1, TArg2, TArg3>(null);
+		}
+
+		/// <include file='Container.xdoc' path='docs/doc[@for="Container.LazyResolve{TService,TArgs}"]/*'/>
+		[DebuggerStepThrough]
+		public Func<TArg1, TArg2, TArg3, TArg4, TService> LazyResolve<TService, TArg1, TArg2, TArg3, TArg4>()
+		{
+			return LazyResolve<TService, TArg1, TArg2, TArg3, TArg4>(null);
+		}
+
+		/// <include file='Container.xdoc' path='docs/doc[@for="Container.LazyResolve{TService,TArgs}"]/*'/>
+		[DebuggerStepThrough]
+		public Func<TArg1, TArg2, TArg3, TArg4, TArg5, TService> LazyResolve<TService, TArg1, TArg2, TArg3, TArg4, TArg5>()
+		{
+			return LazyResolve<TService, TArg1, TArg2, TArg3, TArg4, TArg5>(null);
+		}
+
+		/// <include file='Container.xdoc' path='docs/doc[@for="Container.LazyResolve{TService,TArgs}"]/*'/>
+		[DebuggerStepThrough]
+		public Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TService> LazyResolve<TService, TArg1, TArg2, TArg3, TArg4, TArg5, TArg6>()
+		{
+			return LazyResolve<TService, TArg1, TArg2, TArg3, TArg4, TArg5, TArg6>(null);
+		}
+
+		/// <include file='Container.xdoc' path='docs/doc[@for="Container.LazyResolve{TService,name}"]/*'/>
+		[DebuggerStepThrough]
+		public Func<TService> LazyResolve<TService>(string name)
+		{
+			ThrowIfNotRegistered<TService>(typeof(Func<Container, TService>), name);
+			return () => ResolveNamed<TService>(name);
+		}
+
+		/// <include file='Container.xdoc' path='docs/doc[@for="Container.LazyResolve{TService,TArgs,name}"]/*'/>
+		[DebuggerStepThrough]
+		public Func<TArg, TService> LazyResolve<TService, TArg>(string name)
+		{
+			ThrowIfNotRegistered<TService>(typeof(Func<Container, TArg, TService>), name);
+			return arg => ResolveNamed<TService, TArg>(name, arg);
+		}
+
+		/// <include file='Container.xdoc' path='docs/doc[@for="Container.LazyResolve{TService,TArgs,name}"]/*'/>
+		[DebuggerStepThrough]
+		public Func<TArg1, TArg2, TService> LazyResolve<TService, TArg1, TArg2>(string name)
+		{
+			ThrowIfNotRegistered<TService>(typeof(Func<Container, TArg1, TArg2, TService>), name);
+			return (arg1, arg2) => ResolveNamed<TService, TArg1, TArg2>(name, arg1, arg2);
+		}
+
+		/// <include file='Container.xdoc' path='docs/doc[@for="Container.LazyResolve{TService,TArgs,name}"]/*'/>
+		[DebuggerStepThrough]
+		public Func<TArg1, TArg2, TArg3, TService> LazyResolve<TService, TArg1, TArg2, TArg3>(string name)
+		{
+			ThrowIfNotRegistered<TService>(typeof(Func<Container, TArg1, TArg2, TArg3, TService>), name);
+			return (arg1, arg2, arg3) => ResolveNamed<TService, TArg1, TArg2, TArg3>(name, arg1, arg2, arg3);
+		}
+
+		/// <include file='Container.xdoc' path='docs/doc[@for="Container.LazyResolve{TService,TArgs,name}"]/*'/>
+		[DebuggerStepThrough]
+		public Func<TArg1, TArg2, TArg3, TArg4, TService> LazyResolve<TService, TArg1, TArg2, TArg3, TArg4>(string name)
+		{
+			ThrowIfNotRegistered<TService>(typeof(Func<Container, TArg1, TArg2, TArg3, TArg4, TService>), name);
+			return (arg1, arg2, arg3, arg4) => ResolveNamed<TService, TArg1, TArg2, TArg3, TArg4>(name, arg1, arg2, arg3, arg4);
+		}
+
+		/// <include file='Container.xdoc' path='docs/doc[@for="Container.LazyResolve{TService,TArgs,name}"]/*'/>
+		[DebuggerStepThrough]
+		public Func<TArg1, TArg2, TArg3, TArg4, TArg5, TService> LazyResolve<TService, TArg1, TArg2, TArg3, TArg4, TArg5>(string name)
+		{
+			ThrowIfNotRegistered<TService>(typeof(Func<Container, TArg1, TArg2, TArg3, TArg4, TArg5, TService>), name);
+			return (arg1, arg2, arg3, arg4, arg5) => ResolveNamed<TService, TArg1, TArg2, TArg3, TArg4, TArg5>(name, arg1, arg2, arg3, arg4, arg5);
+		}
+
+		/// <include file='Container.xdoc' path='docs/doc[@for="Container.LazyResolve{TService,TArgs,name}"]/*'/>
+		[DebuggerStepThrough]
+		public Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TService> LazyResolve<TService, TArg1, TArg2, TArg3, TArg4, TArg5, TArg6>(string name)
+		{
+			ThrowIfNotRegistered<TService>(typeof(Func<Container, TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TService>), name);
+			return (arg1, arg2, arg3, arg4, arg5, arg6) => ResolveNamed<TService, TArg1, TArg2, TArg3, TArg4, TArg5, TArg6>(name, arg1, arg2, arg3, arg4, arg5, arg6);
+		}
+
+		#endregion
+
 		/* The following regions contain just the typed overloads
 		 * that are just pass-through to the real implementations.
 		 * They all have DebuggerStepThrough to ease debugging. */

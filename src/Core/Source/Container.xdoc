@@ -35,6 +35,36 @@
 		</summary>
 	</doc>
 
+	<!-- LazyResolve -->
+	<doc for="Container.LazyResolve{TService}">
+		<summary>
+			Retrieves a function that can be used to lazily resolve an instance 
+			of the service when needed.
+		</summary>
+		<typeparam name="TService">Type of the service to retrieve.</typeparam>
+		<returns>The function that can resolve to the service instance when invoked.</returns>
+		<exception cref="ResolutionException">The requested service has not been registered previously.</exception>
+	</doc>
+	<doc for="Container.LazyResolve{TService,name}">
+		<summary>
+			Retrieves a function that can be used to lazily resolve an instance
+			of the service with the given name when needed.
+		</summary>
+		<typeparam name="TService">Type of the service to retrieve.</typeparam>
+		<param name="name">Name of the service to retrieve.</param>
+		<returns>The function that can resolve to the service instance with the given name when invoked.</returns>
+		<exception cref="ResolutionException">The requested service with the given name has not been registered previously.</exception>
+	</doc>
+	<doc for="Container.LazyResolve{TService,TArgs,name}">
+		<summary>
+			Retrieves a function that can be used to lazily resolve an instance
+			of the service of the given type, name and service constructor arguments when needed.
+		</summary>
+		<param name="name">Name of the service to retrieve.</param>
+		<returns>The function that can resolve to the service instance with the given and service constructor arguments name when invoked.</returns>
+		<exception cref="ResolutionException">The requested service with the given name and constructor arguments has not been registered previously.</exception>
+	</doc>
+
 	<!-- Resolve -->
 	<doc for="Container.Resolve{TService}">
 		<summary>

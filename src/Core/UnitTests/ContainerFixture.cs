@@ -746,30 +746,281 @@ namespace Funq.Tests
 		}
 
 		[TestMethod]
-		[Ignore]
-		public void LazyResolverFuncProvidedForRegisteredServices()
+		public void LazyResolveProvidedForRegisteredServices()
 		{
 			var container = new Container();
 			container.Register<IFoo>(c => new Foo()).ReusedWithin(ReuseScope.Container);
 
-			var func = container.Resolve<Func<IFoo>>();
+			var func = container.LazyResolve<IFoo>();
 
 			Assert.IsNotNull(func);
 		}
 
 		[TestMethod]
-		[Ignore]
-		public void LazyResolverFuncHonorsReuseScope()
+		public void LazyResolveHonorsReuseScope()
 		{
 			var container = new Container();
 			container.Register<IFoo>(c => new Foo()).ReusedWithin(ReuseScope.Container);
 
-			var func = container.Resolve<Func<IFoo>>();
+			var func = container.LazyResolve<IFoo>();
 
 			var f1 = func();
 			var f2 = func();
 
 			Assert.AreSame(f1, f2);
+		}
+
+		[TestMethod]
+		public void LazyResolveNamed()
+		{
+			var container = new Container();
+			container.Register("foo", c => new Foo("foo"));
+			container.Register("bar", c => new Foo("bar"));
+
+			var foo = container.LazyResolve<Foo>("foo");
+			var bar = container.LazyResolve<Foo>("bar");
+
+			Assert.IsNotNull(foo);
+			Assert.IsNotNull(bar);
+
+			Assert.AreEqual("foo", foo().Value);
+			Assert.AreEqual("bar", bar().Value);
+		}
+
+		[TestMethod]
+		public void LazyResolveAllOverloads()
+		{
+			var container = new Container();
+
+			container.Register<Bar>(c => new Bar());
+			container.Register<Bar, string>((c, s) => new Bar(s));
+			container.Register<Bar, string, string>((c, s1, s2) => new Bar(s1, s2));
+			container.Register<Bar, string, string, string>((c, s1, s2, s3) => new Bar(s1, s2, s3));
+			container.Register<Bar, string, string, string, string>((c, s1, s2, s3, s4) => new Bar(s1, s2, s3, s4));
+			container.Register<Bar, string, string, string, string, string>((c, s1, s2, s3, s4, s5) => new Bar(s1, s2, s3, s4, s5));
+			container.Register<Bar, string, string, string, string, string, string>((c, s1, s2, s3, s4, s5, s6) => new Bar(s1, s2, s3, s4, s5, s6));
+
+			Assert.IsNotNull(container.Resolve<Bar>());
+
+			var b = container.LazyResolve<Bar, string>()("a1");
+			Assert.AreEqual("a1", b.Arg1);
+
+			b = container.LazyResolve<Bar, string, string>()("a1", "a2");
+			Assert.AreEqual("a1", b.Arg1);
+			Assert.AreEqual("a2", b.Arg2);
+
+			b = container.LazyResolve<Bar, string, string, string>()("a1", "a2", "a3");
+			Assert.AreEqual("a1", b.Arg1);
+			Assert.AreEqual("a2", b.Arg2);
+			Assert.AreEqual("a3", b.Arg3);
+
+			b = container.LazyResolve<Bar, string, string, string, string>()("a1", "a2", "a3", "a4");
+			Assert.AreEqual("a1", b.Arg1);
+			Assert.AreEqual("a2", b.Arg2);
+			Assert.AreEqual("a3", b.Arg3);
+			Assert.AreEqual("a4", b.Arg4);
+
+			b = container.LazyResolve<Bar, string, string, string, string, string>()("a1", "a2", "a3", "a4", "a5");
+			Assert.AreEqual("a1", b.Arg1);
+			Assert.AreEqual("a2", b.Arg2);
+			Assert.AreEqual("a3", b.Arg3);
+			Assert.AreEqual("a4", b.Arg4);
+			Assert.AreEqual("a5", b.Arg5);
+
+			b = container.LazyResolve<Bar, string, string, string, string, string, string>()("a1", "a2", "a3", "a4", "a5", "a6");
+			Assert.AreEqual("a1", b.Arg1);
+			Assert.AreEqual("a2", b.Arg2);
+			Assert.AreEqual("a3", b.Arg3);
+			Assert.AreEqual("a4", b.Arg4);
+			Assert.AreEqual("a5", b.Arg5);
+			Assert.AreEqual("a6", b.Arg6);
+
+		}
+
+		[TestMethod]
+		public void LazyResolveNamedAllOverloads()
+		{
+			var container = new Container();
+
+			container.Register<Bar>("bar", c => new Bar());
+			container.Register<Bar, string>("bar", (c, s) => new Bar(s));
+			container.Register<Bar, string, string>("bar", (c, s1, s2) => new Bar(s1, s2));
+			container.Register<Bar, string, string, string>("bar", (c, s1, s2, s3) => new Bar(s1, s2, s3));
+			container.Register<Bar, string, string, string, string>("bar", (c, s1, s2, s3, s4) => new Bar(s1, s2, s3, s4));
+			container.Register<Bar, string, string, string, string, string>("bar", (c, s1, s2, s3, s4, s5) => new Bar(s1, s2, s3, s4, s5));
+			container.Register<Bar, string, string, string, string, string, string>("bar", (c, s1, s2, s3, s4, s5, s6) => new Bar(s1, s2, s3, s4, s5, s6));
+
+			var b = container.ResolveNamed<Bar, string>("bar", "a1");
+			Assert.AreEqual("a1", b.Arg1);
+
+			b = container.ResolveNamed<Bar, string, string>("bar", "a1", "a2");
+			Assert.AreEqual("a1", b.Arg1);
+			Assert.AreEqual("a2", b.Arg2);
+
+			b = container.ResolveNamed<Bar, string, string, string>("bar", "a1", "a2", "a3");
+			Assert.AreEqual("a1", b.Arg1);
+			Assert.AreEqual("a2", b.Arg2);
+			Assert.AreEqual("a3", b.Arg3);
+
+			b = container.ResolveNamed<Bar, string, string, string, string>("bar", "a1", "a2", "a3", "a4");
+			Assert.AreEqual("a1", b.Arg1);
+			Assert.AreEqual("a2", b.Arg2);
+			Assert.AreEqual("a3", b.Arg3);
+			Assert.AreEqual("a4", b.Arg4);
+
+			b = container.ResolveNamed<Bar, string, string, string, string, string>("bar", "a1", "a2", "a3", "a4", "a5");
+			Assert.AreEqual("a1", b.Arg1);
+			Assert.AreEqual("a2", b.Arg2);
+			Assert.AreEqual("a3", b.Arg3);
+			Assert.AreEqual("a4", b.Arg4);
+			Assert.AreEqual("a5", b.Arg5);
+
+			b = container.ResolveNamed<Bar, string, string, string, string, string, string>("bar", "a1", "a2", "a3", "a4", "a5", "a6");
+			Assert.AreEqual("a1", b.Arg1);
+			Assert.AreEqual("a2", b.Arg2);
+			Assert.AreEqual("a3", b.Arg3);
+			Assert.AreEqual("a4", b.Arg4);
+			Assert.AreEqual("a5", b.Arg5);
+			Assert.AreEqual("a6", b.Arg6);
+		}
+
+		[TestMethod]
+		public void LazyResolveThrowsIfNotRegistered()
+		{
+			var container = new Container();
+
+			try
+			{
+				container.LazyResolve<IFoo>();
+				Assert.Fail("Should have failed to resolve the lazy func");
+			}
+			catch (ResolutionException)
+			{
+			}
+
+			try
+			{
+				container.LazyResolve<IFoo, string>();
+				Assert.Fail("Should have failed to resolve the lazy func");
+			}
+			catch (ResolutionException)
+			{
+			}
+
+			try
+			{
+				container.LazyResolve<IFoo, string, string>();
+				Assert.Fail("Should have failed to resolve the lazy func");
+			}
+			catch (ResolutionException)
+			{
+			}
+
+			try
+			{
+				container.LazyResolve<IFoo, string, string, string>();
+				Assert.Fail("Should have failed to resolve the lazy func");
+			}
+			catch (ResolutionException)
+			{
+			}
+
+			try
+			{
+				container.LazyResolve<IFoo, string, string, string, string>();
+				Assert.Fail("Should have failed to resolve the lazy func");
+			}
+			catch (ResolutionException)
+			{
+			}
+
+			try
+			{
+				container.LazyResolve<IFoo, string, string, string, string, string>();
+				Assert.Fail("Should have failed to resolve the lazy func");
+			}
+			catch (ResolutionException)
+			{
+			}
+
+			try
+			{
+				container.LazyResolve<IFoo, string, string, string, string, string, string>();
+				Assert.Fail("Should have failed to resolve the lazy func");
+			}
+			catch (ResolutionException)
+			{
+			}
+
+		}
+
+		[TestMethod]
+		public void LazyResolveNamedThrowsIfNotRegistered()
+		{
+			var container = new Container();
+
+			try
+			{
+				container.LazyResolve<IFoo>("foo");
+				Assert.Fail("Should have failed to resolve the lazy func");
+			}
+			catch (ResolutionException)
+			{
+			}
+
+			try
+			{
+				container.LazyResolve<IFoo, string>("foo");
+				Assert.Fail("Should have failed to resolve the lazy func");
+			}
+			catch (ResolutionException)
+			{
+			}
+
+			try
+			{
+				container.LazyResolve<IFoo, string, string>("foo");
+				Assert.Fail("Should have failed to resolve the lazy func");
+			}
+			catch (ResolutionException)
+			{
+			}
+
+			try
+			{
+				container.LazyResolve<IFoo, string, string, string>("foo");
+				Assert.Fail("Should have failed to resolve the lazy func");
+			}
+			catch (ResolutionException)
+			{
+			}
+
+			try
+			{
+				container.LazyResolve<IFoo, string, string, string, string>("foo");
+				Assert.Fail("Should have failed to resolve the lazy func");
+			}
+			catch (ResolutionException)
+			{
+			}
+
+			try
+			{
+				container.LazyResolve<IFoo, string, string, string, string, string>("foo");
+				Assert.Fail("Should have failed to resolve the lazy func");
+			}
+			catch (ResolutionException)
+			{
+			}
+
+			try
+			{
+				container.LazyResolve<IFoo, string, string, string, string, string, string>("foo");
+				Assert.Fail("Should have failed to resolve the lazy func");
+			}
+			catch (ResolutionException)
+			{
+			}
 		}
 
 		public class Presenter
