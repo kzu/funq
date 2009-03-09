@@ -16,5 +16,9 @@ namespace Funq
 		/// Container does not dispose provided instances.
 		/// </summary>
 		External,
+		/// <summary>
+		/// Default owner, which equals <see cref="Container"/>.
+		/// </summary>
+		Default,
 	}
 }

@@ -23,5 +23,9 @@ namespace Funq
 		/// instance being returned.
 		/// </summary>
 		None,
+		/// <summary>
+		/// Default scope, which equals <see cref="Hierarchy"/>.
+		/// </summary>
+		Default = Hierarchy,
 	}
 }
