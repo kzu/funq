@@ -8,20 +8,20 @@ namespace Funq
 		/// <summary>
 		/// The Func delegate that creates instances of the service.
 		/// </summary>
-		public object Factory { get; protected set; }
+		public object Factory;
 
 		/// <summary>
 		/// Ownership setting for the service.
 		/// </summary>
-		public Owner Owner { get; set; }
+		public Owner Owner;
 		/// <summary>
 		/// Reuse scope setting for the service.
 		/// </summary>
-		public ReuseScope Reuse { get; set; }
+		public ReuseScope Reuse;
 		/// <summary>
 		/// The container where the entry was registered.
 		/// </summary>
-		public Container Container { get; set; }
+		public Container Container;
 
 		/// <summary>
 		/// Specifies the owner for instances, which determines how 

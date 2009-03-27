@@ -11,9 +11,9 @@ namespace Funq
 			Name = serviceName;
 		}
 
-		public Type ServiceType { get; private set; }
-		public Type FactoryType { get; private set; }
-		public string Name { get; private set; }
+		public Type ServiceType;
+		public Type FactoryType;
+		public string Name;
 
 		#region Equality
 
