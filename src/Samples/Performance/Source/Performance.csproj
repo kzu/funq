@@ -62,6 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AutofacUseCase.cs" />
+    <Compile Include="FunqHierarchyUseCase.cs" />
     <Compile Include="FunqUseCase.cs" />
     <Compile Include="Domain\Authenticator.cs" />
     <Compile Include="Domain\Database.cs" />

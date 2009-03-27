@@ -23,20 +23,35 @@ namespace Performance
 			UseCase uc = new PlainUseCase();
 			Console.WriteLine(Pad(padding, "Plain no-DI: {0}"), Measure(uc.Run, iterations));
 
+			GC.Collect();
+
 			uc = new AutofacUseCase();
 			Console.WriteLine(Pad(padding, "Autofac: {0}"), Measure(uc.Run, iterations));
+
+			GC.Collect();
 
 			uc = new NinjectUseCase();
 			Console.WriteLine(Pad(padding, "Ninject: {0}"), Measure(uc.Run, iterations));
 
+			GC.Collect();
+
 			uc = new StructureMapUseCase();
 			Console.WriteLine(Pad(padding, "StructureMap: {0}"), Measure(uc.Run, iterations));
+
+			GC.Collect();
 
 			uc = new UnityUseCase();
 			Console.WriteLine(Pad(padding, "Unity: {0}"), Measure(uc.Run, iterations));
 
+			GC.Collect();
+
 			uc = new FunqUseCase();
 			Console.WriteLine(Pad(padding, "Funq: {0}"), Measure(uc.Run, iterations));
+
+			GC.Collect();
+
+			uc = new FunqHierarchyUseCase();
+			Console.WriteLine(Pad(padding, "Funq (Hierarchy): {0}"), Measure(uc.Run, iterations));
 		}
 
 		private static string Pad(int count, string value)
