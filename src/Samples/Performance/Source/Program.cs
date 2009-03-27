@@ -21,42 +21,44 @@ namespace Performance
 
 			int padding = 50;
 			UseCase uc = new PlainUseCase();
+			uc.Run();
+			GC.Collect();
 			Console.WriteLine(Pad(padding, "Plain no-DI: {0}"), Measure(uc.Run, iterations));
 
+			uc = new FunqUseCase();
+			uc.Run();
 			GC.Collect();
-
-			uc = new AutofacUseCase();
-			Console.WriteLine(Pad(padding, "Autofac: {0}"), Measure(uc.Run, iterations));
-
-			GC.Collect();
-
-			uc = new NinjectUseCase();
-			Console.WriteLine(Pad(padding, "Ninject: {0}"), Measure(uc.Run, iterations));
-
-			GC.Collect();
-
-			uc = new Ninject2UseCase();
-			Console.WriteLine(Pad(padding, "Ninject2: {0}"), Measure(uc.Run, iterations));
-
-			GC.Collect();
+			Console.WriteLine(Pad(padding, "Funq: {0}"), Measure(uc.Run, iterations));
 
 			uc = new StructureMapUseCase();
+			uc.Run();
+			GC.Collect();
 			Console.WriteLine(Pad(padding, "StructureMap: {0}"), Measure(uc.Run, iterations));
 
+			uc = new AutofacUseCase();
+			uc.Run();
 			GC.Collect();
+			Console.WriteLine(Pad(padding, "Autofac: {0}"), Measure(uc.Run, iterations));
 
 			uc = new UnityUseCase();
+			uc.Run();
+			GC.Collect();
 			Console.WriteLine(Pad(padding, "Unity: {0}"), Measure(uc.Run, iterations));
 
-			GC.Collect();
-
 			uc = new MachineUseCase();
+			uc.Run();
+			GC.Collect();
 			Console.WriteLine(Pad(padding, "Machine.Container: {0}"), Measure(uc.Run, iterations));
 
+			uc = new NinjectUseCase();
+			uc.Run();
 			GC.Collect();
+			Console.WriteLine(Pad(padding, "Ninject: {0}"), Measure(uc.Run, iterations));
 
-			uc = new FunqUseCase();
-			Console.WriteLine(Pad(padding, "Funq: {0}"), Measure(uc.Run, iterations));
+			uc = new Ninject2UseCase();
+			uc.Run();
+			GC.Collect();
+			Console.WriteLine(Pad(padding, "Ninject2: {0}"), Measure(uc.Run, iterations));
 		}
 
 		private static string Pad(int count, string value)
