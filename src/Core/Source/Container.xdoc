@@ -35,6 +35,24 @@
 		</summary>
 	</doc>
 
+	<doc for="Container.Register(instance)">
+		<summary>
+			Registers a service instance with the container. This instance 
+			will have <see cref="Owner.External" /> and <see cref="ReuseScope.Hierarchy"/> 
+			behavior.
+		</summary>
+		<param name="instance">Service instance to use.</param>
+	</doc>
+	<doc for="Container.Register(name,instance)">
+		<summary>
+			Registers a named service instance with the container. This instance
+			will have <see cref="Owner.External" /> and <see cref="ReuseScope.Hierarchy"/>
+			behavior.
+		</summary>
+		<param name="name">Name of the service to register.</param>
+		<param name="instance">Service instance to use.</param>
+	</doc>
+
 	<!-- LazyResolve -->
 	<doc for="Container.LazyResolve{TService}">
 		<summary>

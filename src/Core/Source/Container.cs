@@ -57,6 +57,23 @@ namespace Funq
 			}
 		}
 
+		/// <include file='Container.xdoc' path='docs/doc[@for="Container.Register(instance)"]/*'/>
+		public void Register<TService>(TService instance)
+		{
+			Register(null, instance);
+		}
+
+		/// <include file='Container.xdoc' path='docs/doc[@for="Container.Register(name,instance)"]/*'/>
+		public void Register<TService>(string name, TService instance)
+		{
+			var entry = RegisterImpl<TService, Func<Container, TService>>(name, null);
+			
+			// Set sensible defaults for instance registration.
+			entry.ReusedWithin(ReuseScope.Hierarchy).OwnedBy(Owner.External);
+			entry.InitializeInstance(instance);
+		}
+
+
 		private ServiceEntry<TService, TFunc> RegisterImpl<TService, TFunc>(string name, TFunc factory)
 		{
 			if (typeof(TService) == typeof(Container))
@@ -210,7 +227,7 @@ namespace Funq
 		}
 
 		#endregion
-		
+
 		internal void TrackDisposable(object instance)
 		{
 			disposables.Push(new WeakReference(instance));

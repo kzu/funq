@@ -17,6 +17,19 @@ namespace Funq.Tests
 		}
 
 		[TestMethod]
+		public void RegisteredInstanceIsResolved()
+		{
+			var container = new Container();
+
+			var f1 = new Foo();
+			container.Register<IFoo>(f1);
+
+			var f2 = container.Resolve<IFoo>();
+
+			Assert.AreEqual(f1, f2);
+		}
+
+		[TestMethod]
 		public void ThrowsIfCannotResolve()
 		{
 			var container = new Container();
@@ -95,7 +108,7 @@ namespace Funq.Tests
 			container.Register<IFoo>(c => new Foo());
 			container.Register<IFoo, string>((c, s) => new Foo(s));
 			container.Register<IFoo, string, int>((c, s, i) => new Foo(s, i));
-			
+
 			var foo = container.Resolve<IFoo, string>("value");
 			var foo2 = container.Resolve<IFoo, string, int>("foo", 25);
 
@@ -203,7 +216,7 @@ namespace Funq.Tests
 			var container = new Container();
 			container.Register<IFoo>(c => new Foo());
 			container.Register<IFoo>("foo", c => new Foo("foo"));
-			
+
 			var foo = container.Resolve<IFoo>();
 			var foo2 = container.ResolveNamed<IFoo>("foo");
 
@@ -320,7 +333,7 @@ namespace Funq.Tests
 		{
 			var container = new Container();
 			container.Register<IFoo>(c => new Foo());
-			
+
 			var child = container.CreateChildContainer();
 
 			var foo = child.Resolve<IFoo>();
@@ -333,7 +346,7 @@ namespace Funq.Tests
 		{
 			var container = new Container();
 			container.Register<IFoo>(c => new Foo()).ReusedWithin(ReuseScope.None);
-			
+
 			var foo1 = container.Resolve<IFoo>();
 			var foo2 = container.Resolve<IFoo>();
 
@@ -347,7 +360,7 @@ namespace Funq.Tests
 		{
 			var container = new Container();
 			container.Register<IFoo>(c => new Foo()).ReusedWithin(ReuseScope.Container);
-			
+
 
 			var foo1 = container.Resolve<IFoo>();
 			var foo2 = container.Resolve<IFoo>();
@@ -645,7 +658,7 @@ namespace Funq.Tests
 
 			var child = container.CreateChildContainer();
 			child.Register(c => new Presenter(c.Resolve<View>()));
-			
+
 			try
 			{
 				var view = child.Resolve<View>();
