@@ -4,14 +4,12 @@ namespace Funq
 {
 	internal sealed class ServiceKey
 	{
-		public ServiceKey(Type serviceType, Type factoryType, string serviceName)
+		public ServiceKey(Type factoryType, string serviceName)
 		{
-			ServiceType = serviceType;
 			FactoryType = factoryType;
 			Name = serviceName;
 		}
 
-		public Type ServiceType;
 		public Type FactoryType;
 		public string Name;
 
@@ -36,15 +34,13 @@ namespace Funq
 
 			if (Object.ReferenceEquals(obj1, obj2)) return true;
 
-			return obj1.ServiceType == obj2.ServiceType &&
-				obj1.FactoryType == obj2.FactoryType && 
+			return obj1.FactoryType == obj2.FactoryType && 
 				obj1.Name == obj2.Name;
 		}
 
 		public override int GetHashCode()
 		{
-			int hash = ServiceType.GetHashCode();
-			hash ^= FactoryType.GetHashCode();
+			int hash = FactoryType.GetHashCode();
 			if (Name != null)
 				hash ^= Name.GetHashCode();
 

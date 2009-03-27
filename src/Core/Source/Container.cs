@@ -17,7 +17,7 @@ namespace Funq
 		/// <include file='Container.xdoc' path='docs/doc[@for="Container.ctor"]/*'/>
 		public Container()
 		{
-			services[new ServiceKey(typeof(Container), typeof(Func<Container, Container>), null)] =
+			services[new ServiceKey(typeof(Func<Container, Container>), null)] =
 				new ServiceEntry<Container, Func<Container, Container>>((Func<Container, Container>)(c => c))
 				{
 					Container = this,
@@ -85,7 +85,7 @@ namespace Funq
 				Reuse = DefaultReuse,
 				Owner = DefaultOwner
 			};
-			var key = new ServiceKey(typeof(TService), typeof(TFunc), name);
+			var key = new ServiceKey(typeof(TFunc), name);
 
 			services[key] = entry;
 
@@ -235,7 +235,7 @@ namespace Funq
 
 		private ServiceEntry<TService, TFunc> GetEntry<TService, TFunc>(string serviceName, bool throwIfMissing)
 		{
-			var key = new ServiceKey(typeof(TService), typeof(TFunc), serviceName);
+			var key = new ServiceKey(typeof(TFunc), serviceName);
 			ServiceEntry entry = null;
 			Container container = this;
 
