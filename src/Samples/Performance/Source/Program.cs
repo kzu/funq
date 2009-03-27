@@ -35,6 +35,11 @@ namespace Performance
 
 			GC.Collect();
 
+			uc = new Ninject2UseCase();
+			Console.WriteLine(Pad(padding, "Ninject2: {0}"), Measure(uc.Run, iterations));
+
+			GC.Collect();
+
 			uc = new StructureMapUseCase();
 			Console.WriteLine(Pad(padding, "StructureMap: {0}"), Measure(uc.Run, iterations));
 

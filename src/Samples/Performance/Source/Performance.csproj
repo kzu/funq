@@ -35,6 +35,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Lib\Autofac.dll</HintPath>
     </Reference>
+    <Reference Include="Ninject, Version=2.0.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Lib\Ninject.dll</HintPath>
+    </Reference>
     <Reference Include="Ninject.Core, Version=1.5.0.119, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Lib\Ninject.Core.dll</HintPath>
@@ -62,6 +66,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AutofacUseCase.cs" />
+    <Compile Include="Ninject2UseCase.cs" />
     <Compile Include="FunqHierarchyUseCase.cs" />
     <Compile Include="FunqUseCase.cs" />
     <Compile Include="Domain\Authenticator.cs" />
