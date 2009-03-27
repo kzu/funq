@@ -4,7 +4,7 @@ namespace Funq
 {
 	/// <summary>
 	/// Funqlets are a set of components provided as a package 
-	/// to an existing container.
+	/// to an existing container (like a module).
 	/// </summary>
 	public interface IFunqlet
 	{
