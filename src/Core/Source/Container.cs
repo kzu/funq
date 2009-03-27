@@ -77,6 +77,12 @@ namespace Funq
 
 		#region ResolveImpl
 
+		/* All ResolveImpl are essentially equal, except for the type of the factory 
+		 * which is "hardcoded" in each implementation. This slight repetition of 
+		 * code gives us a bit more of perf. gain by avoiding an intermediate 
+		 * func/lambda to call in a generic way as we did before.
+		 */
+
 		private TService ResolveImpl<TService>(string name, bool throwIfMissing)
 		{
 			// Would throw if missing as appropriate.

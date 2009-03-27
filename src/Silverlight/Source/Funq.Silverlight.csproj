@@ -51,6 +51,9 @@
     <Compile Include="..\..\Core\Source\Container.cs">
       <Link>Container.cs</Link>
     </Compile>
+    <Compile Include="..\..\Core\Source\Container.Overloads.cs">
+      <Link>Container.Overloads.cs</Link>
+    </Compile>
     <Compile Include="..\..\Core\Source\Func.cs">
       <Link>Func.cs</Link>
     </Compile>
