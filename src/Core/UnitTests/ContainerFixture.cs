@@ -343,22 +343,6 @@ namespace Funq.Tests
 		}
 
 		[TestMethod]
-		public void ThrowsIfUnknownReuseScope()
-		{
-			var container = new Container();
-			container.Register<IFoo>(c => new Foo()).ReusedWithin((ReuseScope)5);
-			
-			try
-			{
-				var foo1 = container.Resolve<IFoo>();
-				Assert.Fail("Should have thrown ResolutionException because of unkown scope.");
-			}
-			catch (ResolutionException)
-			{
-			}
-		}
-
-		[TestMethod]
 		public void ContainerScopedInstanceIsReused()
 		{
 			var container = new Container();
