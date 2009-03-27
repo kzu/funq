@@ -50,13 +50,13 @@ namespace Performance
 
 			GC.Collect();
 
-			uc = new FunqUseCase();
-			Console.WriteLine(Pad(padding, "Funq: {0}"), Measure(uc.Run, iterations));
+			uc = new MachineUseCase();
+			Console.WriteLine(Pad(padding, "Machine.Container: {0}"), Measure(uc.Run, iterations));
 
 			GC.Collect();
 
-			uc = new FunqHierarchyUseCase();
-			Console.WriteLine(Pad(padding, "Funq (Hierarchy): {0}"), Measure(uc.Run, iterations));
+			uc = new FunqUseCase();
+			Console.WriteLine(Pad(padding, "Funq: {0}"), Measure(uc.Run, iterations));
 		}
 
 		private static string Pad(int count, string value)
