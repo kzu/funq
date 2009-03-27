@@ -12,35 +12,33 @@ namespace Performance
 
 		public FunqUseCase()
 		{
-			var builder = new ContainerBuilder { DefaultReuse = ReuseScope.None };
-			builder.Register<IWebApp>(
+			container = new Container { DefaultReuse = ReuseScope.None };
+			container.Register<IWebApp>(
 				c => new WebApp(
 					c.Resolve<IAuthenticator>(),
 					c.Resolve<IStockQuote>()));
 
-			builder.Register<IAuthenticator>(
+			container.Register<IAuthenticator>(
 				c => new Authenticator(
 					c.Resolve<ILogger>(),
 					c.Resolve<IErrorHandler>(),
 					c.Resolve<IDatabase>()));
 
-			builder.Register<IStockQuote>(
+			container.Register<IStockQuote>(
 				c => new StockQuote(
 					c.Resolve<ILogger>(),
 					c.Resolve<IErrorHandler>(),
 					c.Resolve<IDatabase>()));
 
-			builder.Register<IDatabase>(
+			container.Register<IDatabase>(
 				c => new Database(
 					c.Resolve<ILogger>(),
 					c.Resolve<IErrorHandler>()));
 
-			builder.Register<IErrorHandler>(
+			container.Register<IErrorHandler>(
 				c => new ErrorHandler(c.Resolve<ILogger>()));
 
-			builder.Register<ILogger>(c => new Logger());
-
-			container = builder.Build();
+			container.Register<ILogger>(c => new Logger());
 		}
 
 		public override void Run()

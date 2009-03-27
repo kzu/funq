@@ -6,11 +6,6 @@ namespace Funq
 		protected ServiceEntry() {}
 
 		/// <summary>
-		/// The Func delegate that creates instances of the service.
-		/// </summary>
-		public object Factory;
-
-		/// <summary>
 		/// Ownership setting for the service.
 		/// </summary>
 		public Owner Owner;

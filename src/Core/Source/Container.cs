@@ -13,13 +13,13 @@ namespace Funq
 		Stack<WeakReference> disposables = new Stack<WeakReference>();
 		// We always hold a strong reference to child containers.
 		Stack<Container> childContainers = new Stack<Container>();
-		Container parentContainer;
+		Container parent;
 
 		/// <include file='Container.xdoc' path='docs/doc[@for="Container.ctor"]/*'/>
 		public Container()
 		{
 			services[new ServiceKey(typeof(Container), typeof(Func<Container, Container>), null)] =
-				new ServiceEntry<Container>((Func<Container, Container>)(c => c))
+				new ServiceEntry<Container, Func<Container, Container>>((Func<Container, Container>)(c => c))
 				{
 					Container = this,
 					Instance = this,
@@ -37,7 +37,7 @@ namespace Funq
 		/// <include file='Container.xdoc' path='docs/doc[@for="Container.CreateChildContainer"]/*'/>
 		public Container CreateChildContainer()
 		{
-			var child = new Container { parentContainer = this };
+			var child = new Container { parent = this };
 			childContainers.Push(child);
 			return child;
 		}
@@ -58,12 +58,12 @@ namespace Funq
 			}
 		}
 
-		private ServiceEntry<TService> RegisterImpl<TService, TFunc>(string name, TFunc factory)
+		private ServiceEntry<TService, TFunc> RegisterImpl<TService, TFunc>(string name, TFunc factory)
 		{
 			if (typeof(TService) == typeof(Container))
 				throw new ArgumentException(Properties.Resources.Registration_CantRegisterContainer);
 
-			var entry = new ServiceEntry<TService>(factory)
+			var entry = new ServiceEntry<TService, TFunc>(factory)
 			{
 				Container = this,
 				Reuse = DefaultReuse,
@@ -76,82 +76,163 @@ namespace Funq
 			return entry;
 		}
 
-		private TService ResolveImpl<TService, TFunc>(string name, Func<TFunc, TService> invoker, bool throwIfMissing)
+		#region ResolveImpl
+
+		private TService ResolveImpl<TService>(string name, bool throwIfMissing)
 		{
-			var key = new ServiceKey(typeof(TService), typeof(TFunc), name);
-			var entry = GetEntry<TService>(key);
-
-			if (entry != null)
-			{
-				switch (entry.Reuse)
-				{
-					case ReuseScope.Container:
-						if (entry.Container != this)
-						{
-							// If the container for the registration entry is 
-							// not the same as the current container, clone 
-							// the entry and register locally on this container
-							// for further resolutions.
-							entry = entry.CloneFor(this);
-							services[key] = entry;
-						}
-						break;
-
-					case ReuseScope.Hierarchy:
-					case ReuseScope.None:
-						// Nothing special to do in this case
-						break;
-
-					default:
-						throw new ResolutionException(Properties.Resources.ResolutionException_UnknownScope);
-				}
-
-				if (entry.Instance == null)
-				{
-					return CreateAndInitializeInstance(entry, invoker);
-				}
-
-				return entry.Instance;
-			}
-
-			if (throwIfMissing)
-				return ThrowMissing<TService>(name);
-			else
+			// Would throw if missing as appropriate.
+			var entry = GetEntry<TService, Func<Container, TService>>(name, throwIfMissing);
+			// Return default if not registered and didn't throw above.
+			if (entry == null)
 				return default(TService);
-		}
 
-		private TService CreateAndInitializeInstance<TService, TFunc>(ServiceEntry<TService> entry, Func<TFunc, TService> invoker)
-		{
-			var factory = (TFunc)entry.Factory;
-			var instance = invoker(factory);
-
-			// Save instance if Hierarchy or Container Reuse 
-			if (entry.Reuse != ReuseScope.None)
-				entry.Instance = instance;
-
-			// Track for disposal if necessary
-			if (entry.Owner == Owner.Container && instance is IDisposable)
-				entry.Container.disposables.Push(new WeakReference(instance));
-
-			// Call initializer if necessary
-			if (entry.Initializer != null)
-				entry.Initializer(entry.Container, instance);
+			TService instance = entry.Instance;
+			if (instance == null)
+			{
+				instance = entry.Factory(entry.Container);
+				entry.InitializeInstance(instance);
+			}
 
 			return instance;
 		}
 
-		private ServiceEntry<TService> GetEntry<TService>(ServiceKey key)
+		private TService ResolveImpl<TService, TArg>(string name, bool throwIfMissing, TArg arg)
 		{
-			ServiceEntry entry = null;
-			// Go up the hierarchy always for registrations.
+			// Would throw if missing as appropriate.
+			var entry = GetEntry<TService, Func<Container, TArg, TService>>(name, throwIfMissing);
+			// Return default if not registered and didn't throw above.
+			if (entry == null)
+				return default(TService);
 
-			Container container = this;
-			while (!container.services.TryGetValue(key, out entry) && container.parentContainer != null)
+			TService instance = entry.Instance;
+			if (instance == null)
 			{
-				container = container.parentContainer;
+				instance = entry.Factory(entry.Container, arg);
+				entry.InitializeInstance(instance);
 			}
 
-			return (ServiceEntry<TService>)entry;
+			return instance;
+		}
+
+		private TService ResolveImpl<TService, TArg1, TArg2>(string name, bool throwIfMissing, TArg1 arg1, TArg2 arg2)
+		{
+			// Would throw if missing as appropriate.
+			var entry = GetEntry<TService, Func<Container, TArg1, TArg2, TService>>(name, throwIfMissing);
+			// Return default if not registered and didn't throw above.
+			if (entry == null)
+				return default(TService);
+
+			TService instance = entry.Instance;
+			if (instance == null)
+			{
+				instance = entry.Factory(entry.Container, arg1, arg2);
+				entry.InitializeInstance(instance);
+			}
+
+			return instance;
+		}
+
+		private TService ResolveImpl<TService, TArg1, TArg2, TArg3>(string name, bool throwIfMissing, TArg1 arg1, TArg2 arg2, TArg3 arg3)
+		{
+			// Would throw if missing as appropriate.
+			var entry = GetEntry<TService, Func<Container, TArg1, TArg2, TArg3, TService>>(name, throwIfMissing);
+			// Return default if not registered and didn't throw above.
+			if (entry == null)
+				return default(TService);
+
+			TService instance = entry.Instance;
+			if (instance == null)
+			{
+				instance = entry.Factory(entry.Container, arg1, arg2, arg3);
+				entry.InitializeInstance(instance);
+			}
+
+			return instance;
+		}
+
+		private TService ResolveImpl<TService, TArg1, TArg2, TArg3, TArg4>(string name, bool throwIfMissing, TArg1 arg1, TArg2 arg2, TArg3 arg3, TArg4 arg4)
+		{
+			// Would throw if missing as appropriate.
+			var entry = GetEntry<TService, Func<Container, TArg1, TArg2, TArg3, TArg4, TService>>(name, throwIfMissing);
+			// Return default if not registered and didn't throw above.
+			if (entry == null)
+				return default(TService);
+
+			TService instance = entry.Instance;
+			if (instance == null)
+			{
+				instance = entry.Factory(entry.Container, arg1, arg2, arg3, arg4);
+				entry.InitializeInstance(instance);
+			}
+
+			return instance;
+		}
+
+		private TService ResolveImpl<TService, TArg1, TArg2, TArg3, TArg4, TArg5>(string name, bool throwIfMissing, TArg1 arg1, TArg2 arg2, TArg3 arg3, TArg4 arg4, TArg5 arg5)
+		{
+			// Would throw if missing as appropriate.
+			var entry = GetEntry<TService, Func<Container, TArg1, TArg2, TArg3, TArg4, TArg5, TService>>(name, throwIfMissing);
+			// Return default if not registered and didn't throw above.
+			if (entry == null)
+				return default(TService);
+
+			TService instance = entry.Instance;
+			if (instance == null)
+			{
+				instance = entry.Factory(entry.Container, arg1, arg2, arg3, arg4, arg5);
+				entry.InitializeInstance(instance);
+			}
+
+			return instance;
+		}
+
+		private TService ResolveImpl<TService, TArg1, TArg2, TArg3, TArg4, TArg5, TArg6>(string name, bool throwIfMissing, TArg1 arg1, TArg2 arg2, TArg3 arg3, TArg4 arg4, TArg5 arg5, TArg6 arg6)
+		{
+			// Would throw if missing as appropriate.
+			var entry = GetEntry<TService, Func<Container, TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TService>>(name, throwIfMissing);
+			// Return default if not registered and didn't throw above.
+			if (entry == null)
+				return default(TService);
+
+			TService instance = entry.Instance;
+			if (instance == null)
+			{
+				instance = entry.Factory(entry.Container, arg1, arg2, arg3, arg4, arg5, arg6);
+				entry.InitializeInstance(instance);
+			}
+
+			return instance;
+		}
+
+		#endregion
+		
+		internal void TrackDisposable(object instance)
+		{
+			disposables.Push(new WeakReference(instance));
+		}
+
+		private ServiceEntry<TService, TFunc> GetEntry<TService, TFunc>(string serviceName, bool throwIfMissing)
+		{
+			var key = new ServiceKey(typeof(TService), typeof(TFunc), serviceName);
+			ServiceEntry entry = null;
+			Container container = this;
+
+			// Go up the hierarchy always for registrations.
+			while (!container.services.TryGetValue(key, out entry) && container.parent != null)
+			{
+				container = container.parent;
+			}
+
+			if (entry != null)
+			{
+				if (entry.Reuse == ReuseScope.Container && entry.Container != this)
+				{
+					entry = ((ServiceEntry<TService, TFunc>)entry).CloneFor(this);
+					services[key] = entry;
+				}
+			}
+
+			return (ServiceEntry<TService, TFunc>)entry;
 		}
 
 		private static TService ThrowMissing<TService>(string name)
@@ -162,15 +243,9 @@ namespace Funq
 				throw new ResolutionException(typeof(TService), name);
 		}
 
-		private void ThrowIfNotRegistered<TService>(Type factoryType, string name)
+		private void ThrowIfNotRegistered<TService, TFunc>(string name)
 		{
-			if (GetEntry<TService>(new ServiceKey(typeof(TService), factoryType, name)) == null)
-			{
-				if (name == null)
-					throw new ResolutionException(typeof(TService));
-				else
-					throw new ResolutionException(typeof(TService), name);
-			}
+			GetEntry<TService, TFunc>(name, true);
 		}
 
 		#region LazyResolve
@@ -228,7 +303,7 @@ namespace Funq
 		[DebuggerStepThrough]
 		public Func<TService> LazyResolve<TService>(string name)
 		{
-			ThrowIfNotRegistered<TService>(typeof(Func<Container, TService>), name);
+			ThrowIfNotRegistered<TService, Func<Container, TService>>(name);
 			return () => ResolveNamed<TService>(name);
 		}
 
@@ -236,7 +311,7 @@ namespace Funq
 		[DebuggerStepThrough]
 		public Func<TArg, TService> LazyResolve<TService, TArg>(string name)
 		{
-			ThrowIfNotRegistered<TService>(typeof(Func<Container, TArg, TService>), name);
+			ThrowIfNotRegistered<TService, Func<Container, TArg, TService>>(name);
 			return arg => ResolveNamed<TService, TArg>(name, arg);
 		}
 
@@ -244,7 +319,7 @@ namespace Funq
 		[DebuggerStepThrough]
 		public Func<TArg1, TArg2, TService> LazyResolve<TService, TArg1, TArg2>(string name)
 		{
-			ThrowIfNotRegistered<TService>(typeof(Func<Container, TArg1, TArg2, TService>), name);
+			ThrowIfNotRegistered<TService, Func<Container, TArg1, TArg2, TService>>(name);
 			return (arg1, arg2) => ResolveNamed<TService, TArg1, TArg2>(name, arg1, arg2);
 		}
 
@@ -252,7 +327,7 @@ namespace Funq
 		[DebuggerStepThrough]
 		public Func<TArg1, TArg2, TArg3, TService> LazyResolve<TService, TArg1, TArg2, TArg3>(string name)
 		{
-			ThrowIfNotRegistered<TService>(typeof(Func<Container, TArg1, TArg2, TArg3, TService>), name);
+			ThrowIfNotRegistered<TService, Func<Container, TArg1, TArg2, TArg3, TService>>(name);
 			return (arg1, arg2, arg3) => ResolveNamed<TService, TArg1, TArg2, TArg3>(name, arg1, arg2, arg3);
 		}
 
@@ -260,7 +335,7 @@ namespace Funq
 		[DebuggerStepThrough]
 		public Func<TArg1, TArg2, TArg3, TArg4, TService> LazyResolve<TService, TArg1, TArg2, TArg3, TArg4>(string name)
 		{
-			ThrowIfNotRegistered<TService>(typeof(Func<Container, TArg1, TArg2, TArg3, TArg4, TService>), name);
+			ThrowIfNotRegistered<TService, Func<Container, TArg1, TArg2, TArg3, TArg4, TService>>(name);
 			return (arg1, arg2, arg3, arg4) => ResolveNamed<TService, TArg1, TArg2, TArg3, TArg4>(name, arg1, arg2, arg3, arg4);
 		}
 
@@ -268,7 +343,7 @@ namespace Funq
 		[DebuggerStepThrough]
 		public Func<TArg1, TArg2, TArg3, TArg4, TArg5, TService> LazyResolve<TService, TArg1, TArg2, TArg3, TArg4, TArg5>(string name)
 		{
-			ThrowIfNotRegistered<TService>(typeof(Func<Container, TArg1, TArg2, TArg3, TArg4, TArg5, TService>), name);
+			ThrowIfNotRegistered<TService, Func<Container, TArg1, TArg2, TArg3, TArg4, TArg5, TService>>(name);
 			return (arg1, arg2, arg3, arg4, arg5) => ResolveNamed<TService, TArg1, TArg2, TArg3, TArg4, TArg5>(name, arg1, arg2, arg3, arg4, arg5);
 		}
 
@@ -276,7 +351,7 @@ namespace Funq
 		[DebuggerStepThrough]
 		public Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TService> LazyResolve<TService, TArg1, TArg2, TArg3, TArg4, TArg5, TArg6>(string name)
 		{
-			ThrowIfNotRegistered<TService>(typeof(Func<Container, TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TService>), name);
+			ThrowIfNotRegistered<TService, Func<Container, TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TService>>(name);
 			return (arg1, arg2, arg3, arg4, arg5, arg6) => ResolveNamed<TService, TArg1, TArg2, TArg3, TArg4, TArg5, TArg6>(name, arg1, arg2, arg3, arg4, arg5, arg6);
 		}
 
@@ -447,56 +522,49 @@ namespace Funq
 		[DebuggerStepThrough]
 		public TService ResolveNamed<TService>(string name)
 		{
-			return ResolveImpl<TService, Func<Container, TService>>(
-				name, f => f(this), true);
+			return ResolveImpl<TService>(name, true);
 		}
 
 		/// <include file='Container.xdoc' path='docs/doc[@for="Container.ResolveNamed{TService,TArg}"]/*'/>
 		[DebuggerStepThrough]
 		public TService ResolveNamed<TService, TArg>(string name, TArg arg)
 		{
-			return ResolveImpl<TService, Func<Container, TArg, TService>>(
-				name, f => f(this, arg), true);
+			return ResolveImpl<TService, TArg>(name, true, arg);
 		}
 
 		/// <include file='Container.xdoc' path='docs/doc[@for="Container.ResolveNamed{TService,TArg1,TArg2}"]/*'/>
 		[DebuggerStepThrough]
 		public TService ResolveNamed<TService, TArg1, TArg2>(string name, TArg1 arg1, TArg2 arg2)
 		{
-			return ResolveImpl<TService, Func<Container, TArg1, TArg2, TService>>(
-				name, f => f(this, arg1, arg2), true);
+			return ResolveImpl<TService, TArg1, TArg2>(name, true, arg1, arg2);
 		}
 
 		/// <include file='Container.xdoc' path='docs/doc[@for="Container.ResolveNamed{TService,TArg1,TArg2,TArg3}"]/*'/>
 		[DebuggerStepThrough]
 		public TService ResolveNamed<TService, TArg1, TArg2, TArg3>(string name, TArg1 arg1, TArg2 arg2, TArg3 arg3)
 		{
-			return ResolveImpl<TService, Func<Container, TArg1, TArg2, TArg3, TService>>(
-				name, f => f(this, arg1, arg2, arg3), true);
+			return ResolveImpl<TService, TArg1, TArg2, TArg3>(name, true, arg1, arg2, arg3);
 		}
 
 		/// <include file='Container.xdoc' path='docs/doc[@for="Container.ResolveNamed{TService,TArg1,TArg2,TArg3,TArg4}"]/*'/>
 		[DebuggerStepThrough]
 		public TService ResolveNamed<TService, TArg1, TArg2, TArg3, TArg4>(string name, TArg1 arg1, TArg2 arg2, TArg3 arg3, TArg4 arg4)
 		{
-			return ResolveImpl<TService, Func<Container, TArg1, TArg2, TArg3, TArg4, TService>>(
-				name, f => f(this, arg1, arg2, arg3, arg4), true);
+			return ResolveImpl<TService, TArg1, TArg2, TArg3, TArg4>(name, true, arg1, arg2, arg3, arg4);
 		}
 
 		/// <include file='Container.xdoc' path='docs/doc[@for="Container.ResolveNamed{TService,TArg1,TArg2,TArg3,TArg4,TArg5}"]/*'/>
 		[DebuggerStepThrough]
 		public TService ResolveNamed<TService, TArg1, TArg2, TArg3, TArg4, TArg5>(string name, TArg1 arg1, TArg2 arg2, TArg3 arg3, TArg4 arg4, TArg5 arg5)
 		{
-			return ResolveImpl<TService, Func<Container, TArg1, TArg2, TArg3, TArg4, TArg5, TService>>(
-				name, f => f(this, arg1, arg2, arg3, arg4, arg5), true);
+			return ResolveImpl<TService, TArg1, TArg2, TArg3, TArg4, TArg5>(name, true, arg1, arg2, arg3, arg4, arg5);
 		}
 
 		/// <include file='Container.xdoc' path='docs/doc[@for="Container.ResolveNamed{TService,TArg1,TArg2,TArg3,TArg4,TArg5,TArg6}"]/*'/>
 		[DebuggerStepThrough]
 		public TService ResolveNamed<TService, TArg1, TArg2, TArg3, TArg4, TArg5, TArg6>(string name, TArg1 arg1, TArg2 arg2, TArg3 arg3, TArg4 arg4, TArg5 arg5, TArg6 arg6)
 		{
-			return ResolveImpl<TService, Func<Container, TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TService>>(
-				name, f => f(this, arg1, arg2, arg3, arg4, arg5, arg6), true);
+			return ResolveImpl<TService, TArg1, TArg2, TArg3, TArg4, TArg5, TArg6>(name, true, arg1, arg2, arg3, arg4, arg5, arg6);
 		}
 
 		#endregion
@@ -560,56 +628,49 @@ namespace Funq
 		[DebuggerStepThrough]
 		public TService TryResolveNamed<TService>(string name)
 		{
-			return ResolveImpl<TService, Func<Container, TService>>(
-				name, f => f(this), false);
+			return ResolveImpl<TService>(name, false);
 		}
 
 		/// <include file='Container.xdoc' path='docs/doc[@for="Container.TryResolveNamed{TService,TArg}"]/*'/>
 		[DebuggerStepThrough]
 		public TService TryResolveNamed<TService, TArg>(string name, TArg arg)
 		{
-			return ResolveImpl<TService, Func<Container, TArg, TService>>(
-				name, f => f(this, arg), false);
+			return ResolveImpl<TService, TArg>(name, false, arg);
 		}
 
 		/// <include file='Container.xdoc' path='docs/doc[@for="Container.TryResolveNamed{TService,TArg1,TArg2}"]/*'/>
 		[DebuggerStepThrough]
 		public TService TryResolveNamed<TService, TArg1, TArg2>(string name, TArg1 arg1, TArg2 arg2)
 		{
-			return ResolveImpl<TService, Func<Container, TArg1, TArg2, TService>>(
-				name, f => f(this, arg1, arg2), false);
+			return ResolveImpl<TService, TArg1, TArg2>(name, false, arg1, arg2);
 		}
 
 		/// <include file='Container.xdoc' path='docs/doc[@for="Container.TryResolveNamed{TService,TArg1,TArg2,TArg3}"]/*'/>
 		[DebuggerStepThrough]
 		public TService TryResolveNamed<TService, TArg1, TArg2, TArg3>(string name, TArg1 arg1, TArg2 arg2, TArg3 arg3)
 		{
-			return ResolveImpl<TService, Func<Container, TArg1, TArg2, TArg3, TService>>(
-				name, f => f(this, arg1, arg2, arg3), false);
+			return ResolveImpl<TService, TArg1, TArg2, TArg3>(name, false, arg1, arg2, arg3);
 		}
 
 		/// <include file='Container.xdoc' path='docs/doc[@for="Container.TryResolveNamed{TService,TArg1,TArg2,TArg3,TArg4}"]/*'/>
 		[DebuggerStepThrough]
 		public TService TryResolveNamed<TService, TArg1, TArg2, TArg3, TArg4>(string name, TArg1 arg1, TArg2 arg2, TArg3 arg3, TArg4 arg4)
 		{
-			return ResolveImpl<TService, Func<Container, TArg1, TArg2, TArg3, TArg4, TService>>(
-				name, f => f(this, arg1, arg2, arg3, arg4), false);
+			return ResolveImpl<TService, TArg1, TArg2, TArg3, TArg4>(name, false, arg1, arg2, arg3, arg4);
 		}
 
 		/// <include file='Container.xdoc' path='docs/doc[@for="Container.TryResolveNamed{TService,TArg1,TArg2,TArg3,TArg4,TArg5}"]/*'/>
 		[DebuggerStepThrough]
 		public TService TryResolveNamed<TService, TArg1, TArg2, TArg3, TArg4, TArg5>(string name, TArg1 arg1, TArg2 arg2, TArg3 arg3, TArg4 arg4, TArg5 arg5)
 		{
-			return ResolveImpl<TService, Func<Container, TArg1, TArg2, TArg3, TArg4, TArg5, TService>>(
-				name, f => f(this, arg1, arg2, arg3, arg4, arg5), false);
+			return ResolveImpl<TService, TArg1, TArg2, TArg3, TArg4, TArg5>(name, false, arg1, arg2, arg3, arg4, arg5);
 		}
 
 		/// <include file='Container.xdoc' path='docs/doc[@for="Container.TryResolveNamed{TService,TArg1,TArg2,TArg3,TArg4,TArg5,TArg6}"]/*'/>
 		[DebuggerStepThrough]
 		public TService TryResolveNamed<TService, TArg1, TArg2, TArg3, TArg4, TArg5, TArg6>(string name, TArg1 arg1, TArg2 arg2, TArg3 arg3, TArg4 arg4, TArg5 arg5, TArg6 arg6)
 		{
-			return ResolveImpl<TService, Func<Container, TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TService>>(
-				name, f => f(this, arg1, arg2, arg3, arg4, arg5, arg6), false);
+			return ResolveImpl<TService, TArg1, TArg2, TArg3, TArg4, TArg5, TArg6>(name, false, arg1, arg2, arg3, arg4, arg5, arg6);
 		}
 
 		#endregion
