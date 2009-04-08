@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-public interface IStockQuote
+namespace Domain
 {
-	ILogger Logger { get; }
-	IErrorHandler ErrorHandler { get; }
-	IDatabase Database { get; }
+	public interface IStockQuote
+	{
+		ILogger Logger { get; }
+		IErrorHandler ErrorHandler { get; }
+		IDatabase Database { get; }
+	}
 }

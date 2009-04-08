@@ -1,23 +1,26 @@
 using System;
 
-public class Authenticator : IAuthenticator
+namespace Domain
 {
-	ILogger logger;
-	IErrorHandler handler;
-	IDatabase database;
-
-	public Authenticator(ILogger logger, IErrorHandler handler, IDatabase database)
+	public class Authenticator : IAuthenticator
 	{
-		this.logger = logger;
-		this.handler = handler;
-		this.database = database;
+		ILogger logger;
+		IErrorHandler handler;
+		IDatabase database;
+
+		public Authenticator(ILogger logger, IErrorHandler handler, IDatabase database)
+		{
+			this.logger = logger;
+			this.handler = handler;
+			this.database = database;
+		}
+
+		public ILogger Logger { get { return logger; } }
+		public IErrorHandler ErrorHandler { get { return handler; } }
+		public IDatabase Database { get { return database; } }
+
+		#region Behavior
+
+		#endregion
 	}
-
-	public ILogger Logger { get { return logger; } }
-	public IErrorHandler ErrorHandler { get { return handler; } }
-	public IDatabase Database { get { return database; } }
-
-	#region Behavior
-
-	#endregion
 }

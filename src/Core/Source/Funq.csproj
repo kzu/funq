@@ -80,9 +80,9 @@
       <Link>ConventionFunqlet.t4</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-	  <Compile Include="Container.Overloads.cs">
-		  <DependentUpon>Container.cs</DependentUpon>
-	  </Compile>
+    <Compile Include="Container.Overloads.cs">
+      <DependentUpon>Container.cs</DependentUpon>
+    </Compile>
     <None Include="Container.xdoc" />
     <Content Include="ConventionFunqlet.targets">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

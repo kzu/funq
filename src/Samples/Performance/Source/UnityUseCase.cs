@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Practices.Unity;
 using Microsoft.Practices.Unity.StaticFactory;
+using Domain;
 
 namespace Performance
 {

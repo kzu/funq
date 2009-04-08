@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-public interface IDatabase
+namespace Domain
 {
-	ILogger Logger { get; }
-	IErrorHandler ErrorHandler { get; }
+	public interface IDatabase
+	{
+		ILogger Logger { get; }
+		IErrorHandler ErrorHandler { get; }
+	}
 }

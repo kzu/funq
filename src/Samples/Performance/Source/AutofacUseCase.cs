@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Autofac;
 using Autofac.Builder;
+using Domain;
 
 namespace Performance
 {

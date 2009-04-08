@@ -1,17 +1,20 @@
 using System;
 
-public class ErrorHandler : IErrorHandler
+namespace Domain
 {
-	ILogger logger;
-
-	public ErrorHandler(ILogger logger)
+	public class ErrorHandler : IErrorHandler
 	{
-		this.logger = logger;
+		ILogger logger;
+
+		public ErrorHandler(ILogger logger)
+		{
+			this.logger = logger;
+		}
+
+		public ILogger Logger { get { return logger; } }
+
+		#region Behavior
+
+		#endregion
 	}
-
-	public ILogger Logger { get { return logger; } }
-
-	#region Behavior
-
-	#endregion
 }

@@ -59,6 +59,11 @@ namespace Performance
 			uc.Run();
 			GC.Collect();
 			Console.WriteLine(Pad(padding, "Ninject2: {0}"), Measure(uc.Run, iterations));
+
+			uc = new HiroUseCase();
+			uc.Run();
+			GC.Collect();
+			Console.WriteLine(Pad(padding, "Hiro: {0}"), Measure(uc.Run, iterations));
 		}
 
 		private static string Pad(int count, string value)

@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-public interface ILogger 
+namespace Domain
 {
+	public interface ILogger
+	{
+	}
 }

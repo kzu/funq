@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-public interface IErrorHandler
+namespace Domain
 {
-	ILogger Logger { get; }
+	public interface IErrorHandler
+	{
+		ILogger Logger { get; }
+	}
 }

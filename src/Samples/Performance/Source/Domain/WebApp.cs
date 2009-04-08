@@ -1,24 +1,27 @@
 using System;
 
-public class WebApp : IWebApp
+namespace Domain
 {
-	IAuthenticator authenticator;
-	IStockQuote quotes;
-
-	public WebApp(IAuthenticator authenticator, IStockQuote quotes)
+	public class WebApp : IWebApp
 	{
-		this.authenticator = authenticator;
-		this.quotes = quotes;
+		IAuthenticator authenticator;
+		IStockQuote quotes;
+
+		public WebApp(IAuthenticator authenticator, IStockQuote quotes)
+		{
+			this.authenticator = authenticator;
+			this.quotes = quotes;
+		}
+
+		public IAuthenticator Authenticator { get { return authenticator; } }
+		public IStockQuote StockQuote { get { return quotes; } }
+
+		#region Behavior
+
+		public void Run()
+		{
+		}
+
+		#endregion
 	}
-
-	public IAuthenticator Authenticator { get { return authenticator; } }
-	public IStockQuote StockQuote { get { return quotes; } }
-
-	#region Behavior
-
-	public void Run()
-	{
-	}
-
-	#endregion
 }

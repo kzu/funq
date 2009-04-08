@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-public interface IWebApp
+namespace Domain
 {
-	IAuthenticator Authenticator { get; }
-	IStockQuote StockQuote { get; }
-	void Run();
+	public interface IWebApp
+	{
+		IAuthenticator Authenticator { get; }
+		IStockQuote StockQuote { get; }
+		void Run();
+	}
 }
