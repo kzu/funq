@@ -1,69 +1,70 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
+using System.Collections.Generic;
 
 namespace Performance
 {
 	class Program
 	{
+		const long DefaultIterations = 1000;
+		static readonly List<long> BatchIterations = new List<long> { 1000, 5000, 20000, 100000, 250000, 1000000 };
+		static readonly List<UseCaseInfo> useCases = new List<UseCaseInfo>
+		{
+			new PlainUseCase(),
+			new FunqUseCase(), 
+			new UnityUseCase(),
+			new AutofacUseCase(), 
+			new StructureMapUseCase(),
+			new NinjectUseCase(), 
+			new Ninject2UseCase(), 
+			new WindsorUseCase(), 
+			new MachineUseCase(),
+		};
+
 		static void Main(string[] args)
 		{
-			if (args.Length != 1)
+			if (args.Length == 1 && args[0] == "csv")
+				RunBatch();
+			else
+				RunInteractive(args);
+		}
+
+		private static void RunBatch()
+		{
+			Console.Write(";");
+			useCases.ForEach(uc => Console.Write("{0};", uc.Name));
+			Console.WriteLine();
+			BatchIterations.ForEach(iterations =>
 			{
-				Console.WriteLine("usage: {0} numerOfIterations", 
-					Path.GetFileName(typeof(Program).Assembly.ManifestModule.FullyQualifiedName));
+				Console.Write("{0};", iterations);
+				useCases.ForEach(uc =>
+				{
+					// warmup
+					uc.UseCase.Run();
+					GC.Collect();
+					Console.Write("{0};", Measure(uc.UseCase.Run, iterations));
+				});
+				Console.WriteLine();
+			});
+		}
 
-				return;
-			}
+		private static void RunInteractive(string[] args)
+		{
+			long iterations = DefaultIterations;
 
-			int iterations = int.Parse(args[0]);
-			Console.WriteLine("Running {0} iterations for each use case.", args[0]);
+			if (args.Length != 0)
+				iterations = long.Parse(args[0]);
 
-			int padding = 50;
-			UseCase uc = new PlainUseCase();
-			uc.Run();
-			GC.Collect();
-			Console.WriteLine(Pad(padding, "Plain no-DI: {0}"), Measure(uc.Run, iterations));
+			Console.WriteLine("Running {0} iterations for each use case.", iterations);
 
-			uc = new FunqUseCase();
-			uc.Run();
-			GC.Collect();
-			Console.WriteLine(Pad(padding, "Funq: {0}"), Measure(uc.Run, iterations));
-
-			uc = new StructureMapUseCase();
-			uc.Run();
-			GC.Collect();
-			Console.WriteLine(Pad(padding, "StructureMap: {0}"), Measure(uc.Run, iterations));
-
-			uc = new AutofacUseCase();
-			uc.Run();
-			GC.Collect();
-			Console.WriteLine(Pad(padding, "Autofac: {0}"), Measure(uc.Run, iterations));
-
-			uc = new UnityUseCase();
-			uc.Run();
-			GC.Collect();
-			Console.WriteLine(Pad(padding, "Unity: {0}"), Measure(uc.Run, iterations));
-
-			uc = new MachineUseCase();
-			uc.Run();
-			GC.Collect();
-			Console.WriteLine(Pad(padding, "Machine.Container: {0}"), Measure(uc.Run, iterations));
-
-			uc = new NinjectUseCase();
-			uc.Run();
-			GC.Collect();
-			Console.WriteLine(Pad(padding, "Ninject: {0}"), Measure(uc.Run, iterations));
-
-			uc = new Ninject2UseCase();
-			uc.Run();
-			GC.Collect();
-			Console.WriteLine(Pad(padding, "Ninject2: {0}"), Measure(uc.Run, iterations));
-
-			uc = new HiroUseCase();
-			uc.Run();
-			GC.Collect();
-			Console.WriteLine(Pad(padding, "Hiro: {0}"), Measure(uc.Run, iterations));
+			useCases.ForEach(uc =>
+			{
+				// warmup
+				uc.UseCase.Run();
+				GC.Collect();
+				Console.WriteLine("{0}: {1}", uc.Name, Measure(uc.UseCase.Run, iterations));
+			});
 		}
 
 		private static string Pad(int count, string value)
@@ -71,17 +72,19 @@ namespace Performance
 			return value + new string(' ', count - value.Length);
 		}
 
-		private static long Measure(Action action, int iterations)
+		private static decimal Measure(Action action, decimal iterations)
 		{
 			GC.Collect();
-			var watch = Stopwatch.StartNew();
+			var begin = Stopwatch.GetTimestamp();
 
 			for (int i = 0; i < iterations; i++)
 			{
 				action();
 			}
 
-			return watch.ElapsedTicks;
+			var end = Stopwatch.GetTimestamp();
+
+			return (decimal)(end - begin) / iterations;
 		}
 	}
 }

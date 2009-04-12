@@ -29,6 +29,7 @@ namespace Performance
 		partial void DoConfigure(Container container);
 	}
 
+	[System.ComponentModel.Description("Funq")]
 	public class FunqUseCase : UseCase
 	{
 		Container container;
@@ -66,7 +67,7 @@ namespace Performance
 			//container.Register<IErrorHandler>(
 			//   c => new ErrorHandler(c.Resolve<ILogger>()));
 
-			//container.Register<ILogger>(c => new Logger());
+			container.Register<ILogger>(new Logger());
 		}
 
 		public override void Run()

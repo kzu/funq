@@ -5,9 +5,11 @@ using System.Text;
 using Ninject;
 using Ninject.Modules;
 using Domain;
+using System.ComponentModel;
 
 namespace Performance
 {
+	[Description("Ninject2")]
 	public class Ninject2UseCase : UseCase
 	{
 		IKernel kernel;
@@ -57,8 +59,7 @@ namespace Performance
 					c => new ErrorHandler(c.Kernel.Get<ILogger>()))
 					.InTransientScope();
 
-				Bind<ILogger>().ToMethod(c => new Logger())
-					.InTransientScope();
+				Bind<ILogger>().ToConstant(new Logger());
 			}
 		}
 	}

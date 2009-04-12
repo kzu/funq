@@ -1,0 +1,2 @@
+- Source\Domain contains a realistic domain model taken from http://onestepback.org/index.cgi/Tech/Ruby/DependencyInjectionInRuby.rdoc
+- All instances have factory behavior (no instance reuse), except for the logger.

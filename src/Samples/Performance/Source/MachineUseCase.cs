@@ -5,9 +5,11 @@ using System.Text;
 using Funq;
 using Machine.Container;
 using Domain;
+using System.ComponentModel;
 
 namespace Performance
 {
+	[Description("Machine")]
 	public class MachineUseCase : UseCase
 	{
 		MachineContainer container;
@@ -28,7 +30,7 @@ namespace Performance
 
 			container.Register.Type<IErrorHandler>().ImplementedBy<ErrorHandler>().AsTransient();
 
-			container.Register.Type<ILogger>().ImplementedBy<Logger>().AsTransient();
+			container.Add<ILogger>(new Logger());
 
 			container.ReadyForServices();
 		}

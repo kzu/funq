@@ -8,6 +8,7 @@ using Domain;
 
 namespace Performance
 {
+	[System.ComponentModel.Description("Autofac")]
 	public class AutofacUseCase : UseCase
 	{
 		IContainer container;
@@ -45,8 +46,7 @@ namespace Performance
 				c => new ErrorHandler(c.Resolve<ILogger>()))
 				.FactoryScoped();
 
-			builder.Register<ILogger>(c => new Logger())
-				.FactoryScoped();
+			builder.Register<ILogger>(new Logger());
 
 			container = builder.Build();
 		}

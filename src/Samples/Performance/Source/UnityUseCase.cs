@@ -5,9 +5,13 @@ using System.Text;
 using Microsoft.Practices.Unity;
 using Microsoft.Practices.Unity.StaticFactory;
 using Domain;
+using System.ComponentModel;
+using System.Threading;
+using System.Diagnostics;
 
 namespace Performance
 {
+	[Description("Unity")]
 	public class UnityUseCase : UseCase
 	{
 		UnityContainer container;
@@ -15,7 +19,6 @@ namespace Performance
 		public UnityUseCase()
 		{
 			container = new UnityContainer();
-			container.AddExtension(new FactoryDefaultLifetime());
 
 			var builder = container
 				.AddNewExtension<StaticFactoryExtension>()
@@ -46,22 +49,22 @@ namespace Performance
 			builder.RegisterFactory<IErrorHandler>(
 				c => new ErrorHandler(c.Resolve<ILogger>()));
 
-			builder.RegisterFactory<ILogger>(c => new Logger());
+			var logger = new Logger();
+
+			try
+			{
+				// Why on earth is this throwing?!?!?!
+				container.RegisterInstance<ILogger>(logger);
+			}
+			catch (SynchronizationLockException) { }
+
+			Debug.Assert(Object.ReferenceEquals(logger, container.Resolve<ILogger>()));
 		}
 
 		public override void Run()
 		{
 			var webApp = container.Resolve<IWebApp>();
 			webApp.Run();
-		}
-
-		class FactoryDefaultLifetime : Microsoft.Practices.Unity.UnityContainerExtension
-		{
-			protected override void Initialize()
-			{
-				Context.Policies.SetDefault<Microsoft.Practices.ObjectBuilder2.ILifetimePolicy>(
-					new Microsoft.Practices.ObjectBuilder2.TransientLifetimePolicy());
-			}
 		}
 	}
 }

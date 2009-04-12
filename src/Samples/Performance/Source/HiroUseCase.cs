@@ -8,9 +8,11 @@ using Hiro.Containers;
 using Hiro.Interfaces;
 using LinFu.Reflection.Emit;
 using Domain;
+using System.ComponentModel;
 
 namespace Performance
 {
+	[Description("Hiro")]
 	public class HiroUseCase : UseCase
 	{
 		IMicroContainer container;

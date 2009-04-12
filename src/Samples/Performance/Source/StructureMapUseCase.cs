@@ -7,6 +7,7 @@ using Domain;
 
 namespace Performance
 {
+	[System.ComponentModel.Description("StructureMap")]
 	public class StructureMapUseCase : UseCase
 	{
 		Container container;
@@ -56,9 +57,7 @@ namespace Performance
 
 			container.Configure(
 				x => x.ForRequestedType<ILogger>()
-					.TheDefault.Is.ConstructedBy(
-					c => new Logger()
-					));
+					.TheDefault.IsThis(new Logger()));
 		}
 
 		public override void Run()
