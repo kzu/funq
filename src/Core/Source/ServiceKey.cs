@@ -37,8 +37,6 @@ namespace Funq
 				Object.Equals(null, obj2))
 				return false;
 
-			if (Object.ReferenceEquals(obj1, obj2)) return true;
-
 			return obj1.hash == obj2.hash;
 		}
 
