@@ -37,7 +37,8 @@ namespace Funq
 				Object.Equals(null, obj2))
 				return false;
 
-			return obj1.hash == obj2.hash;
+			return obj1.FactoryType == obj2.FactoryType && 
+				obj1.Name == obj2.Name;
 		}
 
 		public override int GetHashCode()
