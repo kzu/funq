@@ -15,8 +15,8 @@ namespace Performance
 		public FunqHierarchyUseCase()
 		{
 			container = new Container { DefaultReuse = ReuseScope.Hierarchy };
-			container.Register<IWebApp>(
-				c => new WebApp(
+			container.Register<IWebService>(
+				c => new WebService(
 					c.Resolve<IAuthenticator>(),
 					c.Resolve<IStockQuote>()));
 
@@ -45,8 +45,8 @@ namespace Performance
 
 		public override void Run()
 		{
-			var webApp = container.Resolve<IWebApp>();
-			webApp.Run();
+			var webApp = container.Resolve<IWebService>();
+			webApp.Execute();
 		}
 	}
 }

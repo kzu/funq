@@ -125,10 +125,10 @@
     <Compile Include="Domain\IErrorHandler.cs" />
     <Compile Include="Domain\ILogger.cs" />
     <Compile Include="Domain\IStockQuote.cs" />
-    <Compile Include="Domain\IWebApp.cs" />
+    <Compile Include="Domain\IWebService.cs" />
     <Compile Include="Domain\Logger.cs" />
     <Compile Include="Domain\StockQuote.cs" />
-    <Compile Include="Domain\WebApp.cs" />
+    <Compile Include="Domain\WebService.cs" />
     <Compile Include="NinjectUseCase.cs" />
     <Compile Include="PlainUseCase.cs" />
     <Compile Include="Program.cs" />

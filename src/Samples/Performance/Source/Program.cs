@@ -9,7 +9,7 @@ namespace Performance
 	{
 		const long DefaultIterations = 1000;
 		//static readonly List<long> BatchIterations = new List<long> { 10000 };
-		static readonly List<long> BatchIterations = new List<long> { 1000, 5000, 20000, 100000, 250000, 1000000 };
+		static readonly List<long> BatchIterations = new List<long> { 1000, 5000, 20000, 100000, 250000, 1000000, 5000000 };
 		static readonly List<UseCaseInfo> useCases = new List<UseCaseInfo>
 		{
 			new PlainUseCase(),

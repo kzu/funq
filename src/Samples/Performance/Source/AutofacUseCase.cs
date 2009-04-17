@@ -16,8 +16,8 @@ namespace Performance
 		public AutofacUseCase()
 		{
 			var builder = new ContainerBuilder();
-			builder.Register<IWebApp>(
-				c => new WebApp(
+			builder.Register<IWebService>(
+				c => new WebService(
 					c.Resolve<IAuthenticator>(),
 					c.Resolve<IStockQuote>()))
 				.FactoryScoped();
@@ -53,8 +53,8 @@ namespace Performance
 
 		public override void Run()
 		{
-			var webApp = container.Resolve<IWebApp>();
-			webApp.Run();
+			var webApp = container.Resolve<IWebService>();
+			webApp.Execute();
 		}
 	}
 }

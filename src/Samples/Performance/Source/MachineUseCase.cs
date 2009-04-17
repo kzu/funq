@@ -20,7 +20,7 @@ namespace Performance
 			container.Initialize();
 			container.PrepareForServices();
 
-			container.Register.Type<IWebApp>().ImplementedBy<WebApp>().AsTransient();
+			container.Register.Type<IWebService>().ImplementedBy<WebService>().AsTransient();
 
 			container.Register.Type<IAuthenticator>().ImplementedBy<Authenticator>().AsTransient();
 
@@ -37,8 +37,8 @@ namespace Performance
 
 		public override void Run()
 		{
-			var webApp = container.Resolve.Object<IWebApp>();
-			webApp.Run();
+			var webApp = container.Resolve.Object<IWebService>();
+			webApp.Execute();
 		}
 	}
 }

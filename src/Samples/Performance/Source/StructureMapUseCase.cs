@@ -16,9 +16,9 @@ namespace Performance
 		{
 			container = new Container();
 			container.Configure(
-				x => x.ForRequestedType<IWebApp>()
+				x => x.ForRequestedType<IWebService>()
 					.TheDefault.Is.ConstructedBy(
-					c => new WebApp(
+					c => new WebService(
 						c.GetInstance<IAuthenticator>(),
 						c.GetInstance<IStockQuote>())
 					));
@@ -62,8 +62,8 @@ namespace Performance
 
 		public override void Run()
 		{
-			var webApp = container.GetInstance<IWebApp>();
-			webApp.Run();
+			var webApp = container.GetInstance<IWebService>();
+			webApp.Execute();
 		}
 	}
 }

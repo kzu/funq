@@ -20,7 +20,7 @@ namespace Performance
 		public HiroUseCase()
 		{
 			var map = new DependencyMap();
-			map.AddService(typeof(IWebApp), typeof(WebApp));
+			map.AddService(typeof(IWebService), typeof(WebService));
 			map.AddService(typeof(IAuthenticator), typeof(Authenticator));
 			map.AddService(typeof(IStockQuote), typeof(StockQuote));
 			map.AddService(typeof(IDatabase), typeof(Database));
@@ -37,8 +37,8 @@ namespace Performance
 
 		public override void Run()
 		{
-			var webApp = (IWebApp)container.GetInstance(typeof(IWebApp), null);
-			webApp.Run();
+			var webApp = (IWebService)container.GetInstance(typeof(IWebService), null);
+			webApp.Execute();
 		}
 	}
 }

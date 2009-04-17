@@ -18,7 +18,7 @@ namespace Performance
 		{
 			container = new WindsorContainer();
 
-			Register<IWebApp, WebApp>();
+			Register<IWebService, WebService>();
 			Register<IAuthenticator, Authenticator>();
 			Register<IStockQuote, StockQuote>();
 			Register<IDatabase, Database>();
@@ -31,8 +31,8 @@ namespace Performance
 
 		public override void Run()
 		{
-			var webApp = container.Resolve<IWebApp>();
-			webApp.Run();
+			var webApp = container.Resolve<IWebService>();
+			webApp.Execute();
 		}
 
 		public void Register<T, R>()

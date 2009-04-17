@@ -20,16 +20,16 @@ namespace Performance
 
 		public override void Run()
 		{
-			var webApp = kernel.Get<IWebApp>();
-			webApp.Run();
+			var webApp = kernel.Get<IWebService>();
+			webApp.Execute();
 		}
 
 		class SampleModule : StandardModule
 		{
 			public override void Load()
 			{
-				Bind<IWebApp>().ToMethod(
-					c => new WebApp(
+				Bind<IWebService>().ToMethod(
+					c => new WebService(
 						c.Kernel.Get<IAuthenticator>(),
 						c.Kernel.Get<IStockQuote>()))
 					.Using<Ninject.Core.Behavior.TransientBehavior>();

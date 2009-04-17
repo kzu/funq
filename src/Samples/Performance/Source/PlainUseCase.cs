@@ -11,7 +11,7 @@ namespace Performance
 		{
 			var logger = new Logger();
 
-			var app = new WebApp(
+			var app = new WebService(
 				new Authenticator(
 					new Logger(),
 					new ErrorHandler(
@@ -38,7 +38,7 @@ namespace Performance
 				)
 			);
 
-			app.Run();
+			app.Execute();
 		}
 	}
 }

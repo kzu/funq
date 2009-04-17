@@ -24,8 +24,8 @@ namespace Performance
 				.AddNewExtension<StaticFactoryExtension>()
 				.Configure<IStaticFactoryConfiguration>();
 
-			builder.RegisterFactory<IWebApp>(
-				c => new WebApp(
+			builder.RegisterFactory<IWebService>(
+				c => new WebService(
 					c.Resolve<IAuthenticator>(),
 					c.Resolve<IStockQuote>()));
 
@@ -63,8 +63,8 @@ namespace Performance
 
 		public override void Run()
 		{
-			var webApp = container.Resolve<IWebApp>();
-			webApp.Run();
+			var webApp = container.Resolve<IWebService>();
+			webApp.Execute();
 		}
 	}
 }
