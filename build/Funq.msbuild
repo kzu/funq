@@ -58,29 +58,34 @@
 		
 		<!-- NET40 -->
 		<MSBuild
+			Targets="Rebuild"
 			Projects="..\src\Core\Source\Funq.csproj"
 			Properties="TargetFrameworkVersion=v4.0;Configuration=$(Configuration);TrackFileAccess=$(TrackFileAccess)"/>
-		<Exec Command="xcopy ..\src\Core\Source\bin\$(Configuration)\Funq.* Funq\NET40\ /Y /F" />
+		<Exec Command="xcopy ..\src\Core\Source\bin\$(Configuration)\Funq.* Funq\NET40\ /Y /F /I" />
 		<!-- NET35 -->
 		<MSBuild
+			Targets="Rebuild"
 			Projects="..\src\Core\Source\Funq.csproj"
 			Properties="TargetFrameworkVersion=v3.5;Configuration=$(Configuration);TrackFileAccess=$(TrackFileAccess)"/>
-		<Exec Command="xcopy ..\src\Core\Source\bin\$(Configuration)\Funq.* Funq\NET35\ /Y /F" />
+		<Exec Command="xcopy ..\src\Core\Source\bin\$(Configuration)\Funq.* Funq\NET35\ /Y /F /I" />
 		<!-- SL3 -->
 		<MSBuild
+			Targets="Rebuild"
 			Projects="..\src\Silverlight\Source\Funq.Silverlight.csproj"
 			Properties="TargetFrameworkVersion=v3.0;Configuration=$(Configuration);TrackFileAccess=$(TrackFileAccess)"/>
-		<Exec Command="xcopy ..\src\Silverlight\Source\bin\$(Configuration)\Funq.* Funq\SL3\ /Y /F" />
+		<Exec Command="xcopy ..\src\Silverlight\Source\bin\$(Configuration)\Funq.* Funq\SL3\ /Y /F /I" />
 		<!-- SL4 -->
 		<MSBuild
+			Targets="Rebuild"
 			Projects="..\src\Silverlight\Source\Funq.Silverlight.csproj"
 			Properties="TargetFrameworkVersion=v4.0;Configuration=$(Configuration);TrackFileAccess=$(TrackFileAccess)"/>
-		<Exec Command="xcopy ..\src\Silverlight\Source\bin\$(Configuration)\Funq.* Funq\SL4\ /Y /F" />
+		<Exec Command="xcopy ..\src\Silverlight\Source\bin\$(Configuration)\Funq.* Funq\SL4\ /Y /F /I" />
 		<!-- WP7 -->
 		<MSBuild
+			Targets="Rebuild"
 			Projects="..\src\WindowsPhone\Source\Funq.WindowsPhone.csproj"
 			Properties="TargetFrameworkVersion=v4.0;Configuration=$(Configuration);TrackFileAccess=$(TrackFileAccess)"/>
-		<Exec Command="xcopy ..\src\WindowsPhone\Source\bin\$(Configuration)\Funq.* Funq\WP7\ /Y /F" />
+		<Exec Command="xcopy ..\src\WindowsPhone\Source\bin\$(Configuration)\Funq.* Funq\WP7\ /Y /F /I" />
 
 		<!-- Last pass to get the tests ready -->
 		<MSBuild
@@ -130,11 +135,17 @@
 	</Target>
 
 	<Target Name="Help">
-		<MSBuild 
+		<Exec Command="xcopy ..\src\Core\Source\bin\Release\Funq.xml Help\Working\ /Y /F /I" />
+		<Exec Command="xcopy ..\src\Core\Source\bin\Release\Funq.dll Help\Working\ /Y /F /I" />
+
+		<Exec Command="&quot;$(windir)\Microsoft.NET\Framework\v3.5\MSBuild.exe&quot; Funq.shfbproj" />
+		
+		<!-- Doesn't work on MSBuild 4.0 yet -->
+		<!--<MSBuild 
 			ToolsVersion="3.5"
 			ContinueOnError="true"
 			Projects="Funq.shfbproj"
-			Targets="Build"/>
+			Targets="Build"/>-->
 		<Copy SourceFiles="Help\Funq.chm"
 					DestinationFiles="Funq\Funq.chm"
 					ContinueOnError="true"/>
