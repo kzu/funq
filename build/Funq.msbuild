@@ -1,0 +1,140 @@
+<Project DefaultTargets="Build"
+				 xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+	<UsingTask
+		AssemblyFile="CodePlex.MSBuildTasks.dll"
+		TaskName="CodePlex.MSBuildTasks.RegexReplace"/>
+	<UsingTask
+		AssemblyFile="CodePlex.MSBuildTasks.dll"
+		TaskName="CodePlex.MSBuildTasks.Unzip"/>
+	<UsingTask
+		AssemblyFile="CodePlex.MSBuildTasks.dll"
+		TaskName="CodePlex.MSBuildTasks.Zip"/>
+
+	<!-- Settings -->
+
+	<PropertyGroup>
+		<Configuration Condition="'$(Configuration)' == ''">Release</Configuration>
+		<TrackFileAccess>false</TrackFileAccess>
+	</PropertyGroup>
+
+	<!-- Cascading attempts to find a build number -->
+
+	<PropertyGroup Condition="'$(BuildNumber)' == ''">
+		<BuildNumber>$(BUILD_NUMBER)</BuildNumber>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(BuildNumber)' == ''">
+		<BuildNumber>$(ccnetlabel)</BuildNumber>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(BuildNumber)' == ''">
+		<BuildNumber>0</BuildNumber>
+	</PropertyGroup>
+
+	<!-- Build server targets -->
+
+	<Target Name="CI"
+					DependsOnTargets="Clean;SetVersionNumber;Build;Zip" />
+	 <Target Name="Drop" DependsOnTargets="Clean;SetVersionNumber;Build;Reflection;Help;Zip" /> 
+
+	<!-- Individiual targets -->
+
+	<Target Name="Clean">
+		<ItemGroup>
+			<CleanFileList
+				Include="*.zip;TestResults.xml"/>
+		</ItemGroup>
+		<Delete Files="@(CleanFileList)"/>
+		<MSBuild
+			Projects="..\src\Funq.sln"
+			Targets="Clean"
+			Properties="Configuration=$(Configuration);TrackFileAccess=$(TrackFileAccess)"/>
+		<RemoveDir Directories="..\src\Binaries"
+							 ContinueOnError="true"/>
+	</Target>
+
+	<Target Name="Build">
+		<MSBuild
+			Projects="..\src\Funq.sln"
+			Targets="Build"
+			Properties="Configuration=$(Configuration);TrackFileAccess=$(TrackFileAccess)"/>
+	</Target>
+
+	<!-- Help Project Setup -->
+	<PropertyGroup>
+		<NetfxVer>3.5</NetfxVer>
+		<Sandcastle>Sandcastle</Sandcastle>
+		<PresentationStyle>vs2005</PresentationStyle>
+		<ProductionTools>ProductionTools</ProductionTools>
+		<ProductionTransforms>ProductionTransforms</ProductionTransforms>
+		<TmpPath>Data\Tmp</TmpPath>
+		<DestPath>Data\Reflection</DestPath>
+	</PropertyGroup>
+	<ItemGroup>
+		<AssemblyFolders Include="$(WINDIR)\Microsoft.NET\Framework\v4.0.30319\*.dll" />
+		<AssemblyFolders Include="$(ProgramFiles)\Reference Assemblies\Microsoft\Framework\v3.5\*.dll"/>
+	</ItemGroup>
+
+	<Target Name="Reflection" Condition="!Exists('$(Sandcastle)\$(DestPath)')">
+		<MakeDir Directories="$(Sandcastle)\$(TmpPath)"
+						 Condition="!Exists('$(Sandcastle)\$(TmpPath)')" />
+		<MakeDir Directories="$(Sandcastle)\$(DestPath)"
+						 Condition="!Exists('$(Sandcastle)\$(DestPath)')" />
+		
+		<CreateItem Include="@(AssemblyFolders->'%(FullPath)')">
+			<Output ItemName="Assemblies"
+							TaskParameter="Include"/>
+		</CreateItem>
+		
+		<Exec ContinueOnError="true"
+					IgnoreExitCode="true"
+					Command="$(ProductionTools)\Mrefbuilder.exe &quot;%(Assemblies.FullPath)&quot; /out:&quot;$(TmpPath)\%(Assemblies.FileName).xml&quot;"
+					WorkingDirectory="$(Sandcastle)"/>
+		
+		<Exec ContinueOnError="true"
+					IgnoreExitCode="true"
+					Command="$(ProductionTools)\XslTransform.exe /xsl:&quot;$(ProductionTransforms)\ApplyVSDocModel.xsl&quot; /xsl:&quot;$(ProductionTransforms)\AddFriendlyFilenames.xsl&quot; &quot;$(TmpPath)\%(Assemblies.FileName).xml&quot; /out:&quot;$(DestPath)\%(Assemblies.FileName).xml&quot; /arg:IncludeAllMembersTopic=true /arg:IncludeInheritedOverloadTopics=true"
+					WorkingDirectory="$(Sandcastle)"/>
+	</Target>
+	
+	<Target Name="Help">		
+		<MSBuild
+			Projects="Funq.shfbproj"
+			Targets="Build"/>
+		<Copy SourceFiles="Help\Funq.chm"
+					DestinationFiles="..\src\Binaries\Funq.chm" />
+	</Target>
+
+	<Target Name="SetVersionNumber">
+		<RegexReplace
+			Pattern='AssemblyVersion\("(\d+\.\d+\.\d+)\.\d+"\)'
+			Replacement='AssemblyVersion("$1.$(BuildNumber)")'
+			Files='..\src\GlobalAssemblyInfo.cs'/>
+	</Target>
+
+	<Target Name="Zip">
+
+		<MakeDir Directories="..\drop"
+						 Condition="!Exists(..\drop)" />
+
+		<ItemGroup>
+			<ZipFileList Include="..\src\Binaries\*.dll"/>
+			<ZipFileList Include="..\src\Binaries\*.xml"/>
+			<ZipFileList Include="..\src\Binaries\*.chm"/>
+		</ItemGroup>
+		<Delete Files="..\drop\moq-build-$(BuildNumber).zip"/>
+		<Zip
+			ZipFileName="..\drop\moq-build-$(BuildNumber).zip"
+			Files="@(ZipFileList)"
+			StripPath="true"/>
+
+		<ItemGroup>
+			<ZipPdbFileList Include="..\src\Binaries\*.pdb"/>
+		</ItemGroup>
+		<Delete Files="..\drop\moq-symbols-$(BuildNumber).zip"/>
+		<Zip
+			ZipFileName="..\drop\moq-symbols-$(BuildNumber).zip"
+			Files="@(ZipPdbFileList)"
+			StripPath="true"/>
+	</Target>
+
+</Project>
