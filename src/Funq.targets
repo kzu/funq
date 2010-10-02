@@ -17,7 +17,7 @@
 					Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\TextTemplating\v10.0\Microsoft.TextTemplating.targets" />
 
 	<!-- Copy Binaries -->
-	<Target Name="AfterBuild"
+	<!--<Target Name="AfterBuild"
 					Condition="!$(AssemblyName.Contains('Test'))">
 		<Exec Command="mkdir &quot;$(BinariesFolder)&quot;"
 					Condition="!(Exists($(BinariesFolder)))"
@@ -28,6 +28,6 @@
 		<Copy SourceFiles="@(BinariesToCopy)"
 					DestinationFolder="$(BinariesFolder)"
 					OverwriteReadOnlyFiles="true" />
-	</Target>
+	</Target>-->
 
 </Project>

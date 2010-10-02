@@ -49,8 +49,8 @@
 			Projects="..\src\Funq.sln"
 			Targets="Clean"
 			Properties="Configuration=$(Configuration);TrackFileAccess=$(TrackFileAccess)"/>
-		<RemoveDir Directories="..\src\Binaries"
-							 ContinueOnError="true"/>
+		<Exec Command="RmDir /S Funq" />
+		<Exec Command="RmDir /S Drop" />
 	</Target>
 
 	<Target Name="Build">
@@ -60,32 +60,32 @@
 		<MSBuild
 			Projects="..\src\Core\Source\Funq.csproj"
 			Properties="TargetFrameworkVersion=v4.0;Configuration=$(Configuration);TrackFileAccess=$(TrackFileAccess)"/>
-		<Exec Command="xcopy ..\src\Core\Source\bin\$(Configuration)\*.* Funq\NET40\ /Y /F" />
+		<Exec Command="xcopy ..\src\Core\Source\bin\$(Configuration)\Funq.* Funq\NET40\ /Y /F" />
 		<!-- NET35 -->
 		<MSBuild
 			Projects="..\src\Core\Source\Funq.csproj"
 			Properties="TargetFrameworkVersion=v3.5;Configuration=$(Configuration);TrackFileAccess=$(TrackFileAccess)"/>
-		<Exec Command="xcopy ..\src\Core\Source\bin\$(Configuration)\*.* Funq\NET35\ /Y /F" />
+		<Exec Command="xcopy ..\src\Core\Source\bin\$(Configuration)\Funq.* Funq\NET35\ /Y /F" />
 		<!-- SL3 -->
 		<MSBuild
 			Projects="..\src\Silverlight\Source\Funq.Silverlight.csproj"
 			Properties="TargetFrameworkVersion=v3.0;Configuration=$(Configuration);TrackFileAccess=$(TrackFileAccess)"/>
-		<Exec Command="xcopy ..\src\Silverlight\Source\bin\$(Configuration)\*.* Funq\SL3\ /Y /F" />
+		<Exec Command="xcopy ..\src\Silverlight\Source\bin\$(Configuration)\Funq.* Funq\SL3\ /Y /F" />
 		<!-- SL4 -->
 		<MSBuild
 			Projects="..\src\Silverlight\Source\Funq.Silverlight.csproj"
 			Properties="TargetFrameworkVersion=v4.0;Configuration=$(Configuration);TrackFileAccess=$(TrackFileAccess)"/>
-		<Exec Command="xcopy ..\src\Silverlight\Source\bin\$(Configuration)\*.* Funq\SL4\ /Y /F" />
+		<Exec Command="xcopy ..\src\Silverlight\Source\bin\$(Configuration)\Funq.* Funq\SL4\ /Y /F" />
 		<!-- WP7 -->
 		<MSBuild
 			Projects="..\src\WindowsPhone\Source\Funq.WindowsPhone.csproj"
 			Properties="TargetFrameworkVersion=v4.0;Configuration=$(Configuration);TrackFileAccess=$(TrackFileAccess)"/>
-		<Exec Command="xcopy ..\src\WindowsPhone\Source\bin\$(Configuration)\*.* Funq\WP7\ /Y /F" />
+		<Exec Command="xcopy ..\src\WindowsPhone\Source\bin\$(Configuration)\Funq.* Funq\WP7\ /Y /F" />
 
 		<!-- Last pass to get the tests ready -->
 		<MSBuild
 			Projects="..\src\Funq.sln"
-			Targets="Build"
+			Targets="Rebuild"
 			Properties="Configuration=$(Configuration);TrackFileAccess=$(TrackFileAccess)"/>
 
 
@@ -134,7 +134,7 @@
 			Projects="Funq.shfbproj"
 			Targets="Build"/>
 		<Copy SourceFiles="Help\Funq.chm"
-					DestinationFiles="..\src\Binaries\Funq.chm" />
+					DestinationFiles="Funq\Funq.chm" />
 	</Target>
 
 	<Target Name="SetVersionNumber">
@@ -145,27 +145,25 @@
 	</Target>
 
 	<Target Name="Zip">
-
-		<MakeDir Directories="..\drop"
-						 Condition="!Exists(..\drop)" />
+		<Exec Command="RmDir /S Drop" />
+		<MakeDir Directories="Drop" />
 
 		<ItemGroup>
 			<ZipFileList Include="Funq\**\*.dll"/>
 			<ZipFileList Include="Funq\**\*.xml"/>
 			<ZipFileList Include="Funq\**\*.chm"/>
 		</ItemGroup>
-		<Delete Files="..\drop\moq-build-$(BuildNumber).zip"/>
+		<Delete Files="Drop\funq-build-$(BuildNumber).zip"/>
 		<Zip
-			Directory="Funq"
-			ZipFileName="..\drop\moq-build-$(BuildNumber).zip"
+			ZipFileName="Drop\funq-build-$(BuildNumber).zip"
 			Files="@(ZipFileList)"/>
 
 		<ItemGroup>
 			<ZipPdbFileList Include="Funq\**\*.pdb"/>
 		</ItemGroup>
-		<Delete Files="..\drop\moq-symbols-$(BuildNumber).zip"/>
+		<Delete Files="Drop\funq-symbols-$(BuildNumber).zip"/>
 		<Zip
-			ZipFileName="..\drop\moq-symbols-$(BuildNumber).zip"
+			ZipFileName="Drop\funq-symbols-$(BuildNumber).zip"
 			Files="@(ZipPdbFileList)"/>
 	</Target>
 
