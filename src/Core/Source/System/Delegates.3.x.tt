@@ -4,7 +4,7 @@
 <#@ Import Namespace="System.Linq" #>
 <#@ Include File="..\Header.tt" #>
 
-#if NET3x
+#if NET3x || WINDOWS_PHONE
 using System.Diagnostics.CodeAnalysis;
 
 namespace System

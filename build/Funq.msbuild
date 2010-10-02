@@ -34,7 +34,8 @@
 
 	<Target Name="CI"
 					DependsOnTargets="Clean;SetVersionNumber;Build;Zip" />
-	 <Target Name="Drop" DependsOnTargets="Clean;SetVersionNumber;Build;Reflection;Help;Zip" /> 
+	<Target Name="Drop"
+					DependsOnTargets="Clean;SetVersionNumber;Build;Reflection;Help;Zip" />
 
 	<!-- Individiual targets -->
 
@@ -53,10 +54,41 @@
 	</Target>
 
 	<Target Name="Build">
+		<Exec Command="RmDir /S Funq" />
+		
+		<!-- NET40 -->
+		<MSBuild
+			Projects="..\src\Core\Source\Funq.csproj"
+			Properties="TargetFrameworkVersion=v4.0;Configuration=$(Configuration);TrackFileAccess=$(TrackFileAccess)"/>
+		<Exec Command="xcopy ..\src\Core\Source\bin\$(Configuration)\*.* Funq\NET40\ /Y /F" />
+		<!-- NET35 -->
+		<MSBuild
+			Projects="..\src\Core\Source\Funq.csproj"
+			Properties="TargetFrameworkVersion=v3.5;Configuration=$(Configuration);TrackFileAccess=$(TrackFileAccess)"/>
+		<Exec Command="xcopy ..\src\Core\Source\bin\$(Configuration)\*.* Funq\NET35\ /Y /F" />
+		<!-- SL3 -->
+		<MSBuild
+			Projects="..\src\Silverlight\Source\Funq.Silverlight.csproj"
+			Properties="TargetFrameworkVersion=v3.0;Configuration=$(Configuration);TrackFileAccess=$(TrackFileAccess)"/>
+		<Exec Command="xcopy ..\src\Silverlight\Source\bin\$(Configuration)\*.* Funq\SL3\ /Y /F" />
+		<!-- SL4 -->
+		<MSBuild
+			Projects="..\src\Silverlight\Source\Funq.Silverlight.csproj"
+			Properties="TargetFrameworkVersion=v4.0;Configuration=$(Configuration);TrackFileAccess=$(TrackFileAccess)"/>
+		<Exec Command="xcopy ..\src\Silverlight\Source\bin\$(Configuration)\*.* Funq\SL4\ /Y /F" />
+		<!-- WP7 -->
+		<MSBuild
+			Projects="..\src\WindowsPhone\Source\Funq.WindowsPhone.csproj"
+			Properties="TargetFrameworkVersion=v4.0;Configuration=$(Configuration);TrackFileAccess=$(TrackFileAccess)"/>
+		<Exec Command="xcopy ..\src\WindowsPhone\Source\bin\$(Configuration)\*.* Funq\WP7\ /Y /F" />
+
+		<!-- Last pass to get the tests ready -->
 		<MSBuild
 			Projects="..\src\Funq.sln"
 			Targets="Build"
 			Properties="Configuration=$(Configuration);TrackFileAccess=$(TrackFileAccess)"/>
+
+
 	</Target>
 
 	<!-- Help Project Setup -->
@@ -74,29 +106,30 @@
 		<AssemblyFolders Include="$(ProgramFiles)\Reference Assemblies\Microsoft\Framework\v3.5\*.dll"/>
 	</ItemGroup>
 
-	<Target Name="Reflection" Condition="!Exists('$(Sandcastle)\$(DestPath)')">
+	<Target Name="Reflection"
+					Condition="!Exists('$(Sandcastle)\$(DestPath)')">
 		<MakeDir Directories="$(Sandcastle)\$(TmpPath)"
 						 Condition="!Exists('$(Sandcastle)\$(TmpPath)')" />
 		<MakeDir Directories="$(Sandcastle)\$(DestPath)"
 						 Condition="!Exists('$(Sandcastle)\$(DestPath)')" />
-		
+
 		<CreateItem Include="@(AssemblyFolders->'%(FullPath)')">
 			<Output ItemName="Assemblies"
 							TaskParameter="Include"/>
 		</CreateItem>
-		
+
 		<Exec ContinueOnError="true"
 					IgnoreExitCode="true"
 					Command="$(ProductionTools)\Mrefbuilder.exe &quot;%(Assemblies.FullPath)&quot; /out:&quot;$(TmpPath)\%(Assemblies.FileName).xml&quot;"
 					WorkingDirectory="$(Sandcastle)"/>
-		
+
 		<Exec ContinueOnError="true"
 					IgnoreExitCode="true"
 					Command="$(ProductionTools)\XslTransform.exe /xsl:&quot;$(ProductionTransforms)\ApplyVSDocModel.xsl&quot; /xsl:&quot;$(ProductionTransforms)\AddFriendlyFilenames.xsl&quot; &quot;$(TmpPath)\%(Assemblies.FileName).xml&quot; /out:&quot;$(DestPath)\%(Assemblies.FileName).xml&quot; /arg:IncludeAllMembersTopic=true /arg:IncludeInheritedOverloadTopics=true"
 					WorkingDirectory="$(Sandcastle)"/>
 	</Target>
-	
-	<Target Name="Help">		
+
+	<Target Name="Help">
 		<MSBuild
 			Projects="Funq.shfbproj"
 			Targets="Build"/>
@@ -117,24 +150,23 @@
 						 Condition="!Exists(..\drop)" />
 
 		<ItemGroup>
-			<ZipFileList Include="..\src\Binaries\*.dll"/>
-			<ZipFileList Include="..\src\Binaries\*.xml"/>
-			<ZipFileList Include="..\src\Binaries\*.chm"/>
+			<ZipFileList Include="Funq\**\*.dll"/>
+			<ZipFileList Include="Funq\**\*.xml"/>
+			<ZipFileList Include="Funq\**\*.chm"/>
 		</ItemGroup>
 		<Delete Files="..\drop\moq-build-$(BuildNumber).zip"/>
 		<Zip
+			Directory="Funq"
 			ZipFileName="..\drop\moq-build-$(BuildNumber).zip"
-			Files="@(ZipFileList)"
-			StripPath="true"/>
+			Files="@(ZipFileList)"/>
 
 		<ItemGroup>
-			<ZipPdbFileList Include="..\src\Binaries\*.pdb"/>
+			<ZipPdbFileList Include="Funq\**\*.pdb"/>
 		</ItemGroup>
 		<Delete Files="..\drop\moq-symbols-$(BuildNumber).zip"/>
 		<Zip
 			ZipFileName="..\drop\moq-symbols-$(BuildNumber).zip"
-			Files="@(ZipPdbFileList)"
-			StripPath="true"/>
+			Files="@(ZipPdbFileList)"/>
 	</Target>
 
 </Project>

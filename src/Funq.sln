@@ -23,6 +23,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Funq.Silverlight", "Silverl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Funq.Silverlight.Tests", "Silverlight\UnitTests\Funq.Silverlight.Tests.csproj", "{3F9ACA78-D409-4E60-8C32-A1FF5498F771}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WindowsPhone", "WindowsPhone", "{0E1B7238-782E-4588-8E79-94CA948BA55D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Funq.WindowsPhone", "WindowsPhone\Source\Funq.WindowsPhone.csproj", "{A046BB8A-1AE2-4673-AA33-1AF8A706BAEE}"
+EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = Funq.vsmdi
@@ -48,6 +52,10 @@ Global
 		{3F9ACA78-D409-4E60-8C32-A1FF5498F771}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3F9ACA78-D409-4E60-8C32-A1FF5498F771}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3F9ACA78-D409-4E60-8C32-A1FF5498F771}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A046BB8A-1AE2-4673-AA33-1AF8A706BAEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A046BB8A-1AE2-4673-AA33-1AF8A706BAEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A046BB8A-1AE2-4673-AA33-1AF8A706BAEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A046BB8A-1AE2-4673-AA33-1AF8A706BAEE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -57,5 +65,6 @@ Global
 		{E655E463-B7E3-4BF4-B02F-3E1B98C1353D} = {A94C8911-254D-41AC-ADD4-FB5DE741670B}
 		{0F0175C7-9CCD-4C05-94DE-308E83A8B317} = {06B69B84-3896-4E93-BF25-81044FE8A572}
 		{3F9ACA78-D409-4E60-8C32-A1FF5498F771} = {06B69B84-3896-4E93-BF25-81044FE8A572}
+		{A046BB8A-1AE2-4673-AA33-1AF8A706BAEE} = {0E1B7238-782E-4588-8E79-94CA948BA55D}
 	EndGlobalSection
 EndGlobal
