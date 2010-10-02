@@ -1,0 +1,5 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ output extension=".cs" #>
+<#@ include file="..\..\..\PublicKey.ttinclude" #>
+[assembly: System.Runtime.CompilerServices.InternalsVisibleTo("Funq.Tests, PublicKey=<#= PublicKey #>")]
+[assembly: System.Runtime.CompilerServices.InternalsVisibleTo("Funq.Silverlight.Tests, PublicKey=<#= PublicKey #>")]

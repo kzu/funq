@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+	<!-- T4 Targets -->
+	<Target Name="CopyPublicKeyInclude">
+		<Copy Condition="Exists($(CIKey))"
+					SourceFiles="$(RootDir)PublicKey.CI.ttinclude"
+					DestinationFiles="$(RootDir)PublicKey.ttinclude"
+					SkipUnchangedFiles="true"/>
+		<Copy Condition="Exists($(DropKey))"
+					SourceFiles="$(RootDir)PublicKey.Drop.ttinclude"
+					DestinationFiles="$(RootDir)PublicKey.ttinclude"
+					SkipUnchangedFiles="true"/>
+	</Target>
+
+	<Import Condition="'$(Configuration)' == 'Release'"
+					Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\TextTemplating\v10.0\Microsoft.TextTemplating.targets" />
+
+	<!-- Copy Binaries -->
+	<Target Name="AfterBuild"
+					Condition="!$(AssemblyName.Contains('Test'))">
+		<Exec Command="mkdir &quot;$(BinariesFolder)&quot;"
+					Condition="!(Exists($(BinariesFolder)))"
+					ContinueOnError="true"/>
+		<CreateItem Include="$(OutDir)$(TargetName).*">
+			<Output ItemName="BinariesToCopy" TaskParameter="Include"/>
+		</CreateItem>
+		<Copy SourceFiles="@(BinariesToCopy)"
+					DestinationFolder="$(BinariesFolder)"
+					OverwriteReadOnlyFiles="true" />
+	</Target>
+
+</Project>
