@@ -10,8 +10,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Funq</RootNamespace>
     <AssemblyName>Funq</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <Optimize>false</Optimize>
@@ -32,8 +33,8 @@
     <DebugSymbols>true</DebugSymbols>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
-	<Import Project="..\..\Funq.properties" />
-	<ItemGroup>
+  <Import Project="..\..\Funq.properties" />
+  <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -42,17 +43,40 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Action.cs" />
     <Compile Include="Container.cs" />
-    <Compile Include="Func.cs" />
+    <Compile Include="Container.LazyResolve.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Container.LazyResolve.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Container.Register.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Container.Register.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Container.Resolve.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Container.Resolve.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Container.ResolveImpl.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Container.ResolveImpl.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Container.TryResolve.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Container.TryResolve.tt</DependentUpon>
+    </Compile>
     <Compile Include="IFluentInterface.cs" />
     <Compile Include="IFunqlet.cs" />
     <Compile Include="Owner.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-		<Compile Include="..\..\GlobalAssemblyInfo.cs">
-			<Link>Properties\GlobalAssemblyInfo.cs</Link>
-		</Compile>
-		<Compile Include="Properties\InternalsVisibleTo.cs">
+    <Compile Include="..\..\GlobalAssemblyInfo.cs">
+      <Link>Properties\GlobalAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="Properties\InternalsVisibleTo.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>InternalsVisibleTo.tt</DependentUpon>
@@ -68,6 +92,16 @@
     <Compile Include="ServiceEntry.Generic.cs" />
     <Compile Include="ServiceKey.cs" />
     <Compile Include="Syntax.cs" />
+    <Compile Include="System\Delegates.2.0.cs">
+      <DependentUpon>Delegates.2.0.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="System\Delegates.3.x.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Delegates.3.x.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -79,18 +113,60 @@
     <None Include="..\..\Funq.snk">
       <Link>Funq.snk</Link>
     </None>
-    <Compile Include="Container.Overloads.cs">
+    <None Include="Container.LazyResolve.tt">
       <DependentUpon>Container.cs</DependentUpon>
-    </Compile>
-    <None Include="Container.xdoc" />
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Container.LazyResolve.cs</LastGenOutput>
+    </None>
+    <None Include="Container.ResolveImpl.tt">
+      <DependentUpon>Container.cs</DependentUpon>
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Container.ResolveImpl.cs</LastGenOutput>
+    </None>
+    <None Include="Container.Register.tt">
+      <DependentUpon>Container.cs</DependentUpon>
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Container.Register.cs</LastGenOutput>
+    </None>
+    <None Include="Container.Resolve.tt">
+      <DependentUpon>Container.cs</DependentUpon>
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Container.Resolve.cs</LastGenOutput>
+    </None>
+    <None Include="Container.TryResolve.tt">
+      <DependentUpon>Container.cs</DependentUpon>
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Container.TryResolve.cs</LastGenOutput>
+    </None>
+    <None Include="Funq.Overloads.tt">
+      <DependentUpon>Funq.xdoc</DependentUpon>
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Funq.Overloads.xdoc</LastGenOutput>
+    </None>
+    <None Include="Funq.Overloads.xdoc">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Funq.Overloads.tt</DependentUpon>
+    </None>
+    <None Include="Funq.xdoc" />
+    <None Include="Header.tt" />
+    <None Include="Helpers.tt" />
     <None Include="Properties\InternalsVisibleTo.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>InternalsVisibleTo.cs</LastGenOutput>
+    </None>
+    <None Include="System\Delegates.2.0.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Delegates.2.0.cs</LastGenOutput>
+    </None>
+    <None Include="System\Delegates.3.x.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Delegates.3.x.cs</LastGenOutput>
     </None>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-	<Import Project="..\..\Funq.targets" />
+  <Import Project="..\..\Funq.targets" />
 </Project>

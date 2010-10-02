@@ -1,0 +1,41 @@
+﻿<#@ Template Debug="false" HostSpecific="false" Language="C#" #>
+<#@ Output Extension=".cs" #>
+<#@ Assembly Name="System.Core" #>
+<#@ Import Namespace="System.Linq" #>
+<#@ Include File="Header.tt" #>
+
+using System;
+using System.Diagnostics;
+
+namespace Funq
+{
+	partial class Container
+	{
+		/* Contain just the typed overloads that are just pass-through to the real implementations.
+		 * They all have DebuggerStepThrough to ease debugging. */
+
+<#
+for (var typeCount = 2; typeCount <= GenericTypeMax - 2; typeCount++)
+{
+    var typeList = GetGenericList(typeCount, "T{0}");
+#>
+		/// <include file='Funq.Overloads.xdoc' path='docs/doc[@for="Container.Register{TService, <#=typeList #>}(factory)"]/*'/>
+		[DebuggerStepThrough]
+		public IRegistration<TService> Register<TService, <#=typeList #>>(Func<Container, <#=typeList #>, TService> factory)
+		{
+			return Register(null, factory);
+		}
+
+		/// <include file='Funq.Overloads.xdoc' path='docs/doc[@for="Container.Register{TService, <#=typeList #>}(name, factory)"]/*'/>
+		[DebuggerStepThrough]
+		public IRegistration<TService> Register<TService, <#=typeList #>>(string name, Func<Container, <#=typeList #>, TService> factory)
+		{
+			return RegisterImpl<TService, Func<Container, <#=typeList #>, TService>>(name, factory);
+		}
+
+<#
+}
+#>
+	}
+}
+<#@ Include File="Helpers.tt" #>

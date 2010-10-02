@@ -1,0 +1,44 @@
+﻿<#@ Template Debug="false" HostSpecific="false" Language="C#" #>
+<#@ Output Extension=".cs" #>
+<#@ Assembly Name="System.Core" #>
+<#@ Import Namespace="System.Linq" #>
+<#@ Include File="Header.tt" #>
+
+using System;
+using System.Diagnostics;
+
+namespace Funq
+{
+	partial class Container
+	{
+		/* Contain just the typed overloads that are just pass-through to the real implementations.
+		 * They all have DebuggerStepThrough to ease debugging. */
+
+<#
+for (var typeCount = 2; typeCount <= GenericTypeMax - 2; typeCount++)
+{
+    var typeList = GetGenericList(typeCount, "T{0}");
+    var argumentList = GetGenericList(typeCount, "T{0} arg{0}");
+    var valueList = GetGenericList(typeCount, "arg{0}");
+#>
+		/// <include file='Funq.Overloads.xdoc' path='docs/doc[@for="Container.LazyResolve{TService, <#=typeList #>}"]/*'/>
+		[DebuggerStepThrough]
+		public Func<<#=typeList #>, TService> LazyResolve<TService, <#=typeList #>>()
+		{
+			return LazyResolveNamed<TService, <#=typeList #>>(null);
+		}
+
+		/// <include file='Funq.Overloads.xdoc' path='docs/doc[@for="Container.LazyResolveNamed{TService, <#=typeList #>}"]/*'/>
+		[DebuggerStepThrough]
+		public Func<<#=typeList #>, TService> LazyResolveNamed<TService, <#=typeList #>>(string name)
+		{
+			ThrowIfNotRegistered<TService, Func<Container, <#=typeList #>, TService>>(name);
+			return (<#=valueList #>) => ResolveNamed<TService, <#=typeList #>>(name, <#=valueList #>);
+		}
+
+<#
+}
+#>
+	}
+}
+<#@ Include File="Helpers.tt" #>

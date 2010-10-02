@@ -775,8 +775,8 @@ namespace Funq.Tests
 			container.Register("foo", c => new Foo("foo"));
 			container.Register("bar", c => new Foo("bar"));
 
-			var foo = container.LazyResolve<Foo>("foo");
-			var bar = container.LazyResolve<Foo>("bar");
+			var foo = container.LazyResolveNamed<Foo>("foo");
+			var bar = container.LazyResolveNamed<Foo>("bar");
 
 			Assert.IsNotNull(foo);
 			Assert.IsNotNull(bar);
@@ -959,7 +959,7 @@ namespace Funq.Tests
 
 			try
 			{
-				container.LazyResolve<IFoo>("foo");
+				container.LazyResolveNamed<IFoo>("foo");
 				Assert.Fail("Should have failed to resolve the lazy func");
 			}
 			catch (ResolutionException)
@@ -968,7 +968,7 @@ namespace Funq.Tests
 
 			try
 			{
-				container.LazyResolve<IFoo, string>("foo");
+				container.LazyResolveNamed<IFoo, string>("foo");
 				Assert.Fail("Should have failed to resolve the lazy func");
 			}
 			catch (ResolutionException)
@@ -977,7 +977,7 @@ namespace Funq.Tests
 
 			try
 			{
-				container.LazyResolve<IFoo, string, string>("foo");
+				container.LazyResolveNamed<IFoo, string, string>("foo");
 				Assert.Fail("Should have failed to resolve the lazy func");
 			}
 			catch (ResolutionException)
@@ -986,7 +986,7 @@ namespace Funq.Tests
 
 			try
 			{
-				container.LazyResolve<IFoo, string, string, string>("foo");
+				container.LazyResolveNamed<IFoo, string, string, string>("foo");
 				Assert.Fail("Should have failed to resolve the lazy func");
 			}
 			catch (ResolutionException)
@@ -995,7 +995,7 @@ namespace Funq.Tests
 
 			try
 			{
-				container.LazyResolve<IFoo, string, string, string, string>("foo");
+				container.LazyResolveNamed<IFoo, string, string, string, string>("foo");
 				Assert.Fail("Should have failed to resolve the lazy func");
 			}
 			catch (ResolutionException)
@@ -1004,7 +1004,7 @@ namespace Funq.Tests
 
 			try
 			{
-				container.LazyResolve<IFoo, string, string, string, string, string>("foo");
+				container.LazyResolveNamed<IFoo, string, string, string, string, string>("foo");
 				Assert.Fail("Should have failed to resolve the lazy func");
 			}
 			catch (ResolutionException)
@@ -1013,7 +1013,7 @@ namespace Funq.Tests
 
 			try
 			{
-				container.LazyResolve<IFoo, string, string, string, string, string, string>("foo");
+				container.LazyResolveNamed<IFoo, string, string, string, string, string, string>("foo");
 				Assert.Fail("Should have failed to resolve the lazy func");
 			}
 			catch (ResolutionException)

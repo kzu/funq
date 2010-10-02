@@ -12,6 +12,7 @@
     <RootNamespace>Funq</RootNamespace>
     <AssemblyName>Funq.Silverlight</AssemblyName>
     <TargetFrameworkVersion>v3.0</TargetFrameworkVersion>
+    <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
     <SilverlightApplication>false</SilverlightApplication>
     <ValidateXaml>true</ValidateXaml>
     <ThrowErrorsInValidation>false</ThrowErrorsInValidation>
@@ -39,16 +40,15 @@
     <WarningLevel>4</WarningLevel>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
-	<Import Project="..\..\Funq.properties" />
-	<PropertyGroup>
-		<SilverlightBuildResources>$(RootDir)Lib\Silverlight SDK\</SilverlightBuildResources>
-		<TargetFrameworkDirectory>$(SilverlightBuildResources)Reference Assemblies\</TargetFrameworkDirectory>
-		<TargetFrameworkSDKDirectory>$(SilverlightBuildResources)Libraries\Client\</TargetFrameworkSDKDirectory>
-		<SilverlightRuntimeVersion>2.0.31005.0</SilverlightRuntimeVersion>
-	</PropertyGroup>
-	<Import Project="$(SilverlightBuildResources)MSBuild\Microsoft.Silverlight.CSharp.targets" />
-	<Import Project="..\..\Funq.targets" />
-	<ItemGroup>
+  <Import Project="..\..\Funq.properties" />
+  <PropertyGroup>
+    <SilverlightBuildResources>$(RootDir)Lib\Silverlight\$(TargetFrameworkVersion)\</SilverlightBuildResources>
+    <TargetFrameworkDirectory>$(SilverlightBuildResources)Reference Assemblies\</TargetFrameworkDirectory>
+    <TargetFrameworkSDKDirectory>$(TargetFrameworkSDKDirectory)</TargetFrameworkSDKDirectory>
+  </PropertyGroup>
+  <Import Project="$(SilverlightBuildResources)MSBuild\Microsoft.Silverlight.CSharp.targets" />
+  <Import Project="..\..\Funq.targets" />
+  <ItemGroup>
     <Reference Include="mscorlib">
       <HintPath>$(TargetFrameworkDirectory)mscorlib.dll</HintPath>
     </Reference>
@@ -60,17 +60,28 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\..\Core\Source\Action.cs">
-      <Link>Action.cs</Link>
-    </Compile>
     <Compile Include="..\..\Core\Source\Container.cs">
       <Link>Container.cs</Link>
     </Compile>
-    <Compile Include="..\..\Core\Source\Container.Overloads.cs">
-      <Link>Container.Overloads.cs</Link>
+    <Compile Include="..\..\Core\Source\Container.LazyResolve.cs">
+      <Link>Container.LazyResolve.cs</Link>
+      <DependentUpon>Container.cs</DependentUpon>
     </Compile>
-    <Compile Include="..\..\Core\Source\Func.cs">
-      <Link>Func.cs</Link>
+    <Compile Include="..\..\Core\Source\Container.Register.cs">
+      <Link>Container.Register.cs</Link>
+      <DependentUpon>Container.cs</DependentUpon>
+    </Compile>
+    <Compile Include="..\..\Core\Source\Container.Resolve.cs">
+      <Link>Container.Resolve.cs</Link>
+      <DependentUpon>Container.cs</DependentUpon>
+    </Compile>
+    <Compile Include="..\..\Core\Source\Container.ResolveImpl.cs">
+      <Link>Container.ResolveImpl.cs</Link>
+      <DependentUpon>Container.cs</DependentUpon>
+    </Compile>
+    <Compile Include="..\..\Core\Source\Container.TryResolve.cs">
+      <Link>Container.TryResolve.cs</Link>
+      <DependentUpon>Container.cs</DependentUpon>
     </Compile>
     <Compile Include="..\..\Core\Source\IFluentInterface.cs">
       <Link>IFluentInterface.cs</Link>
@@ -102,6 +113,9 @@
     <Compile Include="..\..\Core\Source\Properties\AssemblyInfo.cs">
       <Link>Properties\AssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="..\..\Core\Source\System\Delegates.3.x.cs">
+      <Link>System\Delegates.3.x.cs</Link>
+    </Compile>
     <Compile Include="..\..\GlobalAssemblyInfo.cs">
       <Link>Properties\GlobalAssemblyInfo.cs</Link>
     </Compile>
@@ -115,8 +129,12 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\Core\Source\Container.xdoc">
-      <Link>Container.xdoc</Link>
+    <None Include="..\..\Core\Source\Funq.xdoc">
+      <Link>Funq.xdoc</Link>
+    </None>
+    <None Include="..\..\Core\Source\Funq.Overloads.xdoc">
+      <DependentUpon>Funq.xdoc</DependentUpon>
+      <Link>Funq.Overloads.xdoc</Link>
     </None>
     <Compile Include="..\..\Core\Source\Properties\InternalsVisibleTo.cs">
       <Link>Properties\InternalsVisibleTo.cs</Link>

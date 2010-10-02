@@ -1,0 +1,2136 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<docs>
+	<!-- LazyResolve -->
+	<doc for="Container.LazyResolve{TService, T1, T2, name}">
+		<summary>
+			Retrieves a function that can be used to lazily resolve an instance
+			of the service of the given type and service constructor arguments when needed.
+		</summary>
+		<typeparam name="TService">Type of the service.</typeparam>
+		<typeparam name="T1">Type of the one argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T2">Type of the two argument to pass to the factory delegate to create the instace.</typeparam>
+	
+		<returns>The function that can resolve to the service instance with the given service constructor arguments when invoked.</returns>
+		<exception cref="ResolutionException">The requested service with the given constructor arguments has not been registered previously.</exception>
+	</doc>
+	<doc for="Container.LazyResolve{TService, T1, T2, T3, name}">
+		<summary>
+			Retrieves a function that can be used to lazily resolve an instance
+			of the service of the given type and service constructor arguments when needed.
+		</summary>
+		<typeparam name="TService">Type of the service.</typeparam>
+		<typeparam name="T1">Type of the one argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T2">Type of the two argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T3">Type of the three argument to pass to the factory delegate to create the instace.</typeparam>
+	
+		<returns>The function that can resolve to the service instance with the given service constructor arguments when invoked.</returns>
+		<exception cref="ResolutionException">The requested service with the given constructor arguments has not been registered previously.</exception>
+	</doc>
+	<doc for="Container.LazyResolve{TService, T1, T2, T3, T4, name}">
+		<summary>
+			Retrieves a function that can be used to lazily resolve an instance
+			of the service of the given type and service constructor arguments when needed.
+		</summary>
+		<typeparam name="TService">Type of the service.</typeparam>
+		<typeparam name="T1">Type of the one argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T2">Type of the two argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T3">Type of the three argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T4">Type of the four argument to pass to the factory delegate to create the instace.</typeparam>
+	
+		<returns>The function that can resolve to the service instance with the given service constructor arguments when invoked.</returns>
+		<exception cref="ResolutionException">The requested service with the given constructor arguments has not been registered previously.</exception>
+	</doc>
+	<doc for="Container.LazyResolve{TService, T1, T2, T3, T4, T5, name}">
+		<summary>
+			Retrieves a function that can be used to lazily resolve an instance
+			of the service of the given type and service constructor arguments when needed.
+		</summary>
+		<typeparam name="TService">Type of the service.</typeparam>
+		<typeparam name="T1">Type of the one argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T2">Type of the two argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T3">Type of the three argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T4">Type of the four argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T5">Type of the five argument to pass to the factory delegate to create the instace.</typeparam>
+	
+		<returns>The function that can resolve to the service instance with the given service constructor arguments when invoked.</returns>
+		<exception cref="ResolutionException">The requested service with the given constructor arguments has not been registered previously.</exception>
+	</doc>
+	<doc for="Container.LazyResolve{TService, T1, T2, T3, T4, T5, T6, name}">
+		<summary>
+			Retrieves a function that can be used to lazily resolve an instance
+			of the service of the given type and service constructor arguments when needed.
+		</summary>
+		<typeparam name="TService">Type of the service.</typeparam>
+		<typeparam name="T1">Type of the one argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T2">Type of the two argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T3">Type of the three argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T4">Type of the four argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T5">Type of the five argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T6">Type of the six argument to pass to the factory delegate to create the instace.</typeparam>
+	
+		<returns>The function that can resolve to the service instance with the given service constructor arguments when invoked.</returns>
+		<exception cref="ResolutionException">The requested service with the given constructor arguments has not been registered previously.</exception>
+	</doc>
+	<doc for="Container.LazyResolve{TService, T1, T2, T3, T4, T5, T6, T7, name}">
+		<summary>
+			Retrieves a function that can be used to lazily resolve an instance
+			of the service of the given type and service constructor arguments when needed.
+		</summary>
+		<typeparam name="TService">Type of the service.</typeparam>
+		<typeparam name="T1">Type of the one argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T2">Type of the two argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T3">Type of the three argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T4">Type of the four argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T5">Type of the five argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T6">Type of the six argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T7">Type of the seven argument to pass to the factory delegate to create the instace.</typeparam>
+	
+		<returns>The function that can resolve to the service instance with the given service constructor arguments when invoked.</returns>
+		<exception cref="ResolutionException">The requested service with the given constructor arguments has not been registered previously.</exception>
+	</doc>
+	<doc for="Container.LazyResolve{TService, T1, T2, T3, T4, T5, T6, T7, T8, name}">
+		<summary>
+			Retrieves a function that can be used to lazily resolve an instance
+			of the service of the given type and service constructor arguments when needed.
+		</summary>
+		<typeparam name="TService">Type of the service.</typeparam>
+		<typeparam name="T1">Type of the one argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T2">Type of the two argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T3">Type of the three argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T4">Type of the four argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T5">Type of the five argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T6">Type of the six argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T7">Type of the seven argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T8">Type of the eight argument to pass to the factory delegate to create the instace.</typeparam>
+	
+		<returns>The function that can resolve to the service instance with the given service constructor arguments when invoked.</returns>
+		<exception cref="ResolutionException">The requested service with the given constructor arguments has not been registered previously.</exception>
+	</doc>
+	<doc for="Container.LazyResolve{TService, T1, T2, T3, T4, T5, T6, T7, T8, T9, name}">
+		<summary>
+			Retrieves a function that can be used to lazily resolve an instance
+			of the service of the given type and service constructor arguments when needed.
+		</summary>
+		<typeparam name="TService">Type of the service.</typeparam>
+		<typeparam name="T1">Type of the one argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T2">Type of the two argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T3">Type of the three argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T4">Type of the four argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T5">Type of the five argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T6">Type of the six argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T7">Type of the seven argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T8">Type of the eight argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T9">Type of the nine argument to pass to the factory delegate to create the instace.</typeparam>
+	
+		<returns>The function that can resolve to the service instance with the given service constructor arguments when invoked.</returns>
+		<exception cref="ResolutionException">The requested service with the given constructor arguments has not been registered previously.</exception>
+	</doc>
+	<doc for="Container.LazyResolve{TService, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, name}">
+		<summary>
+			Retrieves a function that can be used to lazily resolve an instance
+			of the service of the given type and service constructor arguments when needed.
+		</summary>
+		<typeparam name="TService">Type of the service.</typeparam>
+		<typeparam name="T1">Type of the one argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T2">Type of the two argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T3">Type of the three argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T4">Type of the four argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T5">Type of the five argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T6">Type of the six argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T7">Type of the seven argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T8">Type of the eight argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T9">Type of the nine argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T10">Type of the ten argument to pass to the factory delegate to create the instace.</typeparam>
+	
+		<returns>The function that can resolve to the service instance with the given service constructor arguments when invoked.</returns>
+		<exception cref="ResolutionException">The requested service with the given constructor arguments has not been registered previously.</exception>
+	</doc>
+	<doc for="Container.LazyResolve{TService, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, name}">
+		<summary>
+			Retrieves a function that can be used to lazily resolve an instance
+			of the service of the given type and service constructor arguments when needed.
+		</summary>
+		<typeparam name="TService">Type of the service.</typeparam>
+		<typeparam name="T1">Type of the one argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T2">Type of the two argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T3">Type of the three argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T4">Type of the four argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T5">Type of the five argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T6">Type of the six argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T7">Type of the seven argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T8">Type of the eight argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T9">Type of the nine argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T10">Type of the ten argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T11">Type of the eleven argument to pass to the factory delegate to create the instace.</typeparam>
+	
+		<returns>The function that can resolve to the service instance with the given service constructor arguments when invoked.</returns>
+		<exception cref="ResolutionException">The requested service with the given constructor arguments has not been registered previously.</exception>
+	</doc>
+	<doc for="Container.LazyResolve{TService, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, name}">
+		<summary>
+			Retrieves a function that can be used to lazily resolve an instance
+			of the service of the given type and service constructor arguments when needed.
+		</summary>
+		<typeparam name="TService">Type of the service.</typeparam>
+		<typeparam name="T1">Type of the one argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T2">Type of the two argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T3">Type of the three argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T4">Type of the four argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T5">Type of the five argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T6">Type of the six argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T7">Type of the seven argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T8">Type of the eight argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T9">Type of the nine argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T10">Type of the ten argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T11">Type of the eleven argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T12">Type of the twelve argument to pass to the factory delegate to create the instace.</typeparam>
+	
+		<returns>The function that can resolve to the service instance with the given service constructor arguments when invoked.</returns>
+		<exception cref="ResolutionException">The requested service with the given constructor arguments has not been registered previously.</exception>
+	</doc>
+	<doc for="Container.LazyResolve{TService, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, name}">
+		<summary>
+			Retrieves a function that can be used to lazily resolve an instance
+			of the service of the given type and service constructor arguments when needed.
+		</summary>
+		<typeparam name="TService">Type of the service.</typeparam>
+		<typeparam name="T1">Type of the one argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T2">Type of the two argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T3">Type of the three argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T4">Type of the four argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T5">Type of the five argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T6">Type of the six argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T7">Type of the seven argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T8">Type of the eight argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T9">Type of the nine argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T10">Type of the ten argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T11">Type of the eleven argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T12">Type of the twelve argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T13">Type of the thirteen argument to pass to the factory delegate to create the instace.</typeparam>
+	
+		<returns>The function that can resolve to the service instance with the given service constructor arguments when invoked.</returns>
+		<exception cref="ResolutionException">The requested service with the given constructor arguments has not been registered previously.</exception>
+	</doc>
+	<doc for="Container.LazyResolve{TService, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, name}">
+		<summary>
+			Retrieves a function that can be used to lazily resolve an instance
+			of the service of the given type and service constructor arguments when needed.
+		</summary>
+		<typeparam name="TService">Type of the service.</typeparam>
+		<typeparam name="T1">Type of the one argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T2">Type of the two argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T3">Type of the three argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T4">Type of the four argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T5">Type of the five argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T6">Type of the six argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T7">Type of the seven argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T8">Type of the eight argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T9">Type of the nine argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T10">Type of the ten argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T11">Type of the eleven argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T12">Type of the twelve argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T13">Type of the thirteen argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T14">Type of the fourteen argument to pass to the factory delegate to create the instace.</typeparam>
+	
+		<returns>The function that can resolve to the service instance with the given service constructor arguments when invoked.</returns>
+		<exception cref="ResolutionException">The requested service with the given constructor arguments has not been registered previously.</exception>
+	</doc>
+
+	<!-- LazyResolveNamed -->
+	<doc for="Container.LazyResolveNamed{TService, T1, T2, name}">
+		<summary>
+			Retrieves a function that can be used to lazily resolve an instance
+			of the service of the given type, name and service constructor arguments when needed.
+		</summary>
+		<param name="name">Name of the service to retrieve.</param>
+		<typeparam name="TService">Type of the service.</typeparam>
+		<typeparam name="T1">Type of the one argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T2">Type of the two argument to pass to the factory delegate to create the instace.</typeparam>
+	
+		<returns>The function that can resolve to the service instance with the given name and service constructor arguments when invoked.</returns>
+		<exception cref="ResolutionException">The requested service with the given name and constructor arguments has not been registered previously.</exception>
+	</doc>
+	<doc for="Container.LazyResolveNamed{TService, T1, T2, T3, name}">
+		<summary>
+			Retrieves a function that can be used to lazily resolve an instance
+			of the service of the given type, name and service constructor arguments when needed.
+		</summary>
+		<param name="name">Name of the service to retrieve.</param>
+		<typeparam name="TService">Type of the service.</typeparam>
+		<typeparam name="T1">Type of the one argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T2">Type of the two argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T3">Type of the three argument to pass to the factory delegate to create the instace.</typeparam>
+	
+		<returns>The function that can resolve to the service instance with the given name and service constructor arguments when invoked.</returns>
+		<exception cref="ResolutionException">The requested service with the given name and constructor arguments has not been registered previously.</exception>
+	</doc>
+	<doc for="Container.LazyResolveNamed{TService, T1, T2, T3, T4, name}">
+		<summary>
+			Retrieves a function that can be used to lazily resolve an instance
+			of the service of the given type, name and service constructor arguments when needed.
+		</summary>
+		<param name="name">Name of the service to retrieve.</param>
+		<typeparam name="TService">Type of the service.</typeparam>
+		<typeparam name="T1">Type of the one argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T2">Type of the two argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T3">Type of the three argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T4">Type of the four argument to pass to the factory delegate to create the instace.</typeparam>
+	
+		<returns>The function that can resolve to the service instance with the given name and service constructor arguments when invoked.</returns>
+		<exception cref="ResolutionException">The requested service with the given name and constructor arguments has not been registered previously.</exception>
+	</doc>
+	<doc for="Container.LazyResolveNamed{TService, T1, T2, T3, T4, T5, name}">
+		<summary>
+			Retrieves a function that can be used to lazily resolve an instance
+			of the service of the given type, name and service constructor arguments when needed.
+		</summary>
+		<param name="name">Name of the service to retrieve.</param>
+		<typeparam name="TService">Type of the service.</typeparam>
+		<typeparam name="T1">Type of the one argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T2">Type of the two argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T3">Type of the three argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T4">Type of the four argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T5">Type of the five argument to pass to the factory delegate to create the instace.</typeparam>
+	
+		<returns>The function that can resolve to the service instance with the given name and service constructor arguments when invoked.</returns>
+		<exception cref="ResolutionException">The requested service with the given name and constructor arguments has not been registered previously.</exception>
+	</doc>
+	<doc for="Container.LazyResolveNamed{TService, T1, T2, T3, T4, T5, T6, name}">
+		<summary>
+			Retrieves a function that can be used to lazily resolve an instance
+			of the service of the given type, name and service constructor arguments when needed.
+		</summary>
+		<param name="name">Name of the service to retrieve.</param>
+		<typeparam name="TService">Type of the service.</typeparam>
+		<typeparam name="T1">Type of the one argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T2">Type of the two argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T3">Type of the three argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T4">Type of the four argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T5">Type of the five argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T6">Type of the six argument to pass to the factory delegate to create the instace.</typeparam>
+	
+		<returns>The function that can resolve to the service instance with the given name and service constructor arguments when invoked.</returns>
+		<exception cref="ResolutionException">The requested service with the given name and constructor arguments has not been registered previously.</exception>
+	</doc>
+	<doc for="Container.LazyResolveNamed{TService, T1, T2, T3, T4, T5, T6, T7, name}">
+		<summary>
+			Retrieves a function that can be used to lazily resolve an instance
+			of the service of the given type, name and service constructor arguments when needed.
+		</summary>
+		<param name="name">Name of the service to retrieve.</param>
+		<typeparam name="TService">Type of the service.</typeparam>
+		<typeparam name="T1">Type of the one argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T2">Type of the two argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T3">Type of the three argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T4">Type of the four argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T5">Type of the five argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T6">Type of the six argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T7">Type of the seven argument to pass to the factory delegate to create the instace.</typeparam>
+	
+		<returns>The function that can resolve to the service instance with the given name and service constructor arguments when invoked.</returns>
+		<exception cref="ResolutionException">The requested service with the given name and constructor arguments has not been registered previously.</exception>
+	</doc>
+	<doc for="Container.LazyResolveNamed{TService, T1, T2, T3, T4, T5, T6, T7, T8, name}">
+		<summary>
+			Retrieves a function that can be used to lazily resolve an instance
+			of the service of the given type, name and service constructor arguments when needed.
+		</summary>
+		<param name="name">Name of the service to retrieve.</param>
+		<typeparam name="TService">Type of the service.</typeparam>
+		<typeparam name="T1">Type of the one argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T2">Type of the two argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T3">Type of the three argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T4">Type of the four argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T5">Type of the five argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T6">Type of the six argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T7">Type of the seven argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T8">Type of the eight argument to pass to the factory delegate to create the instace.</typeparam>
+	
+		<returns>The function that can resolve to the service instance with the given name and service constructor arguments when invoked.</returns>
+		<exception cref="ResolutionException">The requested service with the given name and constructor arguments has not been registered previously.</exception>
+	</doc>
+	<doc for="Container.LazyResolveNamed{TService, T1, T2, T3, T4, T5, T6, T7, T8, T9, name}">
+		<summary>
+			Retrieves a function that can be used to lazily resolve an instance
+			of the service of the given type, name and service constructor arguments when needed.
+		</summary>
+		<param name="name">Name of the service to retrieve.</param>
+		<typeparam name="TService">Type of the service.</typeparam>
+		<typeparam name="T1">Type of the one argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T2">Type of the two argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T3">Type of the three argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T4">Type of the four argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T5">Type of the five argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T6">Type of the six argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T7">Type of the seven argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T8">Type of the eight argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T9">Type of the nine argument to pass to the factory delegate to create the instace.</typeparam>
+	
+		<returns>The function that can resolve to the service instance with the given name and service constructor arguments when invoked.</returns>
+		<exception cref="ResolutionException">The requested service with the given name and constructor arguments has not been registered previously.</exception>
+	</doc>
+	<doc for="Container.LazyResolveNamed{TService, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, name}">
+		<summary>
+			Retrieves a function that can be used to lazily resolve an instance
+			of the service of the given type, name and service constructor arguments when needed.
+		</summary>
+		<param name="name">Name of the service to retrieve.</param>
+		<typeparam name="TService">Type of the service.</typeparam>
+		<typeparam name="T1">Type of the one argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T2">Type of the two argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T3">Type of the three argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T4">Type of the four argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T5">Type of the five argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T6">Type of the six argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T7">Type of the seven argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T8">Type of the eight argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T9">Type of the nine argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T10">Type of the ten argument to pass to the factory delegate to create the instace.</typeparam>
+	
+		<returns>The function that can resolve to the service instance with the given name and service constructor arguments when invoked.</returns>
+		<exception cref="ResolutionException">The requested service with the given name and constructor arguments has not been registered previously.</exception>
+	</doc>
+	<doc for="Container.LazyResolveNamed{TService, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, name}">
+		<summary>
+			Retrieves a function that can be used to lazily resolve an instance
+			of the service of the given type, name and service constructor arguments when needed.
+		</summary>
+		<param name="name">Name of the service to retrieve.</param>
+		<typeparam name="TService">Type of the service.</typeparam>
+		<typeparam name="T1">Type of the one argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T2">Type of the two argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T3">Type of the three argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T4">Type of the four argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T5">Type of the five argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T6">Type of the six argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T7">Type of the seven argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T8">Type of the eight argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T9">Type of the nine argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T10">Type of the ten argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T11">Type of the eleven argument to pass to the factory delegate to create the instace.</typeparam>
+	
+		<returns>The function that can resolve to the service instance with the given name and service constructor arguments when invoked.</returns>
+		<exception cref="ResolutionException">The requested service with the given name and constructor arguments has not been registered previously.</exception>
+	</doc>
+	<doc for="Container.LazyResolveNamed{TService, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, name}">
+		<summary>
+			Retrieves a function that can be used to lazily resolve an instance
+			of the service of the given type, name and service constructor arguments when needed.
+		</summary>
+		<param name="name">Name of the service to retrieve.</param>
+		<typeparam name="TService">Type of the service.</typeparam>
+		<typeparam name="T1">Type of the one argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T2">Type of the two argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T3">Type of the three argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T4">Type of the four argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T5">Type of the five argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T6">Type of the six argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T7">Type of the seven argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T8">Type of the eight argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T9">Type of the nine argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T10">Type of the ten argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T11">Type of the eleven argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T12">Type of the twelve argument to pass to the factory delegate to create the instace.</typeparam>
+	
+		<returns>The function that can resolve to the service instance with the given name and service constructor arguments when invoked.</returns>
+		<exception cref="ResolutionException">The requested service with the given name and constructor arguments has not been registered previously.</exception>
+	</doc>
+	<doc for="Container.LazyResolveNamed{TService, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, name}">
+		<summary>
+			Retrieves a function that can be used to lazily resolve an instance
+			of the service of the given type, name and service constructor arguments when needed.
+		</summary>
+		<param name="name">Name of the service to retrieve.</param>
+		<typeparam name="TService">Type of the service.</typeparam>
+		<typeparam name="T1">Type of the one argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T2">Type of the two argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T3">Type of the three argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T4">Type of the four argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T5">Type of the five argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T6">Type of the six argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T7">Type of the seven argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T8">Type of the eight argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T9">Type of the nine argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T10">Type of the ten argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T11">Type of the eleven argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T12">Type of the twelve argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T13">Type of the thirteen argument to pass to the factory delegate to create the instace.</typeparam>
+	
+		<returns>The function that can resolve to the service instance with the given name and service constructor arguments when invoked.</returns>
+		<exception cref="ResolutionException">The requested service with the given name and constructor arguments has not been registered previously.</exception>
+	</doc>
+	<doc for="Container.LazyResolveNamed{TService, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, name}">
+		<summary>
+			Retrieves a function that can be used to lazily resolve an instance
+			of the service of the given type, name and service constructor arguments when needed.
+		</summary>
+		<param name="name">Name of the service to retrieve.</param>
+		<typeparam name="TService">Type of the service.</typeparam>
+		<typeparam name="T1">Type of the one argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T2">Type of the two argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T3">Type of the three argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T4">Type of the four argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T5">Type of the five argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T6">Type of the six argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T7">Type of the seven argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T8">Type of the eight argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T9">Type of the nine argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T10">Type of the ten argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T11">Type of the eleven argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T12">Type of the twelve argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T13">Type of the thirteen argument to pass to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T14">Type of the fourteen argument to pass to the factory delegate to create the instace.</typeparam>
+	
+		<returns>The function that can resolve to the service instance with the given name and service constructor arguments when invoked.</returns>
+		<exception cref="ResolutionException">The requested service with the given name and constructor arguments has not been registered previously.</exception>
+	</doc>
+	
+
+	<!-- Register -->
+	<doc for="Container.Register{TService, T1, T2}(name, factory)">
+		<summary>
+			Registers the given named service by providing a factory delegate that receives arguments to
+			instantiate it.
+		</summary>
+		<typeparam name="TService">The service type to register.</typeparam>
+		<typeparam name="T1">Type of the one argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T2">Type of the two argument that should be passed to the factory delegate to create the instace.</typeparam>
+	
+		<param name="name">A name used to differenciate this service registration.</param>
+		<param name="factory">The factory delegate to initialize new instances of the service when needed.</param>
+		<returns>The registration object to perform further configuration via its fluent interface.</returns>
+	</doc>
+
+	<doc for="Container.Register{TService, T1, T2}(factory)">
+		<summary>
+			Registers the given service by providing a factory delegate that receives arguments to
+			instantiate it.
+		</summary>
+		<typeparam name="TService">The service type to register.</typeparam>
+		<typeparam name="T1">Type of the one argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T2">Type of the two argument that should be passed to the factory delegate to create the instace.</typeparam>
+	
+		<param name="factory">The factory delegate to initialize new instances of the service when needed.</param>
+		<returns>The registration object to perform further configuration via its fluent interface.</returns>
+	</doc>
+
+	<doc for="Container.Register{TService, T1, T2, T3}(name, factory)">
+		<summary>
+			Registers the given named service by providing a factory delegate that receives arguments to
+			instantiate it.
+		</summary>
+		<typeparam name="TService">The service type to register.</typeparam>
+		<typeparam name="T1">Type of the one argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T2">Type of the two argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T3">Type of the three argument that should be passed to the factory delegate to create the instace.</typeparam>
+	
+		<param name="name">A name used to differenciate this service registration.</param>
+		<param name="factory">The factory delegate to initialize new instances of the service when needed.</param>
+		<returns>The registration object to perform further configuration via its fluent interface.</returns>
+	</doc>
+
+	<doc for="Container.Register{TService, T1, T2, T3}(factory)">
+		<summary>
+			Registers the given service by providing a factory delegate that receives arguments to
+			instantiate it.
+		</summary>
+		<typeparam name="TService">The service type to register.</typeparam>
+		<typeparam name="T1">Type of the one argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T2">Type of the two argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T3">Type of the three argument that should be passed to the factory delegate to create the instace.</typeparam>
+	
+		<param name="factory">The factory delegate to initialize new instances of the service when needed.</param>
+		<returns>The registration object to perform further configuration via its fluent interface.</returns>
+	</doc>
+
+	<doc for="Container.Register{TService, T1, T2, T3, T4}(name, factory)">
+		<summary>
+			Registers the given named service by providing a factory delegate that receives arguments to
+			instantiate it.
+		</summary>
+		<typeparam name="TService">The service type to register.</typeparam>
+		<typeparam name="T1">Type of the one argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T2">Type of the two argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T3">Type of the three argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T4">Type of the four argument that should be passed to the factory delegate to create the instace.</typeparam>
+	
+		<param name="name">A name used to differenciate this service registration.</param>
+		<param name="factory">The factory delegate to initialize new instances of the service when needed.</param>
+		<returns>The registration object to perform further configuration via its fluent interface.</returns>
+	</doc>
+
+	<doc for="Container.Register{TService, T1, T2, T3, T4}(factory)">
+		<summary>
+			Registers the given service by providing a factory delegate that receives arguments to
+			instantiate it.
+		</summary>
+		<typeparam name="TService">The service type to register.</typeparam>
+		<typeparam name="T1">Type of the one argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T2">Type of the two argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T3">Type of the three argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T4">Type of the four argument that should be passed to the factory delegate to create the instace.</typeparam>
+	
+		<param name="factory">The factory delegate to initialize new instances of the service when needed.</param>
+		<returns>The registration object to perform further configuration via its fluent interface.</returns>
+	</doc>
+
+	<doc for="Container.Register{TService, T1, T2, T3, T4, T5}(name, factory)">
+		<summary>
+			Registers the given named service by providing a factory delegate that receives arguments to
+			instantiate it.
+		</summary>
+		<typeparam name="TService">The service type to register.</typeparam>
+		<typeparam name="T1">Type of the one argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T2">Type of the two argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T3">Type of the three argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T4">Type of the four argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T5">Type of the five argument that should be passed to the factory delegate to create the instace.</typeparam>
+	
+		<param name="name">A name used to differenciate this service registration.</param>
+		<param name="factory">The factory delegate to initialize new instances of the service when needed.</param>
+		<returns>The registration object to perform further configuration via its fluent interface.</returns>
+	</doc>
+
+	<doc for="Container.Register{TService, T1, T2, T3, T4, T5}(factory)">
+		<summary>
+			Registers the given service by providing a factory delegate that receives arguments to
+			instantiate it.
+		</summary>
+		<typeparam name="TService">The service type to register.</typeparam>
+		<typeparam name="T1">Type of the one argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T2">Type of the two argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T3">Type of the three argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T4">Type of the four argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T5">Type of the five argument that should be passed to the factory delegate to create the instace.</typeparam>
+	
+		<param name="factory">The factory delegate to initialize new instances of the service when needed.</param>
+		<returns>The registration object to perform further configuration via its fluent interface.</returns>
+	</doc>
+
+	<doc for="Container.Register{TService, T1, T2, T3, T4, T5, T6}(name, factory)">
+		<summary>
+			Registers the given named service by providing a factory delegate that receives arguments to
+			instantiate it.
+		</summary>
+		<typeparam name="TService">The service type to register.</typeparam>
+		<typeparam name="T1">Type of the one argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T2">Type of the two argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T3">Type of the three argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T4">Type of the four argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T5">Type of the five argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T6">Type of the six argument that should be passed to the factory delegate to create the instace.</typeparam>
+	
+		<param name="name">A name used to differenciate this service registration.</param>
+		<param name="factory">The factory delegate to initialize new instances of the service when needed.</param>
+		<returns>The registration object to perform further configuration via its fluent interface.</returns>
+	</doc>
+
+	<doc for="Container.Register{TService, T1, T2, T3, T4, T5, T6}(factory)">
+		<summary>
+			Registers the given service by providing a factory delegate that receives arguments to
+			instantiate it.
+		</summary>
+		<typeparam name="TService">The service type to register.</typeparam>
+		<typeparam name="T1">Type of the one argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T2">Type of the two argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T3">Type of the three argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T4">Type of the four argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T5">Type of the five argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T6">Type of the six argument that should be passed to the factory delegate to create the instace.</typeparam>
+	
+		<param name="factory">The factory delegate to initialize new instances of the service when needed.</param>
+		<returns>The registration object to perform further configuration via its fluent interface.</returns>
+	</doc>
+
+	<doc for="Container.Register{TService, T1, T2, T3, T4, T5, T6, T7}(name, factory)">
+		<summary>
+			Registers the given named service by providing a factory delegate that receives arguments to
+			instantiate it.
+		</summary>
+		<typeparam name="TService">The service type to register.</typeparam>
+		<typeparam name="T1">Type of the one argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T2">Type of the two argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T3">Type of the three argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T4">Type of the four argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T5">Type of the five argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T6">Type of the six argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T7">Type of the seven argument that should be passed to the factory delegate to create the instace.</typeparam>
+	
+		<param name="name">A name used to differenciate this service registration.</param>
+		<param name="factory">The factory delegate to initialize new instances of the service when needed.</param>
+		<returns>The registration object to perform further configuration via its fluent interface.</returns>
+	</doc>
+
+	<doc for="Container.Register{TService, T1, T2, T3, T4, T5, T6, T7}(factory)">
+		<summary>
+			Registers the given service by providing a factory delegate that receives arguments to
+			instantiate it.
+		</summary>
+		<typeparam name="TService">The service type to register.</typeparam>
+		<typeparam name="T1">Type of the one argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T2">Type of the two argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T3">Type of the three argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T4">Type of the four argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T5">Type of the five argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T6">Type of the six argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T7">Type of the seven argument that should be passed to the factory delegate to create the instace.</typeparam>
+	
+		<param name="factory">The factory delegate to initialize new instances of the service when needed.</param>
+		<returns>The registration object to perform further configuration via its fluent interface.</returns>
+	</doc>
+
+	<doc for="Container.Register{TService, T1, T2, T3, T4, T5, T6, T7, T8}(name, factory)">
+		<summary>
+			Registers the given named service by providing a factory delegate that receives arguments to
+			instantiate it.
+		</summary>
+		<typeparam name="TService">The service type to register.</typeparam>
+		<typeparam name="T1">Type of the one argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T2">Type of the two argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T3">Type of the three argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T4">Type of the four argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T5">Type of the five argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T6">Type of the six argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T7">Type of the seven argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T8">Type of the eight argument that should be passed to the factory delegate to create the instace.</typeparam>
+	
+		<param name="name">A name used to differenciate this service registration.</param>
+		<param name="factory">The factory delegate to initialize new instances of the service when needed.</param>
+		<returns>The registration object to perform further configuration via its fluent interface.</returns>
+	</doc>
+
+	<doc for="Container.Register{TService, T1, T2, T3, T4, T5, T6, T7, T8}(factory)">
+		<summary>
+			Registers the given service by providing a factory delegate that receives arguments to
+			instantiate it.
+		</summary>
+		<typeparam name="TService">The service type to register.</typeparam>
+		<typeparam name="T1">Type of the one argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T2">Type of the two argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T3">Type of the three argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T4">Type of the four argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T5">Type of the five argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T6">Type of the six argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T7">Type of the seven argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T8">Type of the eight argument that should be passed to the factory delegate to create the instace.</typeparam>
+	
+		<param name="factory">The factory delegate to initialize new instances of the service when needed.</param>
+		<returns>The registration object to perform further configuration via its fluent interface.</returns>
+	</doc>
+
+	<doc for="Container.Register{TService, T1, T2, T3, T4, T5, T6, T7, T8, T9}(name, factory)">
+		<summary>
+			Registers the given named service by providing a factory delegate that receives arguments to
+			instantiate it.
+		</summary>
+		<typeparam name="TService">The service type to register.</typeparam>
+		<typeparam name="T1">Type of the one argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T2">Type of the two argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T3">Type of the three argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T4">Type of the four argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T5">Type of the five argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T6">Type of the six argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T7">Type of the seven argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T8">Type of the eight argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T9">Type of the nine argument that should be passed to the factory delegate to create the instace.</typeparam>
+	
+		<param name="name">A name used to differenciate this service registration.</param>
+		<param name="factory">The factory delegate to initialize new instances of the service when needed.</param>
+		<returns>The registration object to perform further configuration via its fluent interface.</returns>
+	</doc>
+
+	<doc for="Container.Register{TService, T1, T2, T3, T4, T5, T6, T7, T8, T9}(factory)">
+		<summary>
+			Registers the given service by providing a factory delegate that receives arguments to
+			instantiate it.
+		</summary>
+		<typeparam name="TService">The service type to register.</typeparam>
+		<typeparam name="T1">Type of the one argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T2">Type of the two argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T3">Type of the three argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T4">Type of the four argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T5">Type of the five argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T6">Type of the six argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T7">Type of the seven argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T8">Type of the eight argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T9">Type of the nine argument that should be passed to the factory delegate to create the instace.</typeparam>
+	
+		<param name="factory">The factory delegate to initialize new instances of the service when needed.</param>
+		<returns>The registration object to perform further configuration via its fluent interface.</returns>
+	</doc>
+
+	<doc for="Container.Register{TService, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10}(name, factory)">
+		<summary>
+			Registers the given named service by providing a factory delegate that receives arguments to
+			instantiate it.
+		</summary>
+		<typeparam name="TService">The service type to register.</typeparam>
+		<typeparam name="T1">Type of the one argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T2">Type of the two argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T3">Type of the three argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T4">Type of the four argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T5">Type of the five argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T6">Type of the six argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T7">Type of the seven argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T8">Type of the eight argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T9">Type of the nine argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T10">Type of the ten argument that should be passed to the factory delegate to create the instace.</typeparam>
+	
+		<param name="name">A name used to differenciate this service registration.</param>
+		<param name="factory">The factory delegate to initialize new instances of the service when needed.</param>
+		<returns>The registration object to perform further configuration via its fluent interface.</returns>
+	</doc>
+
+	<doc for="Container.Register{TService, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10}(factory)">
+		<summary>
+			Registers the given service by providing a factory delegate that receives arguments to
+			instantiate it.
+		</summary>
+		<typeparam name="TService">The service type to register.</typeparam>
+		<typeparam name="T1">Type of the one argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T2">Type of the two argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T3">Type of the three argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T4">Type of the four argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T5">Type of the five argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T6">Type of the six argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T7">Type of the seven argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T8">Type of the eight argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T9">Type of the nine argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T10">Type of the ten argument that should be passed to the factory delegate to create the instace.</typeparam>
+	
+		<param name="factory">The factory delegate to initialize new instances of the service when needed.</param>
+		<returns>The registration object to perform further configuration via its fluent interface.</returns>
+	</doc>
+
+	<doc for="Container.Register{TService, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11}(name, factory)">
+		<summary>
+			Registers the given named service by providing a factory delegate that receives arguments to
+			instantiate it.
+		</summary>
+		<typeparam name="TService">The service type to register.</typeparam>
+		<typeparam name="T1">Type of the one argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T2">Type of the two argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T3">Type of the three argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T4">Type of the four argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T5">Type of the five argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T6">Type of the six argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T7">Type of the seven argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T8">Type of the eight argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T9">Type of the nine argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T10">Type of the ten argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T11">Type of the eleven argument that should be passed to the factory delegate to create the instace.</typeparam>
+	
+		<param name="name">A name used to differenciate this service registration.</param>
+		<param name="factory">The factory delegate to initialize new instances of the service when needed.</param>
+		<returns>The registration object to perform further configuration via its fluent interface.</returns>
+	</doc>
+
+	<doc for="Container.Register{TService, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11}(factory)">
+		<summary>
+			Registers the given service by providing a factory delegate that receives arguments to
+			instantiate it.
+		</summary>
+		<typeparam name="TService">The service type to register.</typeparam>
+		<typeparam name="T1">Type of the one argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T2">Type of the two argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T3">Type of the three argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T4">Type of the four argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T5">Type of the five argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T6">Type of the six argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T7">Type of the seven argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T8">Type of the eight argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T9">Type of the nine argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T10">Type of the ten argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T11">Type of the eleven argument that should be passed to the factory delegate to create the instace.</typeparam>
+	
+		<param name="factory">The factory delegate to initialize new instances of the service when needed.</param>
+		<returns>The registration object to perform further configuration via its fluent interface.</returns>
+	</doc>
+
+	<doc for="Container.Register{TService, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12}(name, factory)">
+		<summary>
+			Registers the given named service by providing a factory delegate that receives arguments to
+			instantiate it.
+		</summary>
+		<typeparam name="TService">The service type to register.</typeparam>
+		<typeparam name="T1">Type of the one argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T2">Type of the two argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T3">Type of the three argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T4">Type of the four argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T5">Type of the five argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T6">Type of the six argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T7">Type of the seven argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T8">Type of the eight argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T9">Type of the nine argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T10">Type of the ten argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T11">Type of the eleven argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T12">Type of the twelve argument that should be passed to the factory delegate to create the instace.</typeparam>
+	
+		<param name="name">A name used to differenciate this service registration.</param>
+		<param name="factory">The factory delegate to initialize new instances of the service when needed.</param>
+		<returns>The registration object to perform further configuration via its fluent interface.</returns>
+	</doc>
+
+	<doc for="Container.Register{TService, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12}(factory)">
+		<summary>
+			Registers the given service by providing a factory delegate that receives arguments to
+			instantiate it.
+		</summary>
+		<typeparam name="TService">The service type to register.</typeparam>
+		<typeparam name="T1">Type of the one argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T2">Type of the two argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T3">Type of the three argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T4">Type of the four argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T5">Type of the five argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T6">Type of the six argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T7">Type of the seven argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T8">Type of the eight argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T9">Type of the nine argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T10">Type of the ten argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T11">Type of the eleven argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T12">Type of the twelve argument that should be passed to the factory delegate to create the instace.</typeparam>
+	
+		<param name="factory">The factory delegate to initialize new instances of the service when needed.</param>
+		<returns>The registration object to perform further configuration via its fluent interface.</returns>
+	</doc>
+
+	<doc for="Container.Register{TService, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13}(name, factory)">
+		<summary>
+			Registers the given named service by providing a factory delegate that receives arguments to
+			instantiate it.
+		</summary>
+		<typeparam name="TService">The service type to register.</typeparam>
+		<typeparam name="T1">Type of the one argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T2">Type of the two argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T3">Type of the three argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T4">Type of the four argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T5">Type of the five argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T6">Type of the six argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T7">Type of the seven argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T8">Type of the eight argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T9">Type of the nine argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T10">Type of the ten argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T11">Type of the eleven argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T12">Type of the twelve argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T13">Type of the thirteen argument that should be passed to the factory delegate to create the instace.</typeparam>
+	
+		<param name="name">A name used to differenciate this service registration.</param>
+		<param name="factory">The factory delegate to initialize new instances of the service when needed.</param>
+		<returns>The registration object to perform further configuration via its fluent interface.</returns>
+	</doc>
+
+	<doc for="Container.Register{TService, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13}(factory)">
+		<summary>
+			Registers the given service by providing a factory delegate that receives arguments to
+			instantiate it.
+		</summary>
+		<typeparam name="TService">The service type to register.</typeparam>
+		<typeparam name="T1">Type of the one argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T2">Type of the two argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T3">Type of the three argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T4">Type of the four argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T5">Type of the five argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T6">Type of the six argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T7">Type of the seven argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T8">Type of the eight argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T9">Type of the nine argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T10">Type of the ten argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T11">Type of the eleven argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T12">Type of the twelve argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T13">Type of the thirteen argument that should be passed to the factory delegate to create the instace.</typeparam>
+	
+		<param name="factory">The factory delegate to initialize new instances of the service when needed.</param>
+		<returns>The registration object to perform further configuration via its fluent interface.</returns>
+	</doc>
+
+	<doc for="Container.Register{TService, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14}(name, factory)">
+		<summary>
+			Registers the given named service by providing a factory delegate that receives arguments to
+			instantiate it.
+		</summary>
+		<typeparam name="TService">The service type to register.</typeparam>
+		<typeparam name="T1">Type of the one argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T2">Type of the two argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T3">Type of the three argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T4">Type of the four argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T5">Type of the five argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T6">Type of the six argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T7">Type of the seven argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T8">Type of the eight argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T9">Type of the nine argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T10">Type of the ten argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T11">Type of the eleven argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T12">Type of the twelve argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T13">Type of the thirteen argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T14">Type of the fourteen argument that should be passed to the factory delegate to create the instace.</typeparam>
+	
+		<param name="name">A name used to differenciate this service registration.</param>
+		<param name="factory">The factory delegate to initialize new instances of the service when needed.</param>
+		<returns>The registration object to perform further configuration via its fluent interface.</returns>
+	</doc>
+
+	<doc for="Container.Register{TService, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14}(factory)">
+		<summary>
+			Registers the given service by providing a factory delegate that receives arguments to
+			instantiate it.
+		</summary>
+		<typeparam name="TService">The service type to register.</typeparam>
+		<typeparam name="T1">Type of the one argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T2">Type of the two argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T3">Type of the three argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T4">Type of the four argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T5">Type of the five argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T6">Type of the six argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T7">Type of the seven argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T8">Type of the eight argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T9">Type of the nine argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T10">Type of the ten argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T11">Type of the eleven argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T12">Type of the twelve argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T13">Type of the thirteen argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T14">Type of the fourteen argument that should be passed to the factory delegate to create the instace.</typeparam>
+	
+		<param name="factory">The factory delegate to initialize new instances of the service when needed.</param>
+		<returns>The registration object to perform further configuration via its fluent interface.</returns>
+	</doc>
+
+	
+
+	<!-- Resolve -->
+	<doc for="Container.Resolve{TService, T1, T2}">
+		<summary>
+			Resolves the given service by type, passing the given arguments
+			for its initialization.
+		</summary>
+		<typeparam name="TService">Type of the service to retrieve.</typeparam>
+		<typeparam name="T1">Type of the one argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T2">Type of the two argument that should be passed to the factory delegate to create the instace.</typeparam>
+	
+		<returns>The resolved service instance.</returns>
+		<exception cref="ResolutionException">The given service could not be resolved.</exception>
+	</doc>
+
+	<doc for="Container.ResolveNamed{TService, T1, T2}">
+		<summary>
+			Resolves the given service by type and name, passing the given arguments
+			for its initialization.
+		</summary>
+		<typeparam name="TService">Type of the service to retrieve.</typeparam>
+		<typeparam name="T1">Type of the one argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<param name="arg1">Value of the one argument that should be passed to the factory delegate to create the instace.</param>
+		<typeparam name="T2">Type of the two argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<param name="arg2">Value of the two argument that should be passed to the factory delegate to create the instace.</param>
+	
+		<param name="name">Name of the service to retrieve.</param>
+		<returns>The resolved service instance.</returns>
+		<exception cref="ResolutionException">The given service could not be resolved.</exception>
+	</doc>
+
+	<doc for="Container.Resolve{TService, T1, T2, T3}">
+		<summary>
+			Resolves the given service by type, passing the given arguments
+			for its initialization.
+		</summary>
+		<typeparam name="TService">Type of the service to retrieve.</typeparam>
+		<typeparam name="T1">Type of the one argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T2">Type of the two argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T3">Type of the three argument that should be passed to the factory delegate to create the instace.</typeparam>
+	
+		<returns>The resolved service instance.</returns>
+		<exception cref="ResolutionException">The given service could not be resolved.</exception>
+	</doc>
+
+	<doc for="Container.ResolveNamed{TService, T1, T2, T3}">
+		<summary>
+			Resolves the given service by type and name, passing the given arguments
+			for its initialization.
+		</summary>
+		<typeparam name="TService">Type of the service to retrieve.</typeparam>
+		<typeparam name="T1">Type of the one argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<param name="arg1">Value of the one argument that should be passed to the factory delegate to create the instace.</param>
+		<typeparam name="T2">Type of the two argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<param name="arg2">Value of the two argument that should be passed to the factory delegate to create the instace.</param>
+		<typeparam name="T3">Type of the three argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<param name="arg3">Value of the three argument that should be passed to the factory delegate to create the instace.</param>
+	
+		<param name="name">Name of the service to retrieve.</param>
+		<returns>The resolved service instance.</returns>
+		<exception cref="ResolutionException">The given service could not be resolved.</exception>
+	</doc>
+
+	<doc for="Container.Resolve{TService, T1, T2, T3, T4}">
+		<summary>
+			Resolves the given service by type, passing the given arguments
+			for its initialization.
+		</summary>
+		<typeparam name="TService">Type of the service to retrieve.</typeparam>
+		<typeparam name="T1">Type of the one argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T2">Type of the two argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T3">Type of the three argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T4">Type of the four argument that should be passed to the factory delegate to create the instace.</typeparam>
+	
+		<returns>The resolved service instance.</returns>
+		<exception cref="ResolutionException">The given service could not be resolved.</exception>
+	</doc>
+
+	<doc for="Container.ResolveNamed{TService, T1, T2, T3, T4}">
+		<summary>
+			Resolves the given service by type and name, passing the given arguments
+			for its initialization.
+		</summary>
+		<typeparam name="TService">Type of the service to retrieve.</typeparam>
+		<typeparam name="T1">Type of the one argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<param name="arg1">Value of the one argument that should be passed to the factory delegate to create the instace.</param>
+		<typeparam name="T2">Type of the two argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<param name="arg2">Value of the two argument that should be passed to the factory delegate to create the instace.</param>
+		<typeparam name="T3">Type of the three argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<param name="arg3">Value of the three argument that should be passed to the factory delegate to create the instace.</param>
+		<typeparam name="T4">Type of the four argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<param name="arg4">Value of the four argument that should be passed to the factory delegate to create the instace.</param>
+	
+		<param name="name">Name of the service to retrieve.</param>
+		<returns>The resolved service instance.</returns>
+		<exception cref="ResolutionException">The given service could not be resolved.</exception>
+	</doc>
+
+	<doc for="Container.Resolve{TService, T1, T2, T3, T4, T5}">
+		<summary>
+			Resolves the given service by type, passing the given arguments
+			for its initialization.
+		</summary>
+		<typeparam name="TService">Type of the service to retrieve.</typeparam>
+		<typeparam name="T1">Type of the one argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T2">Type of the two argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T3">Type of the three argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T4">Type of the four argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T5">Type of the five argument that should be passed to the factory delegate to create the instace.</typeparam>
+	
+		<returns>The resolved service instance.</returns>
+		<exception cref="ResolutionException">The given service could not be resolved.</exception>
+	</doc>
+
+	<doc for="Container.ResolveNamed{TService, T1, T2, T3, T4, T5}">
+		<summary>
+			Resolves the given service by type and name, passing the given arguments
+			for its initialization.
+		</summary>
+		<typeparam name="TService">Type of the service to retrieve.</typeparam>
+		<typeparam name="T1">Type of the one argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<param name="arg1">Value of the one argument that should be passed to the factory delegate to create the instace.</param>
+		<typeparam name="T2">Type of the two argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<param name="arg2">Value of the two argument that should be passed to the factory delegate to create the instace.</param>
+		<typeparam name="T3">Type of the three argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<param name="arg3">Value of the three argument that should be passed to the factory delegate to create the instace.</param>
+		<typeparam name="T4">Type of the four argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<param name="arg4">Value of the four argument that should be passed to the factory delegate to create the instace.</param>
+		<typeparam name="T5">Type of the five argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<param name="arg5">Value of the five argument that should be passed to the factory delegate to create the instace.</param>
+	
+		<param name="name">Name of the service to retrieve.</param>
+		<returns>The resolved service instance.</returns>
+		<exception cref="ResolutionException">The given service could not be resolved.</exception>
+	</doc>
+
+	<doc for="Container.Resolve{TService, T1, T2, T3, T4, T5, T6}">
+		<summary>
+			Resolves the given service by type, passing the given arguments
+			for its initialization.
+		</summary>
+		<typeparam name="TService">Type of the service to retrieve.</typeparam>
+		<typeparam name="T1">Type of the one argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T2">Type of the two argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T3">Type of the three argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T4">Type of the four argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T5">Type of the five argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T6">Type of the six argument that should be passed to the factory delegate to create the instace.</typeparam>
+	
+		<returns>The resolved service instance.</returns>
+		<exception cref="ResolutionException">The given service could not be resolved.</exception>
+	</doc>
+
+	<doc for="Container.ResolveNamed{TService, T1, T2, T3, T4, T5, T6}">
+		<summary>
+			Resolves the given service by type and name, passing the given arguments
+			for its initialization.
+		</summary>
+		<typeparam name="TService">Type of the service to retrieve.</typeparam>
+		<typeparam name="T1">Type of the one argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<param name="arg1">Value of the one argument that should be passed to the factory delegate to create the instace.</param>
+		<typeparam name="T2">Type of the two argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<param name="arg2">Value of the two argument that should be passed to the factory delegate to create the instace.</param>
+		<typeparam name="T3">Type of the three argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<param name="arg3">Value of the three argument that should be passed to the factory delegate to create the instace.</param>
+		<typeparam name="T4">Type of the four argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<param name="arg4">Value of the four argument that should be passed to the factory delegate to create the instace.</param>
+		<typeparam name="T5">Type of the five argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<param name="arg5">Value of the five argument that should be passed to the factory delegate to create the instace.</param>
+		<typeparam name="T6">Type of the six argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<param name="arg6">Value of the six argument that should be passed to the factory delegate to create the instace.</param>
+	
+		<param name="name">Name of the service to retrieve.</param>
+		<returns>The resolved service instance.</returns>
+		<exception cref="ResolutionException">The given service could not be resolved.</exception>
+	</doc>
+
+	<doc for="Container.Resolve{TService, T1, T2, T3, T4, T5, T6, T7}">
+		<summary>
+			Resolves the given service by type, passing the given arguments
+			for its initialization.
+		</summary>
+		<typeparam name="TService">Type of the service to retrieve.</typeparam>
+		<typeparam name="T1">Type of the one argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T2">Type of the two argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T3">Type of the three argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T4">Type of the four argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T5">Type of the five argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T6">Type of the six argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T7">Type of the seven argument that should be passed to the factory delegate to create the instace.</typeparam>
+	
+		<returns>The resolved service instance.</returns>
+		<exception cref="ResolutionException">The given service could not be resolved.</exception>
+	</doc>
+
+	<doc for="Container.ResolveNamed{TService, T1, T2, T3, T4, T5, T6, T7}">
+		<summary>
+			Resolves the given service by type and name, passing the given arguments
+			for its initialization.
+		</summary>
+		<typeparam name="TService">Type of the service to retrieve.</typeparam>
+		<typeparam name="T1">Type of the one argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<param name="arg1">Value of the one argument that should be passed to the factory delegate to create the instace.</param>
+		<typeparam name="T2">Type of the two argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<param name="arg2">Value of the two argument that should be passed to the factory delegate to create the instace.</param>
+		<typeparam name="T3">Type of the three argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<param name="arg3">Value of the three argument that should be passed to the factory delegate to create the instace.</param>
+		<typeparam name="T4">Type of the four argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<param name="arg4">Value of the four argument that should be passed to the factory delegate to create the instace.</param>
+		<typeparam name="T5">Type of the five argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<param name="arg5">Value of the five argument that should be passed to the factory delegate to create the instace.</param>
+		<typeparam name="T6">Type of the six argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<param name="arg6">Value of the six argument that should be passed to the factory delegate to create the instace.</param>
+		<typeparam name="T7">Type of the seven argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<param name="arg7">Value of the seven argument that should be passed to the factory delegate to create the instace.</param>
+	
+		<param name="name">Name of the service to retrieve.</param>
+		<returns>The resolved service instance.</returns>
+		<exception cref="ResolutionException">The given service could not be resolved.</exception>
+	</doc>
+
+	<doc for="Container.Resolve{TService, T1, T2, T3, T4, T5, T6, T7, T8}">
+		<summary>
+			Resolves the given service by type, passing the given arguments
+			for its initialization.
+		</summary>
+		<typeparam name="TService">Type of the service to retrieve.</typeparam>
+		<typeparam name="T1">Type of the one argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T2">Type of the two argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T3">Type of the three argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T4">Type of the four argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T5">Type of the five argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T6">Type of the six argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T7">Type of the seven argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T8">Type of the eight argument that should be passed to the factory delegate to create the instace.</typeparam>
+	
+		<returns>The resolved service instance.</returns>
+		<exception cref="ResolutionException">The given service could not be resolved.</exception>
+	</doc>
+
+	<doc for="Container.ResolveNamed{TService, T1, T2, T3, T4, T5, T6, T7, T8}">
+		<summary>
+			Resolves the given service by type and name, passing the given arguments
+			for its initialization.
+		</summary>
+		<typeparam name="TService">Type of the service to retrieve.</typeparam>
+		<typeparam name="T1">Type of the one argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<param name="arg1">Value of the one argument that should be passed to the factory delegate to create the instace.</param>
+		<typeparam name="T2">Type of the two argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<param name="arg2">Value of the two argument that should be passed to the factory delegate to create the instace.</param>
+		<typeparam name="T3">Type of the three argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<param name="arg3">Value of the three argument that should be passed to the factory delegate to create the instace.</param>
+		<typeparam name="T4">Type of the four argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<param name="arg4">Value of the four argument that should be passed to the factory delegate to create the instace.</param>
+		<typeparam name="T5">Type of the five argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<param name="arg5">Value of the five argument that should be passed to the factory delegate to create the instace.</param>
+		<typeparam name="T6">Type of the six argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<param name="arg6">Value of the six argument that should be passed to the factory delegate to create the instace.</param>
+		<typeparam name="T7">Type of the seven argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<param name="arg7">Value of the seven argument that should be passed to the factory delegate to create the instace.</param>
+		<typeparam name="T8">Type of the eight argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<param name="arg8">Value of the eight argument that should be passed to the factory delegate to create the instace.</param>
+	
+		<param name="name">Name of the service to retrieve.</param>
+		<returns>The resolved service instance.</returns>
+		<exception cref="ResolutionException">The given service could not be resolved.</exception>
+	</doc>
+
+	<doc for="Container.Resolve{TService, T1, T2, T3, T4, T5, T6, T7, T8, T9}">
+		<summary>
+			Resolves the given service by type, passing the given arguments
+			for its initialization.
+		</summary>
+		<typeparam name="TService">Type of the service to retrieve.</typeparam>
+		<typeparam name="T1">Type of the one argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T2">Type of the two argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T3">Type of the three argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T4">Type of the four argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T5">Type of the five argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T6">Type of the six argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T7">Type of the seven argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T8">Type of the eight argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T9">Type of the nine argument that should be passed to the factory delegate to create the instace.</typeparam>
+	
+		<returns>The resolved service instance.</returns>
+		<exception cref="ResolutionException">The given service could not be resolved.</exception>
+	</doc>
+
+	<doc for="Container.ResolveNamed{TService, T1, T2, T3, T4, T5, T6, T7, T8, T9}">
+		<summary>
+			Resolves the given service by type and name, passing the given arguments
+			for its initialization.
+		</summary>
+		<typeparam name="TService">Type of the service to retrieve.</typeparam>
+		<typeparam name="T1">Type of the one argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<param name="arg1">Value of the one argument that should be passed to the factory delegate to create the instace.</param>
+		<typeparam name="T2">Type of the two argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<param name="arg2">Value of the two argument that should be passed to the factory delegate to create the instace.</param>
+		<typeparam name="T3">Type of the three argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<param name="arg3">Value of the three argument that should be passed to the factory delegate to create the instace.</param>
+		<typeparam name="T4">Type of the four argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<param name="arg4">Value of the four argument that should be passed to the factory delegate to create the instace.</param>
+		<typeparam name="T5">Type of the five argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<param name="arg5">Value of the five argument that should be passed to the factory delegate to create the instace.</param>
+		<typeparam name="T6">Type of the six argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<param name="arg6">Value of the six argument that should be passed to the factory delegate to create the instace.</param>
+		<typeparam name="T7">Type of the seven argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<param name="arg7">Value of the seven argument that should be passed to the factory delegate to create the instace.</param>
+		<typeparam name="T8">Type of the eight argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<param name="arg8">Value of the eight argument that should be passed to the factory delegate to create the instace.</param>
+		<typeparam name="T9">Type of the nine argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<param name="arg9">Value of the nine argument that should be passed to the factory delegate to create the instace.</param>
+	
+		<param name="name">Name of the service to retrieve.</param>
+		<returns>The resolved service instance.</returns>
+		<exception cref="ResolutionException">The given service could not be resolved.</exception>
+	</doc>
+
+	<doc for="Container.Resolve{TService, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10}">
+		<summary>
+			Resolves the given service by type, passing the given arguments
+			for its initialization.
+		</summary>
+		<typeparam name="TService">Type of the service to retrieve.</typeparam>
+		<typeparam name="T1">Type of the one argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T2">Type of the two argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T3">Type of the three argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T4">Type of the four argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T5">Type of the five argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T6">Type of the six argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T7">Type of the seven argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T8">Type of the eight argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T9">Type of the nine argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T10">Type of the ten argument that should be passed to the factory delegate to create the instace.</typeparam>
+	
+		<returns>The resolved service instance.</returns>
+		<exception cref="ResolutionException">The given service could not be resolved.</exception>
+	</doc>
+
+	<doc for="Container.ResolveNamed{TService, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10}">
+		<summary>
+			Resolves the given service by type and name, passing the given arguments
+			for its initialization.
+		</summary>
+		<typeparam name="TService">Type of the service to retrieve.</typeparam>
+		<typeparam name="T1">Type of the one argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<param name="arg1">Value of the one argument that should be passed to the factory delegate to create the instace.</param>
+		<typeparam name="T2">Type of the two argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<param name="arg2">Value of the two argument that should be passed to the factory delegate to create the instace.</param>
+		<typeparam name="T3">Type of the three argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<param name="arg3">Value of the three argument that should be passed to the factory delegate to create the instace.</param>
+		<typeparam name="T4">Type of the four argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<param name="arg4">Value of the four argument that should be passed to the factory delegate to create the instace.</param>
+		<typeparam name="T5">Type of the five argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<param name="arg5">Value of the five argument that should be passed to the factory delegate to create the instace.</param>
+		<typeparam name="T6">Type of the six argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<param name="arg6">Value of the six argument that should be passed to the factory delegate to create the instace.</param>
+		<typeparam name="T7">Type of the seven argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<param name="arg7">Value of the seven argument that should be passed to the factory delegate to create the instace.</param>
+		<typeparam name="T8">Type of the eight argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<param name="arg8">Value of the eight argument that should be passed to the factory delegate to create the instace.</param>
+		<typeparam name="T9">Type of the nine argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<param name="arg9">Value of the nine argument that should be passed to the factory delegate to create the instace.</param>
+		<typeparam name="T10">Type of the ten argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<param name="arg10">Value of the ten argument that should be passed to the factory delegate to create the instace.</param>
+	
+		<param name="name">Name of the service to retrieve.</param>
+		<returns>The resolved service instance.</returns>
+		<exception cref="ResolutionException">The given service could not be resolved.</exception>
+	</doc>
+
+	<doc for="Container.Resolve{TService, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11}">
+		<summary>
+			Resolves the given service by type, passing the given arguments
+			for its initialization.
+		</summary>
+		<typeparam name="TService">Type of the service to retrieve.</typeparam>
+		<typeparam name="T1">Type of the one argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T2">Type of the two argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T3">Type of the three argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T4">Type of the four argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T5">Type of the five argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T6">Type of the six argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T7">Type of the seven argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T8">Type of the eight argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T9">Type of the nine argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T10">Type of the ten argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T11">Type of the eleven argument that should be passed to the factory delegate to create the instace.</typeparam>
+	
+		<returns>The resolved service instance.</returns>
+		<exception cref="ResolutionException">The given service could not be resolved.</exception>
+	</doc>
+
+	<doc for="Container.ResolveNamed{TService, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11}">
+		<summary>
+			Resolves the given service by type and name, passing the given arguments
+			for its initialization.
+		</summary>
+		<typeparam name="TService">Type of the service to retrieve.</typeparam>
+		<typeparam name="T1">Type of the one argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<param name="arg1">Value of the one argument that should be passed to the factory delegate to create the instace.</param>
+		<typeparam name="T2">Type of the two argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<param name="arg2">Value of the two argument that should be passed to the factory delegate to create the instace.</param>
+		<typeparam name="T3">Type of the three argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<param name="arg3">Value of the three argument that should be passed to the factory delegate to create the instace.</param>
+		<typeparam name="T4">Type of the four argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<param name="arg4">Value of the four argument that should be passed to the factory delegate to create the instace.</param>
+		<typeparam name="T5">Type of the five argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<param name="arg5">Value of the five argument that should be passed to the factory delegate to create the instace.</param>
+		<typeparam name="T6">Type of the six argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<param name="arg6">Value of the six argument that should be passed to the factory delegate to create the instace.</param>
+		<typeparam name="T7">Type of the seven argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<param name="arg7">Value of the seven argument that should be passed to the factory delegate to create the instace.</param>
+		<typeparam name="T8">Type of the eight argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<param name="arg8">Value of the eight argument that should be passed to the factory delegate to create the instace.</param>
+		<typeparam name="T9">Type of the nine argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<param name="arg9">Value of the nine argument that should be passed to the factory delegate to create the instace.</param>
+		<typeparam name="T10">Type of the ten argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<param name="arg10">Value of the ten argument that should be passed to the factory delegate to create the instace.</param>
+		<typeparam name="T11">Type of the eleven argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<param name="arg11">Value of the eleven argument that should be passed to the factory delegate to create the instace.</param>
+	
+		<param name="name">Name of the service to retrieve.</param>
+		<returns>The resolved service instance.</returns>
+		<exception cref="ResolutionException">The given service could not be resolved.</exception>
+	</doc>
+
+	<doc for="Container.Resolve{TService, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12}">
+		<summary>
+			Resolves the given service by type, passing the given arguments
+			for its initialization.
+		</summary>
+		<typeparam name="TService">Type of the service to retrieve.</typeparam>
+		<typeparam name="T1">Type of the one argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T2">Type of the two argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T3">Type of the three argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T4">Type of the four argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T5">Type of the five argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T6">Type of the six argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T7">Type of the seven argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T8">Type of the eight argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T9">Type of the nine argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T10">Type of the ten argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T11">Type of the eleven argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T12">Type of the twelve argument that should be passed to the factory delegate to create the instace.</typeparam>
+	
+		<returns>The resolved service instance.</returns>
+		<exception cref="ResolutionException">The given service could not be resolved.</exception>
+	</doc>
+
+	<doc for="Container.ResolveNamed{TService, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12}">
+		<summary>
+			Resolves the given service by type and name, passing the given arguments
+			for its initialization.
+		</summary>
+		<typeparam name="TService">Type of the service to retrieve.</typeparam>
+		<typeparam name="T1">Type of the one argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<param name="arg1">Value of the one argument that should be passed to the factory delegate to create the instace.</param>
+		<typeparam name="T2">Type of the two argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<param name="arg2">Value of the two argument that should be passed to the factory delegate to create the instace.</param>
+		<typeparam name="T3">Type of the three argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<param name="arg3">Value of the three argument that should be passed to the factory delegate to create the instace.</param>
+		<typeparam name="T4">Type of the four argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<param name="arg4">Value of the four argument that should be passed to the factory delegate to create the instace.</param>
+		<typeparam name="T5">Type of the five argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<param name="arg5">Value of the five argument that should be passed to the factory delegate to create the instace.</param>
+		<typeparam name="T6">Type of the six argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<param name="arg6">Value of the six argument that should be passed to the factory delegate to create the instace.</param>
+		<typeparam name="T7">Type of the seven argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<param name="arg7">Value of the seven argument that should be passed to the factory delegate to create the instace.</param>
+		<typeparam name="T8">Type of the eight argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<param name="arg8">Value of the eight argument that should be passed to the factory delegate to create the instace.</param>
+		<typeparam name="T9">Type of the nine argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<param name="arg9">Value of the nine argument that should be passed to the factory delegate to create the instace.</param>
+		<typeparam name="T10">Type of the ten argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<param name="arg10">Value of the ten argument that should be passed to the factory delegate to create the instace.</param>
+		<typeparam name="T11">Type of the eleven argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<param name="arg11">Value of the eleven argument that should be passed to the factory delegate to create the instace.</param>
+		<typeparam name="T12">Type of the twelve argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<param name="arg12">Value of the twelve argument that should be passed to the factory delegate to create the instace.</param>
+	
+		<param name="name">Name of the service to retrieve.</param>
+		<returns>The resolved service instance.</returns>
+		<exception cref="ResolutionException">The given service could not be resolved.</exception>
+	</doc>
+
+	<doc for="Container.Resolve{TService, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13}">
+		<summary>
+			Resolves the given service by type, passing the given arguments
+			for its initialization.
+		</summary>
+		<typeparam name="TService">Type of the service to retrieve.</typeparam>
+		<typeparam name="T1">Type of the one argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T2">Type of the two argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T3">Type of the three argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T4">Type of the four argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T5">Type of the five argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T6">Type of the six argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T7">Type of the seven argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T8">Type of the eight argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T9">Type of the nine argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T10">Type of the ten argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T11">Type of the eleven argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T12">Type of the twelve argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T13">Type of the thirteen argument that should be passed to the factory delegate to create the instace.</typeparam>
+	
+		<returns>The resolved service instance.</returns>
+		<exception cref="ResolutionException">The given service could not be resolved.</exception>
+	</doc>
+
+	<doc for="Container.ResolveNamed{TService, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13}">
+		<summary>
+			Resolves the given service by type and name, passing the given arguments
+			for its initialization.
+		</summary>
+		<typeparam name="TService">Type of the service to retrieve.</typeparam>
+		<typeparam name="T1">Type of the one argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<param name="arg1">Value of the one argument that should be passed to the factory delegate to create the instace.</param>
+		<typeparam name="T2">Type of the two argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<param name="arg2">Value of the two argument that should be passed to the factory delegate to create the instace.</param>
+		<typeparam name="T3">Type of the three argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<param name="arg3">Value of the three argument that should be passed to the factory delegate to create the instace.</param>
+		<typeparam name="T4">Type of the four argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<param name="arg4">Value of the four argument that should be passed to the factory delegate to create the instace.</param>
+		<typeparam name="T5">Type of the five argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<param name="arg5">Value of the five argument that should be passed to the factory delegate to create the instace.</param>
+		<typeparam name="T6">Type of the six argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<param name="arg6">Value of the six argument that should be passed to the factory delegate to create the instace.</param>
+		<typeparam name="T7">Type of the seven argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<param name="arg7">Value of the seven argument that should be passed to the factory delegate to create the instace.</param>
+		<typeparam name="T8">Type of the eight argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<param name="arg8">Value of the eight argument that should be passed to the factory delegate to create the instace.</param>
+		<typeparam name="T9">Type of the nine argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<param name="arg9">Value of the nine argument that should be passed to the factory delegate to create the instace.</param>
+		<typeparam name="T10">Type of the ten argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<param name="arg10">Value of the ten argument that should be passed to the factory delegate to create the instace.</param>
+		<typeparam name="T11">Type of the eleven argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<param name="arg11">Value of the eleven argument that should be passed to the factory delegate to create the instace.</param>
+		<typeparam name="T12">Type of the twelve argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<param name="arg12">Value of the twelve argument that should be passed to the factory delegate to create the instace.</param>
+		<typeparam name="T13">Type of the thirteen argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<param name="arg13">Value of the thirteen argument that should be passed to the factory delegate to create the instace.</param>
+	
+		<param name="name">Name of the service to retrieve.</param>
+		<returns>The resolved service instance.</returns>
+		<exception cref="ResolutionException">The given service could not be resolved.</exception>
+	</doc>
+
+	<doc for="Container.Resolve{TService, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14}">
+		<summary>
+			Resolves the given service by type, passing the given arguments
+			for its initialization.
+		</summary>
+		<typeparam name="TService">Type of the service to retrieve.</typeparam>
+		<typeparam name="T1">Type of the one argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T2">Type of the two argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T3">Type of the three argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T4">Type of the four argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T5">Type of the five argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T6">Type of the six argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T7">Type of the seven argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T8">Type of the eight argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T9">Type of the nine argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T10">Type of the ten argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T11">Type of the eleven argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T12">Type of the twelve argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T13">Type of the thirteen argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T14">Type of the fourteen argument that should be passed to the factory delegate to create the instace.</typeparam>
+	
+		<returns>The resolved service instance.</returns>
+		<exception cref="ResolutionException">The given service could not be resolved.</exception>
+	</doc>
+
+	<doc for="Container.ResolveNamed{TService, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14}">
+		<summary>
+			Resolves the given service by type and name, passing the given arguments
+			for its initialization.
+		</summary>
+		<typeparam name="TService">Type of the service to retrieve.</typeparam>
+		<typeparam name="T1">Type of the one argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<param name="arg1">Value of the one argument that should be passed to the factory delegate to create the instace.</param>
+		<typeparam name="T2">Type of the two argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<param name="arg2">Value of the two argument that should be passed to the factory delegate to create the instace.</param>
+		<typeparam name="T3">Type of the three argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<param name="arg3">Value of the three argument that should be passed to the factory delegate to create the instace.</param>
+		<typeparam name="T4">Type of the four argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<param name="arg4">Value of the four argument that should be passed to the factory delegate to create the instace.</param>
+		<typeparam name="T5">Type of the five argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<param name="arg5">Value of the five argument that should be passed to the factory delegate to create the instace.</param>
+		<typeparam name="T6">Type of the six argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<param name="arg6">Value of the six argument that should be passed to the factory delegate to create the instace.</param>
+		<typeparam name="T7">Type of the seven argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<param name="arg7">Value of the seven argument that should be passed to the factory delegate to create the instace.</param>
+		<typeparam name="T8">Type of the eight argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<param name="arg8">Value of the eight argument that should be passed to the factory delegate to create the instace.</param>
+		<typeparam name="T9">Type of the nine argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<param name="arg9">Value of the nine argument that should be passed to the factory delegate to create the instace.</param>
+		<typeparam name="T10">Type of the ten argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<param name="arg10">Value of the ten argument that should be passed to the factory delegate to create the instace.</param>
+		<typeparam name="T11">Type of the eleven argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<param name="arg11">Value of the eleven argument that should be passed to the factory delegate to create the instace.</param>
+		<typeparam name="T12">Type of the twelve argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<param name="arg12">Value of the twelve argument that should be passed to the factory delegate to create the instace.</param>
+		<typeparam name="T13">Type of the thirteen argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<param name="arg13">Value of the thirteen argument that should be passed to the factory delegate to create the instace.</param>
+		<typeparam name="T14">Type of the fourteen argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<param name="arg14">Value of the fourteen argument that should be passed to the factory delegate to create the instace.</param>
+	
+		<param name="name">Name of the service to retrieve.</param>
+		<returns>The resolved service instance.</returns>
+		<exception cref="ResolutionException">The given service could not be resolved.</exception>
+	</doc>
+
+	
+
+	<!-- TryResolve -->
+	<doc for="Container.TryResolve{TService, T1, T2}">
+		<summary>
+			Attempts to resolve the given service by type, passing the
+			given arguments arguments for its initialization.
+		</summary>
+		<typeparam name="TService">Type of the service to retrieve.</typeparam>
+		<typeparam name="T1">Type of the one argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T2">Type of the two argument that should be passed to the factory delegate to create the instace.</typeparam>
+	
+		<returns>
+			The resolved service instance or <see langword="null"/> if it cannot be resolved.
+		</returns>
+	</doc>
+
+	<doc for="Container.TryResolveNamed{TService, T1, T2}">
+		<summary>
+			Attempts to resolve the given service by type and name, passing the
+			given arguments arguments for its initialization.
+		</summary>
+		<typeparam name="TService">Type of the service to retrieve.</typeparam>
+		<typeparam name="T1">Type of the one argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T2">Type of the two argument that should be passed to the factory delegate to create the instace.</typeparam>
+	
+		<returns>
+			The resolved service instance or <see langword="null"/> if it cannot be resolved.
+		</returns>
+	</doc>
+
+	<doc for="Container.TryResolve{TService, T1, T2, T3}">
+		<summary>
+			Attempts to resolve the given service by type, passing the
+			given arguments arguments for its initialization.
+		</summary>
+		<typeparam name="TService">Type of the service to retrieve.</typeparam>
+		<typeparam name="T1">Type of the one argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T2">Type of the two argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T3">Type of the three argument that should be passed to the factory delegate to create the instace.</typeparam>
+	
+		<returns>
+			The resolved service instance or <see langword="null"/> if it cannot be resolved.
+		</returns>
+	</doc>
+
+	<doc for="Container.TryResolveNamed{TService, T1, T2, T3}">
+		<summary>
+			Attempts to resolve the given service by type and name, passing the
+			given arguments arguments for its initialization.
+		</summary>
+		<typeparam name="TService">Type of the service to retrieve.</typeparam>
+		<typeparam name="T1">Type of the one argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T2">Type of the two argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T3">Type of the three argument that should be passed to the factory delegate to create the instace.</typeparam>
+	
+		<returns>
+			The resolved service instance or <see langword="null"/> if it cannot be resolved.
+		</returns>
+	</doc>
+
+	<doc for="Container.TryResolve{TService, T1, T2, T3, T4}">
+		<summary>
+			Attempts to resolve the given service by type, passing the
+			given arguments arguments for its initialization.
+		</summary>
+		<typeparam name="TService">Type of the service to retrieve.</typeparam>
+		<typeparam name="T1">Type of the one argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T2">Type of the two argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T3">Type of the three argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T4">Type of the four argument that should be passed to the factory delegate to create the instace.</typeparam>
+	
+		<returns>
+			The resolved service instance or <see langword="null"/> if it cannot be resolved.
+		</returns>
+	</doc>
+
+	<doc for="Container.TryResolveNamed{TService, T1, T2, T3, T4}">
+		<summary>
+			Attempts to resolve the given service by type and name, passing the
+			given arguments arguments for its initialization.
+		</summary>
+		<typeparam name="TService">Type of the service to retrieve.</typeparam>
+		<typeparam name="T1">Type of the one argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T2">Type of the two argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T3">Type of the three argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T4">Type of the four argument that should be passed to the factory delegate to create the instace.</typeparam>
+	
+		<returns>
+			The resolved service instance or <see langword="null"/> if it cannot be resolved.
+		</returns>
+	</doc>
+
+	<doc for="Container.TryResolve{TService, T1, T2, T3, T4, T5}">
+		<summary>
+			Attempts to resolve the given service by type, passing the
+			given arguments arguments for its initialization.
+		</summary>
+		<typeparam name="TService">Type of the service to retrieve.</typeparam>
+		<typeparam name="T1">Type of the one argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T2">Type of the two argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T3">Type of the three argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T4">Type of the four argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T5">Type of the five argument that should be passed to the factory delegate to create the instace.</typeparam>
+	
+		<returns>
+			The resolved service instance or <see langword="null"/> if it cannot be resolved.
+		</returns>
+	</doc>
+
+	<doc for="Container.TryResolveNamed{TService, T1, T2, T3, T4, T5}">
+		<summary>
+			Attempts to resolve the given service by type and name, passing the
+			given arguments arguments for its initialization.
+		</summary>
+		<typeparam name="TService">Type of the service to retrieve.</typeparam>
+		<typeparam name="T1">Type of the one argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T2">Type of the two argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T3">Type of the three argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T4">Type of the four argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T5">Type of the five argument that should be passed to the factory delegate to create the instace.</typeparam>
+	
+		<returns>
+			The resolved service instance or <see langword="null"/> if it cannot be resolved.
+		</returns>
+	</doc>
+
+	<doc for="Container.TryResolve{TService, T1, T2, T3, T4, T5, T6}">
+		<summary>
+			Attempts to resolve the given service by type, passing the
+			given arguments arguments for its initialization.
+		</summary>
+		<typeparam name="TService">Type of the service to retrieve.</typeparam>
+		<typeparam name="T1">Type of the one argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T2">Type of the two argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T3">Type of the three argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T4">Type of the four argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T5">Type of the five argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T6">Type of the six argument that should be passed to the factory delegate to create the instace.</typeparam>
+	
+		<returns>
+			The resolved service instance or <see langword="null"/> if it cannot be resolved.
+		</returns>
+	</doc>
+
+	<doc for="Container.TryResolveNamed{TService, T1, T2, T3, T4, T5, T6}">
+		<summary>
+			Attempts to resolve the given service by type and name, passing the
+			given arguments arguments for its initialization.
+		</summary>
+		<typeparam name="TService">Type of the service to retrieve.</typeparam>
+		<typeparam name="T1">Type of the one argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T2">Type of the two argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T3">Type of the three argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T4">Type of the four argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T5">Type of the five argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T6">Type of the six argument that should be passed to the factory delegate to create the instace.</typeparam>
+	
+		<returns>
+			The resolved service instance or <see langword="null"/> if it cannot be resolved.
+		</returns>
+	</doc>
+
+	<doc for="Container.TryResolve{TService, T1, T2, T3, T4, T5, T6, T7}">
+		<summary>
+			Attempts to resolve the given service by type, passing the
+			given arguments arguments for its initialization.
+		</summary>
+		<typeparam name="TService">Type of the service to retrieve.</typeparam>
+		<typeparam name="T1">Type of the one argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T2">Type of the two argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T3">Type of the three argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T4">Type of the four argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T5">Type of the five argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T6">Type of the six argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T7">Type of the seven argument that should be passed to the factory delegate to create the instace.</typeparam>
+	
+		<returns>
+			The resolved service instance or <see langword="null"/> if it cannot be resolved.
+		</returns>
+	</doc>
+
+	<doc for="Container.TryResolveNamed{TService, T1, T2, T3, T4, T5, T6, T7}">
+		<summary>
+			Attempts to resolve the given service by type and name, passing the
+			given arguments arguments for its initialization.
+		</summary>
+		<typeparam name="TService">Type of the service to retrieve.</typeparam>
+		<typeparam name="T1">Type of the one argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T2">Type of the two argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T3">Type of the three argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T4">Type of the four argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T5">Type of the five argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T6">Type of the six argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T7">Type of the seven argument that should be passed to the factory delegate to create the instace.</typeparam>
+	
+		<returns>
+			The resolved service instance or <see langword="null"/> if it cannot be resolved.
+		</returns>
+	</doc>
+
+	<doc for="Container.TryResolve{TService, T1, T2, T3, T4, T5, T6, T7, T8}">
+		<summary>
+			Attempts to resolve the given service by type, passing the
+			given arguments arguments for its initialization.
+		</summary>
+		<typeparam name="TService">Type of the service to retrieve.</typeparam>
+		<typeparam name="T1">Type of the one argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T2">Type of the two argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T3">Type of the three argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T4">Type of the four argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T5">Type of the five argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T6">Type of the six argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T7">Type of the seven argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T8">Type of the eight argument that should be passed to the factory delegate to create the instace.</typeparam>
+	
+		<returns>
+			The resolved service instance or <see langword="null"/> if it cannot be resolved.
+		</returns>
+	</doc>
+
+	<doc for="Container.TryResolveNamed{TService, T1, T2, T3, T4, T5, T6, T7, T8}">
+		<summary>
+			Attempts to resolve the given service by type and name, passing the
+			given arguments arguments for its initialization.
+		</summary>
+		<typeparam name="TService">Type of the service to retrieve.</typeparam>
+		<typeparam name="T1">Type of the one argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T2">Type of the two argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T3">Type of the three argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T4">Type of the four argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T5">Type of the five argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T6">Type of the six argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T7">Type of the seven argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T8">Type of the eight argument that should be passed to the factory delegate to create the instace.</typeparam>
+	
+		<returns>
+			The resolved service instance or <see langword="null"/> if it cannot be resolved.
+		</returns>
+	</doc>
+
+	<doc for="Container.TryResolve{TService, T1, T2, T3, T4, T5, T6, T7, T8, T9}">
+		<summary>
+			Attempts to resolve the given service by type, passing the
+			given arguments arguments for its initialization.
+		</summary>
+		<typeparam name="TService">Type of the service to retrieve.</typeparam>
+		<typeparam name="T1">Type of the one argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T2">Type of the two argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T3">Type of the three argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T4">Type of the four argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T5">Type of the five argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T6">Type of the six argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T7">Type of the seven argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T8">Type of the eight argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T9">Type of the nine argument that should be passed to the factory delegate to create the instace.</typeparam>
+	
+		<returns>
+			The resolved service instance or <see langword="null"/> if it cannot be resolved.
+		</returns>
+	</doc>
+
+	<doc for="Container.TryResolveNamed{TService, T1, T2, T3, T4, T5, T6, T7, T8, T9}">
+		<summary>
+			Attempts to resolve the given service by type and name, passing the
+			given arguments arguments for its initialization.
+		</summary>
+		<typeparam name="TService">Type of the service to retrieve.</typeparam>
+		<typeparam name="T1">Type of the one argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T2">Type of the two argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T3">Type of the three argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T4">Type of the four argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T5">Type of the five argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T6">Type of the six argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T7">Type of the seven argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T8">Type of the eight argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T9">Type of the nine argument that should be passed to the factory delegate to create the instace.</typeparam>
+	
+		<returns>
+			The resolved service instance or <see langword="null"/> if it cannot be resolved.
+		</returns>
+	</doc>
+
+	<doc for="Container.TryResolve{TService, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10}">
+		<summary>
+			Attempts to resolve the given service by type, passing the
+			given arguments arguments for its initialization.
+		</summary>
+		<typeparam name="TService">Type of the service to retrieve.</typeparam>
+		<typeparam name="T1">Type of the one argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T2">Type of the two argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T3">Type of the three argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T4">Type of the four argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T5">Type of the five argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T6">Type of the six argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T7">Type of the seven argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T8">Type of the eight argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T9">Type of the nine argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T10">Type of the ten argument that should be passed to the factory delegate to create the instace.</typeparam>
+	
+		<returns>
+			The resolved service instance or <see langword="null"/> if it cannot be resolved.
+		</returns>
+	</doc>
+
+	<doc for="Container.TryResolveNamed{TService, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10}">
+		<summary>
+			Attempts to resolve the given service by type and name, passing the
+			given arguments arguments for its initialization.
+		</summary>
+		<typeparam name="TService">Type of the service to retrieve.</typeparam>
+		<typeparam name="T1">Type of the one argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T2">Type of the two argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T3">Type of the three argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T4">Type of the four argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T5">Type of the five argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T6">Type of the six argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T7">Type of the seven argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T8">Type of the eight argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T9">Type of the nine argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T10">Type of the ten argument that should be passed to the factory delegate to create the instace.</typeparam>
+	
+		<returns>
+			The resolved service instance or <see langword="null"/> if it cannot be resolved.
+		</returns>
+	</doc>
+
+	<doc for="Container.TryResolve{TService, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11}">
+		<summary>
+			Attempts to resolve the given service by type, passing the
+			given arguments arguments for its initialization.
+		</summary>
+		<typeparam name="TService">Type of the service to retrieve.</typeparam>
+		<typeparam name="T1">Type of the one argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T2">Type of the two argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T3">Type of the three argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T4">Type of the four argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T5">Type of the five argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T6">Type of the six argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T7">Type of the seven argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T8">Type of the eight argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T9">Type of the nine argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T10">Type of the ten argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T11">Type of the eleven argument that should be passed to the factory delegate to create the instace.</typeparam>
+	
+		<returns>
+			The resolved service instance or <see langword="null"/> if it cannot be resolved.
+		</returns>
+	</doc>
+
+	<doc for="Container.TryResolveNamed{TService, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11}">
+		<summary>
+			Attempts to resolve the given service by type and name, passing the
+			given arguments arguments for its initialization.
+		</summary>
+		<typeparam name="TService">Type of the service to retrieve.</typeparam>
+		<typeparam name="T1">Type of the one argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T2">Type of the two argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T3">Type of the three argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T4">Type of the four argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T5">Type of the five argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T6">Type of the six argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T7">Type of the seven argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T8">Type of the eight argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T9">Type of the nine argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T10">Type of the ten argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T11">Type of the eleven argument that should be passed to the factory delegate to create the instace.</typeparam>
+	
+		<returns>
+			The resolved service instance or <see langword="null"/> if it cannot be resolved.
+		</returns>
+	</doc>
+
+	<doc for="Container.TryResolve{TService, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12}">
+		<summary>
+			Attempts to resolve the given service by type, passing the
+			given arguments arguments for its initialization.
+		</summary>
+		<typeparam name="TService">Type of the service to retrieve.</typeparam>
+		<typeparam name="T1">Type of the one argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T2">Type of the two argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T3">Type of the three argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T4">Type of the four argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T5">Type of the five argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T6">Type of the six argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T7">Type of the seven argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T8">Type of the eight argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T9">Type of the nine argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T10">Type of the ten argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T11">Type of the eleven argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T12">Type of the twelve argument that should be passed to the factory delegate to create the instace.</typeparam>
+	
+		<returns>
+			The resolved service instance or <see langword="null"/> if it cannot be resolved.
+		</returns>
+	</doc>
+
+	<doc for="Container.TryResolveNamed{TService, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12}">
+		<summary>
+			Attempts to resolve the given service by type and name, passing the
+			given arguments arguments for its initialization.
+		</summary>
+		<typeparam name="TService">Type of the service to retrieve.</typeparam>
+		<typeparam name="T1">Type of the one argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T2">Type of the two argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T3">Type of the three argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T4">Type of the four argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T5">Type of the five argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T6">Type of the six argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T7">Type of the seven argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T8">Type of the eight argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T9">Type of the nine argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T10">Type of the ten argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T11">Type of the eleven argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T12">Type of the twelve argument that should be passed to the factory delegate to create the instace.</typeparam>
+	
+		<returns>
+			The resolved service instance or <see langword="null"/> if it cannot be resolved.
+		</returns>
+	</doc>
+
+	<doc for="Container.TryResolve{TService, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13}">
+		<summary>
+			Attempts to resolve the given service by type, passing the
+			given arguments arguments for its initialization.
+		</summary>
+		<typeparam name="TService">Type of the service to retrieve.</typeparam>
+		<typeparam name="T1">Type of the one argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T2">Type of the two argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T3">Type of the three argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T4">Type of the four argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T5">Type of the five argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T6">Type of the six argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T7">Type of the seven argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T8">Type of the eight argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T9">Type of the nine argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T10">Type of the ten argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T11">Type of the eleven argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T12">Type of the twelve argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T13">Type of the thirteen argument that should be passed to the factory delegate to create the instace.</typeparam>
+	
+		<returns>
+			The resolved service instance or <see langword="null"/> if it cannot be resolved.
+		</returns>
+	</doc>
+
+	<doc for="Container.TryResolveNamed{TService, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13}">
+		<summary>
+			Attempts to resolve the given service by type and name, passing the
+			given arguments arguments for its initialization.
+		</summary>
+		<typeparam name="TService">Type of the service to retrieve.</typeparam>
+		<typeparam name="T1">Type of the one argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T2">Type of the two argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T3">Type of the three argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T4">Type of the four argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T5">Type of the five argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T6">Type of the six argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T7">Type of the seven argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T8">Type of the eight argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T9">Type of the nine argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T10">Type of the ten argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T11">Type of the eleven argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T12">Type of the twelve argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T13">Type of the thirteen argument that should be passed to the factory delegate to create the instace.</typeparam>
+	
+		<returns>
+			The resolved service instance or <see langword="null"/> if it cannot be resolved.
+		</returns>
+	</doc>
+
+	<doc for="Container.TryResolve{TService, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14}">
+		<summary>
+			Attempts to resolve the given service by type, passing the
+			given arguments arguments for its initialization.
+		</summary>
+		<typeparam name="TService">Type of the service to retrieve.</typeparam>
+		<typeparam name="T1">Type of the one argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T2">Type of the two argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T3">Type of the three argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T4">Type of the four argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T5">Type of the five argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T6">Type of the six argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T7">Type of the seven argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T8">Type of the eight argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T9">Type of the nine argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T10">Type of the ten argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T11">Type of the eleven argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T12">Type of the twelve argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T13">Type of the thirteen argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T14">Type of the fourteen argument that should be passed to the factory delegate to create the instace.</typeparam>
+	
+		<returns>
+			The resolved service instance or <see langword="null"/> if it cannot be resolved.
+		</returns>
+	</doc>
+
+	<doc for="Container.TryResolveNamed{TService, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14}">
+		<summary>
+			Attempts to resolve the given service by type and name, passing the
+			given arguments arguments for its initialization.
+		</summary>
+		<typeparam name="TService">Type of the service to retrieve.</typeparam>
+		<typeparam name="T1">Type of the one argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T2">Type of the two argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T3">Type of the three argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T4">Type of the four argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T5">Type of the five argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T6">Type of the six argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T7">Type of the seven argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T8">Type of the eight argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T9">Type of the nine argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T10">Type of the ten argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T11">Type of the eleven argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T12">Type of the twelve argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T13">Type of the thirteen argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<typeparam name="T14">Type of the fourteen argument that should be passed to the factory delegate to create the instace.</typeparam>
+	
+		<returns>
+			The resolved service instance or <see langword="null"/> if it cannot be resolved.
+		</returns>
+	</doc>
+
+	
+
+</docs>

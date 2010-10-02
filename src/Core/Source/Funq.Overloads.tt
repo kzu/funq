@@ -1,0 +1,206 @@
+﻿<#@ Template Debug="false" HostSpecific="false" Language="C#" #>
+<#@ Output Extension=".xdoc" #>
+<#@ Assembly Name="System.Core" #>
+<#@ Import Namespace="System.Linq" #>
+<?xml version="1.0" encoding="utf-8" ?>
+<docs>
+	<!-- LazyResolve -->
+<#
+for (var typeCount = 2; typeCount <= GenericTypeMax - 2; typeCount++)
+{
+    var typeList = GetGenericList(typeCount, "T{0}");
+#>
+	<doc for="Container.LazyResolve{TService, <#=typeList #>, name}">
+		<summary>
+			Retrieves a function that can be used to lazily resolve an instance
+			of the service of the given type and service constructor arguments when needed.
+		</summary>
+		<typeparam name="TService">Type of the service.</typeparam>
+<#
+for (var argCount = 1; argCount <= typeCount; argCount++)
+{
+#>
+		<typeparam name="T<#=argCount #>">Type of the <#=ConvertToWord(argCount) #> argument to pass to the factory delegate to create the instace.</typeparam>
+<#
+}
+#>	
+		<returns>The function that can resolve to the service instance with the given service constructor arguments when invoked.</returns>
+		<exception cref="ResolutionException">The requested service with the given constructor arguments has not been registered previously.</exception>
+	</doc>
+<#
+}
+#>
+
+	<!-- LazyResolveNamed -->
+<#
+for (var typeCount = 2; typeCount <= GenericTypeMax - 2; typeCount++)
+{
+    var typeList = GetGenericList(typeCount, "T{0}");
+#>
+	<doc for="Container.LazyResolveNamed{TService, <#=typeList #>, name}">
+		<summary>
+			Retrieves a function that can be used to lazily resolve an instance
+			of the service of the given type, name and service constructor arguments when needed.
+		</summary>
+		<param name="name">Name of the service to retrieve.</param>
+		<typeparam name="TService">Type of the service.</typeparam>
+<#
+for (var argCount = 1; argCount <= typeCount; argCount++)
+{
+#>
+		<typeparam name="T<#=argCount #>">Type of the <#=ConvertToWord(argCount) #> argument to pass to the factory delegate to create the instace.</typeparam>
+<#
+}
+#>	
+		<returns>The function that can resolve to the service instance with the given name and service constructor arguments when invoked.</returns>
+		<exception cref="ResolutionException">The requested service with the given name and constructor arguments has not been registered previously.</exception>
+	</doc>
+<#
+}
+#>	
+
+	<!-- Register -->
+<#
+for (var typeCount = 2; typeCount <= GenericTypeMax - 2; typeCount++)
+{
+    var typeList = GetGenericList(typeCount, "T{0}");
+#>
+	<doc for="Container.Register{TService, <#=typeList #>}(name, factory)">
+		<summary>
+			Registers the given named service by providing a factory delegate that receives arguments to
+			instantiate it.
+		</summary>
+		<typeparam name="TService">The service type to register.</typeparam>
+<#
+for (var argCount = 1; argCount <= typeCount; argCount++)
+{
+#>
+		<typeparam name="T<#=argCount #>">Type of the <#=ConvertToWord(argCount) #> argument that should be passed to the factory delegate to create the instace.</typeparam>
+<#
+}
+#>	
+		<param name="name">A name used to differenciate this service registration.</param>
+		<param name="factory">The factory delegate to initialize new instances of the service when needed.</param>
+		<returns>The registration object to perform further configuration via its fluent interface.</returns>
+	</doc>
+
+	<doc for="Container.Register{TService, <#=typeList #>}(factory)">
+		<summary>
+			Registers the given service by providing a factory delegate that receives arguments to
+			instantiate it.
+		</summary>
+		<typeparam name="TService">The service type to register.</typeparam>
+<#
+for (var argCount = 1; argCount <= typeCount; argCount++)
+{
+#>
+		<typeparam name="T<#=argCount #>">Type of the <#=ConvertToWord(argCount) #> argument that should be passed to the factory delegate to create the instace.</typeparam>
+<#
+}
+#>	
+		<param name="factory">The factory delegate to initialize new instances of the service when needed.</param>
+		<returns>The registration object to perform further configuration via its fluent interface.</returns>
+	</doc>
+
+<#
+}
+#>	
+
+	<!-- Resolve -->
+<#
+for (var typeCount = 2; typeCount <= GenericTypeMax - 2; typeCount++)
+{
+    var typeList = GetGenericList(typeCount, "T{0}");
+#>
+	<doc for="Container.Resolve{TService, <#=typeList #>}">
+		<summary>
+			Resolves the given service by type, passing the given arguments
+			for its initialization.
+		</summary>
+		<typeparam name="TService">Type of the service to retrieve.</typeparam>
+<#
+for (var argCount = 1; argCount <= typeCount; argCount++)
+{
+#>
+		<typeparam name="T<#=argCount #>">Type of the <#=ConvertToWord(argCount) #> argument that should be passed to the factory delegate to create the instace.</typeparam>
+<#
+}
+#>	
+		<returns>The resolved service instance.</returns>
+		<exception cref="ResolutionException">The given service could not be resolved.</exception>
+	</doc>
+
+	<doc for="Container.ResolveNamed{TService, <#=typeList #>}">
+		<summary>
+			Resolves the given service by type and name, passing the given arguments
+			for its initialization.
+		</summary>
+		<typeparam name="TService">Type of the service to retrieve.</typeparam>
+<#
+for (var argCount = 1; argCount <= typeCount; argCount++)
+{
+#>
+		<typeparam name="T<#=argCount #>">Type of the <#=ConvertToWord(argCount) #> argument that should be passed to the factory delegate to create the instace.</typeparam>
+		<param name="arg<#=argCount #>">Value of the <#=ConvertToWord(argCount) #> argument that should be passed to the factory delegate to create the instace.</param>
+<#
+}
+#>	
+		<param name="name">Name of the service to retrieve.</param>
+		<returns>The resolved service instance.</returns>
+		<exception cref="ResolutionException">The given service could not be resolved.</exception>
+	</doc>
+
+<#
+}
+#>	
+
+	<!-- TryResolve -->
+<#
+for (var typeCount = 2; typeCount <= GenericTypeMax - 2; typeCount++)
+{
+    var typeList = GetGenericList(typeCount, "T{0}");
+#>
+	<doc for="Container.TryResolve{TService, <#=typeList #>}">
+		<summary>
+			Attempts to resolve the given service by type, passing the
+			given arguments arguments for its initialization.
+		</summary>
+		<typeparam name="TService">Type of the service to retrieve.</typeparam>
+<#
+for (var argCount = 1; argCount <= typeCount; argCount++)
+{
+#>
+		<typeparam name="T<#=argCount #>">Type of the <#=ConvertToWord(argCount) #> argument that should be passed to the factory delegate to create the instace.</typeparam>
+<#
+}
+#>	
+		<returns>
+			The resolved service instance or <see langword="null"/> if it cannot be resolved.
+		</returns>
+	</doc>
+
+	<doc for="Container.TryResolveNamed{TService, <#=typeList #>}">
+		<summary>
+			Attempts to resolve the given service by type and name, passing the
+			given arguments arguments for its initialization.
+		</summary>
+		<typeparam name="TService">Type of the service to retrieve.</typeparam>
+<#
+for (var argCount = 1; argCount <= typeCount; argCount++)
+{
+#>
+		<typeparam name="T<#=argCount #>">Type of the <#=ConvertToWord(argCount) #> argument that should be passed to the factory delegate to create the instace.</typeparam>
+<#
+}
+#>	
+		<returns>
+			The resolved service instance or <see langword="null"/> if it cannot be resolved.
+		</returns>
+	</doc>
+
+<#
+}
+#>	
+
+</docs>
+<#@ Include File="Helpers.tt" #>

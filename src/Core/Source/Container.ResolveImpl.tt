@@ -1,0 +1,50 @@
+﻿<#@ Template Debug="false" HostSpecific="false" Language="C#" #>
+<#@ Output Extension=".cs" #>
+<#@ Assembly Name="System.Core" #>
+<#@ Import Namespace="System.Linq" #>
+<#@ Include File="Header.tt" #>
+
+using System;
+using System.Collections.Generic;
+
+namespace Funq
+{
+	sealed partial class Container
+	{
+		/* All ResolveImpl are essentially equal, except for the type of the factory 
+		 * which is "hardcoded" in each implementation. This slight repetition of 
+		 * code gives us a bit more of perf. gain by avoiding an intermediate 
+		 * func/lambda to call in a generic way as we did before.
+		 */
+
+<#
+for (var typeCount = 2; typeCount <= GenericTypeMax - 1; typeCount++)
+{
+    var typeList = GetGenericList(typeCount, "T{0}");
+    var argumentList = GetGenericList(typeCount, "T{0} arg{0}");
+    var valueList = GetGenericList(typeCount, "arg{0}");
+#>
+		private TService ResolveImpl<TService, <#=typeList #>>(string name, bool throwIfMissing, <#=argumentList #>)
+		{
+			// Would throw if missing as appropriate.
+			var entry = GetEntry<TService, Func<Container, <#=typeList #>, TService>>(name, throwIfMissing);
+			// Return default if not registered and didn't throw above.
+			if (entry == null)
+				return default(TService);
+
+			TService instance = entry.Instance;
+			if (instance == null)
+			{
+				instance = entry.Factory(entry.Container, <#=valueList#>);
+				entry.InitializeInstance(instance);
+			}
+
+			return instance;
+		}
+
+<#
+}
+#>
+	}
+}
+<#@ Include File="Helpers.tt" #>

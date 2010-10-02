@@ -55,9 +55,9 @@
   </PropertyGroup>
   <Import Project="..\..\Funq.properties" />
   <PropertyGroup>
-    <SilverlightBuildResources>$(RootDir)Lib\Silverlight SDK\</SilverlightBuildResources>
-    <TargetFrameworkDirectory>$(SilverlightBuildResources)Reference Assemblies\</TargetFrameworkDirectory>
-    <TargetFrameworkSDKDirectory>$(SilverlightBuildResources)Libraries\Client\</TargetFrameworkSDKDirectory>
+		<SilverlightBuildResources>$(RootDir)Lib\Silverlight\$(TargetFrameworkVersion)\</SilverlightBuildResources>
+		<TargetFrameworkDirectory>$(SilverlightBuildResources)Reference Assemblies\</TargetFrameworkDirectory>
+		<TargetFrameworkSDKDirectory>$(TargetFrameworkSDKDirectory)</TargetFrameworkSDKDirectory>
     <SilverlightRuntimeVersion>2.0.31005.0</SilverlightRuntimeVersion>
   </PropertyGroup>
   <ItemGroup>
