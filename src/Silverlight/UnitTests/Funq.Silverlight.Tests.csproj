@@ -1,4 +1,5 @@
-﻿<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -10,7 +11,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Funq.Tests</RootNamespace>
     <AssemblyName>Funq.Silverlight.Tests</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v3.0</TargetFrameworkVersion>
     <SilverlightApplication>true</SilverlightApplication>
     <SupportedCultures>
     </SupportedCultures>
@@ -23,12 +24,10 @@
     <CreateTestPage>true</CreateTestPage>
     <ValidateXaml>true</ValidateXaml>
     <ThrowErrorsInValidation>false</ThrowErrorsInValidation>
-    <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>..\..\Funq.snk</AssemblyOriginatorKeyFile>
+    <TargetFrameworkProfile />
+    <SignManifests>false</SignManifests>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE;SILVERLIGHT</DefineConstants>
@@ -36,9 +35,9 @@
     <NoConfig>true</NoConfig>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE;SILVERLIGHT</DefineConstants>
@@ -46,29 +45,45 @@
     <NoConfig>true</NoConfig>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <Import Project="..\..\Funq.targets" />
+  <PropertyGroup>
+    <SilverlightBuildResources>$(RootDir)Lib\Silverlight SDK\</SilverlightBuildResources>
+    <TargetFrameworkDirectory>$(SilverlightBuildResources)Reference Assemblies\</TargetFrameworkDirectory>
+    <TargetFrameworkSDKDirectory>$(SilverlightBuildResources)Libraries\Client\</TargetFrameworkSDKDirectory>
+    <SilverlightRuntimeVersion>2.0.31005.0</SilverlightRuntimeVersion>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Silverlight.Testing, Version=2.0.21103.1925, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Lib\Silverlight UT\Microsoft.Silverlight.Testing.dll</HintPath>
+      <HintPath>$(RootDir)Lib\Silverlight UT\Microsoft.Silverlight.Testing.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTesting.Silverlight, Version=2.0.21024.1838, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Lib\Silverlight UT\Microsoft.VisualStudio.QualityTools.UnitTesting.Silverlight.dll</HintPath>
+      <HintPath>$(RootDir)Lib\Silverlight UT\Microsoft.VisualStudio.QualityTools.UnitTesting.Silverlight.dll</HintPath>
     </Reference>
-    <Reference Include="mscorlib" />
-    <Reference Include="system" />
-    <Reference Include="System.Core" />
+    <Reference Include="mscorlib">
+      <HintPath>$(TargetFrameworkDirectory)mscorlib.dll</HintPath>
+    </Reference>
+    <Reference Include="system">
+      <HintPath>$(TargetFrameworkDirectory)system.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core">
+      <HintPath>$(TargetFrameworkDirectory)System.Core.dll</HintPath>
+    </Reference>
     <Reference Include="System.Windows">
       <Private>True</Private>
+      <HintPath>$(TargetFrameworkDirectory)System.Windows.dll</HintPath>
     </Reference>
     <Reference Include="System.Windows.Browser">
       <Private>True</Private>
+      <HintPath>$(TargetFrameworkDirectory)System.Windows.Browser.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml">
       <Private>True</Private>
+      <HintPath>$(TargetFrameworkDirectory)System.Xml.dll</HintPath>
     </Reference>
-    <Reference Include="System.Xml.Linq, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\..\Core\UnitTests\ContainerFixture.cs">
@@ -87,12 +102,11 @@
     <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:MarkupCompilePass1</Generator>
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\Funq.snk">
-      <Link>Funq.snk</Link>
-    </None>
     <None Include="Properties\AppManifest.xml" />
   </ItemGroup>
   <ItemGroup>
@@ -101,23 +115,7 @@
       <Name>Funq.Silverlight</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Service References\" />
-  </ItemGroup>
-  <PropertyGroup>
-    <SilverlightBuildResources>..\..\Lib\Silverlight SDK\</SilverlightBuildResources>
-    <TargetFrameworkDirectory>$(SilverlightBuildResources)Reference Assemblies\</TargetFrameworkDirectory>
-    <TargetFrameworkSDKDirectory>$(SilverlightBuildResources)Libraries\Client\</TargetFrameworkSDKDirectory>
-    <SilverlightRuntimeVersion>2.0.31005.0</SilverlightRuntimeVersion>
-  </PropertyGroup>
   <Import Project="$(SilverlightBuildResources)MSBuild\Microsoft.Silverlight.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
   <ProjectExtensions>
     <VisualStudio>
       <FlavorProperties GUID="{A1591282-1198-4647-A2B1-27E5FF5F6F3B}">
