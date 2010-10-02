@@ -130,11 +130,14 @@
 	</Target>
 
 	<Target Name="Help">
-		<MSBuild
+		<MSBuild 
+			ToolsVersion="3.5"
+			ContinueOnError="true"
 			Projects="Funq.shfbproj"
 			Targets="Build"/>
 		<Copy SourceFiles="Help\Funq.chm"
-					DestinationFiles="Funq\Funq.chm" />
+					DestinationFiles="Funq\Funq.chm"
+					ContinueOnError="true"/>
 	</Target>
 
 	<Target Name="SetVersionNumber">
