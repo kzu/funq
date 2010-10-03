@@ -106,10 +106,14 @@
 		<TmpPath>Data\Tmp</TmpPath>
 		<DestPath>Data\Reflection</DestPath>
 	</PropertyGroup>
-	<ItemGroup>
-		<AssemblyFolders Include="$(WINDIR)\Microsoft.NET\Framework\v4.0.30319\*.dll" />
-		<AssemblyFolders Include="$(ProgramFiles)\Reference Assemblies\Microsoft\Framework\v3.5\*.dll"/>
-	</ItemGroup>
+  <ItemGroup>
+    <AssemblyFolders Include="$(WINDIR)\Microsoft.NET\Framework\v2.0.50727\*.dll"/>
+    <AssemblyFolders Include="$(WINDIR)\Microsoft.NET\Framework\v3.0\**\*.dll" Condition="$(NetfxVer)>2.0"/>
+    <AssemblyFolders Include="$(ProgramFiles)\Reference Assemblies\Microsoft\Framework\v3.0\*.dll" Condition="$(NetfxVer)>2.0"/>
+    <AssemblyFolders Include="$(WINDIR)\Microsoft.NET\Framework\v3.5\**\*.dll" Condition="$(NetfxVer)>3.0"/>
+    <AssemblyFolders Include="$(ProgramFiles)\Reference Assemblies\Microsoft\Framework\v3.5\*.dll" Condition="$(NetfxVer)>3.0"/>
+	<AssemblyFolders Include="$(WINDIR)\Microsoft.NET\Framework\v4.0.30319\**\*.dll" Condition="$(NetfxVer)>3.0"/>
+  </ItemGroup>
 
 	<Target Name="Reflection"
 					Condition="!Exists('$(Sandcastle)\$(DestPath)')">
