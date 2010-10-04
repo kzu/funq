@@ -110,9 +110,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\Funq.snk">
-      <Link>Funq.snk</Link>
-    </None>
     <None Include="Container.LazyResolve.tt">
       <DependentUpon>Container.cs</DependentUpon>
       <Generator>TextTemplatingFileGenerator</Generator>

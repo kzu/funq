@@ -55,9 +55,9 @@
   </PropertyGroup>
   <Import Project="..\..\Funq.properties" />
   <PropertyGroup>
-		<SilverlightBuildResources>$(RootDir)Lib\Silverlight\$(TargetFrameworkVersion)\</SilverlightBuildResources>
-		<TargetFrameworkDirectory>$(SilverlightBuildResources)Reference Assemblies\</TargetFrameworkDirectory>
-		<TargetFrameworkSDKDirectory>$(TargetFrameworkSDKDirectory)</TargetFrameworkSDKDirectory>
+    <SilverlightBuildResources>$(RootDir)Lib\Silverlight\$(TargetFrameworkVersion)\</SilverlightBuildResources>
+    <TargetFrameworkDirectory>$(SilverlightBuildResources)Reference Assemblies\</TargetFrameworkDirectory>
+    <TargetFrameworkSDKDirectory>$(TargetFrameworkSDKDirectory)</TargetFrameworkSDKDirectory>
     <SilverlightRuntimeVersion>2.0.31005.0</SilverlightRuntimeVersion>
   </PropertyGroup>
   <ItemGroup>
@@ -87,10 +87,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\..\Core\UnitTests\ContainerFixture.cs">
+    <Compile Include="..\..\Core\Funq.UnitTests\ContainerFixture.cs">
       <Link>ContainerFixture.cs</Link>
     </Compile>
-    <Compile Include="..\..\Core\UnitTests\ServiceKeyFixture.cs">
+    <Compile Include="..\..\Core\Funq.UnitTests\ServiceKeyFixture.cs">
       <Link>ServiceKeyFixture.cs</Link>
     </Compile>
     <Compile Include="App.xaml.cs">
@@ -108,15 +108,15 @@
     <None Include="Properties\AppManifest.xml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Source\Funq.Silverlight.csproj">
+    <ProjectReference Include="..\Funq\Funq.Silverlight.csproj">
       <Project>{0F0175C7-9CCD-4C05-94DE-308E83A8B317}</Project>
       <Name>Funq.Silverlight</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(SilverlightBuildResources)MSBuild\Microsoft.Silverlight.CSharp.targets" />
   <Import Project="$(RootDir)Lib\Silverlight UT\Microsoft.Silverlight.Toolkit.Build.targets" />
-	<Import Project="..\..\Funq.targets" />
-	<ProjectExtensions>
+  <Import Project="..\..\Funq.targets" />
+  <ProjectExtensions>
     <VisualStudio>
       <FlavorProperties GUID="{A1591282-1198-4647-A2B1-27E5FF5F6F3B}">
         <SilverlightProjectProperties />

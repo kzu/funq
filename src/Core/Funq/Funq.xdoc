@@ -211,4 +211,153 @@
 		<param name="factory">The factory delegate to initialize new instances of the service when needed.</param>
 		<returns>The registration object to perform further configuration via its fluent interface.</returns>
 	</doc>
+
+	<doc for="IFluentInterface">
+		<summary>
+			Helper interface used to hide the base <see cref="Object"/>
+			members from the fluent API to make for much cleaner
+			Visual Studio intellisense experience.
+		</summary>
+	</doc>
+
+	<doc for="IFunqlet">
+		<summary>
+			Funqlets are a set of components provided as a package
+			to an existing container (like a module).
+		</summary>
+	</doc>
+	<doc for="IFunqlet.Configure">
+		<summary>
+			Configure the given container with the registrations provided by the funqlet.
+		</summary>
+		<param name="container">Container to register.</param>	
+	</doc>
+
+	<doc for="Owner">
+		<summary>
+			Determines who is responsible for disposing instances
+			registered with a container.
+		</summary>
+	</doc>
+	<doc for="Owner.Container">
+		<summary>
+			Container should dispose provided instances when it is disposed.
+			This is the default.
+		</summary>		
+	</doc>
+	<doc for="Owner.External">
+		<summary>
+			Container does not dispose provided instances.
+		</summary>
+	</doc>
+	<doc for="Owner.Default">
+		<summary>
+			Default owner, which equals <see cref="Container"/>.
+		</summary>
+	</doc>
+
+	<doc for="ResolutionException">
+		<summary>
+			Exception thrown by the container when a service cannot be resolved.
+		</summary>
+	</doc>
+	<doc for="ResolutionException.ctor(Type)">
+		<summary>
+			Initializes the exception with the service that could not be resolved.
+		</summary>
+	</doc>
+	<doc for="ResolutionException.ctor(Type, string)">
+		<summary>
+			Initializes the exception with the service (and its name) that could not be resolved.
+		</summary>
+	</doc>
+	<doc for="ResolutionException.ctor(string)">
+		<summary>
+			Initializes the exception with an arbitrary message.
+		</summary>
+	</doc>
+
+	<doc for="ReuseScope">
+		<summary>
+			Determines visibility and reuse of instances provided by the container.
+		</summary>
+	</doc>
+	<doc for="ReuseScope.Container">
+		<summary>
+			Instances are reused only at the given container. Descendent
+			containers do not reuse parent container instances and get
+			a new instance at their level.
+		</summary>
+	</doc>
+	<doc for="ReuseScope.Hierarchy">
+		<summary>
+			Instances are reused within a container hierarchy. Instances
+			are created (if necessary) in the container where the registration
+			was performed, and are reused by all descendent containers.
+		</summary>
+	</doc>
+	<doc for="ReuseScope.None">
+		<summary>
+			Each request to resolve the dependency will result in a new
+			instance being returned.
+		</summary>
+	</doc>
+	<doc for="ReuseScope.Default">
+		<summary>
+			Default scope, which equals <see cref="Hierarchy"/>.
+		</summary>
+	</doc>
+
+	<!-- Syntax -->
+	<doc for="IRegistration">
+		<summary>
+			Fluent API for customizing the registration of a service.
+		</summary>
+	</doc>
+	<doc for="IRegistration{TService}">
+		<summary>
+			Fluent API for customizing the registration of a service.
+		</summary>
+	</doc>
+	<doc for="IInitializable">
+		<summary>
+			Fluent API that allows registering an initializer for the
+			service.
+		</summary>
+	</doc>
+	<doc for="IInitializable.InitializedBy">
+		<summary>
+			Specifies an initializer that should be invoked after
+			the service instance has been created by the factory.
+		</summary>
+	</doc>
+	<doc for="IReusedOwned">
+		<summary>
+			Fluent API that exposes both <see cref="IReused.ReusedWithin"/>
+			and owner (<see cref="IOwned.OwnedBy"/>).
+		</summary>
+	</doc>
+	<doc for="IReused">
+		<summary>
+			Fluent API that allows specifying the reuse instances.
+		</summary>
+	</doc>
+	<doc for="IReused.ReusedWithin">
+		<summary>
+			Specifies how instances are reused within a container or hierarchy. Default
+			scope is <see cref="ReuseScope.Hierarchy"/>.
+		</summary>
+	</doc>
+	<doc for="IOwned">
+		<summary>
+			Fluent API that allows specifying the owner of instances
+			created from a registration.
+		</summary>
+	</doc>
+	<doc for="IOwned.OwnedBy">
+		<summary>
+			Specifies the owner of instances created from this registration. Default
+			owner is <see cref="Owner.Container"/>.
+		</summary>
+	</doc>
 </docs>

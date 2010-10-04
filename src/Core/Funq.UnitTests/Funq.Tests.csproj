@@ -49,7 +49,7 @@
     <Compile Include="ServiceKeyFixture.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Source\Funq.csproj">
+    <ProjectReference Include="..\Funq\Funq.csproj">
       <Project>{56656B0F-90BB-44D1-8A70-D004F940E0D2}</Project>
       <Name>Funq</Name>
     </ProjectReference>

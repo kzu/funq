@@ -37,67 +37,43 @@ using System.ComponentModel;
 
 namespace Funq
 {
-	/// <summary>
-	/// Fluent API for customizing the registration of a service.
-	/// </summary>
+	/// <include file='Funq.xdoc' path='docs/doc[@for="IRegistration"]/*'/>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	public interface IRegistration : IFluentInterface, IReusedOwned
 	{
 	}
 
-	/// <summary>
-	/// Fluent API for customizing the registration of a service.
-	/// </summary>
+	/// <include file='Funq.xdoc' path='docs/doc[@for="IRegistration"]/*'/>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	public interface IRegistration<TService> : IFluentInterface, IRegistration, IInitializable<TService>
 	{
 	}
 
-	/// <summary>
-	/// Fluent API that allows registering an initializer for the 
-	/// service.
-	/// </summary>
+	/// <include file='Funq.xdoc' path='docs/doc[@for="IRegistration"]/*'/>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	public interface IInitializable<TService> : IFluentInterface
 	{
-		/// <summary>
-		/// Specifies an initializer that should be invoked after 
-		/// the service instance has been created by the factory.
-		/// </summary>
+		/// <include file='Funq.xdoc' path='docs/doc[@for="IInitializable.InitializedBy"]/*'/>
 		IReusedOwned InitializedBy(Action<Container, TService> initializer);
 	}
 
-	/// <summary>
-	/// Fluent API that exposes both <see cref="IReused.ReusedWithin"/>
-	/// and owner (<see cref="IOwned.OwnedBy"/>).
-	/// </summary>
+	/// <include file='Funq.xdoc' path='docs/doc[@for="IReusedOwned"]/*'/>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	public interface IReusedOwned : IFluentInterface, IReused, IOwned { }
 
-	/// <summary>
-	/// Fluent API that allows specifying the reuse instances.
-	/// </summary>
+	/// <include file='Funq.xdoc' path='docs/doc[@for="IReused"]/*'/>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	public interface IReused : IFluentInterface
 	{
-		/// <summary>
-		/// Specifies how instances are reused within a container or hierarchy. Default 
-		/// scope is <see cref="ReuseScope.Hierarchy"/>.
-		/// </summary>
+		/// <include file='Funq.xdoc' path='docs/doc[@for="IReused.ReusedWithin"]/*'/>
 		IOwned ReusedWithin(ReuseScope scope);
 	}
 
-	/// <summary>
-	/// Fluent API that allows specifying the owner of instances 
-	/// created from a registration.
-	/// </summary>
+	/// <include file='Funq.xdoc' path='docs/doc[@for="IOwned"]/*'/>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	public interface IOwned : IFluentInterface
 	{
-		/// <summary>
-		/// Specifies the owner of instances created from this registration. Default 
-		/// owner is <see cref="Owner.Container"/>.
-		/// </summary>
+		/// <include file='Funq.xdoc' path='docs/doc[@for="IOwned.OwnedBy"]/*'/>
 		void OwnedBy(Owner owner);
 	}
 }

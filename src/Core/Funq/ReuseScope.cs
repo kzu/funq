@@ -34,34 +34,19 @@
 
 namespace Funq
 {
-	/// <summary>
-	/// Determines visibility and reuse of instances provided by the container.
-	/// </summary>
+	/// <include file='Funq.xdoc' path='docs/doc[@for="ResolutionException"]/*'/>
 	public enum ReuseScope
 	{
-		/// <summary>
-		/// Instances are reused within a container hierarchy. Instances 
-		/// are created (if necessary) in the container where the registration
-		/// was performed, and are reused by all descendent containers.
-		/// </summary>
-		Hierarchy,
-
-		/// <summary>
-		/// Instances are reused only at the given container. Descendent 
-		/// containers do not reuse parent container instances and get  
-		/// a new instance at their level.
-		/// </summary>
+		/// <include file='Funq.xdoc' path='docs/doc[@for="ResolutionException"]/*'/>
 		Container,
 
-		/// <summary>
-		/// Each request to resolve the dependency will result in a new 
-		/// instance being returned.
-		/// </summary>
+		/// <include file='Funq.xdoc' path='docs/doc[@for="ResolutionException"]/*'/>
+		Hierarchy,
+
+		/// <include file='Funq.xdoc' path='docs/doc[@for="ResolutionException"]/*'/>
 		None,
 
-		/// <summary>
-		/// Default scope, which equals <see cref="Hierarchy"/>.
-		/// </summary>
+		/// <include file='Funq.xdoc' path='docs/doc[@for="ResolutionException"]/*'/>
 		Default = Hierarchy,
 	}
 }

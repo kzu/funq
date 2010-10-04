@@ -15,17 +15,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Silverlight", "Silverlight", "{06B69B84-3896-4E93-BF25-81044FE8A572}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Funq", "Core\Source\Funq.csproj", "{56656B0F-90BB-44D1-8A70-D004F940E0D2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Funq", "Core\Funq\Funq.csproj", "{56656B0F-90BB-44D1-8A70-D004F940E0D2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Funq.Tests", "Core\UnitTests\Funq.Tests.csproj", "{E655E463-B7E3-4BF4-B02F-3E1B98C1353D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Funq.Tests", "Core\Funq.UnitTests\Funq.Tests.csproj", "{E655E463-B7E3-4BF4-B02F-3E1B98C1353D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Funq.Silverlight", "Silverlight\Source\Funq.Silverlight.csproj", "{0F0175C7-9CCD-4C05-94DE-308E83A8B317}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Funq.Silverlight", "Silverlight\Funq\Funq.Silverlight.csproj", "{0F0175C7-9CCD-4C05-94DE-308E83A8B317}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Funq.Silverlight.Tests", "Silverlight\UnitTests\Funq.Silverlight.Tests.csproj", "{3F9ACA78-D409-4E60-8C32-A1FF5498F771}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Funq.Silverlight.Tests", "Silverlight\Funq.UnitTests\Funq.Silverlight.Tests.csproj", "{3F9ACA78-D409-4E60-8C32-A1FF5498F771}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WindowsPhone", "WindowsPhone", "{0E1B7238-782E-4588-8E79-94CA948BA55D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Funq.WindowsPhone", "WindowsPhone\Source\Funq.WindowsPhone.csproj", "{A046BB8A-1AE2-4673-AA33-1AF8A706BAEE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Funq.WindowsPhone", "WindowsPhone\Funq\Funq.WindowsPhone.csproj", "{A046BB8A-1AE2-4673-AA33-1AF8A706BAEE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Funq.Composition", "Core\Funq.Composition\Funq.Composition.csproj", "{5FB37D21-CE86-4074-8B5A-C397B6A4EB9A}"
 EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
@@ -56,6 +58,10 @@ Global
 		{A046BB8A-1AE2-4673-AA33-1AF8A706BAEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A046BB8A-1AE2-4673-AA33-1AF8A706BAEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A046BB8A-1AE2-4673-AA33-1AF8A706BAEE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5FB37D21-CE86-4074-8B5A-C397B6A4EB9A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5FB37D21-CE86-4074-8B5A-C397B6A4EB9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5FB37D21-CE86-4074-8B5A-C397B6A4EB9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5FB37D21-CE86-4074-8B5A-C397B6A4EB9A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -63,6 +69,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{56656B0F-90BB-44D1-8A70-D004F940E0D2} = {A94C8911-254D-41AC-ADD4-FB5DE741670B}
 		{E655E463-B7E3-4BF4-B02F-3E1B98C1353D} = {A94C8911-254D-41AC-ADD4-FB5DE741670B}
+		{5FB37D21-CE86-4074-8B5A-C397B6A4EB9A} = {A94C8911-254D-41AC-ADD4-FB5DE741670B}
 		{0F0175C7-9CCD-4C05-94DE-308E83A8B317} = {06B69B84-3896-4E93-BF25-81044FE8A572}
 		{3F9ACA78-D409-4E60-8C32-A1FF5498F771} = {06B69B84-3896-4E93-BF25-81044FE8A572}
 		{A046BB8A-1AE2-4673-AA33-1AF8A706BAEE} = {0E1B7238-782E-4588-8E79-94CA948BA55D}

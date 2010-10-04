@@ -37,11 +37,7 @@ using System.ComponentModel;
 
 namespace Funq
 {
-	/// <summary>
-	/// Helper interface used to hide the base <see cref="Object"/> 
-	/// members from the fluent API to make for much cleaner 
-	/// Visual Studio intellisense experience.
-	/// </summary>
+	/// <include file='Funq.xdoc' path='docs/doc[@for="IFluentInterface"]/*'/>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	public interface IFluentInterface
 	{

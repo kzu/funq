@@ -34,26 +34,16 @@
 
 namespace Funq
 {
-	/// <summary>
-	/// Determines who is responsible for disposing instances 
-	/// registered with a container.
-	/// </summary>
+	/// <include file='Funq.xdoc' path='docs/doc[@for="Owner"]/*'/>
 	public enum Owner
 	{
-		/// <summary>
-		/// Container should dispose provided instances when it is disposed. This is the 
-		/// default.
-		/// </summary>
+		/// <include file='Funq.xdoc' path='docs/doc[@for="Owner.Container"]/*'/>
 		Container,
 
-		/// <summary>
-		/// Container does not dispose provided instances.
-		/// </summary>
+		/// <include file='Funq.xdoc' path='docs/doc[@for="Owner.External"]/*'/>
 		External,
 
-		/// <summary>
-		/// Default owner, which equals <see cref="Container"/>.
-		/// </summary>
+		/// <include file='Funq.xdoc' path='docs/doc[@for="Owner.Default"]/*'/>
 		Default,
 	}
 }

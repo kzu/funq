@@ -36,6 +36,9 @@ using System;
 
 namespace Funq
 {
+	/// <summary>
+	/// The key that identifies a service entry.
+	/// </summary>
 	internal sealed class ServiceKey
 	{
 		int hash;
