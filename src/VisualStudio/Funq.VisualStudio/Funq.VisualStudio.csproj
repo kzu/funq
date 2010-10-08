@@ -1,0 +1,178 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectTypeGuids>{82b43b9b-a64c-4715-b499-d71e9ca2bd60};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <ProjectGuid>{8CCC17E4-B6B6-45C6-8293-3B41FB9EE185}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Funq.VisualStudio</RootNamespace>
+    <AssemblyName>Funq.VisualStudio</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <GeneratePkgDefFile>false</GeneratePkgDefFile>
+    <!--<IncludeAssemblyInVSIXContainer>false</IncludeAssemblyInVSIXContainer>
+    <IncludeDebugSymbolsInVSIXContainer>false</IncludeDebugSymbolsInVSIXContainer>
+    <IncludeDebugSymbolsInLocalVSIXDeployment>false</IncludeDebugSymbolsInLocalVSIXDeployment>
+    <CopyBuildOutputToOutputDirectory>false</CopyBuildOutputToOutputDirectory>
+    <CopyOutputSymbolsToOutputDirectory>false</CopyOutputSymbolsToOutputDirectory>-->
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <Import Project="..\..\Funq.properties" />
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="..\..\GlobalAssemblyInfo.cs">
+      <Link>Properties\GlobalAssemblyInfo.cs</Link>
+    </Compile>
+    <None Include="Templates\Projects\DesktopCompositionFunqlet\AssemblyInfo.cs" />
+    <None Include="Templates\Projects\DesktopCompositionFunqlet\Funqlet.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="source.extension.vsixmanifest">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Templates\Items\" />
+    <Folder Include="Templates\Projects\Windows\" />
+    <Folder Include="v3.5\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\Funq.Composition\Funq.Composition.csproj">
+      <Project>{5FB37D21-CE86-4074-8B5A-C397B6A4EB9A}</Project>
+      <Name>Funq.Composition</Name>
+      <IncludeOutputGroupsInVSIXLocalOnly>DebugSymbolsProjectOutputGroup</IncludeOutputGroupsInVSIXLocalOnly>
+      <IncludeOutputGroupsInVSIX>BuiltProjectOutputGroup</IncludeOutputGroupsInVSIX>
+    </ProjectReference>
+    <ProjectReference Include="..\Funq.Build.3x\Funq.Build.v3.5.csproj">
+      <Project>{F371B9F5-E77C-452C-8490-CF59FF85D88A}</Project>
+      <Name>Funq.Build.v3.5</Name>
+      <IncludeOutputGroupsInVSIXLocalOnly>DebugSymbolsProjectOutputGroup</IncludeOutputGroupsInVSIXLocalOnly>
+      <IncludeOutputGroupsInVSIX>BuiltProjectOutputGroup</IncludeOutputGroupsInVSIX>
+    </ProjectReference>
+    <ProjectReference Include="..\Funq.Build\Funq.Build.csproj">
+      <Project>{999180B2-9121-4329-BFE3-054DC988B0F7}</Project>
+      <Name>Funq.Build</Name>
+      <IncludeOutputGroupsInVSIXLocalOnly>DebugSymbolsProjectOutputGroup</IncludeOutputGroupsInVSIXLocalOnly>
+      <IncludeOutputGroupsInVSIX>BuiltProjectOutputGroup</IncludeOutputGroupsInVSIX>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Templates\Projects\DesktopCompositionFunqlet\CompositionFunqlet.csproj" />
+    <VSTemplate Include="Templates\Projects\DesktopCompositionFunqlet\DesktopCompositionFunqlet.vstemplate" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\Projects\DesktopCompositionFunqlet\32x32.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v10.0\VSSDK\Microsoft.VsSDK.targets" />
+  <Import Project="..\..\Funq.targets" />
+  <PropertyGroup>
+    <StartProgram>$(DevEnvDir)\devenv.exe</StartProgram>
+    <StartAction>Program</StartAction>
+    <StartArguments>/rootsuffix Exp</StartArguments>
+  </PropertyGroup>
+  <!-- Templates, the Clarius way -->
+  <PropertyGroup>
+    <GetVsixSourceItemsDependsOn>$(GetVsixSourceItemsDependsOn);ZipProjectTemplates;ZipItemTemplates;IncludeTemplatesInVsix</GetVsixSourceItemsDependsOn>
+  </PropertyGroup>
+	<PropertyGroup>
+		<GetVsixSourceItemsDependsOn>$(GetVsixSourceItemsDependsOn);GetVsixTemplateItems</GetVsixSourceItemsDependsOn>
+	</PropertyGroup>
+	<Target Name="GetVsixTemplateItems"
+					DependsOnTargets="ZipProjects;ZipItems">
+		<ItemGroup>
+			<VSIXSourceItem Include="@(IntermediateZipItem)">
+				<VSIXSubPath>ItemTemplates\%(IntermediateZipItem.Language)\%(IntermediateZipItem.OutputSubPath)\%(IntermediateZipItem.Culture)</VSIXSubPath>
+			</VSIXSourceItem>
+			<VSIXSourceItem Include="@(IntermediateZipProject)">
+				<VSIXSubPath>ProjectTemplates\%(IntermediateZipProject.Language)\%(IntermediateZipProject.OutputSubPath)\%(IntermediateZipProject.Culture)</VSIXSubPath>
+			</VSIXSourceItem>
+		</ItemGroup>
+	</Target>
+	<ItemGroup>
+    <!-- If we don't make these invisible, they show up in VS as missing files :S -->
+    <AvailableItemName Include="ProjectTemplate">
+      <Visible>False</Visible>
+    </AvailableItemName>
+    <AvailableItemName Include="ItemTemplate">
+      <Visible>False</Visible>
+    </AvailableItemName>
+  </ItemGroup>
+  <Target Name="ZipProjectTemplates" Condition="'@(ProjectTemplate)' != ''">
+    <Message Text="Zipping project template for: %(ProjectTemplate.RelativeDir)%(ProjectTemplate.Filename)%(ProjectTemplate.Extension)" />
+    <!-- 
+			Need to copy the .vstemplates because the built-in tasks will not do the copying even if 
+			CopyAlways is specified, because the item does not have a Content build action
+		-->
+    <Copy SourceFiles="@(ProjectTemplate)" DestinationFolder="$(TargetDir)%(ProjectTemplate.RelativeDir)" />
+    <!-- 
+			We create as items all the items in the output directory under the template directory as relative paths.
+			That's why the item content has to have Content/CopyToOutput set, so that allows us to pick what we want 
+			included in the final zip. We associate the destination zipfile as metadata, which is used by the following 
+			task ZipItems to group items via the ZipFile property.
+		-->
+    <CreateItem Include="$(TargetDir)%(ProjectTemplate.RelativeDir)**\*.*" AdditionalMetadata="TemplateDir=$([System.IO.Directory]::GetParent($(TargetDir)%(ProjectTemplate.RelativeDir)).FullName)\;ZipFile=$([System.IO.Directory]::GetParent(%(ProjectTemplate.FullPath)).Name).zip">
+      <Output ItemName="_ProjectTemplateItem" TaskParameter="Include" />
+    </CreateItem>
+    <!--
+			The following VSSDK built-in task takes care of zipping a template. It doesn't do any pre or post-processing 
+			of the .vstemplate, which is exactly what we want as we may have links, etc. This is the opposite of what 
+			the built-in VSTemplate build action does, which mangles everything and breaks badly with linked files, 
+			multi-project templates, etc.
+		-->
+    <ZipItems Files="@(_ProjectTemplateItem)" Action="New" ProjectPath="$(TargetDir)" RootPath="%(_ProjectTemplateItem.TemplateDir)" ZipFile="$([System.IO.Directory]::GetParent(%(_ProjectTemplateItem.TemplateDir)).Parent.FullName)\%(_ProjectTemplateItem.ZipFile)">
+      <Output TaskParameter="ZipFile" ItemName="FileWrites" />
+    </ZipItems>
+  </Target>
+  <Target Name="ZipItemTemplates" Condition="'@(ItemTemplate)' != ''">
+    <!-- This target works exactly the same as the previous one, but for item templates -->
+    <Message Text="Zipping item template for: %(ItemTemplate.RelativeDir)%(ItemTemplate.Filename)%(ItemTemplate.Extension)" />
+    <CreateItem Include="$(TargetDir)%(ItemTemplate.RelativeDir)**\*.*" AdditionalMetadata="TemplateDir=$([System.IO.Directory]::GetParent($(TargetDir)%(ItemTemplate.RelativeDir)).FullName)\;ZipFile=$([System.IO.Directory]::GetParent(%(ItemTemplate.FullPath)).Name).zip">
+      <Output ItemName="_ItemTemplateItem" TaskParameter="Include" />
+    </CreateItem>
+    <ZipItems Files="@(_ItemTemplateItem)" Action="New" ProjectPath="$(TargetDir)" RootPath="%(_ItemTemplateItem.TemplateDir)" ZipFile="$([System.IO.Directory]::GetParent(%(_ItemTemplateItem.TemplateDir)).Parent.FullName)\%(_ItemTemplateItem.ZipFile)">
+      <Output TaskParameter="ZipFile" ItemName="FileWrites" />
+    </ZipItems>
+  </Target>
+  <Target Name="IncludeTemplatesInVsix">
+    <!-- 
+			By processing all IntermediateZipProject items, we also support the ZipProject and ZipItem build actions, 
+			which are for just including a previously zipped file in the target vsix. It's not clear why you'd do 
+			that as opposed to just setting it as Content/IncludeInVSIX=true, but we want to be compatible here just 
+			in case.
+		-->
+    <ItemGroup Condition="'@(ProjectTemplate)' != ''">
+      <VSIXSourceItem Include="$([System.IO.Directory]::GetParent($(TargetDir)%(ProjectTemplate.RelativeDir)).Parent.FullName)\$([System.IO.Directory]::GetParent(%(ProjectTemplate.FullPath)).Name).zip">
+        <!-- 
+					One thing we do here that the built-in DeployVSTemplates does, is that we honor the zip file actual 
+					relative path location as the vsix subpath, to streamline the modification of the template category.
+				-->
+        <VSIXSubPath>$([System.IO.Directory]::GetParent($(TargetDir)%(ProjectTemplate.RelativeDir)).Parent.FullName.Replace($(TargetDir), ''))</VSIXSubPath>
+        <!--<VSIXSubPath>%(ProjectTemplate.RelativeDir)</VSIXSubPath>-->
+      </VSIXSourceItem>
+    </ItemGroup>
+    <ItemGroup Condition="'@(ItemTemplate)' != ''">
+      <VSIXSourceItem Include="$([System.IO.Directory]::GetParent($(TargetDir)%(ItemTemplate.RelativeDir)).Parent.FullName)\$([System.IO.Directory]::GetParent(%(ItemTemplate.FullPath)).Name).zip">
+        <VSIXSubPath>$([System.IO.Directory]::GetParent($(TargetDir)%(ItemTemplate.RelativeDir)).Parent.FullName.Replace($(TargetDir), ''))</VSIXSubPath>
+      </VSIXSourceItem>
+    </ItemGroup>
+  </Target>
+</Project>

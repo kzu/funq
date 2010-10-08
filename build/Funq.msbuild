@@ -55,37 +55,58 @@
 
 	<Target Name="Build">
 		<Exec Command="RmDir /S Funq" />
-		
+
 		<!-- NET40 -->
 		<MSBuild
 			Targets="Rebuild"
-			Projects="..\src\Core\Source\Funq.csproj"
+			Projects="..\src\Core\Funq\Funq.csproj"
 			Properties="TargetFrameworkVersion=v4.0;Configuration=$(Configuration);TrackFileAccess=$(TrackFileAccess)"/>
-		<Exec Command="xcopy ..\src\Core\Source\bin\$(Configuration)\Funq.* Funq\NET40\ /Y /F /I" />
+		<Exec Command="xcopy ..\src\Core\Funq\bin\$(Configuration)\Funq.* Funq\NET40\ /Y /F /I" />
+		<!-- No need for Funq.Composition in .NET 4.0 -->
+
 		<!-- NET35 -->
 		<MSBuild
 			Targets="Rebuild"
-			Projects="..\src\Core\Source\Funq.csproj"
+			Projects="..\src\Core\Funq\Funq.csproj"
 			Properties="TargetFrameworkVersion=v3.5;Configuration=$(Configuration);TrackFileAccess=$(TrackFileAccess)"/>
-		<Exec Command="xcopy ..\src\Core\Source\bin\$(Configuration)\Funq.* Funq\NET35\ /Y /F /I" />
+		<Exec Command="xcopy ..\src\Core\Funq\bin\$(Configuration)\Funq.* Funq\NET35\ /Y /F /I" />
+		<MSBuild
+			Targets="Rebuild"
+			Projects="..\src\Core\Funq.Composition\Funq.Composition.csproj"
+			Properties="TargetFrameworkVersion=v3.5;Configuration=$(Configuration);TrackFileAccess=$(TrackFileAccess)"/>
+		<Exec Command="xcopy ..\src\Core\Funq.Composition\bin\$(Configuration)\Funq.* Funq\NET35\ /Y /F /I" />
+
 		<!-- SL3 -->
 		<MSBuild
 			Targets="Rebuild"
-			Projects="..\src\Silverlight\Source\Funq.Silverlight.csproj"
+			Projects="..\src\Silverlight\Funq\Funq.Silverlight.csproj"
 			Properties="TargetFrameworkVersion=v3.0;Configuration=$(Configuration);TrackFileAccess=$(TrackFileAccess)"/>
-		<Exec Command="xcopy ..\src\Silverlight\Source\bin\$(Configuration)\Funq.* Funq\SL3\ /Y /F /I" />
+		<Exec Command="xcopy ..\src\Silverlight\Funq\bin\$(Configuration)\Funq.* Funq\SL3\ /Y /F /I" />
+		<MSBuild
+			Targets="Rebuild"
+			Projects="..\src\Silverlight\Funq.Composition\Funq.Silverlight.Composition.csproj"
+			Properties="TargetFrameworkVersion=v3.0;Configuration=$(Configuration);TrackFileAccess=$(TrackFileAccess)"/>
+		<Exec Command="xcopy ..\src\Silverlight\Funq.Composition\bin\$(Configuration)\Funq.* Funq\SL3\ /Y /F /I" />
+
 		<!-- SL4 -->
 		<MSBuild
 			Targets="Rebuild"
-			Projects="..\src\Silverlight\Source\Funq.Silverlight.csproj"
+			Projects="..\src\Silverlight\Funq\Funq.Silverlight.csproj"
 			Properties="TargetFrameworkVersion=v4.0;Configuration=$(Configuration);TrackFileAccess=$(TrackFileAccess)"/>
-		<Exec Command="xcopy ..\src\Silverlight\Source\bin\$(Configuration)\Funq.* Funq\SL4\ /Y /F /I" />
+		<Exec Command="xcopy ..\src\Silverlight\Funq\bin\$(Configuration)\Funq.* Funq\SL4\ /Y /F /I" />
+
+
 		<!-- WP7 -->
 		<MSBuild
 			Targets="Rebuild"
-			Projects="..\src\WindowsPhone\Source\Funq.WindowsPhone.csproj"
+			Projects="..\src\WindowsPhone\Funq\Funq.WindowsPhone.csproj"
 			Properties="TargetFrameworkVersion=v4.0;Configuration=$(Configuration);TrackFileAccess=$(TrackFileAccess)"/>
-		<Exec Command="xcopy ..\src\WindowsPhone\Source\bin\$(Configuration)\Funq.* Funq\WP7\ /Y /F /I" />
+		<Exec Command="xcopy ..\src\WindowsPhone\Funq\bin\$(Configuration)\Funq.* Funq\WP7\ /Y /F /I" />
+		<MSBuild
+			Targets="Rebuild"
+			Projects="..\src\WindowsPhone\Funq.Composition\Funq.WindowsPhone.Composition.csproj"
+			Properties="TargetFrameworkVersion=v4.0;Configuration=$(Configuration);TrackFileAccess=$(TrackFileAccess)"/>
+		<Exec Command="xcopy ..\src\WindowsPhone\Funq.Composition\bin\$(Configuration)\Funq.* Funq\WP7\ /Y /F /I" />
 
 		<!-- Last pass to get the tests ready -->
 		<MSBuild
@@ -106,14 +127,19 @@
 		<TmpPath>Data\Tmp</TmpPath>
 		<DestPath>Data\Reflection</DestPath>
 	</PropertyGroup>
-  <ItemGroup>
-    <AssemblyFolders Include="$(WINDIR)\Microsoft.NET\Framework\v2.0.50727\*.dll"/>
-    <AssemblyFolders Include="$(WINDIR)\Microsoft.NET\Framework\v3.0\**\*.dll" Condition="$(NetfxVer)>2.0"/>
-    <AssemblyFolders Include="$(ProgramFiles)\Reference Assemblies\Microsoft\Framework\v3.0\*.dll" Condition="$(NetfxVer)>2.0"/>
-    <AssemblyFolders Include="$(WINDIR)\Microsoft.NET\Framework\v3.5\**\*.dll" Condition="$(NetfxVer)>3.0"/>
-    <AssemblyFolders Include="$(ProgramFiles)\Reference Assemblies\Microsoft\Framework\v3.5\*.dll" Condition="$(NetfxVer)>3.0"/>
-	<AssemblyFolders Include="$(WINDIR)\Microsoft.NET\Framework\v4.0.30319\**\*.dll" Condition="$(NetfxVer)>3.0"/>
-  </ItemGroup>
+	<ItemGroup>
+		<AssemblyFolders Include="$(WINDIR)\Microsoft.NET\Framework\v2.0.50727\*.dll"/>
+		<AssemblyFolders Include="$(WINDIR)\Microsoft.NET\Framework\v3.0\**\*.dll"
+										 Condition="$(NetfxVer)>2.0"/>
+		<AssemblyFolders Include="$(ProgramFiles)\Reference Assemblies\Microsoft\Framework\v3.0\*.dll"
+										 Condition="$(NetfxVer)>2.0"/>
+		<AssemblyFolders Include="$(WINDIR)\Microsoft.NET\Framework\v3.5\**\*.dll"
+										 Condition="$(NetfxVer)>3.0"/>
+		<AssemblyFolders Include="$(ProgramFiles)\Reference Assemblies\Microsoft\Framework\v3.5\*.dll"
+										 Condition="$(NetfxVer)>3.0"/>
+		<AssemblyFolders Include="$(WINDIR)\Microsoft.NET\Framework\v4.0.30319\**\*.dll"
+										 Condition="$(NetfxVer)>3.0"/>
+	</ItemGroup>
 
 	<Target Name="Reflection"
 					Condition="!Exists('$(Sandcastle)\$(DestPath)')">
@@ -139,11 +165,11 @@
 	</Target>
 
 	<Target Name="Help">
-		<Exec Command="xcopy ..\src\Core\Source\bin\Release\Funq.xml Help\Working\ /Y /F /I" />
-		<Exec Command="xcopy ..\src\Core\Source\bin\Release\Funq.dll Help\Working\ /Y /F /I" />
+		<Exec Command="xcopy ..\src\Core\Funq\bin\Release\Funq.xml Help\Working\ /Y /F /I" />
+		<Exec Command="xcopy ..\src\Core\Funq\bin\Release\Funq.dll Help\Working\ /Y /F /I" />
 
 		<Exec Command="&quot;$(windir)\Microsoft.NET\Framework\v3.5\MSBuild.exe&quot; Funq.shfbproj" />
-		
+
 		<!-- Doesn't work on MSBuild 4.0 yet -->
 		<!--<MSBuild 
 			ToolsVersion="3.5"

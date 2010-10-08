@@ -41,7 +41,7 @@
 {@HelpFormatOutputPaths}
             </outputPaths><!-- Logo image file (optional).  Filename is required. The height,
                  width, altText, placement, and alignment attributes are
-                 optional. --><logoFile filename="D:\Code\clarius\funq\src\Icon\ClariusFunq.png" height="0" width="0" altText="" placement="left" alignment="left" /></component></ComponentConfig></ComponentConfigurations>
+                 optional. --><logoFile filename="..\src\Icon\ClariusFunq.png" height="0" width="0" altText="" placement="left" alignment="left" /></component></ComponentConfig></ComponentConfigurations>
     <PlugInConfigurations>
     </PlugInConfigurations>
     <ProjectSummary>Funq: a fast DI container you can understand</ProjectSummary>
@@ -54,8 +54,8 @@
     <MissingTags>Summary, AutoDocumentCtors, Namespace</MissingTags>
     <VisibleItems>InheritedMembers, Protected, SealedProtected</VisibleItems>
     <DocumentationSources>
-      <DocumentationSource sourceFile="..\src\Core\Source\bin\Release\Funq.dll" />
-      <DocumentationSource sourceFile="..\src\Core\Source\bin\Release\Funq.xml" />
+      <DocumentationSource sourceFile="..\src\Core\Funq\bin\Release\Funq.dll" />
+      <DocumentationSource sourceFile="..\src\Core\Funq\bin\Release\Funq.xml" />
     </DocumentationSources>
     <FrameworkVersion>4.0.30319</FrameworkVersion>
     <NamespaceSummaries>
