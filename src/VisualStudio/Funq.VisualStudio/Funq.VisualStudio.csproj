@@ -61,18 +61,6 @@
       <IncludeOutputGroupsInVSIXLocalOnly>DebugSymbolsProjectOutputGroup</IncludeOutputGroupsInVSIXLocalOnly>
       <IncludeOutputGroupsInVSIX>BuiltProjectOutputGroup</IncludeOutputGroupsInVSIX>
     </ProjectReference>
-    <ProjectReference Include="..\Funq.Build.3x\Funq.Build.v3.5.csproj">
-      <Project>{F371B9F5-E77C-452C-8490-CF59FF85D88A}</Project>
-      <Name>Funq.Build.v3.5</Name>
-      <IncludeOutputGroupsInVSIXLocalOnly>DebugSymbolsProjectOutputGroup</IncludeOutputGroupsInVSIXLocalOnly>
-      <IncludeOutputGroupsInVSIX>BuiltProjectOutputGroup</IncludeOutputGroupsInVSIX>
-    </ProjectReference>
-    <ProjectReference Include="..\Funq.Build\Funq.Build.csproj">
-      <Project>{999180B2-9121-4329-BFE3-054DC988B0F7}</Project>
-      <Name>Funq.Build</Name>
-      <IncludeOutputGroupsInVSIXLocalOnly>DebugSymbolsProjectOutputGroup</IncludeOutputGroupsInVSIXLocalOnly>
-      <IncludeOutputGroupsInVSIX>BuiltProjectOutputGroup</IncludeOutputGroupsInVSIX>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Templates\Projects\DesktopCompositionFunqlet\CompositionFunqlet.csproj" />
@@ -93,21 +81,20 @@
   <PropertyGroup>
     <GetVsixSourceItemsDependsOn>$(GetVsixSourceItemsDependsOn);ZipProjectTemplates;ZipItemTemplates;IncludeTemplatesInVsix</GetVsixSourceItemsDependsOn>
   </PropertyGroup>
-	<PropertyGroup>
-		<GetVsixSourceItemsDependsOn>$(GetVsixSourceItemsDependsOn);GetVsixTemplateItems</GetVsixSourceItemsDependsOn>
-	</PropertyGroup>
-	<Target Name="GetVsixTemplateItems"
-					DependsOnTargets="ZipProjects;ZipItems">
-		<ItemGroup>
-			<VSIXSourceItem Include="@(IntermediateZipItem)">
-				<VSIXSubPath>ItemTemplates\%(IntermediateZipItem.Language)\%(IntermediateZipItem.OutputSubPath)\%(IntermediateZipItem.Culture)</VSIXSubPath>
-			</VSIXSourceItem>
-			<VSIXSourceItem Include="@(IntermediateZipProject)">
-				<VSIXSubPath>ProjectTemplates\%(IntermediateZipProject.Language)\%(IntermediateZipProject.OutputSubPath)\%(IntermediateZipProject.Culture)</VSIXSubPath>
-			</VSIXSourceItem>
-		</ItemGroup>
-	</Target>
-	<ItemGroup>
+  <PropertyGroup>
+    <GetVsixSourceItemsDependsOn>$(GetVsixSourceItemsDependsOn);GetVsixTemplateItems</GetVsixSourceItemsDependsOn>
+  </PropertyGroup>
+  <Target Name="GetVsixTemplateItems" DependsOnTargets="ZipProjects;ZipItems">
+    <ItemGroup>
+      <VSIXSourceItem Include="@(IntermediateZipItem)">
+        <VSIXSubPath>ItemTemplates\%(IntermediateZipItem.Language)\%(IntermediateZipItem.OutputSubPath)\%(IntermediateZipItem.Culture)</VSIXSubPath>
+      </VSIXSourceItem>
+      <VSIXSourceItem Include="@(IntermediateZipProject)">
+        <VSIXSubPath>ProjectTemplates\%(IntermediateZipProject.Language)\%(IntermediateZipProject.OutputSubPath)\%(IntermediateZipProject.Culture)</VSIXSubPath>
+      </VSIXSourceItem>
+    </ItemGroup>
+  </Target>
+  <ItemGroup>
     <!-- If we don't make these invisible, they show up in VS as missing files :S -->
     <AvailableItemName Include="ProjectTemplate">
       <Visible>False</Visible>

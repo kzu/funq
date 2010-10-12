@@ -1,0 +1,92 @@
+﻿<#@ Template Debug="false" HostSpecific="false" Language="C#" #>
+<#@ Output Extension=".Generated.cs" #>
+<#@ Import Namespace="System.Collections.Generic" #>
+<#@ Import Namespace="System.Linq" #>
+<#@ Import Namespace="System.Reflection" #>
+<#@ Import Namespace="Funq.Build" #>
+using System;
+using Funq;
+
+namespace <#=this.TargetNamespace #>
+{
+	public partial class Funqlet : IFunqlet
+	{
+		public void Configure(Container container)
+		{
+<#
+foreach (var item in this.Exports)
+{
+#>
+			container.Register<<#=item.Contract.Type.FullName #>>(<#=item.Contract.Name != null ? Quote(item.Contract.Name) + ", " : "" #>c => 
+				new <#=item.Implementation.FullName #>(<#=Render(item.Parameters) #>)<#
+if (item.Properties.Any())
+{
+#> 
+				{ 
+					<#=Render(item.Properties) #> 
+				}<#
+}
+				#>);
+<#
+}
+#>
+
+			DoConfigure(container);
+		}
+
+		/// <summary>
+		/// Extensibility hook for custom registration code in the owning project.		
+		/// </summary>
+		partial void DoConfigure(Container container);
+	}
+}
+<#+
+/// <summary>
+/// Target namespace passed-in by the task for the generated funqlet class.
+/// </summary>
+internal string TargetNamespace { get; set; }
+
+/// <summary>
+/// Exports from the assemblies with copylocal=true.
+/// </summary>
+internal IEnumerable<Export> Exports { get; set; }
+
+private string Render(IEnumerable<Import> parameters)
+{
+    return string.Join(", ", parameters
+        .Select(import => Resolve(import))
+        .ToArray());
+}
+
+private string Render(IEnumerable<PropertyImport> properties)
+{
+    return string.Join(", \r\n", properties
+        .Select(prop => prop.Name + " = " + Resolve(prop))
+        .ToArray());
+}
+
+private string Resolve(Import import)
+{
+    var invocation = "c.";
+    if (import.AllowDefault)
+        invocation += "Try";
+
+    if (import.Contract.Name != null)
+        invocation += "ResolveNamed";
+    else
+        invocation += "Resolve";
+
+    invocation += "<" + import.Contract.Type.FullName + ">";
+    invocation += "(" + Quote(import.Contract.Name) + ")";
+
+    return invocation;
+}
+
+private string Quote(string value)
+{
+    return string.IsNullOrEmpty(value) ?
+        "" :
+        "\"" + value + "\"";
+}
+
+#>

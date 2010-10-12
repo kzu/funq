@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	<UsingTask AssemblyFile="Funq.Build.dll"
+						 TaskName="GenerateFunqlet" />
+
+	<Target Name="GenerateFunqlets"
+					BeforeTargets="CoreCompile">
+		<Message Importance="high"
+						 Text="Generating funqlet from composition attributes" />
+		<GenerateFunqlet References="@(ReferencePath)"
+										 TargetNamespace="$(RootNamespace)"
+										 OutputPath="$(IntermediateOutputPath)">
+			<Output ItemName="Funqlet"
+							TaskParameter="Funqlet" />
+		</GenerateFunqlet>
+		<ItemGroup>
+			<FileWrites Include="@(Funqlet)" />
+			<Compile Include="@(Funqlet)" />
+		</ItemGroup>
+		<Message Importance="high"
+						 Text="Generated funqlet @(Funqlet)" />
+	</Target>
+
+</Project>

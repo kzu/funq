@@ -45,40 +45,26 @@ using Microsoft.Build.Utilities;
 
 namespace Funq.Build
 {
-	/// <summary>
-	/// Generates the source code for a funqlet that registers all exported types 
-	/// in the calling project copy local references.
-	/// </summary>
+	/// <include file='Funq.Build.xdoc' path='docs/doc[@for="GenerateFunqlet"]/*'/>
 	public class GenerateFunqlet : AppDomainIsolatedTask
 	{
-		/// <summary>
-		/// Gets or sets the output path to leave the generated source code.
-		/// </summary>
+		/// <include file='Funq.Build.xdoc' path='docs/doc[@for="GenerateFunqlet.OutputPath"]/*'/>
 		public string OutputPath { get; set; }
 
-		/// <summary>
-		/// Gets or sets the namespace of the generated funqlet.
-		/// </summary>
+		/// <include file='Funq.Build.xdoc' path='docs/doc[@for="GenerateFunqlet.TargetNamespace"]/*'/>
 		public string TargetNamespace { get; set; }
 
-		/// <summary>
-		/// Gets or sets the assembly references to process.
-		/// </summary>
-		/// <value>The references.</value>
-		public ITaskItem[] References { get; set; }
+		/// <include file='Funq.Build.xdoc' path='docs/doc[@for="GenerateFunqlet.Assemblies"]/*'/>
+		public ITaskItem[] Assemblies { get; set; }
 
-		/// <summary>
-		/// Gets the generated funqlet source file.
-		/// </summary>
+		/// <include file='Funq.Build.xdoc' path='docs/doc[@for="GenerateFunqlet.Funqlet"]/*'/>
 		[Output]
 		public ITaskItem Funqlet { get; private set; }
 
-		/// <summary>
-		/// Runs the task.
-		/// </summary>
+		/// <include file='Funq.Build.xdoc' path='docs/doc[@for="GenerateFunqlet.Execute"]/*'/>
 		public override bool Execute()
 		{
-			var exportedTypes = this.References
+			var exportedTypes = this.Assemblies
 				.Where(item => item.GetMetadata("CopyLocal") == "true")
 				.Select(item => Assembly.LoadFrom(item.GetMetadata("FullPath")))
 				.SelectMany(asm => asm.GetTypes())

@@ -5,95 +5,49 @@
     </assembly>
     <members>
         <member name="T:Funq.Container">
-            <summary>
-			Main container class for components, supporting container hierarchies and
-			lifetime management of <see cref="T:System.IDisposable"/> instances.
-		</summary>
+            <!-- No matching elements were found for the following include tag --><include file="Funq.xdoc" path="docs/doc[@for=&quot;Container&quot;]/*"/>
         </member>
         <member name="M:Funq.Container.#ctor">
-            <summary>
-			Initializes a new empty container.
-		</summary>
+            <!-- No matching elements were found for the following include tag --><include file="Funq.xdoc" path="docs/doc[@for=&quot;Container.ctor&quot;]/*"/>
         </member>
         <member name="M:Funq.Container.CreateChildContainer">
-            <summary>
-			Creates a child container of the current one, which exposes its
-			current service registration to the new child container.
-		</summary>
+            <!-- No matching elements were found for the following include tag --><include file="Funq.xdoc" path="docs/doc[@for=&quot;Container.CreateChildContainer&quot;]/*"/>
         </member>
         <member name="M:Funq.Container.Dispose">
-            <summary>
-			Disposes the container and all instances owned by it (see
-			<see cref="F:Funq.Owner.Container"/>), as well as all child containers
-			created through <see cref="M:Funq.Container.CreateChildContainer"/>.
-		</summary>
+            <!-- No matching elements were found for the following include tag --><include file="Funq.xdoc" path="docs/doc[@for=&quot;Container.Dispose&quot;]/*"/>
         </member>
         <member name="M:Funq.Container.Register``1(System.Func{Funq.Container,``0})">
-            <summary>
-			Registers the given service by providing a factory delegate to
-			instantiate it.
-		</summary><typeparam name="TService">The service type to register.</typeparam><param name="factory">The factory delegate to initialize new instances of the service when needed.</param><returns>The registration object to perform further configuration via its fluent interface.</returns>
+            <!-- No matching elements were found for the following include tag --><include file="Funq.xdoc" path="docs/doc[@for=&quot;Container.Register{TService}(factory)&quot;]/*"/>
         </member>
         <member name="M:Funq.Container.Register``1(System.String,System.Func{Funq.Container,``0})">
-            <summary>
-			Registers the given named service by providing a factory delegate to
-			instantiate it.
-		</summary><typeparam name="TService">The service type to register.</typeparam><param name="name">A name used to differenciate this service registration.</param><param name="factory">The factory delegate to initialize new instances of the service when needed.</param><returns>The registration object to perform further configuration via its fluent interface.</returns>
+            <!-- No matching elements were found for the following include tag --><include file="Funq.xdoc" path="docs/doc[@for=&quot;Container.Register{TService}(name, factory)&quot;]/*"/>
         </member>
         <member name="M:Funq.Container.Register``2(System.String,System.Func{Funq.Container,``1,``0})">
-            <summary>
-			Registers the given named service by providing a factory delegate that receives arguments to
-			instantiate it.
-		</summary><typeparam name="TService">The service type to register.</typeparam><typeparam name="TArg">First argument that should be passed to the factory delegate to create the instace.</typeparam><param name="name">A name used to differenciate this service registration.</param><param name="factory">The factory delegate to initialize new instances of the service when needed.</param><returns>The registration object to perform further configuration via its fluent interface.</returns>
+            <!-- No matching elements were found for the following include tag --><include file="Funq.xdoc" path="docs/doc[@for=&quot;Container.Register{TService, TArg}(name, factory)&quot;]/*"/>
         </member>
         <member name="M:Funq.Container.Register``2(System.Func{Funq.Container,``1,``0})">
-            <summary>
-			Registers the given service by providing a factory delegate that receives arguments to
-			instantiate it.
-		</summary><typeparam name="TService">The service type to register.</typeparam><typeparam name="TArg">First argument that should be passed to the factory delegate to create the instace.</typeparam><param name="factory">The factory delegate to initialize new instances of the service when needed.</param><returns>The registration object to perform further configuration via its fluent interface.</returns>
+            <!-- No matching elements were found for the following include tag --><include file="Funq.xdoc" path="docs/doc[@for=&quot;Container.Register{TService, TArg}(factory)&quot;]/*"/>
         </member>
         <member name="M:Funq.Container.Register``1(``0)">
-            <summary>
-			Registers a service instance with the container. This instance 
-			will have <see cref="F:Funq.Owner.External"/> and <see cref="F:Funq.ReuseScope.Hierarchy"/> 
-			behavior.
-		</summary><param name="instance">Service instance to use.</param>
+            <!-- No matching elements were found for the following include tag --><include file="Funq.xdoc" path="docs/doc[@for=&quot;Container.Register(instance)&quot;]/*"/>
         </member>
         <member name="M:Funq.Container.Register``1(System.String,``0)">
-            <summary>
-			Registers a named service instance with the container. This instance
-			will have <see cref="F:Funq.Owner.External"/> and <see cref="F:Funq.ReuseScope.Hierarchy"/>
-			behavior.
-		</summary><param name="name">Name of the service to register.</param><param name="instance">Service instance to use.</param>
+            <!-- No matching elements were found for the following include tag --><include file="Funq.xdoc" path="docs/doc[@for=&quot;Container.Register(name, instance)&quot;]/*"/>
         </member>
         <member name="M:Funq.Container.Resolve``1">
-            <summary>
-			Resolves the given service by type, without passing any arguments for
-			its construction.
-		</summary><typeparam name="TService">Type of the service to retrieve.</typeparam><returns>The resolved service instance.</returns><exception cref="T:Funq.ResolutionException">The given service could not be resolved.</exception>
+            <!-- No matching elements were found for the following include tag --><include file="Funq.xdoc" path="docs/doc[@for=&quot;Container.Resolve{TService}&quot;]/*"/>
         </member>
         <member name="M:Funq.Container.Resolve``2(``1)">
-            <summary>
-			Resolves the given service by type, passing the given arguments
-			for its initialization.
-		</summary><typeparam name="TService">Type of the service to retrieve.</typeparam><typeparam name="TArg">First argument to pass to the factory delegate that may create the instace.</typeparam><returns>The resolved service instance.</returns><exception cref="T:Funq.ResolutionException">The given service could not be resolved.</exception>
+            <!-- No matching elements were found for the following include tag --><include file="Funq.xdoc" path="docs/doc[@for=&quot;Container.Resolve{TService, TArg}&quot;]/*"/>
         </member>
         <member name="M:Funq.Container.ResolveNamed``1(System.String)">
-            <summary>
-			Resolves the given service by type and name, without passing arguments for its initialization.
-		</summary><typeparam name="TService">Type of the service to retrieve.</typeparam><returns>The resolved service instance.</returns><exception cref="T:Funq.ResolutionException">The given service could not be resolved.</exception>
+            <!-- No matching elements were found for the following include tag --><include file="Funq.xdoc" path="docs/doc[@for=&quot;Container.ResolveNamed{TService}&quot;]/*"/>
         </member>
         <member name="M:Funq.Container.ResolveNamed``2(System.String,``1)">
-            <summary>
-			Resolves the given service by type and name, passing the given arguments
-			for its initialization.
-		</summary><typeparam name="TService">Type of the service to retrieve.</typeparam><typeparam name="TArg">First argument to pass to the factory delegate that may create the instace.</typeparam><returns>The resolved service instance.</returns>
+            <!-- No matching elements were found for the following include tag --><include file="Funq.xdoc" path="docs/doc[@for=&quot;Container.ResolveNamed{TService, TArg}&quot;]/*"/>
         </member>
         <member name="M:Funq.Container.LazyResolve``1">
-            <summary>
-			Retrieves a function that can be used to lazily resolve an instance 
-			of the service when needed.
-		</summary><typeparam name="TService">Type of the service to retrieve.</typeparam><returns>The function that can resolve to the service instance when invoked.</returns><exception cref="T:Funq.ResolutionException">The requested service has not been registered previously.</exception>
+            <!-- No matching elements were found for the following include tag --><include file="Funq.xdoc" path="docs/doc[@for=&quot;Container.LazyResolve{TService}&quot;]/*"/>
         </member>
         <member name="M:Funq.Container.LazyResolve``2">
             <!-- No matching elements were found for the following include tag --><include file="Funq.xdoc" path="docs/doc[@for=&quot;Container.LazyResolve{TService, TArgs}&quot;]/*"/>
@@ -102,41 +56,19 @@
             <!-- No matching elements were found for the following include tag --><include file="Funq.xdoc" path="docs/doc[@for=&quot;Container.LazyResolve{TService, name}&quot;]/*"/>
         </member>
         <member name="M:Funq.Container.LazyResolveNamed``2(System.String)">
-            <summary>
-			Retrieves a function that can be used to lazily resolve an instance
-			of the service of the given type, name and service constructor arguments when needed.
-		</summary><param name="name">Name of the service to retrieve.</param><returns>The function that can resolve to the service instance with the given and service constructor arguments name when invoked.</returns><exception cref="T:Funq.ResolutionException">The requested service with the given name and constructor arguments has not been registered previously.</exception>
+            <!-- No matching elements were found for the following include tag --><include file="Funq.xdoc" path="docs/doc[@for=&quot;Container.LazyResolve{TService, TArgs, name}&quot;]/*"/>
         </member>
         <member name="M:Funq.Container.TryResolve``1">
-            <summary>
-			Attempts to resolve the given service by type, without passing arguments for its initialization.
-		</summary><typeparam name="TService">Type of the service to retrieve.</typeparam><returns>
-			The resolved service instance or <see langword="null"/> if it cannot be resolved.
-		</returns>
+            <!-- No matching elements were found for the following include tag --><include file="Funq.xdoc" path="docs/doc[@for=&quot;Container.TryResolve{TService}&quot;]/*"/>
         </member>
         <member name="M:Funq.Container.TryResolve``2(``1)">
-            <summary>
-			Attempts to resolve the given service by type, passing the
-			given arguments arguments for its initialization.
-		</summary><typeparam name="TService">Type of the service to retrieve.</typeparam><typeparam name="TArg">First argument to pass to the factory delegate that may create the instace.</typeparam><returns>
-			The resolved service instance or <see langword="null"/> if it cannot be resolved.
-		</returns>
+            <!-- No matching elements were found for the following include tag --><include file="Funq.xdoc" path="docs/doc[@for=&quot;Container.TryResolve{TService, TArg}&quot;]/*"/>
         </member>
         <member name="M:Funq.Container.TryResolveNamed``1(System.String)">
-            <summary>
-			Attempts to resolve the given service by type and name, without passing
-			arguments arguments for its initialization.
-		</summary><typeparam name="TService">Type of the service to retrieve.</typeparam><returns>
-			The resolved service instance or <see langword="null"/> if it cannot be resolved.
-		</returns>
+            <!-- No matching elements were found for the following include tag --><include file="Funq.xdoc" path="docs/doc[@for=&quot;Container.TryResolveNamed{TService}&quot;]/*"/>
         </member>
         <member name="M:Funq.Container.TryResolveNamed``2(System.String,``1)">
-            <summary>
-			Attempts to resolve the given service by type and name, passing the
-			given arguments arguments for its initialization.
-		</summary><typeparam name="TService">Type of the service to retrieve.</typeparam><typeparam name="TArg">First argument to pass to the factory delegate that may create the instace.</typeparam><returns>
-			The resolved service instance or <see langword="null"/> if it cannot be resolved.
-		</returns>
+            <!-- No matching elements were found for the following include tag --><include file="Funq.xdoc" path="docs/doc[@for=&quot;Container.TryResolveNamed{TService, TArg}&quot;]/*"/>
         </member>
         <member name="M:Funq.Container.TrackDisposable(System.Object)">
             <summary>
@@ -743,21 +675,13 @@
 		</returns>
         </member>
         <member name="P:Funq.Container.DefaultOwner">
-            <summary>
-			Default owner for new registrations. <see cref="F:Funq.Owner.Container"/> by default.
-		</summary>
+            <!-- No matching elements were found for the following include tag --><include file="Funq.xdoc" path="docs/doc[@for=&quot;Container.DefaultOwner&quot;]/*"/>
         </member>
         <member name="P:Funq.Container.DefaultReuse">
-            <summary>
-			Default reuse scope for new registrations. <see cref="F:Funq.ReuseScope.Hierarchy"/> by default.
-		</summary>
+            <!-- No matching elements were found for the following include tag --><include file="Funq.xdoc" path="docs/doc[@for=&quot;Container.DefaultReuse&quot;]/*"/>
         </member>
         <member name="T:Funq.IFluentInterface">
-            <summary>
-			Helper interface used to hide the base <see cref="T:System.Object"/>
-			members from the fluent API to make for much cleaner
-			Visual Studio intellisense experience.
-		</summary>
+            <!-- No matching elements were found for the following include tag --><include file="Funq.xdoc" path="docs/doc[@for=&quot;IFluentInterface&quot;]/*"/>
         </member>
         <member name="M:Funq.IFluentInterface.GetType">
             <summary/>
@@ -772,116 +696,67 @@
             <summary/>
         </member>
         <member name="T:Funq.IFunqlet">
-            <summary>
-			Funqlets are a set of components provided as a package
-			to an existing container (like a module).
-		</summary>
+            <!-- No matching elements were found for the following include tag --><include file="Funq.xdoc" path="docs/doc[@for=&quot;IFunqlet&quot;]/*"/>
         </member>
         <member name="M:Funq.IFunqlet.Configure(Funq.Container)">
-            <summary>
-			Configure the given container with the registrations provided by the funqlet.
-		</summary><param name="container">Container to register.</param>
+            <!-- No matching elements were found for the following include tag --><include file="Funq.xdoc" path="docs/doc[@for=&quot;IFunqlet.Configure&quot;]/*"/>
         </member>
         <member name="T:Funq.Owner">
-            <summary>
-			Determines who is responsible for disposing instances
-			registered with a container.
-		</summary>
+            <!-- No matching elements were found for the following include tag --><include file="Funq.xdoc" path="docs/doc[@for=&quot;Owner&quot;]/*"/>
         </member>
         <member name="F:Funq.Owner.Container">
-            <summary>
-			Container should dispose provided instances when it is disposed.
-			This is the default.
-		</summary>
+            <!-- No matching elements were found for the following include tag --><include file="Funq.xdoc" path="docs/doc[@for=&quot;Owner.Container&quot;]/*"/>
         </member>
         <member name="F:Funq.Owner.External">
-            <summary>
-			Container does not dispose provided instances.
-		</summary>
+            <!-- No matching elements were found for the following include tag --><include file="Funq.xdoc" path="docs/doc[@for=&quot;Owner.External&quot;]/*"/>
         </member>
         <member name="F:Funq.Owner.Default">
-            <summary>
-			Default owner, which equals <see cref="F:Funq.Owner.Container"/>.
-		</summary>
+            <!-- No matching elements were found for the following include tag --><include file="Funq.xdoc" path="docs/doc[@for=&quot;Owner.Default&quot;]/*"/>
         </member>
         <member name="T:Funq.ResolutionException">
-            <summary>
-			Exception thrown by the container when a service cannot be resolved.
-		</summary>
+            <!-- No matching elements were found for the following include tag --><include file="Funq.xdoc" path="docs/doc[@for=&quot;ResolutionException&quot;]/*"/>
         </member>
         <member name="M:Funq.ResolutionException.#ctor(System.Type)">
-            <summary>
-			Initializes the exception with the service that could not be resolved.
-		</summary>
+            <!-- No matching elements were found for the following include tag --><include file="Funq.xdoc" path="docs/doc[@for=&quot;ResolutionException.ctor(Type)&quot;]/*"/>
         </member>
         <member name="M:Funq.ResolutionException.#ctor(System.Type,System.String)">
-            <summary>
-			Initializes the exception with the service (and its name) that could not be resolved.
-		</summary>
+            <!-- No matching elements were found for the following include tag --><include file="Funq.xdoc" path="docs/doc[@for=&quot;ResolutionException.ctor(Type, string)&quot;]/*"/>
         </member>
         <member name="M:Funq.ResolutionException.#ctor(System.String)">
-            <summary>
-			Initializes the exception with an arbitrary message.
-		</summary>
+            <!-- No matching elements were found for the following include tag --><include file="Funq.xdoc" path="docs/doc[@for=&quot;ResolutionException.ctor(string)&quot;]/*"/>
         </member>
         <member name="T:Funq.ReuseScope">
-            <summary>
-			Exception thrown by the container when a service cannot be resolved.
-		</summary>
+            <!-- No matching elements were found for the following include tag --><include file="Funq.xdoc" path="docs/doc[@for=&quot;ResolutionException&quot;]/*"/>
         </member>
         <member name="F:Funq.ReuseScope.Container">
-            <summary>
-			Exception thrown by the container when a service cannot be resolved.
-		</summary>
+            <!-- No matching elements were found for the following include tag --><include file="Funq.xdoc" path="docs/doc[@for=&quot;ResolutionException&quot;]/*"/>
         </member>
         <member name="F:Funq.ReuseScope.Hierarchy">
-            <summary>
-			Exception thrown by the container when a service cannot be resolved.
-		</summary>
+            <!-- No matching elements were found for the following include tag --><include file="Funq.xdoc" path="docs/doc[@for=&quot;ResolutionException&quot;]/*"/>
         </member>
         <member name="F:Funq.ReuseScope.None">
-            <summary>
-			Exception thrown by the container when a service cannot be resolved.
-		</summary>
+            <!-- No matching elements were found for the following include tag --><include file="Funq.xdoc" path="docs/doc[@for=&quot;ResolutionException&quot;]/*"/>
         </member>
         <member name="F:Funq.ReuseScope.Default">
-            <summary>
-			Exception thrown by the container when a service cannot be resolved.
-		</summary>
+            <!-- No matching elements were found for the following include tag --><include file="Funq.xdoc" path="docs/doc[@for=&quot;ResolutionException&quot;]/*"/>
         </member>
         <member name="T:Funq.IRegistration">
-            <summary>
-			Fluent API for customizing the registration of a service.
-		</summary>
+            <!-- No matching elements were found for the following include tag --><include file="Funq.xdoc" path="docs/doc[@for=&quot;IRegistration&quot;]/*"/>
         </member>
         <member name="T:Funq.IReusedOwned">
-            <summary>
-			Fluent API that exposes both <see cref="M:Funq.IReused.ReusedWithin(Funq.ReuseScope)"/>
-			and owner (<see cref="M:Funq.IOwned.OwnedBy(Funq.Owner)"/>).
-		</summary>
+            <!-- No matching elements were found for the following include tag --><include file="Funq.xdoc" path="docs/doc[@for=&quot;IReusedOwned&quot;]/*"/>
         </member>
         <member name="T:Funq.IReused">
-            <summary>
-			Fluent API that allows specifying the reuse instances.
-		</summary>
+            <!-- No matching elements were found for the following include tag --><include file="Funq.xdoc" path="docs/doc[@for=&quot;IReused&quot;]/*"/>
         </member>
         <member name="M:Funq.IReused.ReusedWithin(Funq.ReuseScope)">
-            <summary>
-			Specifies how instances are reused within a container or hierarchy. Default
-			scope is <see cref="F:Funq.ReuseScope.Hierarchy"/>.
-		</summary>
+            <!-- No matching elements were found for the following include tag --><include file="Funq.xdoc" path="docs/doc[@for=&quot;IReused.ReusedWithin&quot;]/*"/>
         </member>
         <member name="T:Funq.IOwned">
-            <summary>
-			Fluent API that allows specifying the owner of instances
-			created from a registration.
-		</summary>
+            <!-- No matching elements were found for the following include tag --><include file="Funq.xdoc" path="docs/doc[@for=&quot;IOwned&quot;]/*"/>
         </member>
         <member name="M:Funq.IOwned.OwnedBy(Funq.Owner)">
-            <summary>
-			Specifies the owner of instances created from this registration. Default
-			owner is <see cref="F:Funq.Owner.Container"/>.
-		</summary>
+            <!-- No matching elements were found for the following include tag --><include file="Funq.xdoc" path="docs/doc[@for=&quot;IOwned.OwnedBy&quot;]/*"/>
         </member>
         <member name="F:Funq.ServiceEntry.Owner">
             <summary>
@@ -911,20 +786,13 @@
             </summary>
         </member>
         <member name="T:Funq.IRegistration`1">
-            <summary>
-			Fluent API for customizing the registration of a service.
-		</summary>
+            <!-- No matching elements were found for the following include tag --><include file="Funq.xdoc" path="docs/doc[@for=&quot;IRegistration&quot;]/*"/>
         </member>
         <member name="T:Funq.IInitializable`1">
-            <summary>
-			Fluent API for customizing the registration of a service.
-		</summary>
+            <!-- No matching elements were found for the following include tag --><include file="Funq.xdoc" path="docs/doc[@for=&quot;IRegistration&quot;]/*"/>
         </member>
         <member name="M:Funq.IInitializable`1.InitializedBy(System.Action{Funq.Container,`0})">
-            <summary>
-			Specifies an initializer that should be invoked after
-			the service instance has been created by the factory.
-		</summary>
+            <!-- No matching elements were found for the following include tag --><include file="Funq.xdoc" path="docs/doc[@for=&quot;IInitializable.InitializedBy&quot;]/*"/>
         </member>
         <member name="F:Funq.ServiceEntry`2.Factory">
             <summary>
