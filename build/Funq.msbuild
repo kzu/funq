@@ -64,6 +64,7 @@
 		<Exec Command="xcopy ..\src\Core\Funq\bin\$(Configuration)\Funq.* Funq\NET40\ /Y /F /I" />
 		<!-- No need for Funq.Composition in .NET 4.0 -->
 
+		
 		<!-- NET35 -->
 		<MSBuild
 			Targets="Rebuild"
@@ -76,6 +77,7 @@
 			Properties="TargetFrameworkVersion=v3.5;Configuration=$(Configuration);TrackFileAccess=$(TrackFileAccess)"/>
 		<Exec Command="xcopy ..\src\Core\Funq.Composition\bin\$(Configuration)\Funq.* Funq\NET35\ /Y /F /I" />
 
+		
 		<!-- SL3 -->
 		<MSBuild
 			Targets="Rebuild"
@@ -88,14 +90,16 @@
 			Properties="TargetFrameworkVersion=v3.0;Configuration=$(Configuration);TrackFileAccess=$(TrackFileAccess)"/>
 		<Exec Command="xcopy ..\src\Silverlight\Funq.Composition\bin\$(Configuration)\Funq.* Funq\SL3\ /Y /F /I" />
 
+		
 		<!-- SL4 -->
 		<MSBuild
 			Targets="Rebuild"
 			Projects="..\src\Silverlight\Funq\Funq.Silverlight.csproj"
 			Properties="TargetFrameworkVersion=v4.0;Configuration=$(Configuration);TrackFileAccess=$(TrackFileAccess)"/>
 		<Exec Command="xcopy ..\src\Silverlight\Funq\bin\$(Configuration)\Funq.* Funq\SL4\ /Y /F /I" />
+		<!-- No need for Funq.Composition in SL 4.0 -->
 
-
+		
 		<!-- WP7 -->
 		<MSBuild
 			Targets="Rebuild"
@@ -108,13 +112,37 @@
 			Properties="TargetFrameworkVersion=v4.0;Configuration=$(Configuration);TrackFileAccess=$(TrackFileAccess)"/>
 		<Exec Command="xcopy ..\src\WindowsPhone\Funq.Composition\bin\$(Configuration)\Funq.* Funq\WP7\ /Y /F /I" />
 
+		
+		<!-- MSBuild Funqlet integration -->
+		<!--  Build project takes the System.ComponentModel.Composition reference in this case -->
+		<MSBuild
+			Targets="Rebuild"
+			Projects="..\src\Core\Funq.Build\Funq.Build.csproj"
+			Properties="TargetFrameworkVersion=v4.0;Configuration=$(Configuration);TrackFileAccess=$(TrackFileAccess)"/>
+		<Exec Command="xcopy ..\src\Core\Funq.Build\bin\$(Configuration)\Funq.Build.* Funq\NET40\ /Y /F /I" />
+		<!-- SL4 does contain MEF attributes already -->
+		<Exec Command="xcopy ..\src\Core\Funq.Build\bin\$(Configuration)\Funq.Build.* Funq\SL4\ /Y /F /I" />
+
+		<!--  Build project takes the Funq.Composition project reference in this case, which has already been compiled above -->
+		<MSBuild
+			Targets="Rebuild"
+			Projects="..\src\Core\Funq.Composition\Funq.Composition.csproj"
+			Properties="TargetFrameworkVersion=v3.5;Configuration=$(Configuration);TrackFileAccess=$(TrackFileAccess)"/>
+		<MSBuild
+			Targets="Rebuild"
+			Projects="..\src\Core\Funq.Build\Funq.Build.csproj"
+			Properties="TargetFrameworkVersion=v3.5;Configuration=$(Configuration);TrackFileAccess=$(TrackFileAccess)"/>
+		<!-- All others don't have the MEF attributes -->
+		<Exec Command="xcopy ..\src\Core\Funq.Build\bin\$(Configuration)\Funq.Build.* Funq\NET35\ /Y /F /I" />
+		<Exec Command="xcopy ..\src\Core\Funq.Build\bin\$(Configuration)\Funq.Build.* Funq\SL3\ /Y /F /I" />
+		<Exec Command="xcopy ..\src\Core\Funq.Build\bin\$(Configuration)\Funq.Build.* Funq\WP7\ /Y /F /I" />
+
+
 		<!-- Last pass to get the tests ready -->
 		<MSBuild
 			Projects="..\src\Funq.sln"
 			Targets="Rebuild"
 			Properties="Configuration=$(Configuration);TrackFileAccess=$(TrackFileAccess)"/>
-
-
 	</Target>
 
 	<!-- Help Project Setup -->
