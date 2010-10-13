@@ -79,9 +79,42 @@ namespace Funq.Build
         public virtual string TransformText()
         {
             this.GenerationEnvironment = null;
-            this.Write("using System;\r\nusing Funq;\r\n\r\nnamespace ");
+            this.Write("using System;\r\nusing Funq;\r\n");
             
-            #line 10 "D:\Code\clarius\funq\src\Core\Funq.Build\FunqletTemplate.tt"
+            #line 9 "D:\Code\clarius\funq\src\Core\Funq.Build\FunqletTemplate.tt"
+
+codegen.BeginInit();
+codegen.AddTypes(this.Exports.Select(e => e.Implementation));
+codegen.AddTypes(this.Exports.Select(e => e.Contract.Type));
+codegen.AddTypes(this.Exports.SelectMany(e => e.Parameters.Select(p => p.Contract.Type)));
+codegen.AddTypes(this.Exports.SelectMany(e => e.Properties.Select(p => p.Contract.Type)));
+codegen.EndInit();
+
+foreach (var ns in codegen.SafeImports)
+{
+
+            
+            #line default
+            #line hidden
+            this.Write("using ");
+            
+            #line 20 "D:\Code\clarius\funq\src\Core\Funq.Build\FunqletTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(ns));
+            
+            #line default
+            #line hidden
+            this.Write(";\r\n");
+            
+            #line 21 "D:\Code\clarius\funq\src\Core\Funq.Build\FunqletTemplate.tt"
+
+}
+
+            
+            #line default
+            #line hidden
+            this.Write("\r\nnamespace ");
+            
+            #line 25 "D:\Code\clarius\funq\src\Core\Funq.Build\FunqletTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.TargetNamespace));
             
             #line default
@@ -89,7 +122,7 @@ namespace Funq.Build
             this.Write("\r\n{\r\n\tpublic partial class Funqlet : IFunqlet\r\n\t{\r\n\t\tpublic void Configure(Contai" +
                     "ner container)\r\n\t\t{\r\n");
             
-            #line 16 "D:\Code\clarius\funq\src\Core\Funq.Build\FunqletTemplate.tt"
+            #line 31 "D:\Code\clarius\funq\src\Core\Funq.Build\FunqletTemplate.tt"
 
 foreach (var item in this.Exports)
 {
@@ -99,35 +132,35 @@ foreach (var item in this.Exports)
             #line hidden
             this.Write("\t\t\tcontainer.Register<");
             
-            #line 20 "D:\Code\clarius\funq\src\Core\Funq.Build\FunqletTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(item.Contract.Type.FullName));
+            #line 35 "D:\Code\clarius\funq\src\Core\Funq.Build\FunqletTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(codegen.GetTypeName(item.Contract.Type)));
             
             #line default
             #line hidden
             this.Write(">(");
             
-            #line 20 "D:\Code\clarius\funq\src\Core\Funq.Build\FunqletTemplate.tt"
+            #line 35 "D:\Code\clarius\funq\src\Core\Funq.Build\FunqletTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(item.Contract.Name != null ? Quote(item.Contract.Name) + ", " : ""));
             
             #line default
             #line hidden
             this.Write("c => \r\n\t\t\t\tnew ");
             
-            #line 21 "D:\Code\clarius\funq\src\Core\Funq.Build\FunqletTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(item.Implementation.FullName));
+            #line 36 "D:\Code\clarius\funq\src\Core\Funq.Build\FunqletTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(codegen.GetTypeName(item.Implementation)));
             
             #line default
             #line hidden
             this.Write("(");
             
-            #line 21 "D:\Code\clarius\funq\src\Core\Funq.Build\FunqletTemplate.tt"
+            #line 36 "D:\Code\clarius\funq\src\Core\Funq.Build\FunqletTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Render(item.Parameters)));
             
             #line default
             #line hidden
             this.Write(")");
             
-            #line 21 "D:\Code\clarius\funq\src\Core\Funq.Build\FunqletTemplate.tt"
+            #line 36 "D:\Code\clarius\funq\src\Core\Funq.Build\FunqletTemplate.tt"
 
 if (item.Properties.Any())
 {
@@ -137,14 +170,14 @@ if (item.Properties.Any())
             #line hidden
             this.Write(" \r\n\t\t\t\t{ \r\n\t\t\t\t\t");
             
-            #line 26 "D:\Code\clarius\funq\src\Core\Funq.Build\FunqletTemplate.tt"
+            #line 41 "D:\Code\clarius\funq\src\Core\Funq.Build\FunqletTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Render(item.Properties)));
             
             #line default
             #line hidden
             this.Write(" \r\n\t\t\t\t}");
             
-            #line 27 "D:\Code\clarius\funq\src\Core\Funq.Build\FunqletTemplate.tt"
+            #line 42 "D:\Code\clarius\funq\src\Core\Funq.Build\FunqletTemplate.tt"
 
 }
 				
@@ -153,7 +186,7 @@ if (item.Properties.Any())
             #line hidden
             this.Write(");\r\n");
             
-            #line 30 "D:\Code\clarius\funq\src\Core\Funq.Build\FunqletTemplate.tt"
+            #line 45 "D:\Code\clarius\funq\src\Core\Funq.Build\FunqletTemplate.tt"
 
 }
 
@@ -166,7 +199,7 @@ if (item.Properties.Any())
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 43 "D:\Code\clarius\funq\src\Core\Funq.Build\FunqletTemplate.tt"
+        #line 58 "D:\Code\clarius\funq\src\Core\Funq.Build\FunqletTemplate.tt"
 
 /// <summary>
 /// Target namespace passed-in by the task for the generated funqlet class.
@@ -177,6 +210,8 @@ internal string TargetNamespace { get; set; }
 /// Exports from the assemblies with copylocal=true.
 /// </summary>
 internal IEnumerable<Export> Exports { get; set; }
+
+private CodeGeneration codegen = new CodeGeneration();
 
 private string Render(IEnumerable<Import> parameters)
 {
@@ -203,7 +238,7 @@ private string Resolve(Import import)
     else
         invocation += "Resolve";
 
-    invocation += "<" + import.Contract.Type.FullName + ">";
+    invocation += "<" + codegen.GetTypeName(import.Contract.Type) + ">";
     invocation += "(" + Quote(import.Contract.Name) + ")";
 
     return invocation;

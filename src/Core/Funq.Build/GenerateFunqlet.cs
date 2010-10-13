@@ -64,6 +64,7 @@ namespace Funq.Build
 		/// <include file='Funq.Build.xdoc' path='docs/doc[@for="GenerateFunqlet.Execute"]/*'/>
 		public override bool Execute()
 		{
+			// The filter by copylocal should be done in the .targets
 			var exportedTypes = this.Assemblies
 				.Where(item => item.GetMetadata("CopyLocal") == "true")
 				.Select(item => Assembly.LoadFrom(item.GetMetadata("FullPath")))

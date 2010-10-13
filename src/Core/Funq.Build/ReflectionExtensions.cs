@@ -36,11 +36,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Text.RegularExpressions;
 
 namespace Funq.Build
 {
 	internal static class ReflectionExtensions
 	{
+		private static Regex VersionRegex = new Regex(@", Version[^\]]*", RegexOptions.Compiled);
+
 		public static bool HasCustomAttribute<TAttribute>(this ICustomAttributeProvider provider, bool inherit = true)
 			where TAttribute : Attribute
 		{

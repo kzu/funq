@@ -7,7 +7,7 @@
 					BeforeTargets="CoreCompile">
 		<Message Importance="high"
 						 Text="Generating funqlet from composition attributes" />
-		<GenerateFunqlet References="@(ReferencePath)"
+		<GenerateFunqlet Assemblies="@(ReferencePath)"
 										 TargetNamespace="$(RootNamespace)"
 										 OutputPath="$(IntermediateOutputPath)">
 			<Output ItemName="Funqlet"

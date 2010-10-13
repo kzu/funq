@@ -6,6 +6,21 @@
 <#@ Import Namespace="Funq.Build" #>
 using System;
 using Funq;
+<#
+codegen.BeginInit();
+codegen.AddTypes(this.Exports.Select(e => e.Implementation));
+codegen.AddTypes(this.Exports.Select(e => e.Contract.Type));
+codegen.AddTypes(this.Exports.SelectMany(e => e.Parameters.Select(p => p.Contract.Type)));
+codegen.AddTypes(this.Exports.SelectMany(e => e.Properties.Select(p => p.Contract.Type)));
+codegen.EndInit();
+
+foreach (var ns in codegen.SafeImports)
+{
+#>
+using <#=ns #>;
+<#
+}
+#>
 
 namespace <#=this.TargetNamespace #>
 {
@@ -17,8 +32,8 @@ namespace <#=this.TargetNamespace #>
 foreach (var item in this.Exports)
 {
 #>
-			container.Register<<#=item.Contract.Type.FullName #>>(<#=item.Contract.Name != null ? Quote(item.Contract.Name) + ", " : "" #>c => 
-				new <#=item.Implementation.FullName #>(<#=Render(item.Parameters) #>)<#
+			container.Register<<#=codegen.GetTypeName(item.Contract.Type) #>>(<#=item.Contract.Name != null ? Quote(item.Contract.Name) + ", " : "" #>c => 
+				new <#=codegen.GetTypeName(item.Implementation) #>(<#=Render(item.Parameters) #>)<#
 if (item.Properties.Any())
 {
 #> 
@@ -51,6 +66,8 @@ internal string TargetNamespace { get; set; }
 /// </summary>
 internal IEnumerable<Export> Exports { get; set; }
 
+private CodeGeneration codegen = new CodeGeneration();
+
 private string Render(IEnumerable<Import> parameters)
 {
     return string.Join(", ", parameters
@@ -76,7 +93,7 @@ private string Resolve(Import import)
     else
         invocation += "Resolve";
 
-    invocation += "<" + import.Contract.Type.FullName + ">";
+    invocation += "<" + codegen.GetTypeName(import.Contract.Type) + ">";
     invocation += "(" + Quote(import.Contract.Name) + ")";
 
     return invocation;

@@ -52,6 +52,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CodeGeneration.cs" />
     <Compile Include="Model\Contract.cs" />
     <Compile Include="Model\Export.cs" />
     <Compile Include="Model\Import.cs" />
