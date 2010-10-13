@@ -196,7 +196,7 @@
 		<Exec Command="xcopy ..\src\Core\Funq\bin\Release\Funq.xml Help\Working\ /Y /F /I" />
 		<Exec Command="xcopy ..\src\Core\Funq\bin\Release\Funq.dll Help\Working\ /Y /F /I" />
 
-		<Exec Command="&quot;$(windir)\Microsoft.NET\Framework\v3.5\MSBuild.exe&quot; Funq.shfbproj" />
+		<Exec Command="&quot;$(windir)\Microsoft.NET\Framework\v3.5\MSBuild.exe&quot; Funq.shfbproj" ContinueOnError="true" />
 
 		<!-- Doesn't work on MSBuild 4.0 yet -->
 		<!--<MSBuild 
@@ -214,28 +214,45 @@
 			Pattern='AssemblyVersion\("(\d+\.\d+\.\d+)\.\d+"\)'
 			Replacement='AssemblyVersion("$1.$(BuildNumber)")'
 			Files='..\src\GlobalAssemblyInfo.cs'/>
+		<RegexReplace
+			Pattern='AssemblyFileVersion\("(\d+\.\d+\.\d+)\.\d+"\)'
+			Replacement='AssemblyFileVersion("$1.$(BuildNumber)")'
+			Files='..\src\GlobalAssemblyInfo.cs'/>
 	</Target>
 
 	<Target Name="Zip">
 		<Exec Command="RmDir /S Drop" />
 		<MakeDir Directories="Drop" />
 
+		<!-- Read one output assembly version and it will be the same for all -->
+		<GetAssemblyIdentity AssemblyFiles="Funq\NET40\Funq.dll">
+			<Output TaskParameter="Assemblies"
+							ItemName="AssemblyInfo"/>
+		</GetAssemblyIdentity>
+
+		<CreateProperty Value="%(AssemblyInfo.Version)">
+			<Output TaskParameter="Value" PropertyName="FunqVersion" />
+		</CreateProperty>
+
+		<Message Importance="high"
+						 Text="Funq version: $(FunqVersion)"/>
+		
 		<ItemGroup>
 			<ZipFileList Include="Funq\**\*.dll"/>
 			<ZipFileList Include="Funq\**\*.xml"/>
 			<ZipFileList Include="Funq\**\*.chm"/>
 		</ItemGroup>
-		<Delete Files="Drop\funq-build-$(BuildNumber).zip"/>
+		<Delete Files="Drop\funq-$(FunqVersion)-binaries-.zip"/>
 		<Zip
-			ZipFileName="Drop\funq-build-$(BuildNumber).zip"
+			ZipFileName="Drop\funq-$(FunqVersion)-binaries.zip"
 			Files="@(ZipFileList)"/>
 
 		<ItemGroup>
 			<ZipPdbFileList Include="Funq\**\*.pdb"/>
 		</ItemGroup>
-		<Delete Files="Drop\funq-symbols-$(BuildNumber).zip"/>
+		<Delete Files="Drop\funq-$(FunqVersion)-symbols.zip"/>
 		<Zip
-			ZipFileName="Drop\funq-symbols-$(BuildNumber).zip"
+			ZipFileName="Drop\funq-$(FunqVersion)-symbols.zip"
 			Files="@(ZipPdbFileList)"/>
 	</Target>
 
