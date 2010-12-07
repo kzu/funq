@@ -12,9 +12,8 @@
 					DestinationFiles="$(RootDir)PublicKey.ttinclude"
 					SkipUnchangedFiles="true"/>
 	</Target>
-
 	<Import Condition="'$(Configuration)' == 'Release'"
-					Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\TextTemplating\v10.0\Microsoft.TextTemplating.targets" />
+					Project="Lib\VSSDK\Microsoft.TextTemplating.targets" />
 
 	<!-- Copy Binaries -->
 	<!--<Target Name="AfterBuild"

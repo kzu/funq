@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package>
+	<metadata>
+		<id>Funq</id>
+		<version>1.0.0.0</version>
+		<authors>
+			<author>Daniel Cazzulino</author>
+		</authors>
+		<description>
+			A fast DI container you can understand.
+			The choice specially for mobile projects because it does not rely on any kind of runtime reflection.
+
+			Chosen by Microsoft p&amp;p for the Windows Phone 7 official guidelines!
+		</description>
+		<language>en-US</language>
+	</metadata>
+</package>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package>
+	<metadata>
+		<id>Funqlet</id>
+		<version>1.0.0.0</version>
+		<authors>
+			<author>Daniel Cazzulino</author>
+		</authors>
+		<description>
+			MSBuild integration for automatic discovery and build-time generation 
+			of component registrations in a Funqlet.
+		</description>
+		<language>en-US</language>
+	</metadata>
+</package>

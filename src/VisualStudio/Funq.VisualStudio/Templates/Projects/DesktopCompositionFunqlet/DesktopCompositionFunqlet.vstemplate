@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<VSTemplate Version="3.0.0" Type="Project" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005">
+  <TemplateData>
+		<Name>Composition Funqlet</Name>
+		<Description>Creates a project that can auto-generate a funqlet with component registrations from MEF attribute.</Description>
+		<Icon>32x32.ico</Icon>
+    <TemplateID>Funq.Composition.Desktop</TemplateID>
+    <ProjectType>CSharp</ProjectType>
+		<ProjectSubType>Windows</ProjectSubType>
+		<RequiredFrameworkVersion>3.5</RequiredFrameworkVersion>
+    <SortOrder>20</SortOrder>
+    <!--<NumberOfParentCategoriesToRollUp>1</NumberOfParentCategoriesToRollUp>-->
+    <DefaultName>Funqlet</DefaultName>
+		<CreateNewFolder>true</CreateNewFolder>
+		<ProvideDefaultName>true</ProvideDefaultName>
+  </TemplateData>
+  <TemplateContent>
+    <Project File="CompositionFunqlet.csproj" ReplaceParameters="true">
+      <ProjectItem ReplaceParameters="true" TargetFileName="Properties\AssemblyInfo.cs">AssemblyInfo.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" OpenInEditor="true">Funqlet.cs</ProjectItem>
+    </Project>
+  </TemplateContent>
+</VSTemplate>

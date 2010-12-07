@@ -33,9 +33,9 @@
 	<!-- Build server targets -->
 
 	<Target Name="CI"
-					DependsOnTargets="Clean;SetVersionNumber;Build;Zip" />
+					DependsOnTargets="Clean;SetVersionNumber;Build;LoadVersionNumber;Zip" />
 	<Target Name="Drop"
-					DependsOnTargets="Clean;SetVersionNumber;Build;Reflection;Help;Zip" />
+					DependsOnTargets="Clean;SetVersionNumber;Build;LoadVersionNumber;Reflection;Help;Zip;NuPack" />
 
 	<!-- Individiual targets -->
 
@@ -51,6 +51,7 @@
 			Properties="Configuration=$(Configuration);TrackFileAccess=$(TrackFileAccess)"/>
 		<Exec Command="RmDir /S Funq" />
 		<Exec Command="RmDir /S Drop" />
+		<Exec Command="RmDir /S NuPack" />
 	</Target>
 
 	<Target Name="Build">
@@ -64,7 +65,7 @@
 		<Exec Command="xcopy ..\src\Core\Funq\bin\$(Configuration)\Funq.* Funq\NET40\ /Y /F /I" />
 		<!-- No need for Funq.Composition in .NET 4.0 -->
 
-		
+
 		<!-- NET35 -->
 		<MSBuild
 			Targets="Rebuild"
@@ -77,7 +78,7 @@
 			Properties="TargetFrameworkVersion=v3.5;Configuration=$(Configuration);TrackFileAccess=$(TrackFileAccess)"/>
 		<Exec Command="xcopy ..\src\Core\Funq.Composition\bin\$(Configuration)\Funq.* Funq\NET35\ /Y /F /I" />
 
-		
+
 		<!-- SL3 -->
 		<MSBuild
 			Targets="Rebuild"
@@ -90,7 +91,7 @@
 			Properties="TargetFrameworkVersion=v3.0;Configuration=$(Configuration);TrackFileAccess=$(TrackFileAccess)"/>
 		<Exec Command="xcopy ..\src\Silverlight\Funq.Composition\bin\$(Configuration)\Funq.* Funq\SL3\ /Y /F /I" />
 
-		
+
 		<!-- SL4 -->
 		<MSBuild
 			Targets="Rebuild"
@@ -99,7 +100,7 @@
 		<Exec Command="xcopy ..\src\Silverlight\Funq\bin\$(Configuration)\Funq.* Funq\SL4\ /Y /F /I" />
 		<!-- No need for Funq.Composition in SL 4.0 -->
 
-		
+
 		<!-- WP7 -->
 		<MSBuild
 			Targets="Rebuild"
@@ -112,7 +113,7 @@
 			Properties="TargetFrameworkVersion=v4.0;Configuration=$(Configuration);TrackFileAccess=$(TrackFileAccess)"/>
 		<Exec Command="xcopy ..\src\WindowsPhone\Funq.Composition\bin\$(Configuration)\Funq.* Funq\WP7\ /Y /F /I" />
 
-		
+
 		<!-- MSBuild Funqlet integration -->
 		<!--  Build project takes the System.ComponentModel.Composition reference in this case -->
 		<MSBuild
@@ -196,7 +197,8 @@
 		<Exec Command="xcopy ..\src\Core\Funq\bin\Release\Funq.xml Help\Working\ /Y /F /I" />
 		<Exec Command="xcopy ..\src\Core\Funq\bin\Release\Funq.dll Help\Working\ /Y /F /I" />
 
-		<Exec Command="&quot;$(windir)\Microsoft.NET\Framework\v3.5\MSBuild.exe&quot; Funq.shfbproj" ContinueOnError="true" />
+		<Exec Command="&quot;$(windir)\Microsoft.NET\Framework\v3.5\MSBuild.exe&quot; Funq.shfbproj"
+					ContinueOnError="true" />
 
 		<!-- Doesn't work on MSBuild 4.0 yet -->
 		<!--<MSBuild 
@@ -211,19 +213,12 @@
 
 	<Target Name="SetVersionNumber">
 		<RegexReplace
-			Pattern='AssemblyVersion\("(\d+\.\d+\.\d+)\.\d+"\)'
-			Replacement='AssemblyVersion("$1.$(BuildNumber)")'
-			Files='..\src\GlobalAssemblyInfo.cs'/>
-		<RegexReplace
-			Pattern='AssemblyFileVersion\("(\d+\.\d+\.\d+)\.\d+"\)'
-			Replacement='AssemblyFileVersion("$1.$(BuildNumber)")'
-			Files='..\src\GlobalAssemblyInfo.cs'/>
+			Pattern='(\d+\.\d+\.\d+)\.\d+'
+			Replacement='$1.$(BuildNumber)'
+			Files='..\src\Version.t4'/>
 	</Target>
 
-	<Target Name="Zip">
-		<Exec Command="RmDir /S Drop" />
-		<MakeDir Directories="Drop" />
-
+	<Target Name="LoadVersionNumber">
 		<!-- Read one output assembly version and it will be the same for all -->
 		<GetAssemblyIdentity AssemblyFiles="Funq\NET40\Funq.dll">
 			<Output TaskParameter="Assemblies"
@@ -231,12 +226,18 @@
 		</GetAssemblyIdentity>
 
 		<CreateProperty Value="%(AssemblyInfo.Version)">
-			<Output TaskParameter="Value" PropertyName="FunqVersion" />
+			<Output TaskParameter="Value"
+							PropertyName="FunqVersion" />
 		</CreateProperty>
 
 		<Message Importance="high"
 						 Text="Funq version: $(FunqVersion)"/>
-		
+	</Target>
+
+	<Target Name="Zip">
+		<Exec Command="RmDir /S Drop" />
+		<MakeDir Directories="Drop" />
+
 		<ItemGroup>
 			<ZipFileList Include="Funq\**\*.dll"/>
 			<ZipFileList Include="Funq\**\*.xml"/>
@@ -256,4 +257,45 @@
 			Files="@(ZipPdbFileList)"/>
 	</Target>
 
+	<Target Name="NuPack"
+					DependsOnTargets="LoadVersionNumber">
+		<MakeDir Directories="NuPack\Funq" />
+		<Exec Command="xcopy ..\src\Core\Funq.Build\NuPack\Funq.nuspec NuPack\Funq\$(FunqVersion)\ /S /Y /F /I" />
+		<Exec Command="xcopy ..\src\Core\Funq.Build\NuPack\Tools\Init.ps1 NuPack\Funq\$(FunqVersion)\tools\ /S /Y /F /I" />
+		<Exec Command="xcopy Funq NuPack\Funq\$(FunqVersion)\lib /S /Y /F /I" />
+
+		<!-- 
+			Move the Funq.Build.* files over to the tools package folder, to avoid having them added 
+			as assembly references when Funq package is added.
+		-->		
+		<ItemGroup>
+			<FunqBuild Include="NuPack\Funq\$(FunqVersion)\lib\**\Funq.Build.*" />
+		</ItemGroup>
+		<Copy SourceFiles="@(FunqBuild)"
+					DestinationFolder="NuPack\Funq\$(FunqVersion)\tools\%(RecursiveDir)"
+					SkipUnchangedFiles="true">
+		</Copy>
+		<Delete Files="@(FunqBuild)" />
+
+
+		<!--<MakeDir Directories="NuPack\Funqlet" />
+		<Exec Command="xcopy ..\src\Core\Funq.Build\NuPack\Funqlet.nuspec NuPack\Funqlet\$(FunqVersion)\ /S /Y /F /I" />
+		<Exec Command="xcopy ..\src\Core\Funq.Build\NuPack\Init.ps1 NuPack\Funqlet\$(FunqVersion)\ /S /Y /F /I" />
+
+		--><!-- Move the Funq.Build.* files over to the funqlet --><!--
+		<ItemGroup>
+			<FunqBuild Include="NuPack\Funq\$(FunqVersion)\lib\**\Funq.Build.*" />
+		</ItemGroup>
+		<Copy SourceFiles="@(FunqBuild)"
+					DestinationFolder="NuPack\Funqlet\$(FunqVersion)\tools\%(RecursiveDir)"
+					SkipUnchangedFiles="true">
+		</Copy>
+		<Delete Files="@(FunqBuild)" />-->
+
+		<!-- Generate the packages -->
+		<Exec Command="..\NuPack.exe ..\NuPack\Funq\$(FunqVersion)\Funq.nuspec"
+					WorkingDirectory="Drop" />
+		<!--<Exec Command="..\NuPack.exe ..\NuPack\Funqlet\$(FunqVersion)\Funqlet.nuspec"
+					WorkingDirectory="Drop" />-->
+	</Target>
 </Project>
