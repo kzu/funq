@@ -5,9 +5,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{A94C8911-2
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{4112712F-EE4F-4336-B330-C7BE413F11DE}"
 	ProjectSection(SolutionItems) = preProject
-		..\build\Funq.msbuild = ..\build\Funq.msbuild
 		Funq.properties = Funq.properties
-		..\build\Funq.shfbproj = ..\build\Funq.shfbproj
 		Funq.targets = Funq.targets
 		Funq.testrunconfig = Funq.testrunconfig
 		Funq.vsmdi = Funq.vsmdi

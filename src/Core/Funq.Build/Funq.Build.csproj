@@ -77,31 +77,13 @@
   <ItemGroup>
     <Content Include="Funq.Build.targets">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </Content>
-    <None Include="NuPack\Funq.nuspec">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Funq.tt</DependentUpon>
-    </None>
-    <None Include="NuPack\Funq.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Funq.nuspec</LastGenOutput>
-    </None>
-    <None Include="NuPack\Funqlet.nuspec">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Funqlet.tt</DependentUpon>
-    </None>
-    <None Include="NuPack\Funqlet.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Funqlet.nuspec</LastGenOutput>
-    </None>
     <None Include="Funq.Build.xdoc" />
     <None Include="FunqletTemplate.tt">
       <Generator>TextTemplatingFilePreProcessor</Generator>
       <LastGenOutput>FunqletTemplate.cs</LastGenOutput>
     </None>
-    <None Include="NuPack\Tools\Init.ps1" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">

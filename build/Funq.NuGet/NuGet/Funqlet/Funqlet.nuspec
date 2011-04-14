@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package>
+	<metadata>
+		<id>Funqlet</id>
+		<version>1.2.0.0</version>
+		<authors>Clarius, Daniel Cazzulino, kzu</authors>
+		<description>
+			MSBuild integration for automatic discovery and build-time generation
+			of component registrations in a Funqlet.
+		</description>
+		<language>en-US</language>
+		<projectUrl>http://funq.codeplex.com</projectUrl>
+		<licenseUrl>http://funq.codeplex.com/license</licenseUrl>
+		<iconUrl>http://download.codeplex.com/Project/Download/FileDownload.aspx?ProjectName=netfx&amp;DownloadId=199201</iconUrl>
+		<dependencies>
+			<dependency id="Funq"
+						version="1.0.0.0" />
+		</dependencies>
+	</metadata>
+</package>

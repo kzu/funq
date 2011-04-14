@@ -1,11 +1,12 @@
+<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ include file="..\..\..\..\src\Version.t4" #>
+<#@ output extension=".nuspec" #>
 <?xml version="1.0" encoding="utf-8"?>
 <package>
 	<metadata>
 		<id>Funq</id>
-		<version>1.1.0.0</version>
-		<authors>
-			<author>Daniel Cazzulino</author>
-		</authors>
+		<version><#= this.Version #></version>
+		<authors>Clarius, Daniel Cazzulino, kzu</authors>
 		<description>
 			A fast DI container you can understand.
 			The choice specially for mobile projects because it does not rely on any kind of runtime reflection.
