@@ -34,16 +34,16 @@
 
 namespace Funq
 {
-	/// <include file='Funq.xdoc' path='docs/doc[@for="Owner"]/*'/>
-	public enum Owner
-	{
-		/// <include file='Funq.xdoc' path='docs/doc[@for="Owner.Container"]/*'/>
-		Container,
+    /// <include file='Funq.xdoc' path='docs/doc[@for="Owner"]/*'/>
+    public enum Owner
+    {
+        /// <include file='Funq.xdoc' path='docs/doc[@for="Owner.Container"]/*'/>
+        Container,
 
-		/// <include file='Funq.xdoc' path='docs/doc[@for="Owner.External"]/*'/>
-		External,
+        /// <include file='Funq.xdoc' path='docs/doc[@for="Owner.External"]/*'/>
+        External,
 
-		/// <include file='Funq.xdoc' path='docs/doc[@for="Owner.Default"]/*'/>
-		Default,
-	}
+        /// <include file='Funq.xdoc' path='docs/doc[@for="Owner.Default"]/*'/>
+        Default,
+    }
 }

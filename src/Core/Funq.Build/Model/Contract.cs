@@ -36,9 +36,9 @@ using System;
 
 namespace Funq.Build
 {
-	internal class Contract
-	{
-		public Type Type { get; set; }
-		public string Name { get; set; }
-	}
+    class Contract
+    {
+        public Type Type { get; set; }
+        public string Name { get; set; }
+    }
 }

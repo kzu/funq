@@ -37,29 +37,29 @@ using System.Globalization;
 
 namespace Funq
 {
-	/// <include file='Funq.xdoc' path='docs/doc[@for="ResolutionException"]/*'/>
+    /// <include file='Funq.xdoc' path='docs/doc[@for="ResolutionException"]/*'/>
 #if !SILVERLIGHT
-	[Serializable]
+    [Serializable]
 #endif
-	public class ResolutionException : Exception
-	{
-		/// <include file='Funq.xdoc' path='docs/doc[@for="ResolutionException.ctor(Type)"]/*'/>
-		public ResolutionException(Type missingServiceType)
-			: base(String.Format(
-				CultureInfo.CurrentCulture,
-				Properties.Resources.ResolutionException_MissingType,
-				missingServiceType.FullName))
-		{ }
+    public class ResolutionException : Exception
+    {
+        /// <include file='Funq.xdoc' path='docs/doc[@for="ResolutionException.ctor(Type)"]/*'/>
+        public ResolutionException(Type missingServiceType)
+            : base(String.Format(
+                CultureInfo.CurrentCulture,
+                Properties.Resources.ResolutionException_MissingType,
+                missingServiceType.FullName))
+        { }
 
-		/// <include file='Funq.xdoc' path='docs/doc[@for="ResolutionException.ctor(Type, string)"]/*'/>
-		public ResolutionException(Type missingServiceType, string missingServiceName)
-			: base(String.Format(
-				CultureInfo.CurrentCulture,
-				Properties.Resources.ResolutionException_MissingNamedType,
-				missingServiceType.FullName, missingServiceName))
-		{ }
+        /// <include file='Funq.xdoc' path='docs/doc[@for="ResolutionException.ctor(Type, string)"]/*'/>
+        public ResolutionException(Type missingServiceType, string missingServiceName)
+            : base(String.Format(
+                CultureInfo.CurrentCulture,
+                Properties.Resources.ResolutionException_MissingNamedType,
+                missingServiceType.FullName, missingServiceName))
+        { }
 
-		/// <include file='Funq.xdoc' path='docs/doc[@for="ResolutionException.ctor(string)"]/*'/>
-		public ResolutionException(string message) : base(message) { }
-	}
+        /// <include file='Funq.xdoc' path='docs/doc[@for="ResolutionException.ctor(string)"]/*'/>
+        public ResolutionException(string message) : base(message) { }
+    }
 }

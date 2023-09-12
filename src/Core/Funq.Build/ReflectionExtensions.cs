@@ -40,28 +40,28 @@ using System.Text.RegularExpressions;
 
 namespace Funq.Build
 {
-	internal static class ReflectionExtensions
-	{
-		private static Regex VersionRegex = new Regex(@", Version[^\]]*", RegexOptions.Compiled);
+    static class ReflectionExtensions
+    {
+        static Regex VersionRegex = new Regex(@", Version[^\]]*", RegexOptions.Compiled);
 
-		public static bool HasCustomAttribute<TAttribute>(this ICustomAttributeProvider provider, bool inherit = true)
-			where TAttribute : Attribute
-		{
-			return GetCustomAttributes<TAttribute>(provider, inherit).Any();
-		}
+        public static bool HasCustomAttribute<TAttribute>(this ICustomAttributeProvider provider, bool inherit = true)
+            where TAttribute : Attribute
+        {
+            return GetCustomAttributes<TAttribute>(provider, inherit).Any();
+        }
 
-		public static TAttribute GetCustomAttribute<TAttribute>(this ICustomAttributeProvider provider, bool inherit = true)
-			where TAttribute : Attribute
-		{
-			return GetCustomAttributes<TAttribute>(provider, inherit).FirstOrDefault();
-		}
+        public static TAttribute GetCustomAttribute<TAttribute>(this ICustomAttributeProvider provider, bool inherit = true)
+            where TAttribute : Attribute
+        {
+            return GetCustomAttributes<TAttribute>(provider, inherit).FirstOrDefault();
+        }
 
-		public static IEnumerable<TAttribute> GetCustomAttributes<TAttribute>(this ICustomAttributeProvider provider, bool inherit = true)
-			where TAttribute : Attribute
-		{
-			return provider
-				.GetCustomAttributes(typeof(TAttribute), inherit)
-				.Cast<TAttribute>();
-		}
-	}
+        public static IEnumerable<TAttribute> GetCustomAttributes<TAttribute>(this ICustomAttributeProvider provider, bool inherit = true)
+            where TAttribute : Attribute
+        {
+            return provider
+                .GetCustomAttributes(typeof(TAttribute), inherit)
+                .Cast<TAttribute>();
+        }
+    }
 }
