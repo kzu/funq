@@ -34,19 +34,19 @@
 
 namespace Funq
 {
-	/// <include file='Funq.xdoc' path='docs/doc[@for="ResolutionException"]/*'/>
-	public enum ReuseScope
-	{
-		/// <include file='Funq.xdoc' path='docs/doc[@for="ResolutionException"]/*'/>
-		Container,
+    /// <include file='Funq.xdoc' path='docs/doc[@for="ResolutionException"]/*'/>
+    public enum ReuseScope
+    {
+        /// <include file='Funq.xdoc' path='docs/doc[@for="ResolutionException"]/*'/>
+        Container,
 
-		/// <include file='Funq.xdoc' path='docs/doc[@for="ResolutionException"]/*'/>
-		Hierarchy,
+        /// <include file='Funq.xdoc' path='docs/doc[@for="ResolutionException"]/*'/>
+        Hierarchy,
 
-		/// <include file='Funq.xdoc' path='docs/doc[@for="ResolutionException"]/*'/>
-		None,
+        /// <include file='Funq.xdoc' path='docs/doc[@for="ResolutionException"]/*'/>
+        None,
 
-		/// <include file='Funq.xdoc' path='docs/doc[@for="ResolutionException"]/*'/>
-		Default = Hierarchy,
-	}
+        /// <include file='Funq.xdoc' path='docs/doc[@for="ResolutionException"]/*'/>
+        Default = Hierarchy,
+    }
 }

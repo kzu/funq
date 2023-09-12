@@ -1,99 +1,35 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.30729</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{999180B2-9121-4329-BFE3-054DC988B0F7}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Funq.Build</RootNamespace>
-    <AssemblyName>Funq.Build</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <TargetFrameworkProfile />
+    <TargetFramework>net472</TargetFramework>
+    <Description>Provides a MEF-compatible subset of behaviors for use with Funq.</Description>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
-  </PropertyGroup>
-  <PropertyGroup />
-  <Import Project="..\..\Funq.properties" />
-  <ItemGroup Condition="'$(TargetFrameworkVersion)' == 'v4.0' and '$(TargetFrameworkProfile)' != 'WindowsPhone'">
-    <Reference Include="Microsoft.Build.Utilities.v4.0" />
-    <Reference Include="System.ComponentModel.Composition" />
-  </ItemGroup>
-  <ItemGroup Condition="'$(TargetFrameworkVersion)' == 'v3.0' or '$(TargetFrameworkVersion)' == 'v3.5' or '$(TargetFrameworkProfile)' == 'WindowsPhone'">
-    <Reference Include="Microsoft.Build.Utilities.v3.5">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
-    <ProjectReference Include="..\Funq.Composition\Funq.Composition.csproj">
-      <Project>{5FB37D21-CE86-4074-8B5A-C397B6A4EB9A}</Project>
-      <Name>Funq.Composition</Name>
-    </ProjectReference>
-  </ItemGroup>
+
   <ItemGroup>
-    <Reference Include="Microsoft.Build.Framework" />
-    <Reference Include="System" />
-    <Reference Include="System.Core">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
+    <PackageReference Include="Microsoft.Build.Utilities.Core" Version="17.7.2" />
   </ItemGroup>
+
   <ItemGroup>
-    <Compile Include="CodeGeneration.cs" />
-    <Compile Include="Model\Contract.cs" />
-    <Compile Include="Model\Export.cs" />
-    <Compile Include="Model\Import.cs" />
-    <Compile Include="Model\PropertyImport.cs" />
-    <Compile Include="GenerateFunqlet.cs" />
-    <Compile Include="FunqletTemplate.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>FunqletTemplate.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="..\..\GlobalAssemblyInfo.cs">
-      <Link>Properties\GlobalAssemblyInfo.cs</Link>
-    </Compile>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="ReflectionExtensions.cs" />
+    <ProjectReference Include="..\Funq.Composition\Funq.Composition.csproj" />
   </ItemGroup>
+
   <ItemGroup>
-    <Content Include="Funq.Build.targets">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <SubType>Designer</SubType>
-    </Content>
-    <None Include="Funq.Build.xdoc" />
-    <None Include="FunqletTemplate.tt">
+    <None Update="FunqletTemplate.tt">
       <Generator>TextTemplatingFilePreProcessor</Generator>
       <LastGenOutput>FunqletTemplate.cs</LastGenOutput>
     </None>
   </ItemGroup>
+
   <ItemGroup>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
+    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
   </ItemGroup>
+
   <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <Compile Update="FunqletTemplate.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>FunqletTemplate.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="..\..\Funq.targets" />
+
 </Project>

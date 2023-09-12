@@ -37,192 +37,192 @@ using System.Diagnostics;
 
 namespace Funq
 {
-	partial class Container
-	{
-		/* Contain just the typed overloads that are just pass-through to the real implementations.
+    partial class Container
+    {
+        /* Contain just the typed overloads that are just pass-through to the real implementations.
 		 * They all have DebuggerStepThrough to ease debugging. */
 
-		/// <include file='Funq.Overloads.xdoc' path='docs/doc[@for="Container.Register{TService, T1, T2}(factory)"]/*'/>
-		[DebuggerStepThrough]
-		public IRegistration<TService> Register<TService, T1, T2>(Func<Container, T1, T2, TService> factory)
-		{
-			return Register(null, factory);
-		}
+        /// <include file='Funq.Overloads.xdoc' path='docs/doc[@for="Container.Register{TService, T1, T2}(factory)"]/*'/>
+        [DebuggerStepThrough]
+        public IRegistration<TService> Register<TService, T1, T2>(Func<Container, T1, T2, TService> factory)
+        {
+            return Register(null, factory);
+        }
 
-		/// <include file='Funq.Overloads.xdoc' path='docs/doc[@for="Container.Register{TService, T1, T2}(name, factory)"]/*'/>
-		[DebuggerStepThrough]
-		public IRegistration<TService> Register<TService, T1, T2>(string name, Func<Container, T1, T2, TService> factory)
-		{
-			return RegisterImpl<TService, Func<Container, T1, T2, TService>>(name, factory);
-		}
+        /// <include file='Funq.Overloads.xdoc' path='docs/doc[@for="Container.Register{TService, T1, T2}(name, factory)"]/*'/>
+        [DebuggerStepThrough]
+        public IRegistration<TService> Register<TService, T1, T2>(string name, Func<Container, T1, T2, TService> factory)
+        {
+            return RegisterImpl<TService, Func<Container, T1, T2, TService>>(name, factory);
+        }
 
-		/// <include file='Funq.Overloads.xdoc' path='docs/doc[@for="Container.Register{TService, T1, T2, T3}(factory)"]/*'/>
-		[DebuggerStepThrough]
-		public IRegistration<TService> Register<TService, T1, T2, T3>(Func<Container, T1, T2, T3, TService> factory)
-		{
-			return Register(null, factory);
-		}
+        /// <include file='Funq.Overloads.xdoc' path='docs/doc[@for="Container.Register{TService, T1, T2, T3}(factory)"]/*'/>
+        [DebuggerStepThrough]
+        public IRegistration<TService> Register<TService, T1, T2, T3>(Func<Container, T1, T2, T3, TService> factory)
+        {
+            return Register(null, factory);
+        }
 
-		/// <include file='Funq.Overloads.xdoc' path='docs/doc[@for="Container.Register{TService, T1, T2, T3}(name, factory)"]/*'/>
-		[DebuggerStepThrough]
-		public IRegistration<TService> Register<TService, T1, T2, T3>(string name, Func<Container, T1, T2, T3, TService> factory)
-		{
-			return RegisterImpl<TService, Func<Container, T1, T2, T3, TService>>(name, factory);
-		}
+        /// <include file='Funq.Overloads.xdoc' path='docs/doc[@for="Container.Register{TService, T1, T2, T3}(name, factory)"]/*'/>
+        [DebuggerStepThrough]
+        public IRegistration<TService> Register<TService, T1, T2, T3>(string name, Func<Container, T1, T2, T3, TService> factory)
+        {
+            return RegisterImpl<TService, Func<Container, T1, T2, T3, TService>>(name, factory);
+        }
 
-		/// <include file='Funq.Overloads.xdoc' path='docs/doc[@for="Container.Register{TService, T1, T2, T3, T4}(factory)"]/*'/>
-		[DebuggerStepThrough]
-		public IRegistration<TService> Register<TService, T1, T2, T3, T4>(Func<Container, T1, T2, T3, T4, TService> factory)
-		{
-			return Register(null, factory);
-		}
+        /// <include file='Funq.Overloads.xdoc' path='docs/doc[@for="Container.Register{TService, T1, T2, T3, T4}(factory)"]/*'/>
+        [DebuggerStepThrough]
+        public IRegistration<TService> Register<TService, T1, T2, T3, T4>(Func<Container, T1, T2, T3, T4, TService> factory)
+        {
+            return Register(null, factory);
+        }
 
-		/// <include file='Funq.Overloads.xdoc' path='docs/doc[@for="Container.Register{TService, T1, T2, T3, T4}(name, factory)"]/*'/>
-		[DebuggerStepThrough]
-		public IRegistration<TService> Register<TService, T1, T2, T3, T4>(string name, Func<Container, T1, T2, T3, T4, TService> factory)
-		{
-			return RegisterImpl<TService, Func<Container, T1, T2, T3, T4, TService>>(name, factory);
-		}
+        /// <include file='Funq.Overloads.xdoc' path='docs/doc[@for="Container.Register{TService, T1, T2, T3, T4}(name, factory)"]/*'/>
+        [DebuggerStepThrough]
+        public IRegistration<TService> Register<TService, T1, T2, T3, T4>(string name, Func<Container, T1, T2, T3, T4, TService> factory)
+        {
+            return RegisterImpl<TService, Func<Container, T1, T2, T3, T4, TService>>(name, factory);
+        }
 
-		/// <include file='Funq.Overloads.xdoc' path='docs/doc[@for="Container.Register{TService, T1, T2, T3, T4, T5}(factory)"]/*'/>
-		[DebuggerStepThrough]
-		public IRegistration<TService> Register<TService, T1, T2, T3, T4, T5>(Func<Container, T1, T2, T3, T4, T5, TService> factory)
-		{
-			return Register(null, factory);
-		}
+        /// <include file='Funq.Overloads.xdoc' path='docs/doc[@for="Container.Register{TService, T1, T2, T3, T4, T5}(factory)"]/*'/>
+        [DebuggerStepThrough]
+        public IRegistration<TService> Register<TService, T1, T2, T3, T4, T5>(Func<Container, T1, T2, T3, T4, T5, TService> factory)
+        {
+            return Register(null, factory);
+        }
 
-		/// <include file='Funq.Overloads.xdoc' path='docs/doc[@for="Container.Register{TService, T1, T2, T3, T4, T5}(name, factory)"]/*'/>
-		[DebuggerStepThrough]
-		public IRegistration<TService> Register<TService, T1, T2, T3, T4, T5>(string name, Func<Container, T1, T2, T3, T4, T5, TService> factory)
-		{
-			return RegisterImpl<TService, Func<Container, T1, T2, T3, T4, T5, TService>>(name, factory);
-		}
+        /// <include file='Funq.Overloads.xdoc' path='docs/doc[@for="Container.Register{TService, T1, T2, T3, T4, T5}(name, factory)"]/*'/>
+        [DebuggerStepThrough]
+        public IRegistration<TService> Register<TService, T1, T2, T3, T4, T5>(string name, Func<Container, T1, T2, T3, T4, T5, TService> factory)
+        {
+            return RegisterImpl<TService, Func<Container, T1, T2, T3, T4, T5, TService>>(name, factory);
+        }
 
-		/// <include file='Funq.Overloads.xdoc' path='docs/doc[@for="Container.Register{TService, T1, T2, T3, T4, T5, T6}(factory)"]/*'/>
-		[DebuggerStepThrough]
-		public IRegistration<TService> Register<TService, T1, T2, T3, T4, T5, T6>(Func<Container, T1, T2, T3, T4, T5, T6, TService> factory)
-		{
-			return Register(null, factory);
-		}
+        /// <include file='Funq.Overloads.xdoc' path='docs/doc[@for="Container.Register{TService, T1, T2, T3, T4, T5, T6}(factory)"]/*'/>
+        [DebuggerStepThrough]
+        public IRegistration<TService> Register<TService, T1, T2, T3, T4, T5, T6>(Func<Container, T1, T2, T3, T4, T5, T6, TService> factory)
+        {
+            return Register(null, factory);
+        }
 
-		/// <include file='Funq.Overloads.xdoc' path='docs/doc[@for="Container.Register{TService, T1, T2, T3, T4, T5, T6}(name, factory)"]/*'/>
-		[DebuggerStepThrough]
-		public IRegistration<TService> Register<TService, T1, T2, T3, T4, T5, T6>(string name, Func<Container, T1, T2, T3, T4, T5, T6, TService> factory)
-		{
-			return RegisterImpl<TService, Func<Container, T1, T2, T3, T4, T5, T6, TService>>(name, factory);
-		}
+        /// <include file='Funq.Overloads.xdoc' path='docs/doc[@for="Container.Register{TService, T1, T2, T3, T4, T5, T6}(name, factory)"]/*'/>
+        [DebuggerStepThrough]
+        public IRegistration<TService> Register<TService, T1, T2, T3, T4, T5, T6>(string name, Func<Container, T1, T2, T3, T4, T5, T6, TService> factory)
+        {
+            return RegisterImpl<TService, Func<Container, T1, T2, T3, T4, T5, T6, TService>>(name, factory);
+        }
 
-		/// <include file='Funq.Overloads.xdoc' path='docs/doc[@for="Container.Register{TService, T1, T2, T3, T4, T5, T6, T7}(factory)"]/*'/>
-		[DebuggerStepThrough]
-		public IRegistration<TService> Register<TService, T1, T2, T3, T4, T5, T6, T7>(Func<Container, T1, T2, T3, T4, T5, T6, T7, TService> factory)
-		{
-			return Register(null, factory);
-		}
+        /// <include file='Funq.Overloads.xdoc' path='docs/doc[@for="Container.Register{TService, T1, T2, T3, T4, T5, T6, T7}(factory)"]/*'/>
+        [DebuggerStepThrough]
+        public IRegistration<TService> Register<TService, T1, T2, T3, T4, T5, T6, T7>(Func<Container, T1, T2, T3, T4, T5, T6, T7, TService> factory)
+        {
+            return Register(null, factory);
+        }
 
-		/// <include file='Funq.Overloads.xdoc' path='docs/doc[@for="Container.Register{TService, T1, T2, T3, T4, T5, T6, T7}(name, factory)"]/*'/>
-		[DebuggerStepThrough]
-		public IRegistration<TService> Register<TService, T1, T2, T3, T4, T5, T6, T7>(string name, Func<Container, T1, T2, T3, T4, T5, T6, T7, TService> factory)
-		{
-			return RegisterImpl<TService, Func<Container, T1, T2, T3, T4, T5, T6, T7, TService>>(name, factory);
-		}
+        /// <include file='Funq.Overloads.xdoc' path='docs/doc[@for="Container.Register{TService, T1, T2, T3, T4, T5, T6, T7}(name, factory)"]/*'/>
+        [DebuggerStepThrough]
+        public IRegistration<TService> Register<TService, T1, T2, T3, T4, T5, T6, T7>(string name, Func<Container, T1, T2, T3, T4, T5, T6, T7, TService> factory)
+        {
+            return RegisterImpl<TService, Func<Container, T1, T2, T3, T4, T5, T6, T7, TService>>(name, factory);
+        }
 
-		/// <include file='Funq.Overloads.xdoc' path='docs/doc[@for="Container.Register{TService, T1, T2, T3, T4, T5, T6, T7, T8}(factory)"]/*'/>
-		[DebuggerStepThrough]
-		public IRegistration<TService> Register<TService, T1, T2, T3, T4, T5, T6, T7, T8>(Func<Container, T1, T2, T3, T4, T5, T6, T7, T8, TService> factory)
-		{
-			return Register(null, factory);
-		}
+        /// <include file='Funq.Overloads.xdoc' path='docs/doc[@for="Container.Register{TService, T1, T2, T3, T4, T5, T6, T7, T8}(factory)"]/*'/>
+        [DebuggerStepThrough]
+        public IRegistration<TService> Register<TService, T1, T2, T3, T4, T5, T6, T7, T8>(Func<Container, T1, T2, T3, T4, T5, T6, T7, T8, TService> factory)
+        {
+            return Register(null, factory);
+        }
 
-		/// <include file='Funq.Overloads.xdoc' path='docs/doc[@for="Container.Register{TService, T1, T2, T3, T4, T5, T6, T7, T8}(name, factory)"]/*'/>
-		[DebuggerStepThrough]
-		public IRegistration<TService> Register<TService, T1, T2, T3, T4, T5, T6, T7, T8>(string name, Func<Container, T1, T2, T3, T4, T5, T6, T7, T8, TService> factory)
-		{
-			return RegisterImpl<TService, Func<Container, T1, T2, T3, T4, T5, T6, T7, T8, TService>>(name, factory);
-		}
+        /// <include file='Funq.Overloads.xdoc' path='docs/doc[@for="Container.Register{TService, T1, T2, T3, T4, T5, T6, T7, T8}(name, factory)"]/*'/>
+        [DebuggerStepThrough]
+        public IRegistration<TService> Register<TService, T1, T2, T3, T4, T5, T6, T7, T8>(string name, Func<Container, T1, T2, T3, T4, T5, T6, T7, T8, TService> factory)
+        {
+            return RegisterImpl<TService, Func<Container, T1, T2, T3, T4, T5, T6, T7, T8, TService>>(name, factory);
+        }
 
-		/// <include file='Funq.Overloads.xdoc' path='docs/doc[@for="Container.Register{TService, T1, T2, T3, T4, T5, T6, T7, T8, T9}(factory)"]/*'/>
-		[DebuggerStepThrough]
-		public IRegistration<TService> Register<TService, T1, T2, T3, T4, T5, T6, T7, T8, T9>(Func<Container, T1, T2, T3, T4, T5, T6, T7, T8, T9, TService> factory)
-		{
-			return Register(null, factory);
-		}
+        /// <include file='Funq.Overloads.xdoc' path='docs/doc[@for="Container.Register{TService, T1, T2, T3, T4, T5, T6, T7, T8, T9}(factory)"]/*'/>
+        [DebuggerStepThrough]
+        public IRegistration<TService> Register<TService, T1, T2, T3, T4, T5, T6, T7, T8, T9>(Func<Container, T1, T2, T3, T4, T5, T6, T7, T8, T9, TService> factory)
+        {
+            return Register(null, factory);
+        }
 
-		/// <include file='Funq.Overloads.xdoc' path='docs/doc[@for="Container.Register{TService, T1, T2, T3, T4, T5, T6, T7, T8, T9}(name, factory)"]/*'/>
-		[DebuggerStepThrough]
-		public IRegistration<TService> Register<TService, T1, T2, T3, T4, T5, T6, T7, T8, T9>(string name, Func<Container, T1, T2, T3, T4, T5, T6, T7, T8, T9, TService> factory)
-		{
-			return RegisterImpl<TService, Func<Container, T1, T2, T3, T4, T5, T6, T7, T8, T9, TService>>(name, factory);
-		}
+        /// <include file='Funq.Overloads.xdoc' path='docs/doc[@for="Container.Register{TService, T1, T2, T3, T4, T5, T6, T7, T8, T9}(name, factory)"]/*'/>
+        [DebuggerStepThrough]
+        public IRegistration<TService> Register<TService, T1, T2, T3, T4, T5, T6, T7, T8, T9>(string name, Func<Container, T1, T2, T3, T4, T5, T6, T7, T8, T9, TService> factory)
+        {
+            return RegisterImpl<TService, Func<Container, T1, T2, T3, T4, T5, T6, T7, T8, T9, TService>>(name, factory);
+        }
 
-		/// <include file='Funq.Overloads.xdoc' path='docs/doc[@for="Container.Register{TService, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10}(factory)"]/*'/>
-		[DebuggerStepThrough]
-		public IRegistration<TService> Register<TService, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>(Func<Container, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, TService> factory)
-		{
-			return Register(null, factory);
-		}
+        /// <include file='Funq.Overloads.xdoc' path='docs/doc[@for="Container.Register{TService, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10}(factory)"]/*'/>
+        [DebuggerStepThrough]
+        public IRegistration<TService> Register<TService, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>(Func<Container, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, TService> factory)
+        {
+            return Register(null, factory);
+        }
 
-		/// <include file='Funq.Overloads.xdoc' path='docs/doc[@for="Container.Register{TService, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10}(name, factory)"]/*'/>
-		[DebuggerStepThrough]
-		public IRegistration<TService> Register<TService, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>(string name, Func<Container, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, TService> factory)
-		{
-			return RegisterImpl<TService, Func<Container, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, TService>>(name, factory);
-		}
+        /// <include file='Funq.Overloads.xdoc' path='docs/doc[@for="Container.Register{TService, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10}(name, factory)"]/*'/>
+        [DebuggerStepThrough]
+        public IRegistration<TService> Register<TService, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>(string name, Func<Container, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, TService> factory)
+        {
+            return RegisterImpl<TService, Func<Container, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, TService>>(name, factory);
+        }
 
-		/// <include file='Funq.Overloads.xdoc' path='docs/doc[@for="Container.Register{TService, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11}(factory)"]/*'/>
-		[DebuggerStepThrough]
-		public IRegistration<TService> Register<TService, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>(Func<Container, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, TService> factory)
-		{
-			return Register(null, factory);
-		}
+        /// <include file='Funq.Overloads.xdoc' path='docs/doc[@for="Container.Register{TService, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11}(factory)"]/*'/>
+        [DebuggerStepThrough]
+        public IRegistration<TService> Register<TService, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>(Func<Container, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, TService> factory)
+        {
+            return Register(null, factory);
+        }
 
-		/// <include file='Funq.Overloads.xdoc' path='docs/doc[@for="Container.Register{TService, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11}(name, factory)"]/*'/>
-		[DebuggerStepThrough]
-		public IRegistration<TService> Register<TService, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>(string name, Func<Container, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, TService> factory)
-		{
-			return RegisterImpl<TService, Func<Container, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, TService>>(name, factory);
-		}
+        /// <include file='Funq.Overloads.xdoc' path='docs/doc[@for="Container.Register{TService, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11}(name, factory)"]/*'/>
+        [DebuggerStepThrough]
+        public IRegistration<TService> Register<TService, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>(string name, Func<Container, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, TService> factory)
+        {
+            return RegisterImpl<TService, Func<Container, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, TService>>(name, factory);
+        }
 
-		/// <include file='Funq.Overloads.xdoc' path='docs/doc[@for="Container.Register{TService, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12}(factory)"]/*'/>
-		[DebuggerStepThrough]
-		public IRegistration<TService> Register<TService, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>(Func<Container, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, TService> factory)
-		{
-			return Register(null, factory);
-		}
+        /// <include file='Funq.Overloads.xdoc' path='docs/doc[@for="Container.Register{TService, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12}(factory)"]/*'/>
+        [DebuggerStepThrough]
+        public IRegistration<TService> Register<TService, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>(Func<Container, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, TService> factory)
+        {
+            return Register(null, factory);
+        }
 
-		/// <include file='Funq.Overloads.xdoc' path='docs/doc[@for="Container.Register{TService, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12}(name, factory)"]/*'/>
-		[DebuggerStepThrough]
-		public IRegistration<TService> Register<TService, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>(string name, Func<Container, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, TService> factory)
-		{
-			return RegisterImpl<TService, Func<Container, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, TService>>(name, factory);
-		}
+        /// <include file='Funq.Overloads.xdoc' path='docs/doc[@for="Container.Register{TService, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12}(name, factory)"]/*'/>
+        [DebuggerStepThrough]
+        public IRegistration<TService> Register<TService, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>(string name, Func<Container, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, TService> factory)
+        {
+            return RegisterImpl<TService, Func<Container, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, TService>>(name, factory);
+        }
 
-		/// <include file='Funq.Overloads.xdoc' path='docs/doc[@for="Container.Register{TService, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13}(factory)"]/*'/>
-		[DebuggerStepThrough]
-		public IRegistration<TService> Register<TService, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>(Func<Container, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, TService> factory)
-		{
-			return Register(null, factory);
-		}
+        /// <include file='Funq.Overloads.xdoc' path='docs/doc[@for="Container.Register{TService, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13}(factory)"]/*'/>
+        [DebuggerStepThrough]
+        public IRegistration<TService> Register<TService, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>(Func<Container, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, TService> factory)
+        {
+            return Register(null, factory);
+        }
 
-		/// <include file='Funq.Overloads.xdoc' path='docs/doc[@for="Container.Register{TService, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13}(name, factory)"]/*'/>
-		[DebuggerStepThrough]
-		public IRegistration<TService> Register<TService, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>(string name, Func<Container, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, TService> factory)
-		{
-			return RegisterImpl<TService, Func<Container, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, TService>>(name, factory);
-		}
+        /// <include file='Funq.Overloads.xdoc' path='docs/doc[@for="Container.Register{TService, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13}(name, factory)"]/*'/>
+        [DebuggerStepThrough]
+        public IRegistration<TService> Register<TService, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>(string name, Func<Container, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, TService> factory)
+        {
+            return RegisterImpl<TService, Func<Container, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, TService>>(name, factory);
+        }
 
-		/// <include file='Funq.Overloads.xdoc' path='docs/doc[@for="Container.Register{TService, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14}(factory)"]/*'/>
-		[DebuggerStepThrough]
-		public IRegistration<TService> Register<TService, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>(Func<Container, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, TService> factory)
-		{
-			return Register(null, factory);
-		}
+        /// <include file='Funq.Overloads.xdoc' path='docs/doc[@for="Container.Register{TService, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14}(factory)"]/*'/>
+        [DebuggerStepThrough]
+        public IRegistration<TService> Register<TService, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>(Func<Container, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, TService> factory)
+        {
+            return Register(null, factory);
+        }
 
-		/// <include file='Funq.Overloads.xdoc' path='docs/doc[@for="Container.Register{TService, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14}(name, factory)"]/*'/>
-		[DebuggerStepThrough]
-		public IRegistration<TService> Register<TService, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>(string name, Func<Container, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, TService> factory)
-		{
-			return RegisterImpl<TService, Func<Container, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, TService>>(name, factory);
-		}
+        /// <include file='Funq.Overloads.xdoc' path='docs/doc[@for="Container.Register{TService, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14}(name, factory)"]/*'/>
+        [DebuggerStepThrough]
+        public IRegistration<TService> Register<TService, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>(string name, Func<Container, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, TService> factory)
+        {
+            return RegisterImpl<TService, Func<Container, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, TService>>(name, factory);
+        }
 
-	}
+    }
 }
