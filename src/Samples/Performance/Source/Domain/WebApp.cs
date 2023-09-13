@@ -1,8 +1,6 @@
-using System;
-
 namespace Domain
 {
-	public class WebApp : IWebApp
+    public class WebApp : IWebApp
 	{
 		IAuthenticator authenticator;
 		IStockQuote quotes;

@@ -1,8 +1,6 @@
-using System;
-
 namespace Domain
 {
-	public class Authenticator : IAuthenticator
+    public class Authenticator : IAuthenticator
 	{
 		ILogger logger;
 		IErrorHandler handler;

@@ -1,10 +1,9 @@
-﻿using System;
-using Domain;
+﻿using Domain;
 using System.ComponentModel;
 
 namespace Performance
 {
-	[Description("No DI")]
+    [Description("No DI")]
 	public class PlainUseCase : UseCase
 	{
 		public override void Run()

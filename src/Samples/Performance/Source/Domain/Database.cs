@@ -1,8 +1,6 @@
-using System;
-
 namespace Domain
 {
-	public class Database : IDatabase
+    public class Database : IDatabase
 	{
 		ILogger logger;
 		IErrorHandler handler;

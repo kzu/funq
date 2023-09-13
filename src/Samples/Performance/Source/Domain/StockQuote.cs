@@ -1,8 +1,6 @@
-using System;
-
 namespace Domain
 {
-	public class StockQuote : IStockQuote
+    public class StockQuote : IStockQuote
 	{
 		ILogger logger;
 		IErrorHandler handler;

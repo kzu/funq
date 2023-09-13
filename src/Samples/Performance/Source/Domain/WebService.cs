@@ -1,8 +1,6 @@
-using System;
-
 namespace Domain
 {
-	public class WebService : IWebService
+    public class WebService : IWebService
 	{
 		IAuthenticator authenticator;
 		IStockQuote quotes;

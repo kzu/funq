@@ -1,8 +1,6 @@
-using System;
-
 namespace Domain
 {
-	public class ErrorHandler : IErrorHandler
+    public class ErrorHandler : IErrorHandler
 	{
 		ILogger logger;
 

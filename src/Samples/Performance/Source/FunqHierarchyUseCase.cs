@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Funq;
+﻿using Funq;
 using Domain;
 
 namespace Performance
 {
-	[System.ComponentModel.Description("Funq Hierarchy")]
+    [System.ComponentModel.Description("Funq Hierarchy")]
 	public class FunqHierarchyUseCase : UseCase
 	{
 		Container container;

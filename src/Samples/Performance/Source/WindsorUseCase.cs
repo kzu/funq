@@ -1,18 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Castle.Windsor;
+﻿using Castle.Windsor;
 using Domain;
-using Castle.Core;
-using System.ComponentModel;
+using Castle.MicroKernel.Registration;
 
 namespace Performance
 {
-	[Description("Windsor")]
+    [System.ComponentModel.Description("Windsor")]
 	public class WindsorUseCase : UseCase
 	{
-		private readonly IWindsorContainer container;
+		readonly IWindsorContainer container;
 
 		public WindsorUseCase()
 		{
@@ -24,9 +19,7 @@ namespace Performance
 			Register<IDatabase, Database>();
 			Register<IErrorHandler, ErrorHandler>();
 
-			container.AddComponentWithLifestyle<ILogger, Logger>(LifestyleType.Singleton);
-
-			Register<ILogger, Logger>();
+            container.Register(Component.For<ILogger>().ImplementedBy<Logger>().LifestyleSingleton());
 		}
 
 		public override void Run()
@@ -35,9 +28,11 @@ namespace Performance
 			webApp.Execute();
 		}
 
-		public void Register<T, R>()
+		public void Register<T, R>() 
+            where T : class
+            where R : class, T
 		{
-			container.AddComponentWithLifestyle(typeof(T).Name, typeof(T), typeof(R), LifestyleType.Transient);
+            container.Register(Component.For<T>().ImplementedBy<R>().LifestyleTransient());
 		}
 	}
 }

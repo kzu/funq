@@ -1,17 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Microsoft.Practices.Unity;
-using Microsoft.Practices.Unity.StaticFactory;
 using Domain;
 using System.ComponentModel;
 using System.Threading;
 using System.Diagnostics;
+using Unity;
 
 namespace Performance
 {
-	[Description("Unity")]
+    [Description("Unity")]
 	public class UnityUseCase : UseCase
 	{
 		UnityContainer container;
@@ -20,33 +16,29 @@ namespace Performance
 		{
 			container = new UnityContainer();
 
-			var builder = container
-				.AddNewExtension<StaticFactoryExtension>()
-				.Configure<IStaticFactoryConfiguration>();
-
-			builder.RegisterFactory<IWebService>(
+			container.RegisterFactory<IWebService>(
 				c => new WebService(
 					c.Resolve<IAuthenticator>(),
 					c.Resolve<IStockQuote>()));
 
-			builder.RegisterFactory<IAuthenticator>(
+            container.RegisterFactory<IAuthenticator>(
 				c => new Authenticator(
 					c.Resolve<ILogger>(),
 					c.Resolve<IErrorHandler>(),
 					c.Resolve<IDatabase>()));
 
-			builder.RegisterFactory<IStockQuote>(
+            container.RegisterFactory<IStockQuote>(
 				c => new StockQuote(
 					c.Resolve<ILogger>(),
 					c.Resolve<IErrorHandler>(),
 					c.Resolve<IDatabase>()));
 
-			builder.RegisterFactory<IDatabase>(
+            container.RegisterFactory<IDatabase>(
 				c => new Database(
 					c.Resolve<ILogger>(),
 					c.Resolve<IErrorHandler>()));
 
-			builder.RegisterFactory<IErrorHandler>(
+            container.RegisterFactory<IErrorHandler>(
 				c => new ErrorHandler(c.Resolve<ILogger>()));
 
 			var logger = new Logger();

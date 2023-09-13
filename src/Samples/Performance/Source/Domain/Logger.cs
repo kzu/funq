@@ -1,8 +1,6 @@
-using System;
-
 namespace Domain
 {
-	public class Logger : ILogger
+    public class Logger : ILogger
 	{
 		public bool Verbose { get; set; }
 

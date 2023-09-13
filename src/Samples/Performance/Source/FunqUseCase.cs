@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Funq;
+﻿using Funq;
 using Domain;
-using System.Reflection;
 
 namespace Performance
 {
-	[System.ComponentModel.Description("Funq")]
+    [System.ComponentModel.Description("Funq")]
 	public class FunqUseCase : UseCase
 	{
 		Container container;

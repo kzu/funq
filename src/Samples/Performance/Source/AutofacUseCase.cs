@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Autofac;
-using Autofac.Builder;
+﻿using Autofac;
 using Domain;
 
 namespace Performance
 {
-	[System.ComponentModel.Description("Autofac")]
+    [System.ComponentModel.Description("Autofac")]
 	public class AutofacUseCase : UseCase
 	{
 		IContainer container;
@@ -19,34 +14,29 @@ namespace Performance
 			builder.Register<IWebService>(
 				c => new WebService(
 					c.Resolve<IAuthenticator>(),
-					c.Resolve<IStockQuote>()))
-				.FactoryScoped();
+					c.Resolve<IStockQuote>()));
 
 			builder.Register<IAuthenticator>(
 				c => new Authenticator(
 					c.Resolve<ILogger>(),
 					c.Resolve<IErrorHandler>(),
-					c.Resolve<IDatabase>()))
-				.FactoryScoped();
+					c.Resolve<IDatabase>()));
 
 			builder.Register<IStockQuote>(
 				c => new StockQuote(
 					c.Resolve<ILogger>(),
 					c.Resolve<IErrorHandler>(),
-					c.Resolve<IDatabase>()))
-				.FactoryScoped();
+					c.Resolve<IDatabase>()));
 
 			builder.Register<IDatabase>(
 				c => new Database(
 					c.Resolve<ILogger>(),
-					c.Resolve<IErrorHandler>()))
-				.FactoryScoped();
+					c.Resolve<IErrorHandler>()));
 
 			builder.Register<IErrorHandler>(
-				c => new ErrorHandler(c.Resolve<ILogger>()))
-				.FactoryScoped();
+				c => new ErrorHandler(c.Resolve<ILogger>()));
 
-			builder.Register<ILogger>(new Logger());
+			builder.RegisterInstance<ILogger>(new Logger());
 
 			container = builder.Build();
 		}

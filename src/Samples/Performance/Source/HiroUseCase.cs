@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Hiro;
-using Hiro.ActivationPoints;
 using Hiro.Containers;
 using Hiro.Interfaces;
 using LinFu.Reflection.Emit;
@@ -12,7 +8,7 @@ using System.ComponentModel;
 
 namespace Performance
 {
-	[Description("Hiro")]
+    [Description("Hiro")]
 	public class HiroUseCase : UseCase
 	{
 		IMicroContainer container;
@@ -28,7 +24,7 @@ namespace Performance
 			map.AddService(typeof(ILogger), typeof(Logger));
 
 			IContainerCompiler compiler = new ContainerCompiler();
-			var assembly = compiler.Compile(map);
+			var assembly = compiler.Compile("Container", "Hiro", "HiroBenchmark", map);
 
 			var loadedAssembly = assembly.ToAssembly();
 			var containerType = loadedAssembly.GetTypes()[0];
