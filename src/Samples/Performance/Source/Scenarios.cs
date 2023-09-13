@@ -1,8 +1,13 @@
 ﻿using System.Collections.Generic;
 using BenchmarkDotNet.Attributes;
+using BenchmarkDotNet.Jobs;
 
 namespace Performance
 {
+    [MemoryDiagnoser]
+    [MarkdownExporter]
+    [SimpleJob(RuntimeMoniker.Net60)]
+    [SimpleJob(RuntimeMoniker.Net80)]
     public class Scenarios
     {
         static readonly List<UseCaseInfo> useCases = new()
@@ -16,7 +21,7 @@ namespace Performance
             new WindsorUseCase(), 
 		};
 
-        [Benchmark(Description = "No DI")]
+        [Benchmark(Baseline = true, Description = "No DI")]
         public void PlainUseCase() => useCases[0].UseCase.Run();
 
         [Benchmark(Description = "Funq")]

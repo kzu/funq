@@ -4,14 +4,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.8.34004.107
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{4112712F-EE4F-4336-B330-C7BE413F11DE}"
+	ProjectSection(SolutionItems) = preProject
+		readme.md = readme.md
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Funq", "src\Core\Funq\Funq.csproj", "{56656B0F-90BB-44D1-8A70-D004F940E0D2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Funq", "src\Core\Funq\Funq.csproj", "{56656B0F-90BB-44D1-8A70-D004F940E0D2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Funq.Tests", "src\Core\Funq.UnitTests\Funq.Tests.csproj", "{E655E463-B7E3-4BF4-B02F-3E1B98C1353D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Funq.Tests", "src\Core\Funq.UnitTests\Funq.Tests.csproj", "{E655E463-B7E3-4BF4-B02F-3E1B98C1353D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Funq.Composition", "src\Core\Funq.Composition\Funq.Composition.csproj", "{5FB37D21-CE86-4074-8B5A-C397B6A4EB9A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Funq.Composition", "src\Core\Funq.Composition\Funq.Composition.csproj", "{5FB37D21-CE86-4074-8B5A-C397B6A4EB9A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Funq.Build", "src\Core\Funq.Build\Funq.Build.csproj", "{999180B2-9121-4329-BFE3-054DC988B0F7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Funq.Build", "src\Core\Funq.Build\Funq.Build.csproj", "{999180B2-9121-4329-BFE3-054DC988B0F7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
