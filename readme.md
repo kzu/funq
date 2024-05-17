@@ -2,52 +2,67 @@
 
 A fast DI container you can understand
 
+## Overview
+
+I created this DI container originally for use in Microsoft patterns & practices 
+framework for developing mobile apps targeting the .NET Compact Framework, which 
+had to run on very constrained devices (back then). No usage of System.Reflection 
+was pretty much a given requirement.
+
+Along the way, I created a [series of videos](https://www.youtube.com/playlist?list=PLpBzqAJhzCLfPHtdcPEy1jj3W16MAeX1M) 
+where I showcasehow to use TDD to implement the whole thing from scratch.
+
 ## Performance
 
 ```
-BenchmarkDotNet v0.13.8, Windows 11 (10.0.22622.575)
+BenchmarkDotNet v0.13.12, Windows 11 (10.0.22631.3593/23H2/2023Update/SunValley3)
 Intel Core i9-10900T CPU 1.90GHz, 1 CPU, 20 logical and 10 physical cores
-  [Host]   : .NET Framework 4.8.1 (4.8.9167.0), X64 RyuJIT VectorSize=256
-  .NET 6.0 : .NET 6.0.20 (6.0.2023.32017), X64 RyuJIT AVX2
-  .NET 8.0 : .NET 8.0.0 (8.0.23.37506), X64 RyuJIT AVX2
+  [Host]   : .NET Framework 4.8.1 (4.8.9241.0), X64 RyuJIT VectorSize=256
+  .NET 6.0 : .NET 6.0.27 (6.0.2724.6912), X64 RyuJIT AVX2
+  .NET 8.0 : .NET 8.0.4 (8.0.424.16909), X64 RyuJIT AVX2
 ```
 
 ### Speed
 
-| Method       | Runtime    | Mean         | Error      | StdDev       | Median       | Ratio  | RatioSD |
-|------------- |----------- |-------------:|-----------:|-------------:|-------------:|-------:|--------:|
-| 'No DI'      | .NET 6.0   |     73.62 ns |   2.131 ns |     6.010 ns |     72.24 ns |   1.00 |    0.00 |
-| Funq         | .NET 6.0   |    661.17 ns |  12.855 ns |    13.201 ns |    659.32 ns |   8.54 |    0.86 |
-| Unity        | .NET 6.0   |  1,945.63 ns |  37.307 ns |    51.066 ns |  1,929.66 ns |  25.79 |    2.17 |
-| Autofac      | .NET 6.0   |  5,863.56 ns | 116.573 ns |   258.317 ns |  5,830.97 ns |  81.33 |    7.63 |
-| StructureMap | .NET 6.0   |  2,551.67 ns |  50.061 ns |    92.791 ns |  2,510.96 ns |  35.10 |    2.91 |
-| Ninject      | .NET 6.0   | 21,154.36 ns | 401.301 ns |   991.916 ns | 21,199.50 ns | 290.24 |   28.06 |
-| Windsor      | .NET 6.0   | 11,387.67 ns | 222.796 ns |   418.466 ns | 11,228.28 ns | 156.81 |   11.51 |
-|              |            |              |            |              |              |        |         |
-| 'No DI'      | .NET 8.0   |     67.12 ns |   1.241 ns |     1.161 ns |     67.05 ns |   1.00 |    0.00 |
-| Funq         | .NET 8.0   |    539.99 ns |  10.304 ns |    21.279 ns |    533.75 ns |   8.12 |    0.43 |
-| Unity        | .NET 8.0   |  1,429.12 ns |  23.856 ns |    24.498 ns |  1,425.08 ns |  21.32 |    0.49 |
-| Autofac      | .NET 8.0   |  4,085.07 ns |  81.079 ns |   221.953 ns |  4,014.93 ns |  62.77 |    3.82 |
-| StructureMap | .NET 8.0   |  2,095.20 ns |  40.860 ns |   110.467 ns |  2,088.39 ns |  31.13 |    1.81 |
-| Ninject      | .NET 8.0   | 17,282.94 ns | 435.455 ns | 1,235.313 ns | 17,176.51 ns | 265.10 |   19.16 |
-| Windsor      | .NET 8.0   |  8,256.84 ns | 142.181 ns |   139.641 ns |  8,220.55 ns | 123.14 |    3.05 |
+| Method            | Runtime  | Mean            | Error          | StdDev         | Median          | Ratio     | RatioSD  |
+|------------------ |--------- |----------------:|---------------:|---------------:|----------------:|----------:|---------:|
+| 'No DI'           | .NET 6.0 |        85.90 ns |       1.755 ns |       4.204 ns |        85.48 ns |      1.00 |     0.00 |
+| Funq              | .NET 6.0 |     1,279.53 ns |      22.287 ns |      20.848 ns |     1,275.61 ns |     14.51 |     0.71 |
+| ServiceCollection | .NET 6.0 |    19,293.83 ns |     639.905 ns |   1,876.731 ns |    19,363.75 ns |    228.75 |    22.79 |
+| Unity             | .NET 6.0 |    11,052.90 ns |     219.512 ns |     205.332 ns |    11,036.42 ns |    125.38 |     7.45 |
+| Autofac           | .NET 6.0 |    52,322.62 ns |   1,044.219 ns |   2,714.063 ns |    51,397.70 ns |    611.19 |    40.38 |
+| StructureMap      | .NET 6.0 | 4,106,653.85 ns | 109,422.178 ns | 313,952.741 ns | 4,050,650.00 ns | 47,554.83 | 3,709.43 |
+| Ninject           | .NET 6.0 |   621,417.49 ns |  19,670.749 ns |  57,690.901 ns |   606,653.52 ns |  7,144.12 |   582.38 |
+| Windsor           | .NET 6.0 |   165,673.09 ns |   2,802.828 ns |   2,484.634 ns |   165,504.05 ns |  1,873.34 |   103.36 |
+|                   |          |                 |                |                |                 |           |          |
+| 'No DI'           | .NET 8.0 |        63.21 ns |       1.249 ns |       1.624 ns |        63.16 ns |      1.00 |     0.00 |
+| Funq              | .NET 8.0 |       843.21 ns |      16.439 ns |      16.145 ns |       839.61 ns |     13.29 |     0.46 |
+| ServiceCollection | .NET 8.0 |     7,972.33 ns |     163.442 ns |     474.174 ns |     7,877.49 ns |    121.48 |     6.46 |
+| Unity             | .NET 8.0 |     8,793.95 ns |     173.747 ns |     206.833 ns |     8,814.48 ns |    139.12 |     5.15 |
+| Autofac           | .NET 8.0 |    40,158.30 ns |     793.924 ns |   1,004.059 ns |    40,017.48 ns |    635.76 |    23.40 |
+| StructureMap      | .NET 8.0 | 3,007,362.81 ns |  51,683.220 ns |  48,344.516 ns | 3,022,072.27 ns | 47,453.44 | 1,330.72 |
+| Ninject           | .NET 8.0 |   570,046.30 ns |  15,811.656 ns |  45,111.545 ns |   565,521.73 ns |  8,383.15 |   638.32 |
+| Windsor           | .NET 8.0 |   140,258.83 ns |   2,799.971 ns |   7,988.474 ns |   137,446.48 ns |  2,183.18 |   114.48 |
+
 
 ### Allocations
 
-| Method       | Runtime    | Gen0   | Gen1   | Allocated | Alloc Ratio |
-|------------- |----------- |-------:|-------:|----------:|------------:|
-| 'No DI'      | .NET 6.0   | 0.0374 |      - |     392 B |        1.00 |
-| Funq         | .NET 6.0   | 0.0906 |      - |     952 B |        2.43 |
-| Unity        | .NET 6.0   | 0.2060 |      - |    2176 B |        5.55 |
-| Autofac      | .NET 6.0   | 0.4654 |      - |    4904 B |       12.51 |
-| StructureMap | .NET 6.0   | 0.2975 |      - |    3120 B |        7.96 |
-| Ninject      | .NET 6.0   | 1.4954 | 0.3662 |   15736 B |       40.14 |
-| Windsor      | .NET 6.0   | 0.9155 |      - |    9712 B |       24.78 |
-|              |            |        |        |           |             |
-| 'No DI'      | .NET 8.0   | 0.0374 |      - |     392 B |        1.00 |
-| Funq         | .NET 8.0   | 0.0906 |      - |     952 B |        2.43 |
-| Unity        | .NET 8.0   | 0.2079 |      - |    2176 B |        5.55 |
-| Autofac      | .NET 8.0   | 0.4654 |      - |    4904 B |       12.51 |
-| StructureMap | .NET 8.0   | 0.2975 |      - |    3120 B |        7.96 |
-| Ninject      | .NET 8.0   | 1.3428 | 0.3357 |   14096 B |       35.96 |
-| Windsor      | .NET 8.0   | 0.9155 |      - |    9712 B |       24.78 |
+| Method            | Runtime  | Gen0    | Gen1    | Allocated | Alloc Ratio |
+|------------------ |--------- |--------:|--------:|----------:|------------:|
+| 'No DI'           | .NET 6.0 |  0.0397 |       - |     416 B |        1.00 |
+| Funq              | .NET 6.0 |  0.2155 |       - |    2256 B |        5.42 |
+| ServiceCollection | .NET 6.0 |  1.3733 |  0.6714 |   14432 B |       34.69 |
+| Unity             | .NET 6.0 |  1.7853 |  0.0610 |   18696 B |       44.94 |
+| Autofac           | .NET 6.0 |  3.2959 |  1.6479 |   34859 B |       83.80 |
+| StructureMap      | .NET 6.0 | 23.4375 |  7.8125 |  294826 B |      708.72 |
+| Ninject           | .NET 6.0 |  7.8125 |  2.9297 |   88347 B |      212.37 |
+| Windsor           | .NET 6.0 | 11.9629 |  0.7324 |  125665 B |      302.08 |
+|                   |          |         |         |           |             |
+| 'No DI'           | .NET 8.0 |  0.0397 |       - |     416 B |        1.00 |
+| Funq              | .NET 8.0 |  0.2155 |  0.0010 |    2256 B |        5.42 |
+| ServiceCollection | .NET 8.0 |  1.1597 |  1.0986 |   12335 B |       29.65 |
+| Unity             | .NET 8.0 |  1.7853 |  0.0610 |   18696 B |       44.94 |
+| Autofac           | .NET 8.0 |  2.9297 |  2.6855 |   32745 B |       78.71 |
+| StructureMap      | .NET 8.0 | 23.4375 | 19.5313 |  281557 B |      676.82 |
+| Ninject           | .NET 8.0 |  8.7891 |  3.9063 |   93223 B |      224.09 |
+| Windsor           | .NET 8.0 | 11.7188 |  0.9766 |  125664 B |      302.08 |
