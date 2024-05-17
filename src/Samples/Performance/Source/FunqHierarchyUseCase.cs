@@ -3,7 +3,6 @@ using Domain;
 
 namespace Performance
 {
-    [System.ComponentModel.Description("Funq Hierarchy")]
 	public class FunqHierarchyUseCase : UseCase
 	{
 		Container container;

@@ -7,7 +7,6 @@ using Unity;
 
 namespace Performance
 {
-    [Description("Unity")]
 	public class UnityUseCase : UseCase
 	{
 		UnityContainer container;

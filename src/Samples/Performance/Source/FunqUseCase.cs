@@ -3,7 +3,6 @@ using Domain;
 
 namespace Performance
 {
-    [System.ComponentModel.Description("Funq")]
 	public class FunqUseCase : UseCase
 	{
 		Container container;

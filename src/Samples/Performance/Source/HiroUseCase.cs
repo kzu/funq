@@ -8,7 +8,6 @@ using System.ComponentModel;
 
 namespace Performance
 {
-    [Description("Hiro")]
 	public class HiroUseCase : UseCase
 	{
 		IMicroContainer container;

@@ -3,7 +3,6 @@ using Domain;
 
 namespace Performance
 {
-    [System.ComponentModel.Description("Autofac")]
 	public class AutofacUseCase : UseCase
 	{
 		IContainer container;

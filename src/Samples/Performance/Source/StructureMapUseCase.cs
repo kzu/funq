@@ -3,7 +3,6 @@ using Domain;
 
 namespace Performance
 {
-    [System.ComponentModel.Description("StructureMap")]
 	public class StructureMapUseCase : UseCase
 	{
 		Container container;

@@ -4,7 +4,6 @@ using Castle.MicroKernel.Registration;
 
 namespace Performance
 {
-    [System.ComponentModel.Description("Windsor")]
 	public class WindsorUseCase : UseCase
 	{
 		readonly IWindsorContainer container;

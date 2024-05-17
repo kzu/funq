@@ -5,7 +5,6 @@ using System.ComponentModel;
 
 namespace Performance
 {
-    [Description("Ninject")]
 	public class NinjectUseCase : UseCase
 	{
 		IKernel kernel;

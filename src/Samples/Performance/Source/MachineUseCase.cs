@@ -9,7 +9,6 @@ using System.ComponentModel;
 
 namespace Performance
 {
-	[Description("Machine")]
 	public class MachineUseCase : UseCase
 	{
 		MachineContainer container;
