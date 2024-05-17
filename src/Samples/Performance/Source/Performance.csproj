@@ -19,9 +19,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Autofac" Version="7.1.0" />
-    <PackageReference Include="BenchmarkDotNet" Version="0.13.8" />
+    <PackageReference Include="Autofac" Version="8.0.0" />
+    <PackageReference Include="BenchmarkDotNet" Version="0.13.12" />
     <PackageReference Include="Castle.Windsor" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
     <PackageReference Include="Microsoft.Practices.EnterpriseLibrary.2008" Version="4.1.0" />
     <PackageReference Include="Ninject" Version="3.3.6" />
     <PackageReference Include="StructureMap" Version="4.7.1" />

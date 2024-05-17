@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using BenchmarkDotNet.Attributes;
+﻿using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Jobs;
 
 namespace Performance
@@ -10,36 +9,28 @@ namespace Performance
     [SimpleJob(RuntimeMoniker.Net80)]
     public class Scenarios
     {
-        static readonly List<UseCaseInfo> useCases = new()
-        {
-            new PlainUseCase(),
-            new FunqUseCase(),
-            new UnityUseCase(),
-            new AutofacUseCase(),
-            new StructureMapUseCase(),
-            new NinjectUseCase(),
-            new WindsorUseCase(), 
-		};
-
         [Benchmark(Baseline = true, Description = "No DI")]
-        public void PlainUseCase() => useCases[0].UseCase.Run();
+        public void PlainUseCase() => new PlainUseCase().Run();
 
         [Benchmark(Description = "Funq")]
-        public void FunqUseCase() => useCases[1].UseCase.Run();
+        public void FunqUseCase() => new FunqUseCase().Run();
+
+        [Benchmark(Description = "ServiceCollection")]
+        public void ServiceCollectionUseCase() => new ServiceCollectionUseCase().Run();
 
         [Benchmark(Description = "Unity")]
-        public void UnityUseCase() => useCases[2].UseCase.Run();
+        public void UnityUseCase() => new UnityUseCase().Run();
 
         [Benchmark(Description = "Autofac")]
-        public void AutofacUseCase() => useCases[3].UseCase.Run();
+        public void AutofacUseCase() => new AutofacUseCase().Run();
 
         [Benchmark(Description = "StructureMap")]
-        public void StructureMapUseCase() => useCases[4].UseCase.Run();
+        public void StructureMapUseCase() => new StructureMapUseCase().Run();
 
         [Benchmark(Description = "Ninject")]
-        public void NinjectUseCase() => useCases[5].UseCase.Run();
+        public void NinjectUseCase() => new NinjectUseCase().Run();
 
         [Benchmark(Description = "Windsor")]
-        public void WindsorUseCase() => useCases[6].UseCase.Run();
+        public void WindsorUseCase() => new WindsorUseCase().Run();
     }
 }
