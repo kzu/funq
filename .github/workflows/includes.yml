@@ -20,7 +20,7 @@ jobs:
           gh_token: ${{ secrets.GH_TOKEN }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
 
-      - run: git config core.autocrlf false 
+      - run: git config --global core.autocrlf false 
 
       - name: 🤘 checkout
         uses: actions/checkout@v2
