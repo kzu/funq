@@ -20,8 +20,6 @@ jobs:
           gh_token: ${{ secrets.GH_TOKEN }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
 
-      - run: git config --global core.autocrlf true 
-
       - name: 🤘 checkout
         uses: actions/checkout@v2
         with: 
@@ -31,7 +29,7 @@ jobs:
         uses: devlooped/actions-includes@v1
 
       - name: ✍ pull request
-        uses: peter-evans/create-pull-request@v4
+        uses: peter-evans/create-pull-request@v6
         with:
           base: main
           branch: markdown-includes
